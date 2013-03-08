@@ -1,0 +1,109 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sks="http://f.skobkin.ru/other/constellation/UFR"><head><meta charset="utf-8"></meta><style xmlns="" type="text/css">
+body {
+    width:80ex;
+    font-family:"Consolas","Courier New",monospace;
+    font: 12pt/10pt;
+}
+
+.footnote{
+	font-size: 0.8em
+}
+
+pre {
+	font-family:monospace
+}
+
+p {
+	text-align: justify;
+}
+
+p.element-syntax {
+	background-color:Gainsboro;
+	border:solid thin black;
+	white-space:pre;
+	font-family:monospace;
+	font-size: 10pt
+	}
+
+p.block {
+	margin-left:2ex;
+	padding-left:1ex;
+	border-left:1px;
+}
+
+p.center {
+	text-align:center;
+}
+
+div.table {
+	white-space:pre;
+	font-family:monospace;
+	color:#333333;
+	font-size: 10pt
+	}
+
+span.nowrap {
+	white-space:pre;
+}
+
+.artwork {
+	color:#333333;
+	white-space: pre;
+	text-align: left
+}
+
+h1.caption {
+	text-align:center;
+	padding-top:2em;
+	padding-bottom:1em;
+	margin-left:0ex 
+}
+
+.caption {
+	padding-top:1em;
+	padding-bottom:0.75em;
+	text-align:center
+}
+
+ul {
+	list-style-type: circle;
+	text-align: justify;
+} 
+
+ol {
+	text-align: justify;
+}
+
+.toc_inner {
+	padding-left: 4ex;
+}
+
+h6,h5,h4,h3,h2,h1 {
+	font-size:1em;
+	font-weight:700;
+	margin-left:-6ex
+}
+
+.rfc2119 { text-transform: lowercase;
+           font-variant: small-caps;
+           font-style: normal; 
+           font-size: 120%
+       }</style><title>URF 2 - Изменения в тегах записи бортового журнала</title></head><body><table style="width:100%;border:0px;border-spacing:0px"><tbody><tr><td style="text-align:left">Звёздный флот Федерации</td><td style="text-align:right">К-117 "Созвездие"</td></tr><tr><td style="text-align:left">UFR №2</td><td style="text-align:right">Морзе</td></tr><tr><td style="text-align:left">Категория: стандарт</td><td style="text-align:right">02 месяц 2013</td></tr></tbody></table><h1 class="caption">ИЗМЕНЕНИЯ В ТЕГАХ ЗАПИСИ БОРТОВОГО ЖУРНАЛА</h1><p class="caption">24 февраля 2013</p><div style="margin-left:6ex"><h2 xmlns="">Авторские права</h2><p xmlns="">Copyright © 2013 Звёздный Флот Федерации Земли. Все права защищены.</p><h2 xmlns="">Лицензия</h2><p xmlns="">В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div xmlns="" class="toc_inner"><a href="#abstract">1.</a> Аннотация<br></div><div xmlns="" class="toc_inner"><a href="#intro">2.</a> Введение<br></div><div xmlns="" class="toc_inner"><a href="#add_tag">3.</a> Добавление тега *звездолет<br></div><div xmlns="" class="toc_inner"><a href="#changes">4.</a> Внесение изменений<br></div><div xmlns="" class="toc_inner"><a href="#references">5.</a> Ссылки<br></div><h2><a name="abstract"></a>1. Аннотация</h2>
+                <p xmlns="">С целью соответствия реальному положению дел, а именно учитывая то, 
+                что достаточно большое количество пользователей заменяет при наборе 
+                букву "ё" буквой "е", командованием корабля принято решение внести 
+                изменения в стандарт UFR1.</p>
+                <p xmlns="">Допускается неограниченное распространение данного стандарта.</p>
+            <h2><a name="intro"></a>2. Введение</h2>
+                <p xmlns="">Поскольку действующие правила русского языка [<a href="#orthography" title="Правила русской орфографии и пунктуации. Полный академический справочник.">1</a>] 
+                допускают в обычном письме замену букву "ё" буквой "е", настоящий стандарт 
+                дополняет список допустимых тегов.</p>
+                <p xmlns="">Также в связи с подготовкой исходных текстов UFR в формате XML с послежующей 
+                    сериализацией в виде XHTML-документа с помощью <a href="http://ru.wikipedia.org/w/index.php?title=XSLT&amp;oldid=52141094" target="_blank">XSLT</a> изменен порядок обязтаельных разделов.</p>
+        <h2><a name="add_tag"></a>3. Добавление тега *звездолет</h2>
+                <p xmlns="">Добавить к списку допустимых тегов (раздел 4.1 URF1 от <nobr><span class="nowrap">2013-02-03</span></nobr>) тег <code>*звездолет</code>
+                и разрешить использовать его наравне с тегом <code>*звездолёт</code>.</p>
+                <p xmlns="">Лицам, использующим какие-либо средства подписки на теги, рекомендуется 
+                    подписаться на тег <code>*звездолет</code>, чтобы быть в курсе последних 
+                    событий на корабле.</p>
+        <h2><a name="changes"></a>4. Внесение изменений</h2><p xmlns="">В соответствии с §§42, 64 раздела 5, §94 раздела 8 Устава Звёздного Флота внесение изменений в данный стандарт производится только стандартами UFR, принятыми в установленном порядке.</p><h2><a name="references"></a>5. Ссылки</h2><h5 xmlns="">Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a xmlns="" name="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br xmlns="">В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr></table><h2>Автор</h2><p>Старший помощник капитана корабля<br />Капитан 1 ранга Морзе<br />К-117 "Созвездие"<br />Звёздный Флот Федерации Земли</p></div></body></html>
