@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ufr.xsl"?>
+<ufr>
+    <description>
+        <creator>
+            <organization>Звёздный флот Федерации</organization>
+            <unit>К-117 "Созвездие"</unit>
+            <author>Морзе</author>
+        </creator>
+        <authors>
+            <copyright efsf-only="no" />
+            <author>
+                <assignment>Старший помощник капитана корабля</assignment>
+                <rank>Капитан 1 ранга</rank>
+                <name>Морзе</name>
+                <unit>К-117 "Созвездие"</unit>
+                <organization>Звёздный Флот Федерации Земли</organization>
+            </author>
+        </authors>
+        <ufrdata>
+            <ufrname number="4">О появлении Космического Десанта и некоторых других категорий персонажей на &quot;Созвездии&quot;</ufrname>
+            <ufrcategory cat="info" draft="no"/>
+            <ufrdate value="2013-03-04" />
+            <ufrchanged />
+        </ufrdata>
+    </description>
+    <document>
+        <copyright name="Авторские права" />
+        <abstract name="Аннотация" />
+        <license type="cc-license" name="Лицензия" />
+
+        <section name="Введение"  toc="include" anchor="intro">
+            <t>Не секрет, что телевизионный сериал <eref target="http://ru.wikipedia.org/w/index.php?title=%D0%92%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE%D0%BD-5&amp;oldid=51847782">&quot;Вавилон-5&quot;</eref> оказал более чем огромное влияние на проект &quot;Созвездие&quot;.</t>
+            <t>Не стал исключением и Космический десант, хотя сама суть его, вероятно, была взята из романа Роберта Хайнлайна <refref key="starshiptroopers" short="no">&quot;Звёздный десант&quot;</refref>.</t>
+        </section>
+
+        <section name="Космический десант" toc="include" anchor="spaceborn-troops">
+            <t>Идея Космического десанта возникла непосредственно под влиянием 
+                сюжета <eref target="http://en.wikipedia.org/w/index.php?title=Gropos&amp;oldid=465525095">10 серии</eref> 
+                второго сезона сериала &quot;Вавилон-5&quot;, позже идея получила некоторые штрихи из романа 
+                Олега Дивова &quot;Лучший экипаж Солнечной&quot; <refref key="bestsolar" short="yes"/>.</t>
+        </section>
+
+        <section name="Колонисты" toc="include" anchor="colonist">
+            <t>Хотя такая категория пассажиров, как колонисты упоминается не часто, но они есть.</t>
+            <t>Идея колонистов почерпнута опять же из романа Роберта Хайнлайна <eref target="http://ru.wikipedia.org/w/index.php?title=%D0%9D%D0%B5%D0%B1%D0%B5%D1%81%D0%BD%D1%8B%D0%B9_%D1%84%D0%B5%D1%80%D0%BC%D0%B5%D1%80&amp;oldid=46675190">&quot;Фермер в небе&quot;</eref> 
+            <refref key="farmersky" short="yes"/>. 
+            Впрочем, как экипаж корабля, так и десантники относятся к колонистам не в пример доброжелательнее, чем команда &quot;Мэйфлауэра&quot; из романа.</t>
+        </section>
+
+<insert type="apply-changes" name="Внесение изменений" toc="include" anchor="changes" />
+
+<references name="Ссылки"  toc="include"  anchor='references'>
+    <reference type="other" title="Другие источники">
+         <ref key="starshiptroopers">
+            <title>Звёздный десант</title>   
+            <author name="Роберт" surname="Хайнлайн" initials="" fullname="Р. Хайнлайн">
+                <organization/>
+            </author> 
+            <description>Starship Troopers</description> 
+            <publisher name="G. P. Putnam's Sons" year="1959" month="12" day=""/>
+            <url/>
+        </ref> 
+
+         <ref key="bestsolar">
+            <title>Лучший экипаж Солнечной</title>   
+            <author name="Олег" surname="Дивов" initials="Игоревич" fullname="О. И. Дивов">
+                <organization/>
+            </author> 
+            <publisher name="ЭКСМО" year="2008" month="" day=""/>
+            <url/>
+        </ref>
+
+         <ref key="farmersky">
+            <title>Небесный фермер</title>   
+            <author name="Роберт" surname="Хайнлайн" initials="" fullname="Р. Хайнлайн">
+                <organization/>
+            </author> 
+            <publisher name="Флокс" year="1992" month="" day=""/>
+            <url/>
+        </ref>
+    </reference>
+    </references>
+    </document>
+</ufr>

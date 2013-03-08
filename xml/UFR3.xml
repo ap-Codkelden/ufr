@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ufr.xsl"?>
+<ufr>
+    <description>
+        <creator>
+            <organization>Звёздный флот Федерации</organization>
+            <unit>К-117 "Созвездие"</unit>
+            <author>Морзе</author>
+        </creator>
+        <authors>
+            <copyright efsf-only="yes" />
+            <author>
+                <assignment>Старший помощник капитана корабля</assignment>
+                <rank>Капитан 1 ранга</rank>
+                <name>Морзе</name>
+                <unit>К-117 "Созвездие"</unit>
+                <organization>Звёздный Флот Федерации Земли</organization>
+            </author>
+        </authors>
+        <ufrdata>
+            <ufrname number="3">Ключевые слова для обозначения уровня требований в UFR</ufrname>
+            <!-- <ufrcategory></ufrcategory> 
+            # параметр 
+            # draft? = { "yes" | "no" }
+            # определяет, является ли стандарт черновым, 
+            # тогда добавляется "(черновой)"
+            -->
+            <ufrcategory cat="rec" draft="no"/>
+            <ufrdate value="2013-02-27" />
+            <!-- Изменен ли стандарт, или нет, 
+            указывать номера URF и дату в формате -->
+            <ufrchanged />
+        </ufrdata>
+    </description>
+    <document>
+        <copyright name="Авторские права" />
+        <abstract name="Аннотация" />
+        <license type="cc-license" name="Лицензия" />
+
+        <chapter name="Введение"  toc="include" anchor="intro">
+                <t>Во многих UFR, особенно категории "рекомендация" и "стандарт", 
+                    реже -- "технический" могут использоваться различные слова 
+                    для определения степени требований соблюдения того или иного параметра, 
+                    требования или рекомендации.</t>
+                    <t>В практике <eref target="http://ru.wikipedia.org/wiki/RFC">RFC</eref> 
+                    такие слова именовались ключевыми, и зачастую были набраны 
+                    заглавными буквами <ref key="rfc2119" short="yes"/>.</t>
+                    <t>Продолжая подобную практику, Исследоввательская Лаборатория 
+                    ЗФ рекомендует использовать нижеперечисленные ключевые слова 
+                    для определения требований к участникам проекта "Созвездие".</t>
+        </chapter>
+
+        <chapter name="Ключевые слова" toc="include" anchor="keywords">
+            <section name="Перечень ключевых слов" toc="include" anchor="keywords-list">
+                <olist>
+                    <item>
+                        <definition>
+                            <term name="НЕОБХОДИМО (ДОЛЖНЫ, ТРЕБУЕТСЯ, НУЖНО)">ключевое слово определяет абсолютно 
+                                необходимые требования</term>
+                            <term name="НЕДОПУСТИМО (НЕ ДОЛЖНЫ, НЕ РАЗРЕШАЕТСЯ)">ключевое слово определяет абсолютный 
+                                запрет чего-либо</term>
+                        </definition></item>
+                        <item><definition>
+                            <term name="СЛЕДУЕТ (РЕКОМЕНДУЕТСЯ)">используется для обозначения требований, от выполнения которых можно отказаться, но такой шаг может быть чреват последствиями</term>
+                            <term name="НЕ СЛЕДУЕТ (НЕ РЕКОМЕНДУЕТСЯ)">используется для обозначения требований, которые можно использовать, но такой шаг может быть чреват последствиями</term>
+                        </definition>
+                    </item>
+                        <item><definition>
+                            <term name="ВОЗМОЖНО (НЕОБЯЗАТЕЛЬНЫЙ)">используется для обозначения необязательных 
+                                опций, выполняемых по желанию, или игнорируемых без ущерба конечной реализации</term>
+                        </definition>
+                    </item>
+                </olist>
+</section>
+<section name="Рекомендации по использованию" anchor="use"  toc="include" >
+    <subsection name="Избегайте чрезмерного употребления" anchor="be-careful"  toc="include" >
+        <t>К использованию указанных выше ключевых слов необходмимо подходить 
+        взвешенно и не использовать их необдуманно, чтобы исключить затруднения чтения документа.</t>
+    </subsection>
+    <subsection name="Объявление использования" anchor="declare-of-usage"  toc="include" >
+        <t>Авторам документов, следующих приведенным здесь требованиям, рекомендуется помещать в начале документов следующий текст:<footnote name="xsl-paste">В стилевом файле преобразований <code>ufr.xsl</code> определен специальный элемент <code>&lt;ufr3/&gt;</code>, см.&#160;документацию.</footnote></t>
+        <block>Ключевые слова <keyword>необходимо</keyword>, <keyword>требуется</keyword>, 
+            <keyword>нужно</keyword>, <keyword>недопустимо</keyword>, <keyword>не разрешается</keyword>, 
+            <keyword>следует</keyword>, <keyword>рекомендуется</keyword>, <keyword>не следует</keyword>, 
+            <keyword>не рекомендуется</keyword>, <keyword>возможно</keyword>, <keyword>необязательно</keyword> 
+            в соответствующих формах в данном документе должны интерпретироваться в соответствии с требованиями UFR3.
+        </block>
+        <t>Данному требованию <keyword>рекомендуется</keyword> назначить название "Терминология", размещать  
+        его <keyword>необходимо</keyword> в пределах раздела&#160;1 "Введение" или же в пределах 
+        раздела&#160;2.</t>
+    </subsection>
+</section>
+</chapter>
+
+<insert type="apply-changes" name="Внесение изменений" toc="include" anchor="changes" />
+
+<chapter name="Ссылки"  toc="include"  anchor='references'>
+        <references type="other" title="Другие источники">
+             <reference key="rfc2119">
+                    <title>Key words for use in RFCs to Indicate Requirement Levels</title>   
+                    <author name="Scott" surname="Bradner" initials="" fullname="S. Bradner">
+                        <organization abbrev='Harvard University'>Harvard University</organization>
+                    </author> 
+                    <description>RFC2119</description> 
+                    <publisher name="IETF" year="1997" month="03" day=""/>
+            <url>http://www.ietf.org/rfc/rfc2119.txt</url>
+        </reference> 
+    </references>
+</chapter>
+
+
+   
+
+
+    </document>
+</ufr>

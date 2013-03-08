@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ufr.xsl"?>
+<ufr>
+    <description>
+        <creator>
+            <organization>Звёздный флот Федерации</organization>
+            <unit>К-117 "Созвездие"</unit>
+            <author>Морзе</author>
+        </creator>
+        <authors>
+            <copyright efsf-only="no" />
+            <author>
+                <assignment>Старший помощник капитана корабля</assignment>
+                <rank>Капитан 1 ранга</rank>
+                <name>Морзе</name>
+                <unit>К-117 "Созвездие"</unit>
+                <organization>Звёздный Флот Федерации Земли</organization>
+            </author>
+        </authors>
+        <ufrdata>
+            <ufrname number="2">Изменения в тегах записи бортового журнала</ufrname>
+            <ufrcategory cat="std" draft="no"/>
+            <ufrdate value="2013-02-24" />
+             <ufrchanged />
+        </ufrdata>
+    </description>
+    <document>
+            <chapter name="Аннотация" anchor='abstract' toc="include" >
+                <t>С целью соответствия реальному положению дел, а именно учитывая то, 
+                что достаточно большое количество пользователей заменяет при наборе 
+                букву "ё" буквой "е", командованием корабля принято решение внести 
+                изменения в стандарт UFR1.</t>
+                <t>Допускается неограниченное распространение данного стандарта.</t>
+            </chapter> 
+
+        <copyright name="Авторские права" />
+
+        <insert type="cc-license" name="Лицензия" xreftext="Лицензия" toc="include" anchor="license" />
+
+        <chapter name="Введение"  toc="include" anchor="intro">
+                <t>Поскольку действующие правила русского языка <ref key='orthography' short='yes'/> 
+                допускают в обычном письме замену букву "ё" буквой "е", настоящий стандарт 
+                дополняет список допустимых тегов.</t>
+                <t>Также в связи с подготовкой исходных текстов UFR в формате XML с послежующей 
+                    сериализацией в виде XHTML-документа с помощью <eref target="http://ru.wikipedia.org/w/index.php?title=XSLT&amp;oldid=52141094">XSLT</eref> изменен порядок обязтаельных разделов.</t>
+        </chapter>
+
+        <chapter name="Добавление тега *звездолет" toc="include" anchor="add_tag">
+                <t>Добавить к списку допустимых тегов (раздел 4.1 URF1 от <nobr>2013-02-03</nobr>) тег <code>*звездолет</code>
+                и разрешить использовать его наравне с тегом <code>*звездолёт</code>.</t>
+                <t>Лицам, использующим какие-либо средства подписки на теги, рекомендуется 
+                    подписаться на тег <code>*звездолет</code>, чтобы быть в курсе последних 
+                    событий на корабле.</t>
+        </chapter>
+
+        <insert type="apply-changes" name="Внесение изменений" toc="include" anchor="changes" />
+
+        <chapter name="Ссылки"  toc="include"  anchor='references'>
+            <references type="other" title="Другие источники">
+                <reference key="orthography">
+                    <title>Правила русской орфографии и пунктуации. Полный академический справочник.</title>   
+                    <author surname="Лопатин" initials="В. В." fullname="В. В. Лопатин">
+                    <organization/>
+                        <!-- <organization abbrev='ЭКСМО'>ЭКСМО</organization> -->
+                    </author> 
+                    <description>Правила русской орфографии и пунктуации</description> 
+                    <publisher name="ЭКСМО" year="2006" month="" day=""/>
+                </reference>
+            </references>
+        </chapter>
+    </document>
+</ufr>
