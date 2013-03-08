@@ -1,0 +1,91 @@
+
+body {
+    width:80ex;
+    font-family:"Consolas","Courier New",monospace;
+    font: 12pt/10pt;
+}
+
+.footnote{
+	font-size: 0.8em
+}
+
+pre {
+	font-family:monospace
+}
+
+p {
+	text-align: justify;
+}
+
+p.element-syntax {
+	background-color:Gainsboro;
+	border:solid thin black;
+	white-space:pre;
+	font-family:monospace;
+	font-size: 10pt
+	}
+
+p.block {
+	margin-left:2ex;
+	padding-left:1ex;
+	border-left:1px;
+}
+
+p.center {
+	text-align:center;
+}
+
+div.table {
+	white-space:pre;
+	font-family:monospace;
+	color:#333333;
+	font-size: 10pt
+	}
+
+span.nowrap {
+	white-space:pre;
+}
+
+.artwork {
+	color:#333333;
+	white-space: pre;
+	text-align: left
+}
+
+h1.caption {
+	text-align:center;
+	padding-top:2em;
+	padding-bottom:1em;
+	margin-left:0ex 
+}
+
+.caption {
+	padding-top:1em;
+	padding-bottom:0.75em;
+	text-align:center
+}
+
+ul {
+	list-style-type: circle;
+	text-align: justify;
+} 
+
+ol {
+	text-align: justify;
+}
+
+.toc_inner {
+	padding-left: 4ex;
+}
+
+h6,h5,h4,h3,h2,h1 {
+	font-size:1em;
+	font-weight:700;
+	margin-left:-6ex
+}
+
+.rfc2119 { text-transform: lowercase;
+           font-variant: small-caps;
+           font-style: normal; 
+           font-size: 120%
+       }
