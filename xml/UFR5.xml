@@ -72,15 +72,22 @@
     </section>
 </section>
 
-<section name="Структура и состав документа" toc="include" anchor="structure">
+<section name="Общие требования к документу, его структура и состав" toc="include" anchor="common-req">
     <section name="Общие положения" toc="include" anchor="common">
         <t>Исходный текст стандарта представляет собой XML-документ, соответствующий 
         <eref target="ufr.xsd">XSD-схеме</eref> (<eref>valid</eref>, предпочтительный вариант) или же правильно сформированный (<eref target="http://en.wikipedia.org/w/index.php?title=Well-formed_document&amp;oldid=527402113">well-formed</eref>, допустимый вариант).</t>
         <t>На момент написания документа, инструментарий поддерживал XSL-преобразование только в формат XHTML, который был выбран в силу его широкого распространения и поддержки значительным  количеством устройств - пользователь сможет загрузить UFR, открыть и распечатать на своем оборудовании.</t>
         <t>С целью правильного отображения символов национальных алфавитов
         и некоторых других символов, исходные тексты <keyword>должны</keyword> быть подготовлены только в кодировке <eref target="http://www.unicode.org">символов Unicode</eref>.</t>
+
+<!-- <t> --><olist>
+        <item>Основной шрифт документа - 12pt, междустрочный интервал - 10pt;</item>
+        <item>Ширина документа - 70ex (включая отступы);</item>
+        <item>Шрифты документа - моноширинные.</item>
+    </olist><!-- </t> -->
+
     </section>
-    <section name="Структура документа" toc="include" anchor="common">
+    <section name="Структура документа" toc="include" anchor="sec-structure">
         <t>XML-документ UFR начинается с объявления XML, ссылки на стилевой документ 
         <code>ufr.xsl</code> и корневого элеиента "ufr":</t>
 <codesample><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
@@ -402,37 +409,19 @@
         <it>"yes"</it>, при объявлении авторских прав будет указано, что авторские права принадлежат Звёздному Флоту, а в случае если 
         значение атрибута <it>"no"</it> дополнительно будет указано, что авторские права принадлежат также лицам, указанным как авторы документа (см.&#160;<xref target="appendix-copyright"/>).</t>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </section>
 
     <section  name="Элементы текста" anchor="text-elements"  toc="include" >
         <t>Указать про CDATA, FIGURE</t>
     </section>
-
 </section>
-
                 <section  name="Заключительная часть" anchor="sec-back"  toc="include" >
                 </section>
-
 </section>
 
 
 
 <section name="Структура UFR и всякоэ" toc="include" anchor="ufrstruct">
-
             <section name="Структура документа" anchor="doc_parts"  toc="include" >
                 <!-- Часть - глава - секция... -->
                 <t>vfbdbfdb</t>
@@ -504,12 +493,6 @@
     <t>Учитывая особенности вывода формата даты, в Лаборатории Ядерных Исследований 
         используется XSLT-процессор <eref target="http://saxon.sourceforge.net">Saxon PE</eref> версии <eref target="http://saxon.sourceforge.net#F9.4PE">9.4</eref> с добавлением модифицированного класса <code>Numberer_ru</code>.</t>
         <svg file="file.svg"/>
-    <t>Обязательным условием является соответствие следующим требованиям:</t>
-    <olist>
-        <item>Основной шрифт документа - 12pt, междустрочный интервал - 10pt;</item>
-        <item>Ширина документа - 70ex (включая отступы);</item>
-        <item>Шрифты документа - моноширинные.</item>
-    </olist>
     </section>
 </section>
 

@@ -26,8 +26,8 @@ p.element-syntax {
 	}
 
 p.block {
-	margin-left:2ex;
-	padding-left:1ex;
+	margin-left:1em;
+	padding-left:0.5em;
 	border-left:1px;
 }
 
@@ -75,37 +75,36 @@ ol {
 }
 
 .toc_inner {
-	padding-left: 4ex;
+	padding-left: 2em;
 }
 
-/*h6 {
-	font-size:1em;
+h6 {
+	font-size:12pt;
 }
 
 h5 {
-	font-size:1.25em;
+	font-size:12.25pt;
 }
 
 h4 {
-	font-size:1.5em;
+	font-size:12.5pt;
 }
 
 h3 {
-	font-size:1.75em;
+	font-size:12.75pt;
 }
 
 h2 {
-	font-size:2em;
+	font-size:13pt;
 }
 
 h1 {
-	font-size:2.25em;
-} */
+	font-size:13.25pt;
+} 
 
 h6,h5,h4,h3,h2,h1 {
 	font-weight:700;
-	margin-left:-6ex;
-	font-size:1em
+	margin-left:-36pt;
 }
 
 .rfc2119 { text-transform: lowercase;
@@ -116,11 +115,11 @@ h6,h5,h4,h3,h2,h1 {
 
 .svg { 	margin:0 auto;
 		display: block;
-		}</style><title>URF 5 - Инструкции авторам UFR</title></head><body><table style="width:100%;border:0px;border-spacing:0px"><tbody><tr><td style="text-align:left">Звёздный флот Федерации</td><td style="text-align:right">К-117 "Созвездие"</td></tr><tr><td style="text-align:left">UFR №5</td><td style="text-align:right">Морзе</td></tr><tr><td style="text-align:left">Категория: технический</td><td style="text-align:right">02 месяц 2013</td></tr></tbody></table><h1 class="caption">ИНСТРУКЦИИ АВТОРАМ UFR</h1><p class="caption">25 февраля 2013</p><div style="margin-left:6ex"><h2 xmlns="">Аннотация</h2><p xmlns="">Этот документ устанавливает в качестве стандартных технические 
+		}</style><title>URF 5 - Инструкции авторам UFR</title></head><body><table style="width:100%;border:0px;border-spacing:0px"><tbody><tr><td style="text-align:left">Звёздный флот Федерации</td><td style="text-align:right">К-117 "Созвездие"</td></tr><tr><td style="text-align:left">UFR №5</td><td style="text-align:right">Морзе</td></tr><tr><td style="text-align:left">Категория: технический</td><td style="text-align:right">02 месяц 2013</td></tr></tbody></table><h1 class="caption">ИНСТРУКЦИИ АВТОРАМ UFR</h1><p class="caption">25 февраля 2013</p><div style="margin-left:36pt"><h2 xmlns="">Аннотация</h2><p xmlns="">Этот документ устанавливает в качестве стандартных технические 
                 правила и нормативы, обязательные к использованию при участии в 
                 проекте "Созвездие", которые могут быть дополнены, улучшены 
                 или изменены. Допускается неограниченное распространение 
-                данного стандарта.</p><h2 xmlns="">Авторские права</h2><p xmlns="">Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p><h2 xmlns="">Лицензия</h2><p xmlns="">В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div xmlns="" class="toc_inner"><a href="#intro">1.</a> Введение<br></div><div xmlns="" class="toc_inner"><a href="#therms-and-desc">2.</a> Терминология и обозначения<br><div class="toc_inner"><a href="#therms">2.1.</a> Терминология<br></div><div class="toc_inner"><a href="#definitions">2.2.</a> Обозначения<br><div class="toc_inner"><a href="#code-sample">2.2.1.</a> Пример кода<br></div></div></div><div xmlns="" class="toc_inner"><a href="#structure">3.</a> Структура и состав документа<br><div class="toc_inner"><a href="#common">3.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#common">3.2.</a> Структура документа<br><div class="toc_inner"><a href="#runtime-sections">3.2.1.</a> Разделы, которые формируются автоматически на основании пользовательских данных<br></div><div class="toc_inner"><a href="#sec-front">3.2.2.</a> Заголовочная часть<br><div class="toc_inner"><a href="#creator">3.2.2.1.</a> Элемент creator<br></div><div class="toc_inner"><a href="#authors-element">3.2.2.2.</a> Элемент authors<br></div><div class="toc_inner"><a href="#ufrdata">3.2.2.3.</a> Элемент ufrdata<br></div></div><div class="toc_inner"><a href="#sec-document">3.2.3.</a> Документ<br><div class="toc_inner"><a href="#section-abstract">3.2.3.1.</a> Аннотация<br></div><div class="toc_inner"><a href="#section-copyright">3.2.3.2.</a> Авторские права<br></div></div><div class="toc_inner"><a href="#text-elements">3.2.4.</a> Элементы текста<br></div></div><div class="toc_inner"><a href="#sec-back">3.3.</a> Заключительная часть<br></div></div><div xmlns="" class="toc_inner"><a href="#ufrstruct">4.</a> Структура UFR и всякоэ<br><div class="toc_inner"><a href="#doc_parts">4.1.</a> Структура документа<br></div><div class="toc_inner"><a href="#headers">4.2.</a> Заголовки и общая информация<br></div><div class="toc_inner"><a href="#not-in-t">4.3.</a> Элементы текста, не требующие объявления абзаца<br></div><div class="toc_inner"><a href="#toc_special_parts">4.4.</a> Особенности создания некоторых частей документа<br><div class="toc_inner"><a href="#toc_special">4.4.1.</a> Оглавление<br></div><div class="toc_inner"><a href="#symbols">4.4.2.</a> Символы<br><div class="toc_inner"><a href="#sgml_entity">4.4.2.1.</a> Ссылки на символы<br></div><div class="toc_inner"><a href="#punctuation">4.4.2.2.</a> Тире, кавычки и прочие символы<br></div></div></div></div><div xmlns="" class="toc_inner"><a href="#make-ufr">5.</a> Создание UFR при помощи XSLT-преобразований<br><div class="toc_inner"><a href="#make-ufr-commons">5.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#xslt-transform">5.2.</a> XSLT-преобразование<br></div></div><div xmlns="" class="toc_inner"><a href="#further-processing">6.</a> Дальнейшее развитие<br></div><div xmlns="" class="toc_inner"><a href="#changes">7.</a> Внесение изменений<br></div><div xmlns="" class="toc_inner"><a href="#refs">8.</a> Сссылки<br></div><div xmlns="" class="toc_inner"><a href="#appendixes"></a> Приложения<br><div class="toc_inner"><a href="#appendix-copyright">A.</a> Объявление авторских прав<br></div><div class="toc_inner"><a href="#lonng">B.</a> О длине телеграфных проводов<br></div><div class="toc_inner"><a href="#lonng">C.</a> О длине телеграфных проводов<br></div></div><h2><a name="intro"></a>1. Введение</h2>
+                данного стандарта.</p><h2 xmlns="">Авторские права</h2><p xmlns="">Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p><h2 xmlns="">Лицензия</h2><p xmlns="">В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div xmlns="" class="toc_inner"><a href="#intro">1.</a> Введение<br></div><div xmlns="" class="toc_inner"><a href="#therms-and-desc">2.</a> Терминология и обозначения<br><div class="toc_inner"><a href="#therms">2.1.</a> Терминология<br></div><div class="toc_inner"><a href="#definitions">2.2.</a> Обозначения<br><div class="toc_inner"><a href="#code-sample">2.2.1.</a> Пример кода<br></div></div></div><div xmlns="" class="toc_inner"><a href="#common-req">3.</a> Общие требования к документу, его структура и состав<br><div class="toc_inner"><a href="#common">3.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#sec-structure">3.2.</a> Структура документа<br><div class="toc_inner"><a href="#runtime-sections">3.2.1.</a> Разделы, которые формируются автоматически на основании пользовательских данных<br></div><div class="toc_inner"><a href="#sec-front">3.2.2.</a> Заголовочная часть<br><div class="toc_inner"><a href="#creator">3.2.2.1.</a> Элемент creator<br></div><div class="toc_inner"><a href="#authors-element">3.2.2.2.</a> Элемент authors<br></div><div class="toc_inner"><a href="#ufrdata">3.2.2.3.</a> Элемент ufrdata<br></div></div><div class="toc_inner"><a href="#sec-document">3.2.3.</a> Документ<br><div class="toc_inner"><a href="#section-abstract">3.2.3.1.</a> Аннотация<br></div><div class="toc_inner"><a href="#section-copyright">3.2.3.2.</a> Авторские права<br></div></div><div class="toc_inner"><a href="#text-elements">3.2.4.</a> Элементы текста<br></div></div><div class="toc_inner"><a href="#sec-back">3.3.</a> Заключительная часть<br></div></div><div xmlns="" class="toc_inner"><a href="#ufrstruct">4.</a> Структура UFR и всякоэ<br><div class="toc_inner"><a href="#doc_parts">4.1.</a> Структура документа<br></div><div class="toc_inner"><a href="#headers">4.2.</a> Заголовки и общая информация<br></div><div class="toc_inner"><a href="#not-in-t">4.3.</a> Элементы текста, не требующие объявления абзаца<br></div><div class="toc_inner"><a href="#toc_special_parts">4.4.</a> Особенности создания некоторых частей документа<br><div class="toc_inner"><a href="#toc_special">4.4.1.</a> Оглавление<br></div><div class="toc_inner"><a href="#symbols">4.4.2.</a> Символы<br><div class="toc_inner"><a href="#sgml_entity">4.4.2.1.</a> Ссылки на символы<br></div><div class="toc_inner"><a href="#punctuation">4.4.2.2.</a> Тире, кавычки и прочие символы<br></div></div></div></div><div xmlns="" class="toc_inner"><a href="#make-ufr">5.</a> Создание UFR при помощи XSLT-преобразований<br><div class="toc_inner"><a href="#make-ufr-commons">5.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#xslt-transform">5.2.</a> XSLT-преобразование<br></div></div><div xmlns="" class="toc_inner"><a href="#further-processing">6.</a> Дальнейшее развитие<br></div><div xmlns="" class="toc_inner"><a href="#changes">7.</a> Внесение изменений<br></div><div xmlns="" class="toc_inner"><a href="#refs">8.</a> Сссылки<br></div><div xmlns="" class="toc_inner"><a href="#appendixes"></a> Приложения<br><div class="toc_inner"><a href="#appendix-copyright">A.</a> Объявление авторских прав<br></div><div class="toc_inner"><a href="#lonng">B.</a> О длине телеграфных проводов<br></div><div class="toc_inner"><a href="#lonng">C.</a> О длине телеграфных проводов<br></div></div><h2><a name="intro"></a>1. Введение</h2>
                 <p xmlns=""><a href="UFR1_20130203.html" target="_blank">Первый</a> из UFR (далее по 
                 тексту также именуется"— "документ") был написан с 
                 использованием plain HTML в простом текстовом редакторе, с ручным 
@@ -155,15 +154,22 @@ h6,h5,h4,h3,h2,h1 {
 они <span class="rfc2119">необязательны</span>.</p>
 
     
-<h2><a name="structure"></a>3. Структура и состав документа</h2>
+<h2><a name="common-req"></a>3. Общие требования к документу, его структура и состав</h2>
     <h4 xmlns=""><a name="common"></a>3.1. Общие положения</h4>
         <p xmlns="">Исходный текст стандарта представляет собой XML-документ, соответствующий 
         <a href="ufr.xsd" target="_blank">XSD-схеме</a> (<a href="" target="_blank">valid</a>, предпочтительный вариант) или же правильно сформированный (<a href="http://en.wikipedia.org/w/index.php?title=Well-formed_document&amp;oldid=527402113" target="_blank">well-formed</a>, допустимый вариант).</p>
         <p xmlns="">На момент написания документа, инструментарий поддерживал XSL-преобразование только в формат XHTML, который был выбран в силу его широкого распространения и поддержки значительным  количеством устройств - пользователь сможет загрузить UFR, открыть и распечатать на своем оборудовании.</p>
         <p xmlns="">С целью правильного отображения символов национальных алфавитов
         и некоторых других символов, исходные тексты <span class="rfc2119">должны</span> быть подготовлены только в кодировке <a href="http://www.unicode.org" target="_blank">символов Unicode</a>.</p>
+
+<ol xmlns="">
+        <li>Основной шрифт документа - 12pt, междустрочный интервал - 10pt;</li>
+        <li>Ширина документа - 70ex (включая отступы);</li>
+        <li>Шрифты документа - моноширинные.</li>
+    </ol>
+
     
-    <h4 xmlns=""><a name="common"></a>3.2. Структура документа</h4>
+    <h4 xmlns=""><a name="sec-structure"></a>3.2. Структура документа</h4>
         <p xmlns="">XML-документ UFR начинается с объявления XML, ссылки на стилевой документ 
         <code>ufr.xsl</code> и корневого элеиента "ufr":</p>
 <p xmlns="" class="element-syntax">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -486,32 +492,14 @@ h6,h5,h4,h3,h2,h1 {
     
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <h5 xmlns=""><a name="text-elements"></a>3.2.4. Элементы текста</h5>
         <p xmlns="">Указать про CDATA, FIGURE</p>
     
 
-
-
                 <h4 xmlns=""><a name="sec-back"></a>3.3. Заключительная часть</h4>
                 
-
 <p xmlns=""><a name="apply-change-urf"><sup>i</sup><a href="#ftnti">↑</a></a><span class="footnote">См.&nbsp;"Порядок внесения изменений в UFR".</span></p><p xmlns=""><a name="saxon_tech_restr"><sup>ii</sup><a href="#ftntii">↑</a></a><span class="footnote">
             Из-за лингвистических ограничений, связанных с падежами.</span></p><h2><a name="ufrstruct"></a>4. Структура UFR и всякоэ</h2>
-
             <h4 xmlns=""><a name="doc_parts"></a>4.1. Структура документа</h4>
                 
                 <p xmlns="">vfbdbfdb</p>
@@ -582,12 +570,6 @@ h6,h5,h4,h3,h2,h1 {
     <p xmlns="">Учитывая особенности вывода формата даты, в Лаборатории Ядерных Исследований 
         используется XSLT-процессор <a href="http://saxon.sourceforge.net" target="_blank">Saxon PE</a> версии <a href="http://saxon.sourceforge.net#F9.4PE" target="_blank">9.4</a> с добавлением модифицированного класса <code>Numberer_ru</code>.</p>
         <object class="svg" data="file.svg" type="image/svg+xml"></object>
-    <p xmlns="">Обязательным условием является соответствие следующим требованиям:</p>
-    <ol xmlns="">
-        <li>Основной шрифт документа - 12pt, междустрочный интервал - 10pt;</li>
-        <li>Ширина документа - 70ex (включая отступы);</li>
-        <li>Шрифты документа - моноширинные.</li>
-    </ol>
     
 <h2><a name="further-processing"></a>6. Дальнейшее развитие</h2>
 <p xmlns="">Поскольку на момент принятия стандарта формат XHTML вполне достаточен, в применении 
