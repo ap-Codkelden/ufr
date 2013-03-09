@@ -3,9 +3,14 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:sks="http://f.skobkin.ru/other/constellation/UFR" version="2.0">
+  <!-- <xsl:character-map name="dash">
+      <xsl:output-character character="&#x2014;" string="&amp;nbsp;&amp;mdash;"/>
+   </xsl:character-map> -->
 <xsl:output method="html" 
     encoding="utf-8" 
-    indent="no"/>
+    indent="no" />
+    <!-- use-character-maps="dash" --> 
+
 <!-- ################################################################
 #  Файл XSLT-преобразования для документов UFR проекта 
 #  "Созвездие"
@@ -63,6 +68,8 @@
 <xsl:key name="ftnt-search" match="//footnote" use="@name"/>
 <!-- Tables -->
 <xsl:key name="table-search" match="//table" use="@anchor"/> 
+<!-- Ссылки link  (пара - <anchor>) 
+<xsl:key name="link-ref" match="//link" use="@target"/> -->
 
 <!-- ***********ФУНКЦИИ************** -->
 
@@ -363,7 +370,7 @@
 # 
 # <xref target="special-tags" /> -  на anchor="approved-tags"
 #
-# <link target="">  - ссылка на определенный заранее якорь без номера, 
+# <link anchor="">  - ссылка на определенный заранее якорь без номера, 
 # e. g. <link target="tags">этих тегов</link> 
 #
 # <ftref name=""> - сторонняя ссылка на определенную заранее сноску, при этом 
@@ -372,7 +379,24 @@
 # <tabref name=""> - на таблицу
 -->
 
- <xsl:template match="//tabref">
+<!-- 
+    Якорь для сслыки типа <link anchor="someAnchor"> 
+-->
+<xsl:template match="//anchor">
+    <xsl:variable name="target" select="@target" />
+        <a name="{concat('link-',$target)}">
+            <xsl:apply-templates />
+        </a>
+</xsl:template> 
+
+<xsl:template match="//link">
+    <xsl:variable name="target" select="@target" />
+        <a href="{concat('#','link-',$target)}">
+            <xsl:apply-templates />
+        </a>
+</xsl:template> 
+
+<xsl:template match="//tabref">
     <xsl:variable name="anchor" select="@name" />
         <xsl:text>[</xsl:text>
             <xsl:for-each select="key('table-search', $anchor)">
@@ -382,8 +406,6 @@
             <a href="{concat('#','table-',$anchor)}">табл. <xsl:value-of select="$tab-num" /></a>
         </xsl:for-each>
         <xsl:text>]</xsl:text>
-
-
         <a href="#{@target}"><xsl:apply-templates /></a> 
     </xsl:template> 
 
@@ -933,7 +955,7 @@
 # blankLines = 5 - количество
 # без атрибута вставит одну
 -->
-<xsl:template match="//t/vspace[not(@blankLines)]">
+<xsl:template match="//t//vspace[not(@blankLines)]|item//vspace[not(@blankLines)]">
   <br />
 </xsl:template>
 
@@ -953,7 +975,7 @@
   </xsl:choose>
 </xsl:template>
 
-<xsl:template match="//t/vspace[@blankLines]">
+<xsl:template match="//t//vspace[@blankLines]|item//vspace[@blankLines]">
   <xsl:call-template name="insert-blank-lines">
     <xsl:with-param name="no" select="@blankLines"/>
   </xsl:call-template>
