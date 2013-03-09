@@ -3,10 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:sks="http://f.skobkin.ru/other/constellation/UFR" version="2.0">
-    <xsl:output method="html" encoding="utf-8" indent="no"/> <!--  use-character-maps="g" />
-<xsl:character-map name="g">
-    <xsl:output-character character="&mdash;" string="&mdash;"/>
-</xsl:character-map> -->
+    <xsl:output method="html" encoding="utf-8" indent="no"/>
 
 
 <!-- ################################################################
@@ -725,7 +722,7 @@
                     style="border:0;border-spacing:0"&gt;</xsl:text>
                 <xsl:for-each select="ref">
                     <xsl:variable name="ufrno" select="@ufrno" />
-                    <xsl:variable name="ufrfile" select="concat('ufr',$ufrno,'.xml')" />
+                    <xsl:variable name="ufrfile" select="concat('../xml/ufr',$ufrno,'.xml')" />
                     <xsl:variable name="authors_info" select="document($ufrfile)/ufr/description/authors"/>
                     <xsl:variable name="auth_count" select="count($authors_info/author)" /> 
                     <xsl:text  disable-output-escaping='yes'>&lt;tr&gt;</xsl:text>
@@ -819,7 +816,7 @@
     <!-- вставка CSS-файла -->
     <xsl:template name="insertCSS">
         <style type="text/css">
-            <xsl:value-of select="unparsed-text('ufr.css', 'utf-8')" disable-output-escaping="yes"/>
+            <xsl:value-of select="unparsed-text('../css/ufr.css', 'utf-8')" disable-output-escaping="yes"/>
         </style>
     </xsl:template>
 
@@ -905,4 +902,17 @@
             <xsl:text disable-output-escaping='yes'>&lt;</xsl:text>/a<xsl:text disable-output-escaping='yes'>&gt;</xsl:text>
         </xsl:if>
     </xsl:template>
+
+<!-- 
+#
+# Вставка SVG
+# <svg file=file.svg/>
+#
+-->
+<xsl:template match="//svg">
+            <xsl:text disable-output-escaping='yes'>&lt;object class="svg" data="</xsl:text>
+            <xsl:value-of select="@file"/>
+            <xsl:text disable-output-escaping='yes'>" type="image/svg+xml"&gt;&lt;/object&gt;</xsl:text>
+</xsl:template>
+
 </xsl:stylesheet>
