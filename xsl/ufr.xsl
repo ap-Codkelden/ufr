@@ -169,7 +169,7 @@
                 <xsl:value-of select="format-date($d, '[D] [MNn] [Y0001]', 'ru', (), ())"/>
             </p>
         <!--</div>-->
-        <div style="margin-left:6ex">
+        <div style="margin-left:36pt">
         <!-- ################# DOCUMENT CHANGED-BY ##########################  
         # <urfchanged>
         #   <changed no="2" date="2013-02-03" edition=""/> 
