@@ -921,7 +921,7 @@
 # blankLines = 5 - количество
 # без атрибута вставит одну
 -->
-<xsl:template match="vspace[not(@blankLines)]">
+<xsl:template match="//t/vspace[not(@blankLines)]">
   <br />
 </xsl:template>
 
@@ -941,7 +941,7 @@
   </xsl:choose>
 </xsl:template>
 
-<xsl:template match="vspace">
+<xsl:template match="//t/vspace[@blankLines]">
   <xsl:call-template name="insert-blank-lines">
     <xsl:with-param name="no" select="@blankLines"/>
   </xsl:call-template>
