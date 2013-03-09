@@ -583,7 +583,7 @@
                  |ufr/document/section
                  |ufr/document/section/section
                  |ufr/document/section/section/section
-                 |ufr/document/section/section/section/section" format="1.1.1.1 "/>
+                 |ufr/document/section/section/section/section" format="1.1.1.1. "/>
         <xsl:value-of select="@name" /></h6>
         <xsl:apply-templates/> 
     </xsl:template> 
@@ -597,7 +597,7 @@
                  |ufr/document/section/section
                  |ufr/document/section/section/section
                  |ufr/document/section/section/section/section
-                 |ufr/document/section/section/section/section/section" format="1.1.1.1.1 "/>
+                 |ufr/document/section/section/section/section/section" format="1.1.1.1.1. "/>
         <xsl:value-of select="@name" /></h6>
         <xsl:apply-templates/> 
     </xsl:template> 

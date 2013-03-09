@@ -78,10 +78,34 @@ ol {
 	padding-left: 4ex;
 }
 
-h6,h5,h4,h3,h2,h1 {
+/*h6 {
 	font-size:1em;
+}
+
+h5 {
+	font-size:1.25em;
+}
+
+h4 {
+	font-size:1.5em;
+}
+
+h3 {
+	font-size:1.75em;
+}
+
+h2 {
+	font-size:2em;
+}
+
+h1 {
+	font-size:2.25em;
+} */
+
+h6,h5,h4,h3,h2,h1 {
 	font-weight:700;
-	margin-left:-6ex
+	margin-left:-6ex;
+	font-size:1em
 }
 
 .rfc2119 { text-transform: lowercase;
