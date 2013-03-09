@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../xsl/ufr.xsl"?>
+<!DOCTYPE xsl:stylesheet
+  [
+    <!ENTITY nbsp   "&#160;">
+    <!ENTITY mdash  "&#8212;">
+  ]
+>
 <ufr>
     <description>
         <creator>
@@ -36,7 +42,7 @@
         <license type="cc-license" name="Лицензия" />
         <section name="Введение"  toc="include" anchor="intro">
                 <t><eref target="UFR1_20130203.html">Первый</eref> из UFR (далее по 
-                тексту также именуется "документ") был написан с 
+                тексту также именуется"&#x2014; "документ") был написан с 
                 использованием plain HTML в простом текстовом редакторе, с ручным 
                 созданием оглавления и деления на разделы.</t>
                 <t>Впоследствии в Лаборатории Ядерных Исследований разведываетльного 
@@ -252,7 +258,8 @@
 <codesample>&lt;ufrdate value=<it>"2013-02-03"</it>/&gt;</codesample>
 <t>Определяет дату создания UFR.</t>
 <t>Дата создания хранится в атрибуте <code>value</code>. Значение даты 
-записывается в формате, соответствующем ISO&#160;8601 определенном в заметке W3C <refref key='iso8601' short="no"/>, 
+записывается в формате, соответствующем ISO&#160;8601 и определенном в 
+заметке W3C <refref key='iso8601' short="no"/>, 
 в частности полный формат даты имеет вид:</t>
 <t><code>YYYY-MM-DD (например 2027-07-25)</code></t>
 
@@ -451,7 +458,8 @@
                         <item>символ кавычки <code>&quot;</code></item>
                     </ulist>
                 <t>Поскольку удельный вес количества символов отличных от указанных выше и не поддерживаемых
-                напрямую очевидно мал, файл XSLT-преобразований не расширяет диапазон символов при помощи директивы <code>&lt;!ENTITY&gt;</code>.</t>
+                напрямую очевидно мал, файл XSLT-преобразований не расширяет диапазон символов при помощи директивы 
+                <code>&lt;!ENTITY&gt;</code>.</t>
                 <t>Вместо этого для вставки символов отличных от определенных спецификацией XML&#160;1.0 
                     (например, знак параграфа <code>&#167;</code>) <keyword>необходимо</keyword> использовать 
                     числовую форму ссылки из соотвестсвующей <eref target="http://www.w3.org/TR/html4/sgml/entities.html">спецификации HTML</eref>, например для получения знака параграфа следует писать <code>"&amp;#167;"</code> (без кавычек).</t>
@@ -464,11 +472,19 @@
                 <ulist>
                     <item>закрывающая и открывающая кавычки обозначаются символом 
                         одиночной кавычки <code>&quot;</code>;</item>
-                    <item>длинное тире обозначается с помощью двух идущих подряд 
-                        символов <code>-</code>: <code>--</code>  (англ. <code><nobr>em dash</nobr></code>);</item>
                     <item>для вставки неразрывного пробела используется ссылка на символ 
                         <code>&amp;#160;</code>;</item>
+                    <item>для вставки длинного тире используется ссылка на символ 
+                        <code>&amp;#8212;</code>;</item>
                     <item>для вставки знака параграфа (&#167;) используется <code>&amp;#167;</code>;</item>
+                    <item>для случая, когда необходимо вставить в текст длинное тире 
+                    <it>по правилам типографики</it> (длинное тире, предваряемое неразрывным пробелом), следует использовать последовательность <code>"&amp;nbsp;&amp;mdash;"</code> 
+                    (без кавычек).<vspace/><anchor target="entity">Кроме этого, если вводить ссылки сущностей 
+                    символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
+                    <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
+                    определить в начале XML-документа внутреннее подключение сущностей, как описано в <refref key="inner-entity" short="yes"/>.</anchor><footnote>В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но 
+                    по умолчанию он закоментирован, так как делает невозможным использование символа длинного тире без пробела перед ним.<vspace/>Для его использования необходимо 1) раскомментировать упомянутую инструкцию и 2) удалить определение <code>&lt;!ENTITY mdash  "&amp;#8212;"&gt;</code>, если оно 
+                    <link target="entity">было определено</link>.</footnote></item>
                 </ulist>
                 </t>
              </section>
@@ -522,9 +538,8 @@
                 <ref key="efsf_statut">
                     <title>Устав Звёздного Флота Федерации Земли</title>   
                     <author>
-                        <organization abbrev='ЗФФЗ'>Звёздный Флот Федерации Земли</organization>
+                        <organization>Звёздный Флот Федерации Земли</organization>
                     </author> 
-                    <description>E. F. Code</description> 
                     <publisher name="Earth Federation" year="2213" month="07" day="14"/>
                     <url>https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802</url>
                 </ref>
@@ -532,16 +547,23 @@
                 <ref key="iso8601">
                     <title>Date and Time Formats</title>   
                     <author surname="Wicksteed" initials="C." fullname="Charles Wicksteed">
-                        <organization abbrev='W3C'>W3 Consortium</organization>
+                        <organization>W3 Consortium</organization>
                     </author>
                     <author surname="Wolf" initials="M." fullname="Misha Wolf">
-                        <organization abbrev='W3C'>W3 Consortium</organization>
+                        <organization>W3 Consortium</organization>
                     </author>
-                    <description>ISO 8601</description> 
                     <publisher name="W3C" year="1998" month="08" day="27"/>
                     <url>http://www.w3.org/TR/NOTE-datetime</url>
                 </ref>
 
+                <ref key="inner-entity">
+                    <title>Сущности и способы их подключения</title>   
+                    <author surname="Самиляк" initials="А." fullname="Александр Самиляк">
+                        <organization>Студия Артемия Лебедева</organization>
+                    </author>
+                    <publisher name="Студия Артемия Лебедева" year="2011" month="07" day="26"/>
+                    <url>http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/</url>
+                </ref>
 
             </reference>
         </references>
