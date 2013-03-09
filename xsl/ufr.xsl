@@ -907,12 +907,44 @@
 #
 # Вставка SVG
 # <svg file=file.svg/>
+# Требование к файлу - обрезка и небольшой размер.
 #
 -->
 <xsl:template match="//svg">
             <xsl:text disable-output-escaping='yes'>&lt;object class="svg" data="</xsl:text>
             <xsl:value-of select="@file"/>
             <xsl:text disable-output-escaping='yes'>" type="image/svg+xml"&gt;&lt;/object&gt;</xsl:text>
+</xsl:template>
+
+<!--
+# Вставка пустых строк
+# blankLines = 5 - количество
+# без атрибута вставит одну
+-->
+<xsl:template match="vspace[not(@blankLines)]">
+  <br />
+</xsl:template>
+
+<xsl:template name="insert-blank-lines">
+  <xsl:param name="no"/>
+  <xsl:choose>
+    <xsl:when test="$no &lt;= 0">
+      <br/>
+      <!-- done -->
+    </xsl:when>
+    <xsl:otherwise>
+      <br/>
+      <xsl:call-template name="insert-blank-lines">
+        <xsl:with-param name="no" select="$no - 1"/>
+      </xsl:call-template>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template match="vspace">
+  <xsl:call-template name="insert-blank-lines">
+    <xsl:with-param name="no" select="@blankLines"/>
+  </xsl:call-template>
 </xsl:template>
 
 </xsl:stylesheet>
