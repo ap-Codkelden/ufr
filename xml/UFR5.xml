@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ufr.xsl"?>
+<ufr>
+    <description>
+        <creator>
+            <organization>Звёздный флот Федерации</organization>
+            <unit>К-117 "Созвездие"</unit>
+            <author>Морзе</author>
+        </creator>
+        <authors>
+            <author>
+                <assignment>Старший помощник капитана корабля</assignment>
+                <rank>Капитан 1 ранга</rank>
+                <name>Морзе</name>
+                <unit>К-117 "Созвездие"</unit>
+                <organization>Звёздный Флот Федерации Земли</organization>
+            </author>
+            <author>
+                <assignment>заместитель начальника Особого отдела</assignment>
+                <rank>Капитан-лейтенант</rank>
+                <name>Райан Муррфи</name>
+                <unit>К-117 "Созвездие"</unit>
+                <organization>Звёздный Флот Федерации Земли</organization>
+            </author>
+        </authors>
+        <ufrdata>
+            <ufrname number="5">Инструкции авторам UFR</ufrname>
+            <ufrcategory cat="tech" />
+            <ufrdate value="2013-02-25" />
+            <ufrchanged />
+        </ufrdata>
+    </description>
+    <document>
+        <copyright name="Авторские права" efsf-only="no"/>
+        <abstract name="Аннотация" />
+        <license type="cc-license" name="Лицензия" />
+        <section name="Введение"  toc="include" anchor="intro">
+                <t><eref target="UFR1_20130203.html">Первый</eref> из UFR (далее по 
+                тексту также именуется "документ") был написан с 
+                использованием plain HTML в простом текстовом редакторе, с ручным 
+                созданием оглавления и деления на разделы.</t>
+                <t>Впоследствии в Лаборатории Ядерных Исследований разведываетльного 
+                крейсера К-117 "Созвездие" был создани инструментарий для унификации 
+                создания UFR на основе <eref target="http://www.w3.org/TR/xslt20/">спецификации <nobr>XSLT 2.0</nobr></eref>
+                 и XML, который и описывается данным документом.
+                 </t></section>
+    <section name="Терминология и обозначения"  toc="include" anchor="therms-and-desc">
+                 <section name="Терминология" toc="include" anchor="therms"><ufr3/></section>
+    <section name="Обозначения" toc="include" anchor="definitions">
+        <section  name="Пример кода" anchor="code-sample"  toc="include" >
+            <t>Пример описания кода:</t>
+<codesample>&lt;element 
+    attribute = <it>"expression"</it>
+    [optional_attribute = <it>"yes"</it> | <it>"no"</it>]&gt;
+    <it>someValue</it>&lt;/element&gt;</codesample>
+<t>Пример описывает элемент <code>element</code>, который имеет один обязательный атрибут
+<code>attribute</code>, принимающий значение <code><it>expression</it></code>, и один необязательный 
+атрибут <code>optional_attribute</code>, принимающий одно из двух значений <code><it>"yes"</it></code> 
+или <code>"no"</code> и определяющий значение <it>someValue</it>.</t>
+<t>Если тот или иной атрибут или элемент является необязательным, об этом 
+будет заявлено прямо, во всех остальных случаях по умолчанию атрибут или элемент
+считается обязательным.</t>
+<t>Отступы и переносы строк в примерах добавлены только для удобства чтения, в исходном коде 
+они <keyword>необязательны</keyword>.</t>
+</section>
+    </section>
+</section>
+
+<section name="Структура и состав документа" toc="include" anchor="structure">
+    <section name="Общие положения" toc="include" anchor="common">
+        <t>Исходный текст стандарта представляет собой XML-документ, соответствующий 
+        <eref target="ufr.xsd">XSD-схеме</eref> (<eref>valid</eref>, предпочтительный вариант) или же правильно сформированный (<eref target="http://en.wikipedia.org/w/index.php?title=Well-formed_document&amp;oldid=527402113">well-formed</eref>, допустимый вариант).</t>
+        <t>На момент написания документа, инструментарий поддерживал XSL-преобразование только в формат XHTML, который был выбран в силу его широкого распространения и поддержки значительным  количеством устройств - пользователь сможет загрузить UFR, открыть и распечатать на своем оборудовании.</t>
+        <t>С целью правильного отображения символов национальных алфавитов
+        и некоторых других символов, исходные тексты <keyword>должны</keyword> быть подготовлены только в кодировке <eref target="http://www.unicode.org">символов Unicode</eref>.</t>
+    </section>
+    <section name="Структура документа" toc="include" anchor="common">
+        <t>XML-документ UFR начинается с объявления XML, ссылки на стилевой документ 
+        <code>ufr.xsl</code> и корневого элеиента "ufr":</t>
+<codesample><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ufr.xsl"?>
+<ufr>
+    ...
+</ufr>]]></codesample>
+        <t>Документ имееет следующую структуру:</t>
+        <olist>
+        <item>Заголовочная часть</item>
+        <item>Документ</item>
+        <item>Заключительная часть</item>
+        </olist>
+
+    <section  name="Разделы, которые формируются автоматически на основании пользовательских данных" anchor="runtime-sections"  toc="include" >
+        <t>Прежде чем рассмотреть структуру документа, следует заметить, что 
+        нижеперечисленные разделы создаются процессором XSLT автоматически, и
+        писать их самим <keyword>не разрешается</keyword>.</t>
+        <t>Перечень разделов (в порядке следования):</t>
+        <ulist>
+            <item>Аннотация</item>
+            <item>Авторские права</item>
+            <item>Лицензия</item>
+            <item>Терминология</item>
+            <item>Внесение изменений</item>
+        </ulist>
+    </section>
+
+        <section  name="Заголовочная часть" anchor="sec-front"  toc="include" >
+        <t>Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"description"</code>.</t>
+        <t>Общий вид заголовочной части показан на <fref name="ufrheader"/></t>
+<codesample>&lt;ufr&gt;
+&lt;description&gt;
+    &lt;creator&gt;
+        &lt;organization ...&gt;
+        &lt;unit ...&gt;
+        &lt;author ...&gt;
+    &lt;/creator&gt;
+    &lt;authors&gt;
+        &lt;author ...&gt;
+            &lt;assignment ...&gt;
+            &lt;rank ...&gt;
+            &lt;name ...&gt;
+            &lt;unit ...&gt;
+            &lt;organization ...&gt;
+        &lt;/author&gt;
+        &lt;author&gt;
+            ...
+        &lt;/author&gt;
+    &lt;/authors&gt;
+    &lt;ufrdata&gt;
+        &lt;ufrname ...&gt;
+        &lt;ufrcategory ...&gt;
+        &lt;ufrdate ...&gt;
+        &lt;ufrchanged ...&gt;
+        &lt;urfobsolete .../&gt;
+    &lt;/ufrdata&gt;
+&lt;/description&gt;</codesample>
+        <t>Элемент <code>description</code> содержит элемент <code>creator</code>, элемент <code>authors</code>, и элемент <code>ufrdata</code>.</t>
+        <section  name="Элемент creator" anchor="creator"  toc="include" >
+            Этот элемент содержит информацию о составителе URF, и описываемую данными, определенными 
+            в элементах <code>organization</code>, <code>unit</code> и <code>author</code>. 
+            <section name="Элемент organization" anchor="organization">
+            <codesample>&lt;organization&gt;<it>организация</it>&lt;/organization&gt;</codesample>
+            <t>Элемент определяет организацию, к которой принадлежит составитель документа. 
+                Поскольку Лаборатория Ядерных Исследований является частью К-117 "Созвездие", то обычно 
+                это <it>Звёздный флот Федерации</it>, но поскольку возможны и другие варианты, этот 
+                элемент изменяем.</t>
+            </section>
+
+            <section name="Элемент unit" anchor="unit">
+            <codesample>&lt;unit&gt;<it>подразделение</it>&lt;/unit&gt;</codesample>
+            <t>Элемент определяет подразделение, к которому принадлежит составитель документа, 
+            например <it>К-117 "Созвездие"</it> или <it>П-78 "Неустрашимый"</it>.</t>
+            </section>
+
+            <section name="Элемент author" anchor="author">
+            <codesample>&lt;author&gt;<it>имяАвтора</it>&lt;/author&gt;</codesample>
+            <t>Элемент определяет <it>имяАвтора</it>, под которым тот выведен в
+            проекте, например <it>Киркунов</it> или <it>Дюшенков</it>.</t>
+            </section>
+        </section>
+        <section  name="Элемент authors" anchor="authors-element"  toc="include" >
+            <t>Элемент <code>authors</code> содержит информацию о непосредственных авторах 
+            документа, принимавших участие в его создании.</t>
+            <t>Этот элемент <keyword>должен</keyword> содетжать по меньшей мере один элемент 
+            <code>author</code> и <keyword>может</keyword> содержать помимо него другие элементы 
+            <code>author</code>, как было сказано выше, если авторов несколько.</t>
+            <t>Элемент является контейнером для следующих элементов: <code>assignment</code>, <code>rank</code>, 
+                <code>name</code>, <code>unit</code> и <code>organization</code>.</t>
+
+                <section name="Элемент assignment" anchor="assignment">
+                    <codesample>&lt;assignment&gt;<it>должностьАвтора</it>&lt;/assignment&gt;</codesample>
+            <t>Элемент определяет <it>должностьАвтора</it>, под которым тот выведен в
+            проекте, например <it>капитан корабля</it> или <it>начальник спиртохранилища</it>.</t>
+                </section>
+                <section name="Элемент rank" anchor="rank">
+                    <codesample>&lt;rank&gt;<it>званиеАвтора</it>&lt;/rank&gt;</codesample>
+            <t>Элемент определяет <it>званиеАвтора</it>, под которым тот выведен в
+            проекте, например <it>капитан&#160;1 ранга&#160;ЗФ</it> или <it>ст.&#160;сержант&#160;КД</it>.</t>
+            <t>Звания <keyword>должны</keyword> соответствовать утвердженным Уставом ЗФ.</t>
+                </section>
+
+                <section name="Элемент name" anchor="author-name-element">
+                    <codesample>&lt;name&gt;<it>имяАвтора</it>&lt;/name&gt;</codesample>
+            <t>Элемент определяет <it>имяАвтора</it>, под которым тот выведен в
+            проекте, например <it>Морзе</it> или <it>Р.&#160;Муррфи</it>.</t>
+            <t><bf>Обратите внимание.</bf> В случае, если составитель документа 
+            является также одним из его авторов, необходимо вносить его данные 
+            как в раздел <code>&lt;authors&gt;</code> в виде контейнера <code>&lt;author&gt;</code>, так и в раздел 
+            <code>&lt;<xref target="creator">creator</xref>&gt;</code>.</t>
+                </section>
+
+                <section name="Элемент unit" anchor="author-unit-element">
+            <t>Полностью аналогичен элементу <code>&lt;unit&gt;</code>, описанному <xref target="unit">выше</xref>.</t></section>
+
+<section name="Элемент organization" anchor="author-organization-element">
+            <t>Полностью аналогичен элементу <code>&lt;organization&gt;</code>, описанному <xref target="organization">выше</xref>.</t></section>
+        </section>
+
+
+<section  name="Элемент ufrdata" anchor="ufrdata"  toc="include" > 
+<t>Элемент идентифицирует UFR, определяя:</t>
+<ulist>
+    <item><xref target="ufrdata-name">название и номер UFR</xref></item> <!--           <ufrname number="1">ТЕГИ ЗАПИСИ БОРТОВОГО ЖУРНАЛА</ufrname> -->
+    <item><xref target="ufrdata-cat">категорию UFR</xref></item>            <!--   <ufrcategory cat="std" draft="no"/> -->
+    <item><xref target="ufrdata-date">дату UFR</xref></item> <!-- <ufrdate value="2013-02-03" /> -->
+    <item><xref target="ufrdata-change">информацию об внесенных изменениях</xref></item>   <!-- <ufrchanged><changed number="2" date="2013-02-03" edition=""/></ufrchanged> -->
+    <item><xref target="ufrdata-obsolete">информацию о том, устарел ли данный UFR вследствие принятия других UFR</xref></item> 
+</ulist>
+<section name="Элемент ufrname" anchor="ufrdata-name">
+<codesample>&lt;ufrname 
+            number=<it>"номерUFR"</it>&gt;<it>названиеUFR</it>&lt;/ufrname&gt;</codesample>
+    <t>Элемент определяет название <it>названиеUFR</it> и номер UFR <it>номерUFR</it>.</t>
+    <t>Название UFR должно кратко и чётко отражать суть документа, и исключать двузначное толкование.</t>
+    <t>Номер UFR является целым положительным числом в десятичной записи, и определяется по порядку следования номеров UFR в Реестре UFR.</t>
+</section>
+
+<section name="Элемент ufrcategory" anchor="ufrdata-cat">
+<codesample>&lt;ufrcategory 
+            cat=<it>"категорияUFR"</it> 
+            [draft=<it>"yes"</it> | <it>"no"</it>]/&gt;</codesample>
+<t>Элемент определяет категорию, к которй относится UFR при помощи 
+аттрибута <code>cat</code>, который может принимать следующие 
+значения <tabref name="cat"/>:</t>
+<table caption="Значения атрибута cat элемента ufrcategory" anchor="cat">
+/--------------------------------------------------------\
+|Атрибут |               Значение                        |
+|--------|-----------------------------------------------|
+|  std   |стандарт - устанавливает обязательные стандарты|
+|--------|-----------------------------------------------|
+|  rec   |рекомендация - предоставляет рекомендации      |
+|--------|-----------------------------------------------|
+|  tech  |технический - технические правила и нормативы  |
+|--------|-----------------------------------------------|
+|historic|исторический - состояние сюжетной линии        |
+|--------|-----------------------------------------------|
+|  info  |информационный - не устанавливает стандартов,  |
+|        |однако предоставляет информацию                |
+\--------------------------------------------------------/</table>
+<t>В зависимости от значения атрибута <code>cat</code> XSLT-процессор подставит 
+    необходимое пояснение в ССЫЛКА НА аннотацию документа. </t>
+<t>Необязательный атрибут <code>draft</code> указывает на то, что 
+данный стандарт в настоящее время является черновым и находится в стадии 
+согласования.</t>
+<t>Для указания этого нужно присвоить атрибуту <code>draft</code> 
+значения <code>"yes"</code>.</t>
+<t>Если документ не является черновым изначально, атрибут 
+<code>draft</code> можно не указывать.</t>
+<t>Аннотация настоящего UFR является результатом присвоения атрибуту 
+<code>cat</code> значения <code>"std"</code>.</t>
+</section>
+
+<section name="Элемент ufrdate" anchor="ufrdata-date">
+<codesample>&lt;ufrdate value=<it>"2013-02-03"</it>/&gt;</codesample>
+<t>Определяет дату создания UFR.</t>
+<t>Дата создания хранится в атрибуте <code>value</code>. Значение даты 
+записывается в формате, соответствующем ISO&#160;8601 определенном в заметке W3C <refref key='iso8601' short="no"/>, 
+в частности полный формат даты имеет вид:</t>
+<t><code>YYYY-MM-DD (например 2027-07-25)</code></t>
+
+</section>
+
+<section name="Элемент ufrchanged" anchor="ufrdata-change">
+<codesample>&lt;ufrchanged&gt;
+    &lt;changed number="115" 
+        date="2027-09-03" 
+        edition=""/&gt;
+    &lt;changed number="115" 
+        date="2027-09-03" 
+        edition="1"/&gt;
+    &lt;changed number="117" 
+        date="2027-10-13" 
+        edition="1"/&gt;
+    &lt;/ufrchanged&gt;</codesample>
+<t>Необязательный элемент. Употребляется в случае, если в данный UFR 
+    были внесены изменения. Является контейнером для элемента <code>changed</code> 
+    (или несколких таких элементов, если изменения вносились несколько раз и/или 
+    разными UFR).</t>
+<t>Каждый элемент <code>changed</code> в свою очередь определяет реквизиты 
+внесшего изменения UFR при помощи следующих атрибутов:</t>
+<ulist>
+    <item><code>number</code> - определяет номер UFR, которым внесены изменения;</item>
+    <item><code>date</code> - определяет дату UFR, которым внесены изменения, в формате, определенном <xref target="ufrdata-date">выше</xref>;</item>
+    <item><code>edition</code> - определяет версию правки в том случае, если за один день было внесено более одной правки в данный UFR. Разумеется, такая ситуация крайне маловероятна, но если в один день было внесено более одной правки, то:
+        <olist>
+        <item>Пусть первый раз за текущие сутки изменения в текущий UFR (UFR&#160;№110 от 25.07.2027) 
+            были внесены UFR&#160;№116 от 01.09.2027. Версия документа без исправлений получит имя 
+            <code>UFR110_20270725.html</code>, измененная версия -- <code>UFR110.html</code>.</item>
+        <item>Второй раз за текущие сутки изменения в текущий UFR вносятся UFR&#160;№117 от 01.09.2027. 
+            Устаревшая версия документа (<code>UFR110.html</code> из п.&#160;1) получит имя 
+            <code>UFR110_20270725-1.html</code>, измененная версия снова получит имя <code>UFR110.html</code>.</item>
+        <item>Элемент <code>ufrchanged</code> примет вид<footnote name="apply-change-urf">См.&#160;"Порядок внесения изменений в UFR".</footnote>:
+            <codesample>&lt;ufrchanged&gt;
+    &lt;changed number="116" 
+                date="2027-09-01" 
+                edition=""/&gt;
+    &lt;changed number="117" 
+                date="2027-09-01" 
+                edition="1"/&gt;
+&lt;/ufrchanged&gt;</codesample>
+        </item>
+        </olist>
+    </item>
+</ulist></section>
+
+<section name="Элемент urfobsolete" anchor="ufrdata-obsolete">
+<codesample>&lt;urfobsolete ufrno=<it>"номерUFR"</it>/&gt;</codesample>
+<t>Необязательный, однако <keyword>рекомендуется</keyword> добавлять в 
+документ "пустой" элемент, объединяющий начальный и конечный теги: 
+<code>&lt;urfobsolete/&gt;</code>.</t>
+<t>Определяет номер UFR, которым отменяется данный, и предоставляет ссылку 
+на него.</t>
+<t>Результатом применения элемента является добавление следующего текста в 
+    заголовочную часть:</t>
+<block>Данный UFR устарел - см. UFR №216</block>
+</section>
+
+</section>
+   <figure name="ufrheader" description="Заголовок UFR">
+<artwork><![CDATA[
+(1)Звёздный флот Федерации                 (2)К-117 "Созвездие"
+(3)URF №110                                            (4)Морзе
+(5)Категория: информационный                   (6)07 месяц 2027
+                     
+                          (7)ЕЩЁ ОДИН UFR
+
+                          (8)25 июля 2027
+
+                            (9)Изменен:
+
+               (9)UFR №116 (предыдущая версия UFR№110)
+                  UFR №117 (предыдущая версия UFR№110)
+
+                (10)Данный UFR устарел - см. UFR №216]]></artwork></figure>
+    <olist>
+        <item>название органицации, издавшей стандарт (строка 1, слева);</item>
+        <item>название подразделения, к которому принадлежит составитель 
+            стандарта (строка 1, справа);</item>
+        <item>номер UFR (строка 2, слева);</item>
+        <item>составитель стандарта (строка 2, справа);</item>
+        <item>категория стандарта (строка 3, слева);</item>
+        <item>месяц и год издания стандарта (строка 3, справа), в 
+            формате MM {<it>название месяца</it>} YYYY<footnote name="saxon_tech_restr">
+            Из-за лингвистических ограничений, связанных с падежами.</footnote>;</item>
+        <item>Название UFR (отцентрировано);</item>
+        <item>Дата UFR (отцентрировано)</item>
+        <item>В случае наличия друх стандартов, изменяющих данный, 
+            в измененную версию добавляется информация о стандарте, которым 
+            внесены изменения в данный.</item>
+        <item>В случае наличия друх стандартов, отменяющих действие данного 
+            стандарта, в измененную версию добавляется информация о стандарте, 
+            которым отменяется данный.</item>
+    </olist>
+    </section>
+
+    <section  name="Документ" anchor="sec-document"  toc="include" >
+        Основная часть документа вложена в секцию, ограниченную 
+        элементом <code>document</code>. Ниже приведено краткое описание 
+        структуры секции (<keyword>необходмио</keyword>, чтобы все UFR имели 
+        описанную структуру):
+<codesample>&lt;document&gt;
+  &lt;copyright.../&gt;             | Авторские права
+  &lt;abstract.../&gt;              | [Аннотация]
+  &lt;license.../&gt;               | Лицензия
+  &lt;section...&gt;                | Вложенные разделы 
+    &lt;section...&gt;              | до 4 уровней
+      &lt;section...&gt;            | (1 - 1.1.1.1)
+  &lt;insert.../&gt;                | Элемент вставки
+  &lt;section...&gt;                | Раздел "Ссылки"
+    &lt;references...&gt;           | Ссылки на UFR
+      &lt;reference... /&gt;        |   UFR...
+    &lt;references...&gt;           | Ссылки на источники
+      &lt;reference...&gt;          | Источник
+        &lt;title...&gt;            |   Название
+          &lt;author...&gt;         |   Автор
+            &lt;organization...&gt; | Организация
+          &lt;publisher.../&gt;     |   Издатель
+  &lt;appendixes...&gt;             | Приложения
+    &lt;appendix...&gt;             |   Приложение
+&lt;/document&gt;</codesample>
+
+    <section  name="Авторские права" anchor="section-copyright"  toc="include" >
+        <t>Раздел "Авторские права" формируется автоматически, и определяется 
+        элементом <code>&lt;copyright/&gt;</code>:</t>
+        <codesample>&lt;copyright name=<it>&quot;Авторские права&quot;</it> efsf-only=<it>"yes"</it> | <it>"no"</it>/&gt;</codesample>
+        <t>Данному разделу <keyword>необходимо</keyword> присвоить название "Авторские права" (путём присвоения значения 
+        атрибуту <code>name</code>), его <keyword>следует</keyword> изменять лишь в случае публикации UFR на другом языке.</t>
+        <t>Атрибут <code>efsf-only</code> может принимать значения <it>"yes"</it> или <it>"no"</it>. В случае, если значение атрибута &mdash; 
+        <it>"yes"</it>, при объявлении авторских прав будет указано, что авторские права принадлежат Звёздному Флоту, а в случае если 
+        значение атрибута <it>"no"</it> дополнительно будет указано, что авторские права принадлежат также лицам, указанным 
+        как авторы документа (см.&#160;<xref target="appendix-copyright"/>).</t>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+    <section  name="Элементы текста" anchor="text-elements"  toc="include" >
+        <t>Указать про CDATA, FIGURE</t>
+    </section>
+
+</section>
+
+                <section  name="Заключительная часть" anchor="sec-back"  toc="include" >
+                </section>
+
+</section>
+
+        <section  name="Дальнейшее развитие" anchor="further-processing"  toc="include" >
+        <t>Поскольку на момент принятия стандарта формат XHTML вполне достаточен, в применении 
+            колонтитулов и разрывов страниц нет необходимости. </t>
+        <t>Однако не исключена возможность дальнейшей публикации стандартов в формате PDF, что 
+            может повлечь за собой введение дополнительных переменных в инструментарий, но 
+            не должно затронуть лёгкость подготовки стандартов.</t></section>
+
+<section name="Структура UFR и всякоэ" toc="include" anchor="ufrstruct">
+
+            <section name="Структура документа" anchor="doc_parts"  toc="include" >
+                <!-- Часть - глава - секция... -->
+                <t>vfbdbfdb</t>
+            </section>
+            <section name="Заголовки и общая информация" anchor="headers"  toc="include" >            
+                <t>К заголовкам и общей информации относятся <fref name="ufrheader"/>:</t>
+             
+            </section>
+                    <section anchor="not-in-t" name="Элементы текста, не требующие объявления абзаца" toc="include">
+                      <section anchor="ufr3" name='Раздел "Терминология"'>
+                        В случае использования в документе 
+                <t>BLOCK, ULIST, OLIST</t></section>
+            </section>
+    <section name="Особенности создания некоторых частей документа" toc="include" anchor="toc_special_parts">
+        <section name="Оглавление" toc="include" anchor="toc_special">
+        <t>Оглавление формируется автоматически, на основании <xref target="doc_parts">частей</xref> документа, разделов, подразделов и т. д. Включение определенной части документа в оглавление производится в зависимости от наличия у элемента, указывающего на начало раздела (<code>&lt;section&gt;|&lt;section&gt;|&#8230;|&lt;section&gt;</code>), атрибута </t></section>
+        <section name="Символы" toc="include" anchor="symbols">
+            <section name="Ссылки на символы" toc="include" anchor="sgml_entity">
+                <t>Спецификация XML&#160;1.0 <eref target="http://www.w3.org/TR/REC-xml/#sec-predefined-ent">определяет</eref> пять символов, которые можно вставить в текст документа 
+                    при помощи мнемоник:</t>
+                    <ulist>
+                        <item>открывающая (левая) угловая скобка <code>&lt;</code></item>
+                        <item>закрывающая (правая) угловая скобка <code>&gt;</code></item>
+                        <item>амперсанд <code>&amp;</code></item>
+                        <item>апостроф <code>&apos;</code></item>
+                        <item>символ кавычки <code>&quot;</code></item>
+                    </ulist>
+                <t>Поскольку удельный вес количества символов отличных от указанных выше и не поддерживаемых
+                напрямую очевидно мал, файл XSLT-преобразований не расширяет диапазон символов при помощи директивы <code>&lt;!ENTITY&gt;</code>.</t>
+                <t>Вместо этого для вставки символов отличных от определенных спецификацией XML&#160;1.0 
+                    (например, знак параграфа <code>&#167;</code>) <keyword>необходимо</keyword> использовать 
+                    числовую форму ссылки из соотвестсвующей <eref target="http://www.w3.org/TR/html4/sgml/entities.html">спецификации HTML</eref>, например для получения знака параграфа следует писать <code>"&amp;#167;"</code> (без кавычек).</t>
+            </section>
+             <section name="Тире, кавычки и прочие знаки пунктуации" toc="include" anchor="punctuation">
+                <t>Хотя возможности SGML и позволяют при помощи ссылок на символы из 
+                    набора символов документа добавить практически любые из 
+                    определенных в кодировке символов Unicode знаков пунктуации, с целью унификации 
+                <keyword>рекомендуется</keyword> придерживаться таких соглашений:
+                <ulist>
+                    <item>закрывающая и открывающая кавычки обозначаются символом 
+                        одиночной кавычки <code>&quot;</code>;</item>
+                    <item>длинное тире обозначается с помощью двух идущих подряд 
+                        символов <code>-</code>: <code>--</code>  (англ. <code><nobr>em dash</nobr></code>);</item>
+                    <item>для вставки неразрывного пробела используется ссылка на символ 
+                        <code>&amp;#160;</code>;</item>
+                    <item>для вставки знака параграфа (&#167;) используется <code>&amp;#167;</code>;</item>
+                </ulist>
+                </t>
+             </section>
+        </section>
+    </section>
+</section> 
+<section toc="include" name="Создание UFR при помощи XSLT-преобразований" anchor="make-ufr" >
+    <section toc="include" name="Общие положения" anchor="make-ufr-commons">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </section>
+     <section name="XSLT-преобразование" anchor="xslt-transform"  toc="include" >
+    <t>Ввиду использования некоторого функционала (e.&#160;g. <code>xsl:function</code>, <code>xsl:format-date</code>) преобразование XML-документа в XHTML соответствует спецификации не ниже <eref target="http://www.w3.org/TR/xslt20/"><nobr>XSLT 2.0</nobr></eref> и производится XSLT-процессором, который поддерживает данную спецификацию.</t>
+    <t>Учитывая особенности вывода формата даты, в Лаборатории Ядерных Исследований 
+        используется XSLT-процессор <eref target="http://saxon.sourceforge.net">Saxon PE</eref> версии <eref target="http://saxon.sourceforge.net#F9.4PE">9.4</eref> с добавлением модифицированного класса <code>Numberer_ru</code>.</t>
+    <t>Обязательным условием является соответствие следующим требованиям:</t>
+    <olist>
+        <item>Основной шрифт документа - 12pt, междустрочный интервал - 10pt;</item>
+        <item>Ширина документа - 70ex (включая отступы);</item>
+        <item>Шрифты документа - моноширинные.</item>
+    </olist>
+    </section>
+</section>
+<insert type="apply-changes" name="Внесение изменений" toc="include" anchor="changes" />
+
+<references name="Сссылки" toc="include" anchor="refs">
+            <reference type="ufr" title="UFR References">
+               <ref ufrno="3" />
+               <ref ufrno="41" /> 
+               <ref ufrno="5" />
+            </reference>
+
+            <reference type="other" title="Другие источники">
+                <ref key="orthography">
+                    <title>Правила русской орфографии и пунктуации. Полный академический справочник.</title>   
+                    <author surname="Лопатин" initials="В. В." fullname="В. В. Лопатин">
+                    <organization/>
+                        <!-- <organization abbrev='ЭКСМО'>ЭКСМО</organization> -->
+                    </author> 
+                    <description>Правила русской орфографии и пунктуации</description> 
+                    <publisher name="ЭКСМО" year="2006" month="" day=""/>
+                </ref>
+
+                <ref key="efsf_statut">
+                    <title>Устав Звёздного Флота Федерации Земли</title>   
+                    <author>
+                        <organization abbrev='ЗФФЗ'>Звёздный Флот Федерации Земли</organization>
+                    </author> 
+                    <description>E. F. Code</description> 
+                    <publisher name="Earth Federation" year="2213" month="07" day="14"/>
+                    <url>https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802</url>
+                </ref>
+
+                <ref key="iso8601">
+                    <title>Date and Time Formats</title>   
+                    <author surname="Wicksteed" initials="C." fullname="Charles Wicksteed">
+                        <organization abbrev='W3C'>W3 Consortium</organization>
+                    </author>
+                    <author surname="Wolf" initials="M." fullname="Misha Wolf">
+                        <organization abbrev='W3C'>W3 Consortium</organization>
+                    </author>
+                    <description>ISO 8601</description> 
+                    <publisher name="W3C" year="1998" month="08" day="27"/>
+                    <url>http://www.w3.org/TR/NOTE-datetime</url>
+                </ref>
+
+
+            </reference>
+        </references>
+
+    <appendixes name="Приложения"  toc="include" xreftext="Приложения" anchor="appendixes">
+
+        <appendix toc="include" name="Объявление авторских прав" anchor="appendix-copyright">
+            <bf><code>efsf-only="no"</code></bf>
+            <t>Copyright © 2013 Звёздный Флот Федерации Земли. Все права защищены.</t>
+            <bf><code>efsf-only="yes"</code></bf>
+            <t>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</t>
+        </appendix>
+
+        <appendix toc="include" name="О длине телеграфных проводов" anchor="lonng">
+            <t>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco</t> 
+            <t>
+                 <figure name="circle" description="Окружность">
+                    <artwork>=========== --- =============
+                    vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+                    vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+                    =============</artwork>
+                </figure>
+            </t>
+            <t>laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</t>
+        </appendix>
+
+        <appendix toc="include" name="О длине телеграфных проводов" anchor="lonng">
+            <t>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud </t>
+            <t>            
+                <figure name="" description="Окружность">
+<artwork>=--=-=-==--=-=-==-=-=-=</artwork>
+                </figure>
+
+            </t>
+             <t>exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</t>
+        </appendix>
+    </appendixes>
+
+<!--                 <codesample><![CDATA[
+        <root>
+            <rino/>
+        </root>
+        ]]></codesample>
+         -->        
+    </document>
+</ufr>
