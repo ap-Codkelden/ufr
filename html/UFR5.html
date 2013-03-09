@@ -98,7 +98,7 @@ h6,h5,h4,h3,h2,h1 {
                 или изменены. Допускается неограниченное распространение 
                 данного стандарта.</p><h2 xmlns="">Авторские права</h2><p xmlns="">Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p><h2 xmlns="">Лицензия</h2><p xmlns="">В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div xmlns="" class="toc_inner"><a href="#intro">1.</a> Введение<br></div><div xmlns="" class="toc_inner"><a href="#therms-and-desc">2.</a> Терминология и обозначения<br><div class="toc_inner"><a href="#therms">2.1.</a> Терминология<br></div><div class="toc_inner"><a href="#definitions">2.2.</a> Обозначения<br><div class="toc_inner"><a href="#code-sample">2.2.1.</a> Пример кода<br></div></div></div><div xmlns="" class="toc_inner"><a href="#structure">3.</a> Структура и состав документа<br><div class="toc_inner"><a href="#common">3.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#common">3.2.</a> Структура документа<br><div class="toc_inner"><a href="#runtime-sections">3.2.1.</a> Разделы, которые формируются автоматически на основании пользовательских данных<br></div><div class="toc_inner"><a href="#sec-front">3.2.2.</a> Заголовочная часть<br><div class="toc_inner"><a href="#creator">3.2.2.1.</a> Элемент creator<br></div><div class="toc_inner"><a href="#authors-element">3.2.2.2.</a> Элемент authors<br></div><div class="toc_inner"><a href="#ufrdata">3.2.2.3.</a> Элемент ufrdata<br></div></div><div class="toc_inner"><a href="#sec-document">3.2.3.</a> Документ<br><div class="toc_inner"><a href="#section-copyright">3.2.3.1.</a> Авторские права<br></div></div><div class="toc_inner"><a href="#text-elements">3.2.4.</a> Элементы текста<br></div></div><div class="toc_inner"><a href="#sec-back">3.3.</a> Заключительная часть<br></div></div><div xmlns="" class="toc_inner"><a href="#further-processing">4.</a> Дальнейшее развитие<br></div><div xmlns="" class="toc_inner"><a href="#ufrstruct">5.</a> Структура UFR и всякоэ<br><div class="toc_inner"><a href="#doc_parts">5.1.</a> Структура документа<br></div><div class="toc_inner"><a href="#headers">5.2.</a> Заголовки и общая информация<br></div><div class="toc_inner"><a href="#not-in-t">5.3.</a> Элементы текста, не требующие объявления абзаца<br></div><div class="toc_inner"><a href="#toc_special_parts">5.4.</a> Особенности создания некоторых частей документа<br><div class="toc_inner"><a href="#toc_special">5.4.1.</a> Оглавление<br></div><div class="toc_inner"><a href="#symbols">5.4.2.</a> Символы<br><div class="toc_inner"><a href="#sgml_entity">5.4.2.1.</a> Ссылки на символы<br></div><div class="toc_inner"><a href="#punctuation">5.4.2.2.</a> Тире, кавычки и прочие знаки пунктуации<br></div></div></div></div><div xmlns="" class="toc_inner"><a href="#make-ufr">6.</a> Создание UFR при помощи XSLT-преобразований<br><div class="toc_inner"><a href="#make-ufr-commons">6.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#xslt-transform">6.2.</a> XSLT-преобразование<br></div></div><div xmlns="" class="toc_inner"><a href="#changes">7.</a> Внесение изменений<br></div><div xmlns="" class="toc_inner"><a href="#refs">8.</a> Сссылки<br></div><div xmlns="" class="toc_inner"><a href="#appendixes"></a> Приложения<br><div class="toc_inner"><a href="#appendix-copyright">A.</a> Объявление авторских прав<br></div><div class="toc_inner"><a href="#lonng">B.</a> О длине телеграфных проводов<br></div><div class="toc_inner"><a href="#lonng">C.</a> О длине телеграфных проводов<br></div></div><h2><a name="intro"></a>1. Введение</h2>
                 <p xmlns=""><a href="UFR1_20130203.html" target="_blank">Первый</a> из UFR (далее по 
-                тексту также именуется "документ") был написан с 
+                тексту также именуется"— "документ") был написан с 
                 использованием plain HTML в простом текстовом редакторе, с ручным 
                 созданием оглавления и деления на разделы.</p>
                 <p xmlns="">Впоследствии в Лаборатории Ядерных Исследований разведываетльного 
@@ -317,7 +317,8 @@ h6,h5,h4,h3,h2,h1 {
 <p xmlns="" class="element-syntax">&lt;ufrdate value=<span style="font-style:oblique">"2013-02-03"</span>/&gt;</p>
 <p xmlns="">Определяет дату создания UFR.</p>
 <p xmlns="">Дата создания хранится в атрибуте <code>value</code>. Значение даты 
-записывается в формате, соответствующем ISO&nbsp;8601 определенном в заметке W3C [<a href="#iso8601">Date and Time Formats</a>], 
+записывается в формате, соответствующем ISO&nbsp;8601 и определенном в 
+заметке W3C [<a href="#iso8601">Date and Time Formats</a>], 
 в частности полный формат даты имеет вид:</p>
 <p xmlns=""><code>YYYY-MM-DD (например 2027-07-25)</code></p>
 
@@ -425,8 +426,8 @@ h6,h5,h4,h3,h2,h1 {
   &lt;abstract.../&gt;              | [Аннотация]
   &lt;license.../&gt;               | Лицензия
   &lt;section...&gt;                | Вложенные разделы 
-    &lt;section...&gt;              | до 4 уровней
-      &lt;section...&gt;            | (1 - 1.1.1.1)
+    &lt;section...&gt;              | до 5 уровней
+      &lt;section...&gt;            | (1 - 1.1.1.1.1)
   &lt;insert.../&gt;                | Элемент вставки
   &lt;section...&gt;                | Раздел "Ссылки"
     &lt;references...&gt;           | Ссылки на UFR
@@ -512,7 +513,8 @@ h6,h5,h4,h3,h2,h1 {
                         <li>символ кавычки <code>"</code></li>
                     </ul>
                 <p xmlns="">Поскольку удельный вес количества символов отличных от указанных выше и не поддерживаемых
-                напрямую очевидно мал, файл XSLT-преобразований не расширяет диапазон символов при помощи директивы <code>&lt;!ENTITY&gt;</code>.</p>
+                напрямую очевидно мал, файл XSLT-преобразований не расширяет диапазон символов при помощи директивы 
+                <code>&lt;!ENTITY&gt;</code>.</p>
                 <p xmlns="">Вместо этого для вставки символов отличных от определенных спецификацией XML&nbsp;1.0 
                     (например, знак параграфа <code>§</code>) <span class="rfc2119">необходимо</span> использовать 
                     числовую форму ссылки из соотвестсвующей <a href="http://www.w3.org/TR/html4/sgml/entities.html" target="_blank">спецификации HTML</a>, например для получения знака параграфа следует писать <code>"&amp;#167;"</code> (без кавычек).</p>
@@ -525,17 +527,25 @@ h6,h5,h4,h3,h2,h1 {
                 <ul>
                     <li>закрывающая и открывающая кавычки обозначаются символом 
                         одиночной кавычки <code>"</code>;</li>
-                    <li>длинное тире обозначается с помощью двух идущих подряд 
-                        символов <code>-</code>: <code>--</code>  (англ. <code>em dash</code>);</li>
                     <li>для вставки неразрывного пробела используется ссылка на символ 
                         <code>&amp;#160;</code>;</li>
+                    <li>для вставки длинного тире используется ссылка на символ 
+                        <code>&amp;#8212;</code>;</li>
                     <li>для вставки знака параграфа (§) используется <code>&amp;#167;</code>;</li>
+                    <li>для случая, когда необходимо вставить в текст длинное тире 
+                    <span style="font-style:oblique">по правилам типографики</span> (длинное тире, предваряемое неразрывным пробелом), следует использовать последовательность <code>"&amp;nbsp;&amp;mdash;"</code> 
+                    (без кавычек).<br><a name="link-entity">Кроме этого, если вводить ссылки сущностей 
+                    символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
+                    <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
+                    определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#inner-entity" title="Сущности и способы их подключения">4</a>].</a><a name="ftntiii"><a href="#"><sup>iii</sup></a></a></li>
                 </ul>
                 </p>
              
         
     
-<h2><a name="make-ufr"></a>6. Создание UFR при помощи XSLT-преобразований</h2>
+<p xmlns=""><a name=""><sup>iii</sup><a href="#ftntiii">↑</a></a><span class="footnote">В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но 
+                    по умолчанию он закоментирован, так как делает невозможным использование символа длинного тире без пробела перед ним.<br>Для его использования необходимо 1) раскомментировать упомянутую инструкцию и 2) удалить определение <code>&lt;!ENTITY mdash  "&amp;#8212;"&gt;</code>, если оно 
+                    <a href="#link-entity">было определено</a>.</span></p><h2><a name="make-ufr"></a>6. Создание UFR при помощи XSLT-преобразований</h2>
     <h4 xmlns=""><a name="make-ufr-commons"></a>6.1. Общие положения</h4>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -557,7 +567,7 @@ h6,h5,h4,h3,h2,h1 {
     </ol>
     
 <h2><a name="changes"></a>7. Внесение изменений</h2><p xmlns="">В соответствии с §§42, 64 раздела 5, §94 раздела 8 Устава Звёздного Флота внесение изменений в данный стандарт производится только стандартами UFR, принятыми в установленном порядке.</p><h2><a name="refs"></a>8. Сссылки</h2><h5 xmlns="">UFR References</h5><table width="100%" 
-                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a xmlns="" name="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a xmlns="" name="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5 xmlns="">Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a xmlns="" name="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br xmlns="">В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a xmlns="" name="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br xmlns="">Звёздный Флот Федерации Земли<br /><<a xmlns="" href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a xmlns="" name="iso8601">Date and Time Formats</a><br xmlns="">Charles Wicksteed, W3 Consortium<br />Misha Wolf, W3 Consortium<br /><<a xmlns="" href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr></table><h2><a name="appendixes"></a>Приложения</h2>
+                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a xmlns="" name="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a xmlns="" name="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5 xmlns="">Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a xmlns="" name="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br xmlns="">В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a xmlns="" name="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br xmlns="">Звёздный Флот Федерации Земли<br /><<a xmlns="" href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a xmlns="" name="iso8601">Date and Time Formats</a><br xmlns="">Charles Wicksteed, W3 Consortium<br />Misha Wolf, W3 Consortium<br /><<a xmlns="" href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr><tr><td style="vertical-align:top;width:10%">[4]</td><td style="vertical-align:top"><a xmlns="" name="inner-entity">Сущности и способы их подключения</a><br xmlns="">Александр Самиляк, Студия Артемия Лебедева<br /><<a xmlns="" href="http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/">www.artlebedev.ru</a>>, <br />26 июля 2011 г.</td><tr></table><h2><a name="appendixes"></a>Приложения</h2>
 
         <h3 xmlns=""><a name="appendix-copyright"></a>Приложение A. Объявление авторских прав</h3>
             <span xmlns="" style="font-weight:700"><code>efsf-only="no"</code></span>
