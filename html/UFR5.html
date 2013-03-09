@@ -1,0 +1,607 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sks="http://f.skobkin.ru/other/constellation/UFR"><head><meta charset="utf-8"></meta><style xmlns="" type="text/css">
+body {
+    width:80ex;
+    font-family:"Consolas","Courier New",monospace;
+    font: 12pt/10pt;
+}
+
+.footnote{
+	font-size: 0.8em
+}
+
+pre {
+	font-family:monospace
+}
+
+p {
+	text-align: justify;
+}
+
+p.element-syntax {
+	background-color:Gainsboro;
+	border:solid thin black;
+	white-space:pre;
+	font-family:monospace;
+	font-size: 10pt
+	}
+
+p.block {
+	margin-left:2ex;
+	padding-left:1ex;
+	border-left:1px;
+}
+
+p.center {
+	text-align:center;
+}
+
+div.table {
+	white-space:pre;
+	font-family:monospace;
+	color:#333333;
+	font-size: 10pt
+	}
+
+span.nowrap {
+	white-space:pre;
+}
+
+.artwork {
+	color:#333333;
+	white-space: pre;
+	text-align: left
+}
+
+h1.caption {
+	text-align:center;
+	padding-top:2em;
+	padding-bottom:1em;
+	margin-left:0ex 
+}
+
+.caption {
+	padding-top:1em;
+	padding-bottom:0.75em;
+	text-align:center
+}
+
+ul {
+	list-style-type: circle;
+	text-align: justify;
+} 
+
+ol {
+	text-align: justify;
+}
+
+.toc_inner {
+	padding-left: 4ex;
+}
+
+h6,h5,h4,h3,h2,h1 {
+	font-size:1em;
+	font-weight:700;
+	margin-left:-6ex
+}
+
+.rfc2119 { text-transform: lowercase;
+           font-variant: small-caps;
+           font-style: normal; 
+           font-size: 120%
+       }
+
+.svg { 	margin:0 auto;
+		display: block;
+		}</style><title>URF 5 - Инструкции авторам UFR</title></head><body><table style="width:100%;border:0px;border-spacing:0px"><tbody><tr><td style="text-align:left">Звёздный флот Федерации</td><td style="text-align:right">К-117 "Созвездие"</td></tr><tr><td style="text-align:left">UFR №5</td><td style="text-align:right">Морзе</td></tr><tr><td style="text-align:left">Категория: технический</td><td style="text-align:right">02 месяц 2013</td></tr></tbody></table><h1 class="caption">ИНСТРУКЦИИ АВТОРАМ UFR</h1><p class="caption">25 февраля 2013</p><div style="margin-left:6ex"><h2 xmlns="">Аннотация</h2><p xmlns="">Этот документ устанавливает в качестве стандартных технические 
+                правила и нормативы, обязательные к использованию при участии в 
+                проекте "Созвездие", которые могут быть дополнены, улучшены 
+                или изменены. Допускается неограниченное распространение 
+                данного стандарта.</p><h2 xmlns="">Авторские права</h2><p xmlns="">Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p><h2 xmlns="">Лицензия</h2><p xmlns="">В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div xmlns="" class="toc_inner"><a href="#intro">1.</a> Введение<br></div><div xmlns="" class="toc_inner"><a href="#therms-and-desc">2.</a> Терминология и обозначения<br><div class="toc_inner"><a href="#therms">2.1.</a> Терминология<br></div><div class="toc_inner"><a href="#definitions">2.2.</a> Обозначения<br><div class="toc_inner"><a href="#code-sample">2.2.1.</a> Пример кода<br></div></div></div><div xmlns="" class="toc_inner"><a href="#structure">3.</a> Структура и состав документа<br><div class="toc_inner"><a href="#common">3.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#common">3.2.</a> Структура документа<br><div class="toc_inner"><a href="#runtime-sections">3.2.1.</a> Разделы, которые формируются автоматически на основании пользовательских данных<br></div><div class="toc_inner"><a href="#sec-front">3.2.2.</a> Заголовочная часть<br><div class="toc_inner"><a href="#creator">3.2.2.1.</a> Элемент creator<br></div><div class="toc_inner"><a href="#authors-element">3.2.2.2.</a> Элемент authors<br></div><div class="toc_inner"><a href="#ufrdata">3.2.2.3.</a> Элемент ufrdata<br></div></div><div class="toc_inner"><a href="#sec-document">3.2.3.</a> Документ<br><div class="toc_inner"><a href="#section-copyright">3.2.3.1.</a> Авторские права<br></div></div><div class="toc_inner"><a href="#text-elements">3.2.4.</a> Элементы текста<br></div></div><div class="toc_inner"><a href="#sec-back">3.3.</a> Заключительная часть<br></div></div><div xmlns="" class="toc_inner"><a href="#further-processing">4.</a> Дальнейшее развитие<br></div><div xmlns="" class="toc_inner"><a href="#ufrstruct">5.</a> Структура UFR и всякоэ<br><div class="toc_inner"><a href="#doc_parts">5.1.</a> Структура документа<br></div><div class="toc_inner"><a href="#headers">5.2.</a> Заголовки и общая информация<br></div><div class="toc_inner"><a href="#not-in-t">5.3.</a> Элементы текста, не требующие объявления абзаца<br></div><div class="toc_inner"><a href="#toc_special_parts">5.4.</a> Особенности создания некоторых частей документа<br><div class="toc_inner"><a href="#toc_special">5.4.1.</a> Оглавление<br></div><div class="toc_inner"><a href="#symbols">5.4.2.</a> Символы<br><div class="toc_inner"><a href="#sgml_entity">5.4.2.1.</a> Ссылки на символы<br></div><div class="toc_inner"><a href="#punctuation">5.4.2.2.</a> Тире, кавычки и прочие знаки пунктуации<br></div></div></div></div><div xmlns="" class="toc_inner"><a href="#make-ufr">6.</a> Создание UFR при помощи XSLT-преобразований<br><div class="toc_inner"><a href="#make-ufr-commons">6.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#xslt-transform">6.2.</a> XSLT-преобразование<br></div></div><div xmlns="" class="toc_inner"><a href="#changes">7.</a> Внесение изменений<br></div><div xmlns="" class="toc_inner"><a href="#refs">8.</a> Сссылки<br></div><div xmlns="" class="toc_inner"><a href="#appendixes"></a> Приложения<br><div class="toc_inner"><a href="#appendix-copyright">A.</a> Объявление авторских прав<br></div><div class="toc_inner"><a href="#lonng">B.</a> О длине телеграфных проводов<br></div><div class="toc_inner"><a href="#lonng">C.</a> О длине телеграфных проводов<br></div></div><h2><a name="intro"></a>1. Введение</h2>
+                <p xmlns=""><a href="UFR1_20130203.html" target="_blank">Первый</a> из UFR (далее по 
+                тексту также именуется "документ") был написан с 
+                использованием plain HTML в простом текстовом редакторе, с ручным 
+                созданием оглавления и деления на разделы.</p>
+                <p xmlns="">Впоследствии в Лаборатории Ядерных Исследований разведываетльного 
+                крейсера К-117 "Созвездие" был создани инструментарий для унификации 
+                создания UFR на основе <a href="http://www.w3.org/TR/xslt20/" target="_blank">спецификации <nobr><span class="nowrap">XSLT 2.0</span></nobr></a>
+                 и XML, который и описывается данным документом.
+                 </p><h2><a name="therms-and-desc"></a>2. Терминология и обозначения</h2>
+                 <h4 xmlns=""><a name="therms"></a>2.1. Терминология</h4><p xmlns="">Ключевые слова <span class="rfc2119">необходимо</span>, <span class="rfc2119">требуется</span>, 
+            <span class="rfc2119">нужно</span>, <span class="rfc2119">недопустимо</span>, 
+            <span class="rfc2119">не разрешается</span>, <span class="rfc2119">следует</span>, 
+            <span class="rfc2119">рекомендуется</span>, <span class="rfc2119">не следует</span>,
+            <span class="rfc2119">не рекомендуется</span>, <span class="rfc2119">возможно</span>, 
+            <span class="rfc2119">необязательно</span> в соответствующих формах в данном документе 
+            должны интерпретироваться в соответствии с требованиями <a href="UFR3.html">URF3</a>.</p>
+    <h4 xmlns=""><a name="definitions"></a>2.2. Обозначения</h4>
+        <h5 xmlns=""><a name="code-sample"></a>2.2.1. Пример кода</h5>
+            <p xmlns="">Пример описания кода:</p>
+<p xmlns="" class="element-syntax">&lt;element 
+    attribute = <span style="font-style:oblique">"expression"</span>
+    [optional_attribute = <span style="font-style:oblique">"yes"</span> | <span style="font-style:oblique">"no"</span>]&gt;
+    <span style="font-style:oblique">someValue</span>&lt;/element&gt;</p>
+<p xmlns="">Пример описывает элемент <code>element</code>, который имеет один обязательный атрибут
+<code>attribute</code>, принимающий значение <code>expression</code>, и один необязательный 
+атрибут <code>optional_attribute</code>, принимающий одно из двух значений <code>"yes"</code> 
+или <code>"no"</code> и определяющий значение <span style="font-style:oblique">someValue</span>.</p>
+<p xmlns="">Если тот или иной атрибут или элемент является необязательным, об этом 
+будет заявлено прямо, во всех остальных случаях по умолчанию атрибут или элемент
+считается обязательным.</p>
+<p xmlns="">Отступы и переносы строк в примерах добавлены только для удобства чтения, в исходном коде 
+они <span class="rfc2119">необязательны</span>.</p>
+
+    
+<h2><a name="structure"></a>3. Структура и состав документа</h2>
+    <h4 xmlns=""><a name="common"></a>3.1. Общие положения</h4>
+        <p xmlns="">Исходный текст стандарта представляет собой XML-документ, соответствующий 
+        <a href="ufr.xsd" target="_blank">XSD-схеме</a> (<a href="" target="_blank">valid</a>, предпочтительный вариант) или же правильно сформированный (<a href="http://en.wikipedia.org/w/index.php?title=Well-formed_document&amp;oldid=527402113" target="_blank">well-formed</a>, допустимый вариант).</p>
+        <p xmlns="">На момент написания документа, инструментарий поддерживал XSL-преобразование только в формат XHTML, который был выбран в силу его широкого распространения и поддержки значительным  количеством устройств - пользователь сможет загрузить UFR, открыть и распечатать на своем оборудовании.</p>
+        <p xmlns="">С целью правильного отображения символов национальных алфавитов
+        и некоторых других символов, исходные тексты <span class="rfc2119">должны</span> быть подготовлены только в кодировке <a href="http://www.unicode.org" target="_blank">символов Unicode</a>.</p>
+    
+    <h4 xmlns=""><a name="common"></a>3.2. Структура документа</h4>
+        <p xmlns="">XML-документ UFR начинается с объявления XML, ссылки на стилевой документ 
+        <code>ufr.xsl</code> и корневого элеиента "ufr":</p>
+<p xmlns="" class="element-syntax">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="ufr.xsl"?&gt;
+&lt;ufr&gt;
+    ...
+&lt;/ufr&gt;</p>
+        <p xmlns="">Документ имееет следующую структуру:</p>
+        <ol xmlns="">
+        <li>Заголовочная часть</li>
+        <li>Документ</li>
+        <li>Заключительная часть</li>
+        </ol>
+
+    <h5 xmlns=""><a name="runtime-sections"></a>3.2.1. Разделы, которые формируются автоматически на основании пользовательских данных</h5>
+        <p xmlns="">Прежде чем рассмотреть структуру документа, следует заметить, что 
+        нижеперечисленные разделы создаются процессором XSLT автоматически, и
+        писать их самим <span class="rfc2119">не разрешается</span>.</p>
+        <p xmlns="">Перечень разделов (в порядке следования):</p>
+        <ul xmlns="">
+            <li>Аннотация</li>
+            <li>Авторские права</li>
+            <li>Лицензия</li>
+            <li>Терминология</li>
+            <li>Внесение изменений</li>
+        </ul>
+    
+
+    &lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1"&gt;
+  &lt;circle cx="100" cy="50" r="40" stroke="black"
+  stroke-width="2" fill="red"/&gt;
+&lt;/svg&gt;
+
+        <h5 xmlns=""><a name="sec-front"></a>3.2.2. Заголовочная часть</h5>
+        <p xmlns="">Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"description"</code>.</p>
+        <p xmlns="">Общий вид заголовочной части показан на [<a href="#pic1">рис. 1</a>]</p>
+<p xmlns="" class="element-syntax">&lt;ufr&gt;
+&lt;description&gt;
+    &lt;creator&gt;
+        &lt;organization ...&gt;
+        &lt;unit ...&gt;
+        &lt;author ...&gt;
+    &lt;/creator&gt;
+    &lt;authors&gt;
+        &lt;author ...&gt;
+            &lt;assignment ...&gt;
+            &lt;rank ...&gt;
+            &lt;name ...&gt;
+            &lt;unit ...&gt;
+            &lt;organization ...&gt;
+        &lt;/author&gt;
+        &lt;author&gt;
+            ...
+        &lt;/author&gt;
+    &lt;/authors&gt;
+    &lt;ufrdata&gt;
+        &lt;ufrname ...&gt;
+        &lt;ufrcategory ...&gt;
+        &lt;ufrdate ...&gt;
+        &lt;ufrchanged ...&gt;
+        &lt;urfobsolete .../&gt;
+    &lt;/ufrdata&gt;
+&lt;/description&gt;</p>
+        <p xmlns="">Элемент <code>description</code> содержит элемент <code>creator</code>, элемент <code>authors</code>, и элемент <code>ufrdata</code>.</p>
+        <h6 xmlns=""><a name="creator"></a>3.2.2.1 Элемент creator</h6>
+            Этот элемент содержит информацию о составителе URF, и описываемую данными, определенными 
+            в элементах <code xmlns="">organization</code>, <code xmlns="">unit</code> и <code xmlns="">author</code>. 
+            
+            <p xmlns="" class="element-syntax">&lt;organization&gt;<span style="font-style:oblique">организация</span>&lt;/organization&gt;</p>
+            <p xmlns="">Элемент определяет организацию, к которой принадлежит составитель документа. 
+                Поскольку Лаборатория Ядерных Исследований является частью К-117 "Созвездие", то обычно 
+                это <span style="font-style:oblique">Звёздный флот Федерации</span>, но поскольку возможны и другие варианты, этот 
+                элемент изменяем.</p>
+            
+
+            
+            <p xmlns="" class="element-syntax">&lt;unit&gt;<span style="font-style:oblique">подразделение</span>&lt;/unit&gt;</p>
+            <p xmlns="">Элемент определяет подразделение, к которому принадлежит составитель документа, 
+            например <span style="font-style:oblique">К-117 "Созвездие"</span> или <span style="font-style:oblique">П-78 "Неустрашимый"</span>.</p>
+            
+
+            
+            <p xmlns="" class="element-syntax">&lt;author&gt;<span style="font-style:oblique">имяАвтора</span>&lt;/author&gt;</p>
+            <p xmlns="">Элемент определяет <span style="font-style:oblique">имяАвтора</span>, под которым тот выведен в
+            проекте, например <span style="font-style:oblique">Киркунов</span> или <span style="font-style:oblique">Дюшенков</span>.</p>
+            
+        
+        <h6 xmlns=""><a name="authors-element"></a>3.2.2.2 Элемент authors</h6>
+            <p xmlns="">Элемент <code>authors</code> содержит информацию о непосредственных авторах 
+            документа, принимавших участие в его создании.</p>
+            <p xmlns="">Этот элемент <span class="rfc2119">должен</span> содетжать по меньшей мере один элемент 
+            <code>author</code> и <span class="rfc2119">может</span> содержать помимо него другие элементы 
+            <code>author</code>, как было сказано выше, если авторов несколько.</p>
+            <p xmlns="">Элемент является контейнером для следующих элементов: <code>assignment</code>, <code>rank</code>, 
+                <code>name</code>, <code>unit</code> и <code>organization</code>.</p>
+
+                
+                    <p xmlns="" class="element-syntax">&lt;assignment&gt;<span style="font-style:oblique">должностьАвтора</span>&lt;/assignment&gt;</p>
+            <p xmlns="">Элемент определяет <span style="font-style:oblique">должностьАвтора</span>, под которым тот выведен в
+            проекте, например <span style="font-style:oblique">капитан корабля</span> или <span style="font-style:oblique">начальник спиртохранилища</span>.</p>
+                
+                
+                    <p xmlns="" class="element-syntax">&lt;rank&gt;<span style="font-style:oblique">званиеАвтора</span>&lt;/rank&gt;</p>
+            <p xmlns="">Элемент определяет <span style="font-style:oblique">званиеАвтора</span>, под которым тот выведен в
+            проекте, например <span style="font-style:oblique">капитан&nbsp;1 ранга&nbsp;ЗФ</span> или <span style="font-style:oblique">ст.&nbsp;сержант&nbsp;КД</span>.</p>
+            <p xmlns="">Звания <span class="rfc2119">должны</span> соответствовать утвердженным Уставом ЗФ.</p>
+                
+
+                
+                    <p xmlns="" class="element-syntax">&lt;name&gt;<span style="font-style:oblique">имяАвтора</span>&lt;/name&gt;</p>
+            <p xmlns="">Элемент определяет <span style="font-style:oblique">имяАвтора</span>, под которым тот выведен в
+            проекте, например <span style="font-style:oblique">Морзе</span> или <span style="font-style:oblique">Р.&nbsp;Муррфи</span>.</p>
+            <p xmlns=""><span style="font-weight:700">Обратите внимание.</span> В случае, если составитель документа 
+            является также одним из его авторов, необходимо вносить его данные 
+            как в раздел <code>&lt;authors&gt;</code> в виде контейнера <code>&lt;author&gt;</code>, так и в раздел 
+            <code>&lt;creator&gt;</code>.</p>
+                
+
+                
+            <p xmlns="">Полностью аналогичен элементу <code>&lt;unit&gt;</code>, описанному <a href="#unit">выше</a>.</p>
+
+
+            <p xmlns="">Полностью аналогичен элементу <code>&lt;organization&gt;</code>, описанному <a href="#organization">выше</a>.</p>
+        
+
+
+<h6 xmlns=""><a name="ufrdata"></a>3.2.2.3 Элемент ufrdata</h6> 
+<p xmlns="">Элемент идентифицирует UFR, определяя:</p>
+<ul xmlns="">
+    <li><a href="#ufrdata-name">название и номер UFR</a></li> 
+    <li><a href="#ufrdata-cat">категорию UFR</a></li>            
+    <li><a href="#ufrdata-date">дату UFR</a></li> 
+    <li><a href="#ufrdata-change">информацию об внесенных изменениях</a></li>   
+    <li><a href="#ufrdata-obsolete">информацию о том, устарел ли данный UFR вследствие принятия других UFR</a></li> 
+</ul>
+
+<p xmlns="" class="element-syntax">&lt;ufrname 
+            number=<span style="font-style:oblique">"номерUFR"</span>&gt;<span style="font-style:oblique">названиеUFR</span>&lt;/ufrname&gt;</p>
+    <p xmlns="">Элемент определяет название <span style="font-style:oblique">названиеUFR</span> и номер UFR <span style="font-style:oblique">номерUFR</span>.</p>
+    <p xmlns="">Название UFR должно кратко и чётко отражать суть документа, и исключать двузначное толкование.</p>
+    <p xmlns="">Номер UFR является целым положительным числом в десятичной записи, и определяется по порядку следования номеров UFR в Реестре UFR.</p>
+
+
+
+<p xmlns="" class="element-syntax">&lt;ufrcategory 
+            cat=<span style="font-style:oblique">"категорияUFR"</span> 
+            [draft=<span style="font-style:oblique">"yes"</span> | <span style="font-style:oblique">"no"</span>]/&gt;</p>
+<p xmlns="">Элемент определяет категорию, к которй относится UFR при помощи 
+аттрибута <code>cat</code>, который может принимать следующие 
+значения [<a href="#table-cat">табл. 1</a>]<a href="#"></a>:</p>
+<a name="table-cat"><div xmlns="" class="table"><p style="text-align:right;">Таблица&nbsp;1</p><p style="text-align:center;">Значения атрибута cat элемента ufrcategory</p><p>
+/--------------------------------------------------------\
+|Атрибут |               Значение                        |
+|--------|-----------------------------------------------|
+|  std   |стандарт - устанавливает обязательные стандарты|
+|--------|-----------------------------------------------|
+|  rec   |рекомендация - предоставляет рекомендации      |
+|--------|-----------------------------------------------|
+|  tech  |технический - технические правила и нормативы  |
+|--------|-----------------------------------------------|
+|historic|исторический - состояние сюжетной линии        |
+|--------|-----------------------------------------------|
+|  info  |информационный - не устанавливает стандартов,  |
+|        |однако предоставляет информацию                |
+\--------------------------------------------------------/</p></div></a>
+<p xmlns="">В зависимости от значения атрибута <code>cat</code> XSLT-процессор подставит 
+    необходимое пояснение в ССЫЛКА НА аннотацию документа. </p>
+<p xmlns="">Необязательный атрибут <code>draft</code> указывает на то, что 
+данный стандарт в настоящее время является черновым и находится в стадии 
+согласования.</p>
+<p xmlns="">Для указания этого нужно присвоить атрибуту <code>draft</code> 
+значения <code>"yes"</code>.</p>
+<p xmlns="">Если документ не является черновым изначально, атрибут 
+<code>draft</code> можно не указывать.</p>
+<p xmlns="">Аннотация настоящего UFR является результатом присвоения атрибуту 
+<code>cat</code> значения <code>"std"</code>.</p>
+
+
+
+<p xmlns="" class="element-syntax">&lt;ufrdate value=<span style="font-style:oblique">"2013-02-03"</span>/&gt;</p>
+<p xmlns="">Определяет дату создания UFR.</p>
+<p xmlns="">Дата создания хранится в атрибуте <code>value</code>. Значение даты 
+записывается в формате, соответствующем ISO&nbsp;8601 определенном в заметке W3C [<a href="#iso8601">Date and Time Formats</a>], 
+в частности полный формат даты имеет вид:</p>
+<p xmlns=""><code>YYYY-MM-DD (например 2027-07-25)</code></p>
+
+
+
+
+<p xmlns="" class="element-syntax">&lt;ufrchanged&gt;
+    &lt;changed number="115" 
+        date="2027-09-03" 
+        edition=""/&gt;
+    &lt;changed number="115" 
+        date="2027-09-03" 
+        edition="1"/&gt;
+    &lt;changed number="117" 
+        date="2027-10-13" 
+        edition="1"/&gt;
+    &lt;/ufrchanged&gt;</p>
+<p xmlns="">Необязательный элемент. Употребляется в случае, если в данный UFR 
+    были внесены изменения. Является контейнером для элемента <code>changed</code> 
+    (или несколких таких элементов, если изменения вносились несколько раз и/или 
+    разными UFR).</p>
+<p xmlns="">Каждый элемент <code>changed</code> в свою очередь определяет реквизиты 
+внесшего изменения UFR при помощи следующих атрибутов:</p>
+<ul xmlns="">
+    <li><code>number</code> - определяет номер UFR, которым внесены изменения;</li>
+    <li><code>date</code> - определяет дату UFR, которым внесены изменения, в формате, определенном <a href="#ufrdata-date">выше</a>;</li>
+    <li><code>edition</code> - определяет версию правки в том случае, если за один день было внесено более одной правки в данный UFR. Разумеется, такая ситуация крайне маловероятна, но если в один день было внесено более одной правки, то:
+        <ol>
+        <li>Пусть первый раз за текущие сутки изменения в текущий UFR (UFR&nbsp;№110 от 25.07.2027) 
+            были внесены UFR&nbsp;№116 от 01.09.2027. Версия документа без исправлений получит имя 
+            <code>UFR110_20270725.html</code>, измененная версия -- <code>UFR110.html</code>.</li>
+        <li>Второй раз за текущие сутки изменения в текущий UFR вносятся UFR&nbsp;№117 от 01.09.2027. 
+            Устаревшая версия документа (<code>UFR110.html</code> из п.&nbsp;1) получит имя 
+            <code>UFR110_20270725-1.html</code>, измененная версия снова получит имя <code>UFR110.html</code>.</li>
+        <li>Элемент <code>ufrchanged</code> примет вид<a name="ftnti"><a href="#apply-change-urf"><sup>i</sup></a></a>:
+            <p class="element-syntax">&lt;ufrchanged&gt;
+    &lt;changed number="116" 
+                date="2027-09-01" 
+                edition=""/&gt;
+    &lt;changed number="117" 
+                date="2027-09-01" 
+                edition="1"/&gt;
+&lt;/ufrchanged&gt;</p>
+        </li>
+        </ol>
+    </li>
+</ul>
+
+
+<p xmlns="" class="element-syntax">&lt;urfobsolete ufrno=<span style="font-style:oblique">"номерUFR"</span>/&gt;</p>
+<p xmlns="">Необязательный, однако <span class="rfc2119">рекомендуется</span> добавлять в 
+документ "пустой" элемент, объединяющий начальный и конечный теги: 
+<code>&lt;urfobsolete/&gt;</code>.</p>
+<p xmlns="">Определяет номер UFR, которым отменяется данный, и предоставляет ссылку 
+на него.</p>
+<p xmlns="">Результатом применения элемента является добавление следующего текста в 
+    заголовочную часть:</p>
+<p xmlns="" class="block">Данный UFR устарел - см. UFR №216</p>
+
+
+
+   <a xmlns="" name="pic1">
+<pre class="artwork">
+(1)Звёздный флот Федерации                 (2)К-117 "Созвездие"
+(3)URF №110                                            (4)Морзе
+(5)Категория: информационный                   (6)07 месяц 2027
+                     
+                          (7)ЕЩЁ ОДИН UFR
+
+                          (8)25 июля 2027
+
+                            (9)Изменен:
+
+               (9)UFR №116 (предыдущая версия UFR№110)
+                  UFR №117 (предыдущая версия UFR№110)
+
+                (10)Данный UFR устарел - см. UFR №216</pre><p class="center">Рисунок&nbsp;1. Заголовок UFR</p></a>
+    <ol xmlns="">
+        <li>название органицации, издавшей стандарт (строка 1, слева);</li>
+        <li>название подразделения, к которому принадлежит составитель 
+            стандарта (строка 1, справа);</li>
+        <li>номер UFR (строка 2, слева);</li>
+        <li>составитель стандарта (строка 2, справа);</li>
+        <li>категория стандарта (строка 3, слева);</li>
+        <li>месяц и год издания стандарта (строка 3, справа), в 
+            формате MM {<span style="font-style:oblique">название месяца</span>} YYYY<a name="ftntii"><a href="#saxon_tech_restr"><sup>ii</sup></a></a>;</li>
+        <li>Название UFR (отцентрировано);</li>
+        <li>Дата UFR (отцентрировано)</li>
+        <li>В случае наличия друх стандартов, изменяющих данный, 
+            в измененную версию добавляется информация о стандарте, которым 
+            внесены изменения в данный.</li>
+        <li>В случае наличия друх стандартов, отменяющих действие данного 
+            стандарта, в измененную версию добавляется информация о стандарте, 
+            которым отменяется данный.</li>
+    </ol>
+    
+
+    <h5 xmlns=""><a name="sec-document"></a>3.2.3. Документ</h5>
+        Основная часть документа вложена в секцию, ограниченную 
+        элементом <code xmlns="">document</code>. Ниже приведено краткое описание 
+        структуры секции (<span xmlns="" class="rfc2119">необходмио</span>, чтобы все UFR имели 
+        описанную структуру):
+<p xmlns="" class="element-syntax">&lt;document&gt;
+  &lt;copyright.../&gt;             | Авторские права
+  &lt;abstract.../&gt;              | [Аннотация]
+  &lt;license.../&gt;               | Лицензия
+  &lt;section...&gt;                | Вложенные разделы 
+    &lt;section...&gt;              | до 4 уровней
+      &lt;section...&gt;            | (1 - 1.1.1.1)
+  &lt;insert.../&gt;                | Элемент вставки
+  &lt;section...&gt;                | Раздел "Ссылки"
+    &lt;references...&gt;           | Ссылки на UFR
+      &lt;reference... /&gt;        |   UFR...
+    &lt;references...&gt;           | Ссылки на источники
+      &lt;reference...&gt;          | Источник
+        &lt;title...&gt;            |   Название
+          &lt;author...&gt;         |   Автор
+            &lt;organization...&gt; | Организация
+          &lt;publisher.../&gt;     |   Издатель
+  &lt;appendixes...&gt;             | Приложения
+    &lt;appendix...&gt;             |   Приложение
+&lt;/document&gt;</p>
+
+    <h6 xmlns=""><a name="section-copyright"></a>3.2.3.1 Авторские права</h6>
+        <p xmlns="">Раздел "Авторские права" формируется автоматически, и определяется 
+        элементом <code>&lt;copyright/&gt;</code>:</p>
+        <p xmlns="" class="element-syntax">&lt;copyright name=<span style="font-style:oblique">"Авторские права"</span> efsf-only=<span style="font-style:oblique">"yes"</span> | <span style="font-style:oblique">"no"</span>/&gt;</p>
+        <p xmlns="">Данному разделу <span class="rfc2119">необходимо</span> присвоить название "Авторские права" (путём присвоения значения 
+        атрибуту <code>name</code>), его <span class="rfc2119">следует</span> изменять лишь в случае публикации UFR на другом языке.</p>
+        <p xmlns="">Атрибут <code>efsf-only</code> может принимать значения <span style="font-style:oblique">"yes"</span> или <span style="font-style:oblique">"no"</span>. В случае, если значение атрибута  
+        <span style="font-style:oblique">"yes"</span>, при объявлении авторских прав будет указано, что авторские права принадлежат Звёздному Флоту, а в случае если 
+        значение атрибута <span style="font-style:oblique">"no"</span> дополнительно будет указано, что авторские права принадлежат также лицам, указанным 
+        как авторы документа (см.&nbsp;прил.<span class="nowrap"> </span>[<a href="#appendix-copyright">A.<span class="nowrap">&nbsp;</span>Объявление авторских прав</a>]).</p>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 xmlns=""><a name="text-elements"></a>3.2.4. Элементы текста</h5>
+        <p xmlns="">Указать про CDATA, FIGURE</p>
+    
+
+
+
+                <h4 xmlns=""><a name="sec-back"></a>3.3. Заключительная часть</h4>
+                
+
+<p xmlns=""><a name="apply-change-urf"><sup>i</sup><a href="#ftnti">↑</a></a><span class="footnote">См.&nbsp;"Порядок внесения изменений в UFR".</span></p><p xmlns=""><a name="saxon_tech_restr"><sup>ii</sup><a href="#ftntii">↑</a></a><span class="footnote">
+            Из-за лингвистических ограничений, связанных с падежами.</span></p><h2><a name="further-processing"></a>4. Дальнейшее развитие</h2>
+        <p xmlns="">Поскольку на момент принятия стандарта формат XHTML вполне достаточен, в применении 
+            колонтитулов и разрывов страниц нет необходимости. </p>
+        <p xmlns="">Однако не исключена возможность дальнейшей публикации стандартов в формате PDF, что 
+            может повлечь за собой введение дополнительных переменных в инструментарий, но 
+            не должно затронуть лёгкость подготовки стандартов.</p><h2><a name="ufrstruct"></a>5. Структура UFR и всякоэ</h2>
+
+            <h4 xmlns=""><a name="doc_parts"></a>5.1. Структура документа</h4>
+                
+                <p xmlns="">vfbdbfdb</p>
+            
+            <h4 xmlns=""><a name="headers"></a>5.2. Заголовки и общая информация</h4>            
+                <p xmlns="">К заголовкам и общей информации относятся [<a href="#pic1">рис. 1</a>]:</p>
+             
+            
+                    <h4 xmlns=""><a name="not-in-t"></a>5.3. Элементы текста, не требующие объявления абзаца</h4>
+                      <h5 xmlns=""><a name="ufr3"></a>5.3.1. Раздел "Терминология"</h5>
+                        В случае использования в документе 
+                <p xmlns="">BLOCK, ULIST, OLIST</p>
+            
+    <h4 xmlns=""><a name="toc_special_parts"></a>5.4. Особенности создания некоторых частей документа</h4>
+        <h5 xmlns=""><a name="toc_special"></a>5.4.1. Оглавление</h5>
+        <p xmlns="">Оглавление формируется автоматически, на основании <a href="#doc_parts">частей</a> документа, разделов, подразделов и т. д. Включение определенной части документа в оглавление производится в зависимости от наличия у элемента, указывающего на начало раздела (<code>&lt;section&gt;|&lt;section&gt;|…|&lt;section&gt;</code>), атрибута </p>
+        <h5 xmlns=""><a name="symbols"></a>5.4.2. Символы</h5>
+            <h6 xmlns=""><a name="sgml_entity"></a>5.4.2.1 Ссылки на символы</h6>
+                <p xmlns="">Спецификация XML&nbsp;1.0 <a href="http://www.w3.org/TR/REC-xml/#sec-predefined-ent" target="_blank">определяет</a> пять символов, которые можно вставить в текст документа 
+                    при помощи мнемоник:</p>
+                    <ul xmlns="">
+                        <li>открывающая (левая) угловая скобка <code>&lt;</code></li>
+                        <li>закрывающая (правая) угловая скобка <code>&gt;</code></li>
+                        <li>амперсанд <code>&amp;</code></li>
+                        <li>апостроф <code>'</code></li>
+                        <li>символ кавычки <code>"</code></li>
+                    </ul>
+                <p xmlns="">Поскольку удельный вес количества символов отличных от указанных выше и не поддерживаемых
+                напрямую очевидно мал, файл XSLT-преобразований не расширяет диапазон символов при помощи директивы <code>&lt;!ENTITY&gt;</code>.</p>
+                <p xmlns="">Вместо этого для вставки символов отличных от определенных спецификацией XML&nbsp;1.0 
+                    (например, знак параграфа <code>§</code>) <span class="rfc2119">необходимо</span> использовать 
+                    числовую форму ссылки из соотвестсвующей <a href="http://www.w3.org/TR/html4/sgml/entities.html" target="_blank">спецификации HTML</a>, например для получения знака параграфа следует писать <code>"&amp;#167;"</code> (без кавычек).</p>
+            
+             <h6 xmlns=""><a name="punctuation"></a>5.4.2.2 Тире, кавычки и прочие знаки пунктуации</h6>
+                <p xmlns="">Хотя возможности SGML и позволяют при помощи ссылок на символы из 
+                    набора символов документа добавить практически любые из 
+                    определенных в кодировке символов Unicode знаков пунктуации, с целью унификации 
+                <span class="rfc2119">рекомендуется</span> придерживаться таких соглашений:
+                <ul>
+                    <li>закрывающая и открывающая кавычки обозначаются символом 
+                        одиночной кавычки <code>"</code>;</li>
+                    <li>длинное тире обозначается с помощью двух идущих подряд 
+                        символов <code>-</code>: <code>--</code>  (англ. <code>em dash</code>);</li>
+                    <li>для вставки неразрывного пробела используется ссылка на символ 
+                        <code>&amp;#160;</code>;</li>
+                    <li>для вставки знака параграфа (§) используется <code>&amp;#167;</code>;</li>
+                </ul>
+                </p>
+             
+        
+    
+<h2><a name="make-ufr"></a>6. Создание UFR при помощи XSLT-преобразований</h2>
+    <h4 xmlns=""><a name="make-ufr-commons"></a>6.1. Общие положения</h4>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    
+     <h4 xmlns=""><a name="xslt-transform"></a>6.2. XSLT-преобразование</h4>
+    <p xmlns="">Ввиду использования некоторого функционала (e.&nbsp;g. <code>xsl:function</code>, <code>xsl:format-date</code>) преобразование XML-документа в XHTML соответствует спецификации не ниже <a href="http://www.w3.org/TR/xslt20/" target="_blank"><nobr><span class="nowrap">XSLT 2.0</span></nobr></a> и производится XSLT-процессором, который поддерживает данную спецификацию.</p>
+    <p xmlns="">Учитывая особенности вывода формата даты, в Лаборатории Ядерных Исследований 
+        используется XSLT-процессор <a href="http://saxon.sourceforge.net" target="_blank">Saxon PE</a> версии <a href="http://saxon.sourceforge.net#F9.4PE" target="_blank">9.4</a> с добавлением модифицированного класса <code>Numberer_ru</code>.</p>
+        <object class="svg" data="file.svg" type="image/svg+xml"></object>
+    <p xmlns="">Обязательным условием является соответствие следующим требованиям:</p>
+    <ol xmlns="">
+        <li>Основной шрифт документа - 12pt, междустрочный интервал - 10pt;</li>
+        <li>Ширина документа - 70ex (включая отступы);</li>
+        <li>Шрифты документа - моноширинные.</li>
+    </ol>
+    
+<h2><a name="changes"></a>7. Внесение изменений</h2><p xmlns="">В соответствии с §§42, 64 раздела 5, §94 раздела 8 Устава Звёздного Флота внесение изменений в данный стандарт производится только стандартами UFR, принятыми в установленном порядке.</p><h2><a name="refs"></a>8. Сссылки</h2><h5 xmlns="">UFR References</h5><table width="100%" 
+                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a xmlns="" name="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a xmlns="" name="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5 xmlns="">Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a xmlns="" name="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br xmlns="">В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a xmlns="" name="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br xmlns="">Звёздный Флот Федерации Земли<br /><<a xmlns="" href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a xmlns="" name="iso8601">Date and Time Formats</a><br xmlns="">Charles Wicksteed, W3 Consortium<br />Misha Wolf, W3 Consortium<br /><<a xmlns="" href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr></table><h2><a name="appendixes"></a>Приложения</h2>
+
+        <h3 xmlns=""><a name="appendix-copyright"></a>Приложение A. Объявление авторских прав</h3>
+            <span xmlns="" style="font-weight:700"><code>efsf-only="no"</code></span>
+            <p xmlns="">Copyright © 2013 Звёздный Флот Федерации Земли. Все права защищены.</p>
+            <span xmlns="" style="font-weight:700"><code>efsf-only="yes"</code></span>
+            <p xmlns="">Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p>
+        
+
+        <h3 xmlns=""><a name="lonng"></a>Приложение B. О длине телеграфных проводов</h3>
+            <p xmlns="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco</p> 
+            <p xmlns="">
+                 <a name="pic2">
+                    <pre class="artwork">=========== --- =============
+                    vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+                    vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+                    =============</pre>
+                <p class="center">Рисунок&nbsp;2. Окружность</p></a>
+            </p>
+            <p xmlns="">laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+
+        <h3 xmlns=""><a name="lonng"></a>Приложение C. О длине телеграфных проводов</h3>
+            <p xmlns="">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud </p>
+            <p xmlns="">            
+                <a name="pic3">
+<pre class="artwork">=--=-=-==--=-=-==-=-=-=</pre>
+                <p class="center">Рисунок&nbsp;3. Окружность</p></a>
+
+            </p>
+             <p xmlns="">exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+    <h2>Авторы</h2><p>Старший помощник капитана корабля<br />Капитан 1 ранга Морзе<br />К-117 "Созвездие"<br />Звёздный Флот Федерации Земли</p><p>заместитель начальника Особого отдела<br />Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"<br />Звёздный Флот Федерации Земли</p></div></body></html>
