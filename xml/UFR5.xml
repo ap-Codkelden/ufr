@@ -199,10 +199,10 @@
 <section  name="Элемент ufrdata" anchor="ufrdata"  toc="include" > 
 <t>Элемент идентифицирует UFR, определяя:</t>
 <ulist>
-    <item><xref target="ufrdata-name">название и номер UFR</xref></item> <!--           <ufrname number="1">ТЕГИ ЗАПИСИ БОРТОВОГО ЖУРНАЛА</ufrname> -->
-    <item><xref target="ufrdata-cat">категорию UFR</xref></item>            <!--   <ufrcategory cat="std" draft="no"/> -->
-    <item><xref target="ufrdata-date">дату UFR</xref></item> <!-- <ufrdate value="2013-02-03" /> -->
-    <item><xref target="ufrdata-change">информацию об внесенных изменениях</xref></item>   <!-- <ufrchanged><changed number="2" date="2013-02-03" edition=""/></ufrchanged> -->
+    <item><xref target="ufrdata-name">название и номер UFR</xref></item> 
+    <item><xref target="ufrdata-cat">категорию UFR</xref></item>
+    <item><xref target="ufrdata-date">дату UFR</xref></item> 
+    <item><xref target="ufrdata-change">информацию об внесенных изменениях</xref></item>  
     <item><xref target="ufrdata-obsolete">информацию о том, устарел ли данный UFR вследствие принятия других UFR</xref></item> 
 </ulist>
 <section name="Элемент ufrname" anchor="ufrdata-name">
@@ -361,8 +361,8 @@
   &lt;abstract.../&gt;              | [Аннотация]
   &lt;license.../&gt;               | Лицензия
   &lt;section...&gt;                | Вложенные разделы 
-    &lt;section...&gt;              | до 4 уровней
-      &lt;section...&gt;            | (1 - 1.1.1.1)
+    &lt;section...&gt;              | до 5 уровней
+      &lt;section...&gt;            | (1 - 1.1.1.1.1)
   &lt;insert.../&gt;                | Элемент вставки
   &lt;section...&gt;                | Раздел "Ссылки"
     &lt;references...&gt;           | Ссылки на UFR

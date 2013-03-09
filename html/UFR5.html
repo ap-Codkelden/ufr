@@ -202,7 +202,7 @@ h6,h5,h4,h3,h2,h1 {
         <h6 xmlns=""><a name="creator"></a>3.2.2.1 Элемент creator</h6>
             Этот элемент содержит информацию о составителе URF, и описываемую данными, определенными 
             в элементах <code xmlns="">organization</code>, <code xmlns="">unit</code> и <code xmlns="">author</code>. 
-            
+            <h6 xmlns=""><a name="organization"></a>3.2.2.1.1 Элемент organization</h6>
             <p xmlns="" class="element-syntax">&lt;organization&gt;<span style="font-style:oblique">организация</span>&lt;/organization&gt;</p>
             <p xmlns="">Элемент определяет организацию, к которой принадлежит составитель документа. 
                 Поскольку Лаборатория Ядерных Исследований является частью К-117 "Созвездие", то обычно 
@@ -210,13 +210,13 @@ h6,h5,h4,h3,h2,h1 {
                 элемент изменяем.</p>
             
 
-            
+            <h6 xmlns=""><a name="unit"></a>3.2.2.1.2 Элемент unit</h6>
             <p xmlns="" class="element-syntax">&lt;unit&gt;<span style="font-style:oblique">подразделение</span>&lt;/unit&gt;</p>
             <p xmlns="">Элемент определяет подразделение, к которому принадлежит составитель документа, 
             например <span style="font-style:oblique">К-117 "Созвездие"</span> или <span style="font-style:oblique">П-78 "Неустрашимый"</span>.</p>
             
 
-            
+            <h6 xmlns=""><a name="author"></a>3.2.2.1.3 Элемент author</h6>
             <p xmlns="" class="element-syntax">&lt;author&gt;<span style="font-style:oblique">имяАвтора</span>&lt;/author&gt;</p>
             <p xmlns="">Элемент определяет <span style="font-style:oblique">имяАвтора</span>, под которым тот выведен в
             проекте, например <span style="font-style:oblique">Киркунов</span> или <span style="font-style:oblique">Дюшенков</span>.</p>
@@ -231,19 +231,19 @@ h6,h5,h4,h3,h2,h1 {
             <p xmlns="">Элемент является контейнером для следующих элементов: <code>assignment</code>, <code>rank</code>, 
                 <code>name</code>, <code>unit</code> и <code>organization</code>.</p>
 
-                
+                <h6 xmlns=""><a name="assignment"></a>3.2.2.2.1 Элемент assignment</h6>
                     <p xmlns="" class="element-syntax">&lt;assignment&gt;<span style="font-style:oblique">должностьАвтора</span>&lt;/assignment&gt;</p>
             <p xmlns="">Элемент определяет <span style="font-style:oblique">должностьАвтора</span>, под которым тот выведен в
             проекте, например <span style="font-style:oblique">капитан корабля</span> или <span style="font-style:oblique">начальник спиртохранилища</span>.</p>
                 
-                
+                <h6 xmlns=""><a name="rank"></a>3.2.2.2.2 Элемент rank</h6>
                     <p xmlns="" class="element-syntax">&lt;rank&gt;<span style="font-style:oblique">званиеАвтора</span>&lt;/rank&gt;</p>
             <p xmlns="">Элемент определяет <span style="font-style:oblique">званиеАвтора</span>, под которым тот выведен в
             проекте, например <span style="font-style:oblique">капитан&nbsp;1 ранга&nbsp;ЗФ</span> или <span style="font-style:oblique">ст.&nbsp;сержант&nbsp;КД</span>.</p>
             <p xmlns="">Звания <span class="rfc2119">должны</span> соответствовать утвердженным Уставом ЗФ.</p>
                 
 
-                
+                <h6 xmlns=""><a name="author-name-element"></a>3.2.2.2.3 Элемент name</h6>
                     <p xmlns="" class="element-syntax">&lt;name&gt;<span style="font-style:oblique">имяАвтора</span>&lt;/name&gt;</p>
             <p xmlns="">Элемент определяет <span style="font-style:oblique">имяАвтора</span>, под которым тот выведен в
             проекте, например <span style="font-style:oblique">Морзе</span> или <span style="font-style:oblique">Р.&nbsp;Муррфи</span>.</p>
@@ -253,10 +253,10 @@ h6,h5,h4,h3,h2,h1 {
             <code>&lt;creator&gt;</code>.</p>
                 
 
-                
+                <h6 xmlns=""><a name="author-unit-element"></a>3.2.2.2.4 Элемент unit</h6>
             <p xmlns="">Полностью аналогичен элементу <code>&lt;unit&gt;</code>, описанному <a href="#unit">выше</a>.</p>
 
-
+<h6 xmlns=""><a name="author-organization-element"></a>3.2.2.2.5 Элемент organization</h6>
             <p xmlns="">Полностью аналогичен элементу <code>&lt;organization&gt;</code>, описанному <a href="#organization">выше</a>.</p>
         
 
@@ -265,12 +265,12 @@ h6,h5,h4,h3,h2,h1 {
 <p xmlns="">Элемент идентифицирует UFR, определяя:</p>
 <ul xmlns="">
     <li><a href="#ufrdata-name">название и номер UFR</a></li> 
-    <li><a href="#ufrdata-cat">категорию UFR</a></li>            
+    <li><a href="#ufrdata-cat">категорию UFR</a></li>
     <li><a href="#ufrdata-date">дату UFR</a></li> 
-    <li><a href="#ufrdata-change">информацию об внесенных изменениях</a></li>   
+    <li><a href="#ufrdata-change">информацию об внесенных изменениях</a></li>  
     <li><a href="#ufrdata-obsolete">информацию о том, устарел ли данный UFR вследствие принятия других UFR</a></li> 
 </ul>
-
+<h6 xmlns=""><a name="ufrdata-name"></a>3.2.2.3.1 Элемент ufrname</h6>
 <p xmlns="" class="element-syntax">&lt;ufrname 
             number=<span style="font-style:oblique">"номерUFR"</span>&gt;<span style="font-style:oblique">названиеUFR</span>&lt;/ufrname&gt;</p>
     <p xmlns="">Элемент определяет название <span style="font-style:oblique">названиеUFR</span> и номер UFR <span style="font-style:oblique">номерUFR</span>.</p>
@@ -278,7 +278,7 @@ h6,h5,h4,h3,h2,h1 {
     <p xmlns="">Номер UFR является целым положительным числом в десятичной записи, и определяется по порядку следования номеров UFR в Реестре UFR.</p>
 
 
-
+<h6 xmlns=""><a name="ufrdata-cat"></a>3.2.2.3.2 Элемент ufrcategory</h6>
 <p xmlns="" class="element-syntax">&lt;ufrcategory 
             cat=<span style="font-style:oblique">"категорияUFR"</span> 
             [draft=<span style="font-style:oblique">"yes"</span> | <span style="font-style:oblique">"no"</span>]/&gt;</p>
@@ -313,7 +313,7 @@ h6,h5,h4,h3,h2,h1 {
 <code>cat</code> значения <code>"std"</code>.</p>
 
 
-
+<h6 xmlns=""><a name="ufrdata-date"></a>3.2.2.3.3 Элемент ufrdate</h6>
 <p xmlns="" class="element-syntax">&lt;ufrdate value=<span style="font-style:oblique">"2013-02-03"</span>/&gt;</p>
 <p xmlns="">Определяет дату создания UFR.</p>
 <p xmlns="">Дата создания хранится в атрибуте <code>value</code>. Значение даты 
@@ -323,7 +323,7 @@ h6,h5,h4,h3,h2,h1 {
 
 
 
-
+<h6 xmlns=""><a name="ufrdata-change"></a>3.2.2.3.4 Элемент ufrchanged</h6>
 <p xmlns="" class="element-syntax">&lt;ufrchanged&gt;
     &lt;changed number="115" 
         date="2027-09-03" 
@@ -366,7 +366,7 @@ h6,h5,h4,h3,h2,h1 {
     </li>
 </ul>
 
-
+<h6 xmlns=""><a name="ufrdata-obsolete"></a>3.2.2.3.5 Элемент urfobsolete</h6>
 <p xmlns="" class="element-syntax">&lt;urfobsolete ufrno=<span style="font-style:oblique">"номерUFR"</span>/&gt;</p>
 <p xmlns="">Необязательный, однако <span class="rfc2119">рекомендуется</span> добавлять в 
 документ "пустой" элемент, объединяющий начальный и конечный теги: 

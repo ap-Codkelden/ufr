@@ -3,9 +3,9 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:sks="http://f.skobkin.ru/other/constellation/UFR" version="2.0">
-    <xsl:output method="html" encoding="utf-8" indent="no"/>
-
-
+<xsl:output method="html" 
+    encoding="utf-8" 
+    indent="no"/>
 <!-- ################################################################
 #  Файл XSLT-преобразования для документов UFR проекта 
 #  "Созвездие"
@@ -217,9 +217,7 @@
         </xsl:if>
 
         <xsl:call-template name="insertAbstract" /> 
-
         <xsl:call-template name="insertCopyright" />  
-
         <xsl:call-template name="insertLicense" />  
  
 <!-- 
@@ -299,11 +297,8 @@
     </html>	
     </xsl:template>
 
-
 <!--
-#
 # вставка ссылок в конце каждого раздела 
-#
 -->
 <xsl:template name="footnotes">
             <xsl:for-each select="self::node()//footnote">
@@ -322,7 +317,6 @@
 
 
 <!-- **************************** ШАБЛОНЫ ***************************** -->
-
 <!-- Шаблон абзаца (самая маленькая единица в документе) -->
     <xsl:template match="//t">  
         <p><xsl:apply-templates /></p>
@@ -471,7 +465,8 @@
                         |ufr/document/section/section
                         |ufr/document/section/section/section
                         |ufr/document/section/section/section/section
-                        |ufr/document/section/section/section/section/section" />
+                        |ufr/document/section/section/section/section/section
+                        |ufr/document/section/section/section/section/section/section" />
                     </xsl:otherwise>
                 </xsl:choose>
                 <span class="nowrap">&#160;</span>
@@ -501,7 +496,8 @@
         |ufr/document/section/section
         |ufr/document/section/section/section
         |ufr/document/section/section/section/section
-        |ufr/document/section/section/section/section/section" mode="toc">
+        |ufr/document/section/section/section/section/section
+        |ufr/document/section/section/section/section/section/section" mode="toc">
     <xsl:variable name="include-toc" select="@toc"/>
         <xsl:if test="$include-toc='include'">
         <xsl:variable name="anchor" select="@anchor" />
@@ -532,6 +528,7 @@
         <xsl:apply-templates/> 
     </xsl:template>
 
+    <!--  LEVEL 2  -->
     <xsl:template match="ufr/document/section/section" priority="1" > 
         <h4>
         <a name="{@anchor}"/><xsl:number level="multiple"
@@ -543,6 +540,7 @@
         <xsl:apply-templates/> 
     </xsl:template> 
 
+    <!--  LEVEL 3 -->
     <xsl:template match="ufr/document/section/section/section" priority="1" > 
         <h5>
         <a name="{@anchor}"/><xsl:number level="multiple"
@@ -555,7 +553,21 @@
         <xsl:apply-templates/> 
     </xsl:template> 
 
+    <!--  LEVEL 4  -->
     <xsl:template match="ufr/document/section/section/section/section" priority="1" > 
+        <h6>
+            <a name="{@anchor}"/><xsl:number level="multiple"
+                 count="ufr/document/insert
+                 |ufr/document/section
+                 |ufr/document/section/section
+                 |ufr/document/section/section/section
+                 |ufr/document/section/section/section/section" format="1.1.1.1 "/>
+        <xsl:value-of select="@name" /></h6>
+        <xsl:apply-templates/> 
+    </xsl:template> 
+
+    <!--  LEVEL 5  -->
+    <xsl:template match="ufr/document/section/section/section/section/section" priority="1" > 
         <h6>
             <a name="{@anchor}"/><xsl:number level="multiple"
                  count="ufr/document/insert
