@@ -519,9 +519,9 @@ h6,h5,h4,h3,h2,h1 {
         документа.</p>
         <p>Значение атрибута <code>anchor "имяЯкоря"</code> должно сообтветствовать  
         <a href="#http://www.w3.org/TR/html4/struct/links.html#adef-name-A">требованиям</a> спецификации 
-        HTML&nbsp;4.01 [<a href="#html401" title="HTML 4.01 Specification">5</a>].</p>
+        HTML&nbsp;4.01 [<a href="#html401" title="HTML 4.01 Specification">4</a>].</p>
         <p>Разделы документа могут быть вложенными друг в друга. Максимальное количество вложенных 
-            разделов&nbsp;— 5. </p><p>При этом каждый раздел последовательно нумеруетя </p>
+            разделов&nbsp;— 5. </p>
         <p class="element-syntax">&lt;section... &gt;
     &lt;section... &gt;
         <span style="font-style:oblique">Lorem ipsum dolor sit amet...</span>
@@ -530,12 +530,21 @@ h6,h5,h4,h3,h2,h1 {
         &lt;/section&gt;
     &lt;/section&gt;
 &lt;/section&gt;</p>
-<p>Уровень вложеннос</p>
+            <p>При этом каждый раздел последовательно нумеруетя арабскими цифрами, так что нумерация выглядит следующим образом:</p>
+            <p><p class="block">1<br>
+                1.1.<br>
+                1.1.1.<br>
+                1.1.1.1.<br>
+                1.1.1.1.1.<br></p></p>
     
 
 
     <h4><a id="sec-text-elements"></a>3.2.4. Элементы текста</h4>
-        <p>Указать про CDATA, FIGURE</p>
+        <p>Внутри разделов документа могут находиться различные элементы для форматирования 
+            текста, вставки рисунков (как <a href="http://ru.wikipedia.org/w/index.php?title=ASCII-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0&amp;oldid=52861304" target="_blank">ASCII</a>, так и 
+            <a href="" target="_blank">SVG</a>), 
+            таблиц, примеров кода и прочего.</p>
+        <p>Полный перечень элементов:</p>
     
 
                 <h3><a id="sec-back"></a>3.3. Заключительная часть</h3>
@@ -591,7 +600,7 @@ h6,h5,h4,h3,h2,h1 {
                 (без кавычек).<br><a id="link-entity">Кроме этого, если вводить ссылки сущностей 
                 символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
                 <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
-                определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#inner-entity" title="Сущности и способы их подключения">4</a>].</a><a id="ftntiii"><a href="#cm-charmap"><sup>iii</sup></a></a></li>
+                определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#inner-entity" title="Сущности и способы их подключения">5</a>].</a><a id="ftntiii"><a href="#cm-charmap"><sup>iii</sup></a></a></li>
                 </ul></p>
              
         
@@ -619,7 +628,7 @@ h6,h5,h4,h3,h2,h1 {
 <p>Однако не исключена возможность дальнейшей публикации стандартов в формате PDF, что 
     может повлечь за собой введение дополнительных переменных в инструментарий, но 
     не должно затронуть лёгкость подготовки стандартов.</p><h2><a id="changes"></a>7. Внесение изменений</h2><p>В соответствии с §§42, 64 раздела 5, §94 раздела 8 Устава Звёздного Флота внесение изменений в данный стандарт производится только стандартами UFR, принятыми в установленном порядке.</p><h2><a id="refs"></a>8. Сссылки</h2><h5>UFR References</h5><table width="100%" 
-                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a id="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a id="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5>Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a id="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br>В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a id="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br>Звёздный Флот Федерации Земли<br /><<a href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a id="iso8601">Date and Time Formats</a><br>Charles Wicksteed, W3 Consortium<br />Misha Wolf, W3 Consortium<br /><<a href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr><tr><td style="vertical-align:top;width:10%">[4]</td><td style="vertical-align:top"><a id="inner-entity">Сущности и способы их подключения</a><br>Александр Самиляк, Студия Артемия Лебедева<br /><<a href="http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/">www.artlebedev.ru</a>>, <br />26 июля 2011 г.</td><tr><tr><td style="vertical-align:top;width:10%">[5]</td><td style="vertical-align:top"><a id="html401">HTML 4.01 Specification</a><br>Dave Raggett, World Wide Web Consortium<br />Arnaud Le Hors, World Wide Web Consortium<br />Ian Jacobs, World Wide Web Consortium<br /><<a href="http://www.w3.org/TR/html401">www.w3.org</a>>, <br />24 декабря 1999 г.</td><tr></table><h2><a id="appendixes"></a>Приложения</h2>
+                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a id="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a id="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5>Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a id="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br>В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a id="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br>Звёздный Флот Федерации Земли<br /><<a href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a id="iso8601">Date and Time Formats</a><br>Charles Wicksteed, W3 Consortium<br />Misha Wolf, W3 Consortium<br /><<a href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr><tr><td style="vertical-align:top;width:10%">[4]</td><td style="vertical-align:top"><a id="html401">HTML 4.01 Specification</a><br>Dave Raggett, World Wide Web Consortium<br />Arnaud Le Hors, World Wide Web Consortium<br />Ian Jacobs, World Wide Web Consortium<br /><<a href="http://www.w3.org/TR/html401">www.w3.org</a>>, <br />24 декабря 1999 г.</td><tr><tr><td style="vertical-align:top;width:10%">[5]</td><td style="vertical-align:top"><a id="inner-entity">Сущности и способы их подключения</a><br>Александр Самиляк, Студия Артемия Лебедева<br /><<a href="http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/">www.artlebedev.ru</a>>, <br />26 июля 2011 г.</td><tr></table><h2><a id="appendixes"></a>Приложения</h2>
 
         <h3><a id="appendix-copyright"></a>Приложение A. Объявление авторских прав</h3>
             <span style="font-weight:700"><code>efsf-only="no"</code></span>

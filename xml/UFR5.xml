@@ -441,7 +441,7 @@
         <xref target="http://www.w3.org/TR/html4/struct/links.html#adef-name-A">требованиям</xref> спецификации 
         HTML&nbsp;4.01 <refref key="html401" short="yes"/>.</t>
         <t>Разделы документа могут быть вложенными друг в друга. Максимальное количество вложенных 
-            разделов&nbsp;&mdash; 5. </t><t>При этом каждый раздел последовательно нумеруетя </t>
+            разделов&nbsp;&mdash; 5. </t>
         <codesample>&lt;section... &gt;
     &lt;section... &gt;
         <it>Lorem ipsum dolor sit amet...</it>
@@ -450,12 +450,52 @@
         &lt;/section&gt;
     &lt;/section&gt;
 &lt;/section&gt;</codesample>
-<t>Уровень вложеннос</t>
+            <t>При этом каждый раздел последовательно нумеруетя арабскими цифрами, так что нумерация выглядит следующим образом:</t>
+            <t><block>1<vspace/>
+                1.1.<vspace/>
+                1.1.1.<vspace/>
+                1.1.1.1.<vspace/>
+                1.1.1.1.1.<vspace/></block></t>
     </section>
 </section>
 
     <section  name="Элементы текста" anchor="sec-text-elements"  toc="include" >
-        <t>Указать про CDATA, FIGURE</t>
+        <t>Внутри разделов документа могут находиться различные элементы для форматирования 
+            текста, вставки рисунков (как <eref target="http://ru.wikipedia.org/w/index.php?title=ASCII-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0&amp;oldid=52861304">ASCII</eref>, так и 
+            <eref terget="http://ru.wikipedia.org/w/index.php?title=SVG&amp;oldid=52648309">SVG</eref>), 
+            таблиц, примеров кода и прочего.</t>
+        <t>Полный перечень элементов:</t>
+<!-- footnotes
+//t
+//figure
+//eref[not(node())]
+//eref[node()]
+//anchor
+//link
+//tabref
+//fref
+//uref
+//ftref
+//refref
+//xref[not(node())]
+//xref[node()]
+footnote
+olist-item
+ulist-item
+document/section[1]//ufr3|document/section[2]//ufr3
+//codesample
+//code
+//nobr
+//it
+//bf
+//definition
+//abbr
+//keyword
+//block
+//table
+//svg
+//t//vspace[not(@blankLines)]|item//vspace[not(@blankLines)]
+//t//vspace[@blankLines]|item//vspace[@blankLines] -->
     </section>
 </section>
                 <section  name="Заключительная часть" anchor="sec-back"  toc="include" >
@@ -588,15 +628,6 @@
                     <url>http://www.w3.org/TR/NOTE-datetime</url>
                 </ref>
 
-                <ref key="inner-entity">
-                    <title>Сущности и способы их подключения</title>   
-                    <author surname="Самиляк" initials="А." fullname="Александр Самиляк">
-                        <organization>Студия Артемия Лебедева</organization>
-                    </author>
-                    <publisher name="Студия Артемия Лебедева" year="2011" month="07" day="26"/>
-                    <url>http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/</url>
-                </ref>
-
                 <ref key="html401">
                     <title>HTML 4.01 Specification</title>   
                     <author surname="Raggett" initials="D." fullname="Dave Raggett">
@@ -612,6 +643,14 @@
                     <url>http://www.w3.org/TR/html401</url>
                 </ref>
 
+                <ref key="inner-entity">
+                    <title>Сущности и способы их подключения</title>   
+                    <author surname="Самиляк" initials="А." fullname="Александр Самиляк">
+                        <organization>Студия Артемия Лебедева</organization>
+                    </author>
+                    <publisher name="Студия Артемия Лебедева" year="2011" month="07" day="26"/>
+                    <url>http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/</url>
+                </ref>
             </reference>
         </references>
 
