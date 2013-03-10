@@ -37,7 +37,10 @@
 <xsl:output method="html" 
     encoding="utf-8" 
     indent="no" />
-    <!-- use-character-maps="dash" --> 
+    <!--
+    # Добавить в xsl:output
+    # use-character-maps="dash" 
+    --> 
 
 <!-- Обработка пробелов в элементах кода -->
 <xsl:strip-space elements="code"/> 
@@ -318,6 +321,7 @@
         <p>
             <a id="{@name}">
             <sup><xsl:number  level="any" count="footnote" format="i"/></sup>
+            <!-- &#8593; - стрелка вверх -->
             <a href="#{concat('ftnt',$ftnumb)}">&#8593;</a>
         </a>
             <span class="footnote"><xsl:apply-templates /></span></p>
@@ -606,10 +610,6 @@
     </xsl:template> 
 
     <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
-
-    <!-- <xsl:template match="//appendixes"> 
-            <xsl:apply-templates/> 
-    </xsl:template> -->
 
     <xsl:template match="appendixes/appendix"> 
         <h3><a id="{@anchor}"/><xsl:text>Приложение </xsl:text>
@@ -967,7 +967,6 @@
   <xsl:choose>
     <xsl:when test="$no &lt;= 0">
       <br/>
-      <!-- done -->
     </xsl:when>
     <xsl:otherwise>
       <br/>
@@ -983,5 +982,4 @@
     <xsl:with-param name="no" select="@blankLines"/>
   </xsl:call-template>
 </xsl:template>
-
 </xsl:stylesheet>
