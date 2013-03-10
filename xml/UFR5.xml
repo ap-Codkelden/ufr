@@ -460,15 +460,45 @@
 </section>
 
     <section  name="Элементы текста" anchor="sec-text-elements"  toc="include" >
-        <t>Внутри разделов документа могут находиться различные элементы для форматирования 
-            текста, вставки рисунков (как <eref target="http://ru.wikipedia.org/w/index.php?title=ASCII-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0&amp;oldid=52861304">ASCII</eref>, так и 
+        <t>Внутри разделов документа могут находиться различные комбинации абзацев, списков, элементов
+         для форматирования текста, вставки рисунков (как <eref target="http://ru.wikipedia.org/w/index.php?title=ASCII-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0&amp;oldid=52861304">ASCII</eref>, так и 
             <eref terget="http://ru.wikipedia.org/w/index.php?title=SVG&amp;oldid=52648309">SVG</eref>), 
             таблиц, примеров кода и прочего.</t>
         <t>Полный перечень элементов:</t>
-<!-- footnotes
+        <section  name="Абзац и его форматирование" anchor="sec-par-format"  toc="include">
+        <section name="Элемент t" anchor="element-t">
+            <t>Элемент <code>t</code> является аналогом <eref target="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1">элемента <code>&lt;p&gt;</code></eref> HTML и создаёт абзац.</t>
+        </section>
+
+        <section name="Элемент code" anchor="element-code">
+            <t>Элемент <code>code</code> используется для вставки в текст названий элементов, атрибутов, 
+            переменных, вводимого текста, команд, а также имен файлов, путей и комбинаций клавиш.</t>
+            <t>К содержимому элемента <code>code</code> не применяются преобразования, оно просто 
+            заключается в тег HTML <eref target="http://www.w3.org/TR/html401/struct/text.html#edef-CODE">code</eref>.</t>
+        </section>
+
+        <section name="Элемент codesample" anchor="element-codesample">
+            <t>Элемент t является аналогом <eref target="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1">элемента <code>&lt;p&gt;</code></eref> HTML и создаёт абзац.</t>
+        </section>
+
+        <section name="" anchor="">
+            <t></t>
+        </section>
 //t
+//codesample
+//code
+//nobr
+//it
+//bf
+        </section>
+        <section  name="Списки" anchor="sec-lists"  toc="include">
+olist-item
+ulist-item
+        </section>
+<!-- footnotes
+
 //figure
-//eref[not(node())]
+//eref[not(node())] &amp в ссылках
 //eref[node()]
 //anchor
 //link
@@ -480,14 +510,9 @@
 //xref[not(node())]
 //xref[node()]
 footnote
-olist-item
-ulist-item
+
 document/section[1]//ufr3|document/section[2]//ufr3
-//codesample
-//code
-//nobr
-//it
-//bf
+
 //definition
 //abbr
 //keyword
