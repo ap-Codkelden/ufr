@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:sks="http://f.skobkin.ru/other/constellation/UFR" version="2.0">
-  <!-- <xsl:character-map name="dash">
-      <xsl:output-character character="&#x2014;" string="&amp;nbsp;&amp;mdash;"/>
-   </xsl:character-map> -->
-<xsl:output method="html" 
-    encoding="utf-8" 
-    indent="no" />
-    <!-- use-character-maps="dash" --> 
 
 <!-- ################################################################
 #  Файл XSLT-преобразования для документов UFR проекта 
@@ -38,9 +27,20 @@
 #  THE SOFTWARE.
  ################################################################ -->
 
+<xsl:stylesheet version="2.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sks="http://f.skobkin.ru/other/constellation/UFR">
+<!-- <xsl:character-map name="dash">
+    <xsl:output-character character="&#x2014;" string="&amp;nbsp;&amp;mdash;"/>
+</xsl:character-map> -->
+<xsl:output method="html" 
+    encoding="utf-8" 
+    indent="no" />
+    <!-- use-character-maps="dash" --> 
+
 <!-- Обработка пробелов в элементах кода -->
 <xsl:strip-space elements="code"/> 
-<xsl:preserve-space elements="codeline"/>
 
 <xsl:variable name="ufr-sfonly-copyright">
     <xsl:value-of select="/ufr/document/copyright/@efsf-only" />
@@ -101,8 +101,10 @@
 <!-- ################################################## -->
 
 <xsl:template match="/">
-    <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text>
-    <html xmlns="http://www.w3.org/1999/xhtml"> 
+<!--    <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</xsl:text> -->
+    <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html&gt;</xsl:text> 
+    <!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
+    <html> 
     <head>
     <meta charset="utf-8" />
     <xsl:call-template name="insertCSS" />
@@ -241,7 +243,7 @@
 #
  -->
         <xsl:for-each select="ufr/document/section|ufr/document/insert">
-            <h2><a name="{@anchor}"/>
+            <h2><a id="{@anchor}"/>
             <xsl:number level="any" count="ufr/document/section|ufr/document/insert" 
                 format="1. "/>
                 <xsl:value-of select="@name" />
@@ -261,7 +263,7 @@
         </xsl:for-each>
 
     <xsl:for-each select="ufr/document/references">
-            <h2><a name="{@anchor}"/>
+            <h2><a id="{@anchor}"/>
             <xsl:number level="multiple" count="section|insert|references" format="1. "/>
                 <xsl:value-of select="@name" />
             </h2> 
@@ -272,7 +274,7 @@
 #   Приложения
 -->
         <xsl:for-each select="ufr/document/appendixes">
-                <h2><a name="{@anchor}"/>
+                <h2><a id="{@anchor}"/>
                     <xsl:value-of select="@name" /></h2> 
                 <xsl:apply-templates />   
         </xsl:for-each>
@@ -314,7 +316,7 @@
             <xsl:number  level="any" count="footnote" format="i"/>
         </xsl:variable> 
         <p>
-            <a name="{@name}">
+            <a id="{@name}">
             <sup><xsl:number  level="any" count="footnote" format="i"/></sup>
             <a href="#{concat('ftnt',$ftnumb)}">&#8593;</a>
         </a>
@@ -335,7 +337,7 @@
         <xsl:variable name="fig_num">
             <xsl:number level="any" count="figure" format="1"/>
         </xsl:variable>
-        <a name="{concat('pic',$fig_num)}"><xsl:apply-templates />
+        <a id="{concat('pic',$fig_num)}"><xsl:apply-templates />
         <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
         <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@description" />
         </p></a>
@@ -382,9 +384,10 @@
 <!-- 
     Якорь для сслыки типа <link anchor="someAnchor"> 
 -->
+<!-- заменено name -> id -->
 <xsl:template match="//anchor">
     <xsl:variable name="target" select="@target" />
-        <a name="{concat('link-',$target)}">
+        <a id="{concat('link-',$target)}">
             <xsl:apply-templates />
         </a>
 </xsl:template> 
@@ -542,56 +545,56 @@
 <!-- ############################################################# -->
 
     <xsl:template match="ufr/document/section|ufr/document/insert">
-        <h3>
-            <a name="{@anchor}"/><xsl:number level="multiple"
+        <h2>
+            <a id="{@anchor}"/><xsl:number level="multiple"
                  count="ufr/document/insert|ufr/document/section"
                  format="1. "/>
-        <xsl:value-of select="@name" /></h3>
+        <xsl:value-of select="@name" /></h2>
         <xsl:apply-templates/> 
     </xsl:template>
 
     <!--  LEVEL 2  -->
     <xsl:template match="ufr/document/section/section" priority="1" > 
-        <h4>
-        <a name="{@anchor}"/><xsl:number level="multiple"
+        <h3>
+        <a id="{@anchor}"/><xsl:number level="multiple"
                  count="insert
                  |ufr/document/section
                  |ufr/document/section/section"
                  format="1.1. "/>
-        <xsl:value-of select="@name" /></h4>
+        <xsl:value-of select="@name" /></h3>
         <xsl:apply-templates/> 
     </xsl:template> 
 
     <!--  LEVEL 3 -->
     <xsl:template match="ufr/document/section/section/section" priority="1" > 
-        <h5>
-        <a name="{@anchor}"/><xsl:number level="multiple"
+        <h4>
+        <a id="{@anchor}"/><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
                  |ufr/document/section/section/section"
                  format="1.1.1. "/>
-        <xsl:value-of select="@name" /></h5>
+        <xsl:value-of select="@name" /></h4>
         <xsl:apply-templates/> 
     </xsl:template> 
 
     <!--  LEVEL 4  -->
     <xsl:template match="ufr/document/section/section/section/section" priority="1" > 
-        <h6>
-            <a name="{@anchor}"/><xsl:number level="multiple"
+        <h5>
+            <a id="{@anchor}"/><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
                  |ufr/document/section/section/section
                  |ufr/document/section/section/section/section" format="1.1.1.1. "/>
-        <xsl:value-of select="@name" /></h6>
+        <xsl:value-of select="@name" /></h5>
         <xsl:apply-templates/> 
     </xsl:template> 
 
     <!--  LEVEL 5  -->
     <xsl:template match="ufr/document/section/section/section/section/section" priority="1" > 
         <h6>
-            <a name="{@anchor}"/><xsl:number level="multiple"
+            <a id="{@anchor}"/><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
@@ -609,7 +612,7 @@
     </xsl:template> -->
 
     <xsl:template match="appendixes/appendix"> 
-        <h3><a name="{@anchor}"/><xsl:text>Приложение </xsl:text>
+        <h3><a id="{@anchor}"/><xsl:text>Приложение </xsl:text>
         <xsl:number level="any"
                  count="appendix"
                  format="A. "/><xsl:value-of select="@name" /></h3>
@@ -624,7 +627,7 @@
         <xsl:variable name="ftnumb">
             <xsl:number  level="any" count="footnote" format="i"/>
         </xsl:variable> 
-        <a name="{concat('ftnt',$ftnumb)}"><a href="#{@name}"><sup><xsl:number  level="any" count="footnote" lang="ru" format="i"/></sup></a></a>
+        <a id="{concat('ftnt',$ftnumb)}"><a href="#{@name}"><sup><xsl:number  level="any" count="footnote" lang="ru" format="i"/></sup></a></a>
     </xsl:template> 
 
      <!-- ################# LISTS ############################# -->
@@ -763,7 +766,7 @@
                     <xsl:for-each select="$authors_info/author">
                         <xsl:text  disable-output-escaping='yes'>&lt;td style="vertical-align:top;width:15%"&gt;</xsl:text>
                             <xsl:if test="position() = 1">
-                                <a name="{concat('ufr',$ufrno)}">
+                                <a id="{concat('ufr',$ufrno)}">
                                 <xsl:text disable-output-escaping='yes'>[&lt;a href="</xsl:text>
                                     <xsl:value-of select="concat('ufr',$ufrno,'.html')" /><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>
                                     <xsl:value-of select="concat(upper-case('ufr'),$ufrno)"/><xsl:text  disable-output-escaping='yes'>&lt;/a&gt;]</xsl:text></a>
@@ -792,7 +795,7 @@
                         <xsl:text>[</xsl:text><xsl:number level="single" count="ref"/><xsl:text>]</xsl:text>
                 <xsl:text  disable-output-escaping='yes'>&lt;/td&gt;</xsl:text>
                 <xsl:text  disable-output-escaping='yes'>&lt;td style="vertical-align:top"&gt;</xsl:text>
-                        <a name="{@key}">
+                        <a id="{@key}">
                         <xsl:value-of select="title"/></a>
                     <br />
                     <xsl:for-each select="author">
@@ -926,7 +929,7 @@
         </xsl:variable>
         <xsl:if test="@anchor">
             <xsl:variable name='anchor' select='@anchor'/>
-            <xsl:text disable-output-escaping='yes'>&lt;a name="</xsl:text><xsl:value-of select="concat('table-',$anchor)" /><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>
+            <xsl:text disable-output-escaping='yes'>&lt;a id="</xsl:text><xsl:value-of select="concat('table-',$anchor)" /><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>
         </xsl:if>
         <div class="table">
             <p style="text-align:right;">Таблица&#160;<xsl:value-of select="$tab_num"/></p>
