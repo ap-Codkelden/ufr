@@ -104,6 +104,8 @@ h1 {
 h6,h5,h4,h3,h2,h1 {
 	font-weight:700;
 	margin-left:-36pt;
+	margin-bottom: 1.33em;
+	margin-top: 1.33em;
 }
 
 .rfc2119 { text-transform: lowercase;
