@@ -403,8 +403,7 @@
         <t>Раздел "Авторские права" формируется XSLT-процессором, его содержание определяется 
         элементом <code>&lt;copyright/&gt;</code>:</t>
         <codesample>&lt;copyright name=<it>&quot;Авторские права&quot;</it> efsf-only=<it>"yes"</it> | <it>"no"</it>/&gt;</codesample>
-        <t>Данному разделу <keyword>необходимо</keyword> присвоить название "Авторские права" (путём присвоения значения 
-        атрибуту <code>name</code>), его <keyword>следует</keyword> изменять лишь в случае публикации UFR на другом языке.</t>
+        <t>Данному разделу <keyword>необходимо</keyword> присвоить название "Авторские права" (путём присвоения значения атрибуту <code>name</code>), его <keyword>следует</keyword> изменять лишь в случае публикации UFR на другом языке.</t>
         <t>Атрибут <code>efsf-only</code> может принимать значения <it>"yes"</it> или <it>"no"</it>. В случае, если значение атрибута  
         <it>"yes"</it>, при объявлении авторских прав будет указано, что авторские права принадлежат Звёздному Флоту, а в случае если 
         значение атрибута <it>"no"</it> дополнительно будет указано, что авторские права принадлежат также лицам, указанным как авторы документа (см.&#160;<xref target="appendix-copyright"/>).</t>
@@ -413,7 +412,45 @@
     <section  name="Лицензия" anchor="sec-license"  toc="include" >
         <t>Раздел "Лицензия" формируется XSLT-процессором на основании элемента <code>&lt;license/&gt;</code>:</t>
         <codesample>&lt;license type=<it>"типЛицензии"</it> name=<it>"названиеРаздела"</it> /&gt;</codesample>
-        <t>Атрибут <code>type</code> может принимать следующие значения:</t>
+
+        <t>Данному разделу <keyword>необходимо</keyword> присвоить название "Лицензия" (путём присвоения значения атрибуту <code>name</code>), его <keyword>следует</keyword> изменять лишь в случае публикации UFR на другом языке.</t>
+
+        <t>Значение атрибута <code>type</code> <it>"типЛицензии"</it> может принимать следующие значения:</t>
+        <olist>
+            <item><code>mit-license</code>&nbsp;&mdash; <eref target="http://opensource.org/licenses/MIT">MIT License</eref> (лицензия MIT)&nbsp;&mdash; лицензия свободного программного обеспечения разработанная Массачусетским технологическим институтом. Используется в том случае, если документ является программным кодом или иным ПО.</item>
+            <item><code>cc-license</code>&nbsp;&mdash; лицензия CC Attribution&nbsp;&mdash; Noncommercial&nbsp;&mdash; No Derivative Works (<eref target="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</eref>&nbsp;&mdash; &quot;С указанием авторства&nbsp;&mdash; Некоммерческая&nbsp;&mdash; Без производных&quot;)&nbsp;&mdash; используется в том случае, если документ не представляет собой программный код или иное ПО.</item>
+            <item><code>other-license</code>&nbsp;&mdash; используется в том случае, если по каким-то причинам документ не может быть опубликован под лицензями MIT License и CC-BY-NC-ND-3.0.<vspace/>
+            В этом случае <keyword>необходимо</keyword> изложить текст лицензии в отдельном разделе, атрибуту 
+            <code>anchor</code> элемента <code>section</code> которого <keyword>необходимо</keyword> присвоить 
+            значение <code>&quot;full-copyright-statement&quot;</code>, для того, чтобы XSLT-процессор мог создать соответствующие ссылки.</item>
+        </olist>
+    </section>
+
+    <section  name="Разделы документа" anchor="sec-section"  toc="include" >
+        <t>Разделы документа являются основным способом логического разделения документа на части.</t>
+        <t>Для того, чтобы начать новый раздел, нужно использовать элемент <code>section</code>:</t>
+        <codesample>&lt;section name=<it>"названиеРаздела"</it> 
+    anchor=<it>"имяЯкоря"</it> 
+    [toc=<it>"включитьВОглавление"</it>]&gt;
+    <it>Lorem ipsum dolor sit amet...</it>
+&lt;/section&gt;</codesample>
+        <t>Атрибуты элемента <code>section</code> <code>name</code> и <code>anchor</code> являются обязательными 
+        и определяют соответственно название раздела и якорь, используемый для ссылок на этот раздел внутри 
+        документа.</t>
+        <t>Значение атрибута <code>anchor <it>"имяЯкоря"</it></code> должно сообтветствовать  
+        <xref target="http://www.w3.org/TR/html4/struct/links.html#adef-name-A">требованиям</xref> спецификации 
+        HTML&nbsp;4.01 <refref key="html401" short="yes"/>.</t>
+        <t>Разделы документа могут быть вложенными друг в друга. Максимальное количество вложенных 
+            разделов&nbsp;&mdash; 5. </t><t>При этом каждый раздел последовательно нумеруетя </t>
+        <codesample>&lt;section... &gt;
+    &lt;section... &gt;
+        <it>Lorem ipsum dolor sit amet...</it>
+        &lt;section... &gt;
+            <it>Lorem ipsum dolor sit amet...</it>
+        &lt;/section&gt;
+    &lt;/section&gt;
+&lt;/section&gt;</codesample>
+<t>Уровень вложеннос</t>
     </section>
 </section>
 
@@ -477,7 +514,7 @@
                 (без кавычек).<vspace/><anchor target="entity">Кроме этого, если вводить ссылки сущностей 
                 символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
                 <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
-                определить в начале XML-документа внутреннее подключение сущностей, как описано в <refref key="inner-entity" short="yes"/>.</anchor><footnote>В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но 
+                определить в начале XML-документа внутреннее подключение сущностей, как описано в <refref key="inner-entity" short="yes"/>.</anchor><footnote name="cm-charmap">В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но 
                 по умолчанию он закоментирован, так как делает невозможным использование символа длинного тире без пробела перед ним.<vspace/>Для его использования необходимо 1) раскомментировать упомянутую инструкцию и 2) удалить определение <code>&lt;!ENTITY mdash  "&amp;#8212;"&gt;</code>, если оно 
                 <link target="entity">было определено</link>.</footnote></item>
                 </ulist></t>
@@ -558,6 +595,21 @@
                     </author>
                     <publisher name="Студия Артемия Лебедева" year="2011" month="07" day="26"/>
                     <url>http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/</url>
+                </ref>
+
+                <ref key="html401">
+                    <title>HTML 4.01 Specification</title>   
+                    <author surname="Raggett" initials="D." fullname="Dave Raggett">
+                        <organization>World Wide Web Consortium</organization>
+                    </author>
+                    <author surname="Le Hors" initials="A." fullname="Arnaud Le Hors">
+                        <organization>World Wide Web Consortium</organization>
+                    </author>
+                    <author surname="Jacobs" initials="I." fullname="Ian Jacobs">
+                        <organization>World Wide Web Consortium</organization>
+                    </author>
+                    <publisher name="World Wide Web Consortium" year="1999" month="12" day="24"/>
+                    <url>http://www.w3.org/TR/html401</url>
                 </ref>
 
             </reference>
