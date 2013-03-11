@@ -1,19 +1,79 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* UFR CSS 
+License: MIT License */
+
 body {
     width:80ex;
     font-family:"Consolas","Courier New",monospace;
-    font: 12pt/10pt;
+    font: 12pt;
+    line-height: 1.33
 }
 
 .footnote{
-	font-size: 0.8em
+	font-size: 0.8em;
 }
 
 pre {
 	font-family:monospace
 }
 
-p {
+p, p.block {
 	text-align: justify;
+	margin-bottom: 0.5em;
+	margin-bottom: 0.5em
+}
+
+p, ul, ol {
+	line-height: 1.25em;
+	display: block;
 }
 
 p.element-syntax {
@@ -21,7 +81,9 @@ p.element-syntax {
 	border:solid thin black;
 	white-space:pre;
 	font-family:monospace;
-	font-size: 10pt
+	font-size: 10pt;
+	margin-top: 1em;
+	margin-bottom: 1em;
 	}
 
 p.block {
@@ -38,7 +100,8 @@ div.table {
 	white-space:pre;
 	font-family:monospace;
 	color:#333333;
-	font-size: 10pt
+	font-size: 10pt;
+	    line-height:1;
 	}
 
 span.nowrap {
@@ -64,6 +127,12 @@ h1.caption {
 	text-align:center
 }
 
+ul, ol {
+	margin-bottom: 1em;
+	margin-top: 1em;
+	padding-left: 2.5em;
+}
+
 ul {
 	list-style-type: circle;
 	text-align: justify;
@@ -71,6 +140,7 @@ ul {
 
 ol {
 	text-align: justify;
+	list-style-type: decimal;
 }
 
 .toc_inner {
@@ -103,7 +173,7 @@ h1 {
 
 h6,h5,h4,h3,h2,h1 {
 	font-weight:700;
-	margin-left:-36pt;
+	margin-left:-30pt;
 	margin-bottom: 1.33em;
 	margin-top: 1.33em;
 }
