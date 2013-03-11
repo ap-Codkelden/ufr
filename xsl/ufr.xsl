@@ -632,19 +632,19 @@
 
      <!-- ################# LISTS ############################# -->
 
-    <xsl:template match="olist">
+    <xsl:template match="//olist">
         <ol>
             <xsl:apply-templates /> 
         </ol>
     </xsl:template>
 
-    <xsl:template match="ulist">
+    <xsl:template match="//ulist">
         <ul>
             <xsl:apply-templates /> 
         </ul>
     </xsl:template>
 
-    <xsl:template match="item">
+    <xsl:template match="//item">
         <li>
             <xsl:apply-templates/> 
         </li>
@@ -840,22 +840,19 @@
     #
      -->
     <xsl:template name="author">
-        <xsl:variable name="firstname" select="substring(@firstname,1,1)"/>
+        <xsl:variable name="firstname" select="@firstname"/>
         <xsl:variable name="lastname" select="@lastname"/>
-<xsl:choose>
-    <xsl:when test="@middlename=''">
-        <xsl:variable name="middlename" select="''"/>
-    </xsl:when>
-    <xsl:otherwise>
-        <xsl:variable name="middlename" select="substring(@middlename,1,1)"/>
-    </xsl:otherwise>
-</xsl:choose>
-        <xsl:value-of select="concat($firstname,'. ',$middlename,'. ',$lastname,', ')"/>
-
-        <!-- <xsl:if test="@fullname">
-            <xsl:value-of select="@fullname" />
-            <xsl:text>, </xsl:text>
-        </xsl:if> -->
+        <xsl:variable name="middlename" select="@middlename"/>
+        <xsl:if test="@firstname != '' or @lastname != ''">
+            <xsl:choose>
+                <xsl:when test="@middlename=''">
+                    <xsl:value-of select="concat(substring($firstname,1,1),'. ',$lastname,', ')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="concat(substring($firstname,1,1),'. ',substring($middlename,1,1),'. ',$lastname,', ')"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
         <xsl:value-of select="organization" />
         <xsl:if test="not(position() = last())">
             <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
