@@ -1,19 +1,79 @@
-<!DOCTYPE html><html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sks="http://f.skobkin.ru/other/constellation/UFR"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta charset="utf-8"><style type="text/css">body {
+<!DOCTYPE html><html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sks="http://f.skobkin.ru/other/constellation/UFR"><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta charset="utf-8"><style type="text/css">/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* UFR CSS 
+License: MIT License */
+
+body {
     width:80ex;
     font-family:"Consolas","Courier New",monospace;
-    font: 12pt/10pt;
+    font: 12pt;
+    line-height: 1.33
 }
 
 .footnote{
-	font-size: 0.8em
+	font-size: 0.8em;
 }
 
 pre {
 	font-family:monospace
 }
 
-p {
+p, p.block {
 	text-align: justify;
+	margin-bottom: 0.5em;
+	margin-bottom: 0.5em
+}
+
+p, ul, ol {
+	line-height: 1.25em;
+	display: block;
 }
 
 p.element-syntax {
@@ -21,7 +81,9 @@ p.element-syntax {
 	border:solid thin black;
 	white-space:pre;
 	font-family:monospace;
-	font-size: 10pt
+	font-size: 10pt;
+	margin-top: 1em;
+	margin-bottom: 1em;
 	}
 
 p.block {
@@ -38,7 +100,8 @@ div.table {
 	white-space:pre;
 	font-family:monospace;
 	color:#333333;
-	font-size: 10pt
+	font-size: 10pt;
+	    line-height:1;
 	}
 
 span.nowrap {
@@ -64,6 +127,12 @@ h1.caption {
 	text-align:center
 }
 
+ul, ol {
+	margin-bottom: 1em;
+	margin-top: 1em;
+	padding-left: 2.5em;
+}
+
 ul {
 	list-style-type: circle;
 	text-align: justify;
@@ -71,6 +140,7 @@ ul {
 
 ol {
 	text-align: justify;
+	list-style-type: decimal;
 }
 
 .toc_inner {
@@ -103,7 +173,9 @@ h1 {
 
 h6,h5,h4,h3,h2,h1 {
 	font-weight:700;
-	margin-left:-36pt;
+	margin-left:-30pt;
+	margin-bottom: 1.33em;
+	margin-top: 1.33em;
 }
 
 .rfc2119 { text-transform: lowercase;
@@ -118,7 +190,7 @@ h6,h5,h4,h3,h2,h1 {
                 правила и нормативы, обязательные к использованию при участии в 
                 проекте "Созвездие", которые могут быть дополнены, улучшены 
                 или изменены. Допускается неограниченное распространение 
-                данного стандарта.</p><h2>Авторские права</h2><p>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p><h2>Лицензия</h2><p>В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div class="toc_inner"><a href="#intro">1.</a> Введение<br></div><div class="toc_inner"><a href="#therms-and-desc">2.</a> Терминология и обозначения<br><div class="toc_inner"><a href="#therms">2.1.</a> Терминология<br></div><div class="toc_inner"><a href="#definitions">2.2.</a> Обозначения<br><div class="toc_inner"><a href="#code-sample">2.2.1.</a> Пример кода<br></div></div></div><div class="toc_inner"><a href="#common-req">3.</a> Общие требования к документу, его структура и состав<br><div class="toc_inner"><a href="#common">3.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#sec-structure">3.2.</a> Структура документа<br><div class="toc_inner"><a href="#runtime-sections">3.2.1.</a> Разделы, которые формируются XSLT-процессором на основании пользовательских данных<br></div><div class="toc_inner"><a href="#sec-front">3.2.2.</a> Заголовочная часть<br><div class="toc_inner"><a href="#creator">3.2.2.1.</a> Элемент creator<br></div><div class="toc_inner"><a href="#authors-element">3.2.2.2.</a> Элемент authors<br></div><div class="toc_inner"><a href="#ufrdata">3.2.2.3.</a> Элемент ufrdata<br></div></div><div class="toc_inner"><a href="#sec-document">3.2.3.</a> Документ<br><div class="toc_inner"><a href="#sec-abstract">3.2.3.1.</a> Аннотация<br></div><div class="toc_inner"><a href="#section-copyright">3.2.3.2.</a> Авторские права<br></div><div class="toc_inner"><a href="#sec-license">3.2.3.3.</a> Лицензия<br></div><div class="toc_inner"><a href="#sec-section">3.2.3.4.</a> Разделы документа<br></div></div><div class="toc_inner"><a href="#sec-text-elements">3.2.4.</a> Элементы текста<br><div class="toc_inner"><a href="#sec-par-format">3.2.4.1.</a> Абзац и его форматирование<br></div><div class="toc_inner"><a href="#sec-lists">3.2.4.2.</a> Списки<br></div></div></div><div class="toc_inner"><a href="#sec-back">3.3.</a> Заключительная часть<br></div></div><div class="toc_inner"><a href="#ufrstruct">4.</a> Структура UFR и всякоэ<br><div class="toc_inner"><a href="#doc_parts">4.1.</a> Структура документа<br></div><div class="toc_inner"><a href="#headers">4.2.</a> Заголовки и общая информация<br></div><div class="toc_inner"><a href="#not-in-t">4.3.</a> Элементы текста, не требующие объявления абзаца<br></div><div class="toc_inner"><a href="#toc_special_parts">4.4.</a> Особенности создания некоторых частей документа<br><div class="toc_inner"><a href="#toc_special">4.4.1.</a> Оглавление<br></div><div class="toc_inner"><a href="#symbols">4.4.2.</a> Символы<br><div class="toc_inner"><a href="#sgml_entity">4.4.2.1.</a> Ссылки на символы<br></div><div class="toc_inner"><a href="#punctuation">4.4.2.2.</a> Тире, кавычки и прочие символы<br></div></div></div></div><div class="toc_inner"><a href="#make-ufr">5.</a> Создание UFR при помощи XSLT-преобразований<br><div class="toc_inner"><a href="#make-ufr-commons">5.1.</a> Общие положения<br></div><div class="toc_inner"><a href="#xslt-transform">5.2.</a> XSLT-преобразование<br></div></div><div class="toc_inner"><a href="#further-processing">6.</a> Дальнейшее развитие<br></div><div class="toc_inner"><a href="#changes">7.</a> Внесение изменений<br></div><div class="toc_inner"><a href="#refs">8.</a> Сссылки<br></div><div class="toc_inner"><a href="#appendixes"></a> Приложения<br><div class="toc_inner"><a href="#appendix-copyright">A.</a> Объявление авторских прав<br></div><div class="toc_inner"><a href="#lonng">B.</a> О длине телеграфных проводов<br></div><div class="toc_inner"><a href="#lonng">C.</a> О длине телеграфных проводов<br></div></div><h2><a id="intro"></a>1. Введение</h2>
+                данного стандарта.</p><h2>Авторские права</h2><p>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p><h2>Лицензия</h2><p>В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div class="toc_inner"><a href="#intro">1.</a> Введение</div><div class="toc_inner"><a href="#therms-and-desc">2.</a> Терминология и обозначения<div class="toc_inner"><a href="#therms">2.1.</a> Терминология</div><div class="toc_inner"><a href="#definitions">2.2.</a> Обозначения<div class="toc_inner"><a href="#code-sample">2.2.1.</a> Пример кода</div></div></div><div class="toc_inner"><a href="#common-req">3.</a> Общие требования к документу, его структура и состав<div class="toc_inner"><a href="#common">3.1.</a> Общие положения</div><div class="toc_inner"><a href="#sec-structure">3.2.</a> Структура документа<div class="toc_inner"><a href="#runtime-sections">3.2.1.</a> Разделы, которые формируются XSLT-процессором на основании пользовательских данных</div><div class="toc_inner"><a href="#sec-front">3.2.2.</a> Заголовочная часть<div class="toc_inner"><a href="#creator">3.2.2.1.</a> Элемент creator</div><div class="toc_inner"><a href="#authors-element">3.2.2.2.</a> Элемент authors</div><div class="toc_inner"><a href="#ufrdata">3.2.2.3.</a> Элемент ufrdata</div></div><div class="toc_inner"><a href="#sec-document">3.2.3.</a> Документ<div class="toc_inner"><a href="#sec-abstract">3.2.3.1.</a> Аннотация</div><div class="toc_inner"><a href="#section-copyright">3.2.3.2.</a> Авторские права</div><div class="toc_inner"><a href="#sec-license">3.2.3.3.</a> Лицензия</div><div class="toc_inner"><a href="#sec-section">3.2.3.4.</a> Разделы документа</div></div><div class="toc_inner"><a href="#sec-text-elements">3.2.4.</a> Элементы текста<div class="toc_inner"><a href="#sec-par-format">3.2.4.1.</a> Абзац и его форматирование</div><div class="toc_inner"><a href="#sec-lists">3.2.4.2.</a> Списки</div></div></div><div class="toc_inner"><a href="#sec-back">3.3.</a> Заключительная часть</div></div><div class="toc_inner"><a href="#ufrstruct">4.</a> Структура UFR и всякоэ<div class="toc_inner"><a href="#doc_parts">4.1.</a> Структура документа</div><div class="toc_inner"><a href="#headers">4.2.</a> Заголовки и общая информация</div><div class="toc_inner"><a href="#not-in-t">4.3.</a> Элементы текста, не требующие объявления абзаца</div><div class="toc_inner"><a href="#toc_special_parts">4.4.</a> Особенности создания некоторых частей документа<div class="toc_inner"><a href="#toc_special">4.4.1.</a> Оглавление</div><div class="toc_inner"><a href="#symbols">4.4.2.</a> Символы<div class="toc_inner"><a href="#sgml-entity">4.4.2.1.</a> Ссылки на символы</div><div class="toc_inner"><a href="#punctuation">4.4.2.2.</a> Тире, кавычки и прочие символы</div></div></div></div><div class="toc_inner"><a href="#make-ufr">5.</a> Создание UFR при помощи XSLT-преобразований<div class="toc_inner"><a href="#make-ufr-commons">5.1.</a> Общие положения</div><div class="toc_inner"><a href="#xslt-transform">5.2.</a> XSLT-преобразование</div></div><div class="toc_inner"><a href="#further-processing">6.</a> Дальнейшее развитие</div><div class="toc_inner"><a href="#changes">7.</a> Внесение изменений</div><div class="toc_inner"><a href="#refs">8.</a> Сссылки</div><div class="toc_inner"><a href="#appendixes"></a> Приложения<div class="toc_inner"><a href="#appendix-copyright">A.</a> Объявление авторских прав</div><div class="toc_inner"><a href="#lonng">B.</a> О длине телеграфных проводов</div><div class="toc_inner"><a href="#lonng">C.</a> О длине телеграфных проводов</div></div><h2><a id="intro"></a>1. Введение</h2>
                 <p><a href="UFR1_20130203.html" target="_blank">Первый</a> из UFR (далее по 
                 тексту также именуется"— "документ") был написан с 
                 использованием plain HTML в простом текстовом редакторе, с ручным 
@@ -547,27 +619,52 @@ h6,h5,h4,h3,h2,h1 {
         <p>Полный перечень элементов:</p>
         <h5><a id="sec-par-format"></a>3.2.4.1. Абзац и его форматирование</h5>
         <h6><a id="element-t"></a>3.2.4.1.1. Элемент t</h6>
+<p class="element-syntax">&lt;t&gt;<span style="font-style:oblique">Всё смешалось в доме Облонских</span>&lt;/t&gt;</p>
             <p>Элемент <code>t</code> является аналогом <a href="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1" target="_blank">элемента <code>&lt;p&gt;</code></a> HTML и создаёт абзац.</p>
         
 
         <h6><a id="element-code"></a>3.2.4.1.2. Элемент code</h6>
             <p>Элемент <code>code</code> используется для вставки в текст названий элементов, атрибутов, 
             переменных, вводимого текста, команд, а также имен файлов, путей и комбинаций клавиш.</p>
-            <p>К содержимому элемента не применяются преобразования, содержимое просто заключается в 
-            тег HTML <a href="http://www.w3.org/TR/html401/struct/text.html#edef-CODE" target="_blank">code</a>.</p>
+            <p>К содержимому элемента <code>code</code> не применяются преобразования, оно просто 
+            заключается в тег HTML <a href="http://www.w3.org/TR/html401/struct/text.html#edef-CODE" target="_blank">code</a>.</p>
         
 
         <h6><a id="element-codesample"></a>3.2.4.1.3. Элемент codesample</h6>
-            <p>Элемент t является аналогом <a href="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1" target="_blank">элемента <code>&lt;p&gt;</code></a> HTML и создаёт абзац.</p>
-        
-
-        <h6><a id=""></a>3.2.4.1.4. </h6>
+<p class="element-syntax">#include &lt;stdio.h&gt;
+ int main()
+{
+  int a;
+  printf("Enter an integer\n");
+  scanf("%d", &amp;a);
+  printf("Integer that you have entered is %d\n", a);
+  return 0;
+}</p>
+            <p>Элемент <code>codesample</code> предназначен для вставки листингов кода, имеющих отступы, и 
+            как правило&nbsp;— размер в несколько строк.</p>
+            <p>Отсупы и переносы строк сохраняются. Для вставки в текст символов, отличных от определенных спецификацией XML&nbsp;1.0, следует использовать соответствующие <a href="#sgml-entity">числовые формы</a> ссылок.</p>
             <p></p>
         
-//t
-//codesample
-//code
-//nobr
+
+        <h6><a id="element-nobr"></a>3.2.4.1.4. Элемент nobr</h6>
+        <p class="element-syntax">превышает &lt;nobr&gt;<nobr><span class="nowrap"><span style="font-style:oblique">1 млн. крх.</span></span></nobr>&lt;/nobr&gt;</p>
+            <p>Формирует текст, который в документе будет отображен без переносов. Хотя элемент и повторяет 
+                названием тег HTML <code>&lt;nobr&gt;</code>, он не копирует его из-за отсутсвия последнего в спецификации HTML. Вместо этого он использует инструкцию CSS <a href="http://www.w3.org/TR/CSS21/text.html#white-space-prop" target="_blank"><code>white-space</code></a>.</p>
+        
+
+        <h6><a id="element-it"></a>3.2.4.1.5. Элемент it</h6>
+        <p class="element-syntax">Здесь будет &lt;it&gt;<span style="font-style:oblique">курсив</span>&lt;/it&gt;.</p>
+            <p></p>
+        
+
+        <h6><a id="element-bf"></a>3.2.4.1.6. Элемент bf</h6>
+            <p></p>
+        
+
+        <h6><a id="element-"></a>3.2.4.1.7. Элемент </h6>
+            <p></p>
+        
+
 //it
 //bf
         
@@ -599,15 +696,15 @@ ulist-item
         <h4><a id="toc_special"></a>4.4.1. Оглавление</h4>
         <p>Оглавление формируется XSLT-процессором на основании <a href="#doc_parts">частей</a> документа, разделов, подразделов и т. д. Включение определенной части документа в оглавление производится в зависимости от наличия у элемента, указывающего на начало раздела (<code>&lt;section&gt;|&lt;section&gt;|…|&lt;section&gt;</code>), атрибута </p>
         <h4><a id="symbols"></a>4.4.2. Символы</h4>
-            <h5><a id="sgml_entity"></a>4.4.2.1. Ссылки на символы</h5>
+            <h5><a id="sgml-entity"></a>4.4.2.1. Ссылки на символы</h5>
                 <p>Спецификация XML&nbsp;1.0 <a href="http://www.w3.org/TR/REC-xml/#sec-predefined-ent" target="_blank">определяет</a> пять символов, которые можно вставить в текст документа 
                     при помощи мнемоник:</p>
                     <ul>
-                        <li>открывающая (левая) угловая скобка <code>&lt;</code></li>
-                        <li>закрывающая (правая) угловая скобка <code>&gt;</code></li>
-                        <li>амперсанд <code>&amp;</code></li>
-                        <li>апостроф <code>'</code></li>
-                        <li>символ кавычки <code>"</code></li>
+                        <li>открывающая (левая) угловая скобка <code>&lt;</code> (<code>&amp;lt;</code>)</li>
+                        <li>закрывающая (правая) угловая скобка <code>&gt;</code> (<code>&amp;gt;</code>)</li>
+                        <li>амперсанд <code>&amp;</code> (<code>&amp;amp;</code>)</li>
+                        <li>апостроф <code>'</code> (<code>&amp;apos;</code>)</li>
+                        <li>символ кавычки <code>"</code> (<code>&amp;quot;</code>)</li>
                     </ul>
                 <p>Для вставки символов, отличных от определенных спецификацией XML&nbsp;1.0 
                     (например, знак параграфа <code>§</code>) <span class="rfc2119">необходимо</span> использовать 
@@ -631,7 +728,12 @@ ulist-item
                 (без кавычек).<br><a id="link-entity">Кроме этого, если вводить ссылки сущностей 
                 символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
                 <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
-                определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#inner-entity" title="Сущности и способы их подключения">5</a>].</a><a id="ftntiii"><a href="#cm-charmap"><sup>iii</sup></a></a></li>
+                определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#inner-entity" title="Сущности и способы их подключения">5</a>]:</a><a id="ftntiii"><a href="#cm-charmap"><sup>iii</sup></a></a><br>
+                <p class="element-syntax">&lt;!DOCTYPE xsl:stylesheet
+  [
+    &lt;!ENTITY nbsp   "&amp;#160;"&gt;
+    &lt;!ENTITY mdash  "&amp;#8212;"&gt;
+  ]&gt;</p></li>
                 </ul></p>
              
         
@@ -659,12 +761,13 @@ ulist-item
 <p>Однако не исключена возможность дальнейшей публикации стандартов в формате PDF, что 
     может повлечь за собой введение дополнительных переменных в инструментарий, но 
     не должно затронуть лёгкость подготовки стандартов.</p><h2><a id="changes"></a>7. Внесение изменений</h2><p>В соответствии с §§42, 64 раздела 5, §94 раздела 8 Устава Звёздного Флота внесение изменений в данный стандарт производится только стандартами UFR, принятыми в установленном порядке.</p><h2><a id="refs"></a>8. Сссылки</h2><h5>UFR References</h5><table width="100%" 
-                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a id="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a id="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5>Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a id="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br>В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a id="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br>Звёздный Флот Федерации Земли<br /><<a href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a id="iso8601">Date and Time Formats</a><br>Charles Wicksteed, W3 Consortium<br />Misha Wolf, W3 Consortium<br /><<a href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr><tr><td style="vertical-align:top;width:10%">[4]</td><td style="vertical-align:top"><a id="html401">HTML 4.01 Specification</a><br>Dave Raggett, World Wide Web Consortium<br />Arnaud Le Hors, World Wide Web Consortium<br />Ian Jacobs, World Wide Web Consortium<br /><<a href="http://www.w3.org/TR/html401">www.w3.org</a>>, <br />24 декабря 1999 г.</td><tr><tr><td style="vertical-align:top;width:10%">[5]</td><td style="vertical-align:top"><a id="inner-entity">Сущности и способы их подключения</a><br>Александр Самиляк, Студия Артемия Лебедева<br /><<a href="http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/">www.artlebedev.ru</a>>, <br />26 июля 2011 г.</td><tr></table><h2><a id="appendixes"></a>Приложения</h2>
+                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a id="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a id="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5>Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a id="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br>В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a id="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br>. . , Звёздный Флот Федерации Земли<br /><<a href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a id="iso8601">Date and Time Formats</a><br>C. . Wicksteed, W3 Consortium<br />M. . Wolf, W3 Consortium<br /><<a href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr><tr><td style="vertical-align:top;width:10%">[4]</td><td style="vertical-align:top"><a id="html401">HTML 4.01 Specification</a><br>D. . Raggett, World Wide Web Consortium<br />A. . Le Hors, World Wide Web Consortium<br />I. . Jacobs, World Wide Web Consortium<br /><<a href="http://www.w3.org/TR/html401">www.w3.org</a>>, <br />24 декабря 1999 г.</td><tr><tr><td style="vertical-align:top;width:10%">[5]</td><td style="vertical-align:top"><a id="inner-entity">Сущности и способы их подключения</a><br>А. . Самиляк, Студия Артемия Лебедева<br /><<a href="http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/">www.artlebedev.ru</a>>, <br />26 июля 2011 г.</td><tr></table><h2><a id="appendixes"></a>Приложения</h2>
 
         <h3><a id="appendix-copyright"></a>Приложение A. Объявление авторских прав</h3>
-            <span style="font-weight:700"><code>efsf-only="no"</code></span>
+            <p><span style="font-weight:700"><code>efsf-only="no"</code></span></p>
             <p>Copyright © 2013 Звёздный Флот Федерации Земли. Все права защищены.</p>
-            <span style="font-weight:700"><code>efsf-only="yes"</code></span>
+            <br>
+            <p><span style="font-weight:700"><code>efsf-only="yes"</code></span></p>
             <p>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p>
         
 

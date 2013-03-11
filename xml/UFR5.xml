@@ -4,8 +4,7 @@
   [
     <!ENTITY nbsp   "&#160;">
     <!ENTITY mdash  "&#8212;">
-  ]
->
+  ]>
 <ufr>
     <description>
         <creator>
@@ -465,8 +464,9 @@
             <eref terget="http://ru.wikipedia.org/w/index.php?title=SVG&amp;oldid=52648309">SVG</eref>), 
             таблиц, примеров кода и прочего.</t>
         <t>Полный перечень элементов:</t>
-        <section  name="Абзац и его форматирование" anchor="sec-par-format"  toc="include">
+        <section  name="Абзац и его форматирование" anchor="sec-par-format" toc="include">
         <section name="Элемент t" anchor="element-t">
+<codesample>&lt;t&gt;<it>Всё смешалось в доме Облонских</it>&lt;/t&gt;</codesample>
             <t>Элемент <code>t</code> является аналогом <eref target="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1">элемента <code>&lt;p&gt;</code></eref> HTML и создаёт абзац.</t>
         </section>
 
@@ -478,16 +478,40 @@
         </section>
 
         <section name="Элемент codesample" anchor="element-codesample">
-            <t>Элемент t является аналогом <eref target="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1">элемента <code>&lt;p&gt;</code></eref> HTML и создаёт абзац.</t>
-        </section>
-
-        <section name="" anchor="">
+<codesample>#include &lt;stdio.h&gt;
+ int main()
+{
+  int a;
+  printf("Enter an integer\n");
+  scanf("%d", &amp;a);
+  printf("Integer that you have entered is %d\n", a);
+  return 0;
+}</codesample>
+            <t>Элемент <code>codesample</code> предназначен для вставки листингов кода, имеющих отступы, и 
+            как правило&nbsp;&mdash; размер в несколько строк.</t>
+            <t>Отсупы и переносы строк сохраняются. Для вставки в текст символов, отличных от определенных спецификацией XML&#160;1.0, следует использовать соответствующие <xref target="sgml-entity">числовые формы</xref> ссылок.</t>
             <t></t>
         </section>
-//t
-//codesample
-//code
-//nobr
+
+        <section name="Элемент nobr" anchor="element-nobr">
+        <codesample>превышает &lt;nobr&gt;<nobr><it>1 млн. крх.</it></nobr>&lt;/nobr&gt;</codesample>
+            <t>Формирует текст, который в документе будет отображен без переносов. Хотя элемент и повторяет 
+                названием тег HTML <code>&lt;nobr&gt;</code>, он не копирует его из-за отсутсвия последнего в спецификации HTML. Вместо этого он использует инструкцию CSS <eref target="http://www.w3.org/TR/CSS21/text.html#white-space-prop"><code>white-space</code></eref>.</t>
+        </section>
+
+        <section name="Элемент it" anchor="element-it">
+        <codesample>Здесь будет &lt;it&gt;<it>курсив</it>&lt;/it&gt;.</codesample>
+            <t></t>
+        </section>
+
+        <section name="Элемент bf" anchor="element-bf">
+            <t></t>
+        </section>
+
+        <section name="Элемент " anchor="element-">
+            <t></t>
+        </section>
+
 //it
 //bf
         </section>
@@ -547,15 +571,15 @@ document/section[1]//ufr3|document/section[2]//ufr3
         <section name="Оглавление" toc="include" anchor="toc_special">
         <t>Оглавление формируется XSLT-процессором на основании <xref target="doc_parts">частей</xref> документа, разделов, подразделов и т. д. Включение определенной части документа в оглавление производится в зависимости от наличия у элемента, указывающего на начало раздела (<code>&lt;section&gt;|&lt;section&gt;|&#8230;|&lt;section&gt;</code>), атрибута </t></section>
         <section name="Символы" toc="include" anchor="symbols">
-            <section name="Ссылки на символы" toc="include" anchor="sgml_entity">
+            <section name="Ссылки на символы" toc="include" anchor="sgml-entity">
                 <t>Спецификация XML&#160;1.0 <eref target="http://www.w3.org/TR/REC-xml/#sec-predefined-ent">определяет</eref> пять символов, которые можно вставить в текст документа 
                     при помощи мнемоник:</t>
                     <ulist>
-                        <item>открывающая (левая) угловая скобка <code>&lt;</code></item>
-                        <item>закрывающая (правая) угловая скобка <code>&gt;</code></item>
-                        <item>амперсанд <code>&amp;</code></item>
-                        <item>апостроф <code>&apos;</code></item>
-                        <item>символ кавычки <code>&quot;</code></item>
+                        <item>открывающая (левая) угловая скобка <code>&lt;</code> (<code>&amp;lt;</code>)</item>
+                        <item>закрывающая (правая) угловая скобка <code>&gt;</code> (<code>&amp;gt;</code>)</item>
+                        <item>амперсанд <code>&amp;</code> (<code>&amp;amp;</code>)</item>
+                        <item>апостроф <code>&apos;</code> (<code>&amp;apos;</code>)</item>
+                        <item>символ кавычки <code>&quot;</code> (<code>&amp;quot;</code>)</item>
                     </ulist>
                 <t>Для вставки символов, отличных от определенных спецификацией XML&#160;1.0 
                     (например, знак параграфа <code>&#167;</code>) <keyword>необходимо</keyword> использовать 
@@ -579,9 +603,14 @@ document/section[1]//ufr3|document/section[2]//ufr3
                 (без кавычек).<vspace/><anchor target="entity">Кроме этого, если вводить ссылки сущностей 
                 символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
                 <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
-                определить в начале XML-документа внутреннее подключение сущностей, как описано в <refref key="inner-entity" short="yes"/>.</anchor><footnote name="cm-charmap">В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но 
+                определить в начале XML-документа внутреннее подключение сущностей, как описано в <refref key="inner-entity" short="yes"/>:</anchor><footnote name="cm-charmap">В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но 
                 по умолчанию он закоментирован, так как делает невозможным использование символа длинного тире без пробела перед ним.<vspace/>Для его использования необходимо 1) раскомментировать упомянутую инструкцию и 2) удалить определение <code>&lt;!ENTITY mdash  "&amp;#8212;"&gt;</code>, если оно 
-                <link target="entity">было определено</link>.</footnote></item>
+                <link target="entity">было определено</link>.</footnote><vspace/>
+                <codesample>&lt;!DOCTYPE xsl:stylesheet
+  [
+    &lt;!ENTITY nbsp   "&amp;#160;"&gt;
+    &lt;!ENTITY mdash  "&amp;#8212;"&gt;
+  ]&gt;</codesample></item>
                 </ulist></t>
              </section>
         </section>
@@ -623,10 +652,9 @@ document/section[1]//ufr3|document/section[2]//ufr3
 
             <reference type="other" title="Другие источники">
                 <ref key="orthography">
-                    <title>Правила русской орфографии и пунктуации. Полный академический справочник.</title>   
-                    <author surname="Лопатин" initials="В. В." fullname="В. В. Лопатин">
+                    <title>Правила русской орфографии и пунктуации. Полный академический справочник.</title>
+                    <author firstname="В" middletname="В" lastname="Лопатин">
                     <organization/>
-                        <!-- <organization abbrev='ЭКСМО'>ЭКСМО</organization> -->
                     </author> 
                     <description>Правила русской орфографии и пунктуации</description> 
                     <publisher name="ЭКСМО" year="2006" month="" day=""/>
@@ -642,11 +670,11 @@ document/section[1]//ufr3|document/section[2]//ufr3
                 </ref>
 
                 <ref key="iso8601">
-                    <title>Date and Time Formats</title>   
-                    <author surname="Wicksteed" initials="C." fullname="Charles Wicksteed">
+                    <title>Date and Time Formats</title>
+                    <author firstname="Charles" middletname="" lastname="Wicksteed">
                         <organization>W3 Consortium</organization>
                     </author>
-                    <author surname="Wolf" initials="M." fullname="Misha Wolf">
+                    <author firstname="Misha" middletname="" lastname="Wolf">
                         <organization>W3 Consortium</organization>
                     </author>
                     <publisher name="W3C" year="1998" month="08" day="27"/>
@@ -654,14 +682,14 @@ document/section[1]//ufr3|document/section[2]//ufr3
                 </ref>
 
                 <ref key="html401">
-                    <title>HTML 4.01 Specification</title>   
-                    <author surname="Raggett" initials="D." fullname="Dave Raggett">
+                    <title>HTML 4.01 Specification</title> 
+                    <author firstname="Dave" middletname="" lastname="Raggett">
                         <organization>World Wide Web Consortium</organization>
                     </author>
-                    <author surname="Le Hors" initials="A." fullname="Arnaud Le Hors">
+                    <author firstname="Arnaud" middletname="" lastname="Le Hors">
                         <organization>World Wide Web Consortium</organization>
                     </author>
-                    <author surname="Jacobs" initials="I." fullname="Ian Jacobs">
+                    <author firstname="Ian" middletname="" lastname="Jacobs">
                         <organization>World Wide Web Consortium</organization>
                     </author>
                     <publisher name="World Wide Web Consortium" year="1999" month="12" day="24"/>
@@ -669,8 +697,8 @@ document/section[1]//ufr3|document/section[2]//ufr3
                 </ref>
 
                 <ref key="inner-entity">
-                    <title>Сущности и способы их подключения</title>   
-                    <author surname="Самиляк" initials="А." fullname="Александр Самиляк">
+                    <title>Сущности и способы их подключения</title>
+                    <author firstname="Александр" middletname="" lastname="Самиляк">
                         <organization>Студия Артемия Лебедева</organization>
                     </author>
                     <publisher name="Студия Артемия Лебедева" year="2011" month="07" day="26"/>
@@ -682,9 +710,10 @@ document/section[1]//ufr3|document/section[2]//ufr3
     <appendixes name="Приложения"  toc="include" xreftext="Приложения" anchor="appendixes">
 
         <appendix toc="include" name="Объявление авторских прав" anchor="appendix-copyright">
-            <bf><code>efsf-only="no"</code></bf>
+            <t><bf><code>efsf-only="no"</code></bf></t>
             <t>Copyright © 2013 Звёздный Флот Федерации Земли. Все права защищены.</t>
-            <bf><code>efsf-only="yes"</code></bf>
+            <vspace blanklines="2"/>
+            <t><bf><code>efsf-only="yes"</code></bf></t>
             <t>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</t>
         </appendix>
 
