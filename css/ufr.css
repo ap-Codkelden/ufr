@@ -76,14 +76,17 @@ p, ul, ol {
 	display: block;
 }
 
-p.element-syntax {
-	background-color:Gainsboro;
-	border:solid thin black;
+code, p.element-syntax {
 	white-space:pre;
-	font-family:monospace;
+	font-family:"Courier","Courier New", monospace;
 	font-size: 10pt;
 	margin-top: 1em;
 	margin-bottom: 1em;
+	}
+
+p.element-syntax {
+	background-color:Gainsboro;
+	border:solid thin black;
 	}
 
 p.block {
