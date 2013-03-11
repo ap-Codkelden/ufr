@@ -541,7 +541,7 @@
                         <xsl:number level="multiple" format="A." count="appendix"/>
                     </xsl:when>
                 </xsl:choose></a>
-            <xsl:text> </xsl:text><xsl:value-of select="@name"/><br />
+            <xsl:text> </xsl:text><xsl:value-of select="@name"/>
             <xsl:apply-templates select="appendixes|appendix|insert|references|section" mode="toc"/>
         </div>
     </xsl:if>
@@ -840,10 +840,22 @@
     #
      -->
     <xsl:template name="author">
-        <xsl:if test="@fullname">
+        <xsl:variable name="firstname" select="substring(@firstname,1,1)"/>
+        <xsl:variable name="lastname" select="@lastname"/>
+<xsl:choose>
+    <xsl:when test="@middlename=''">
+        <xsl:variable name="middlename" select="''"/>
+    </xsl:when>
+    <xsl:otherwise>
+        <xsl:variable name="middlename" select="substring(@middlename,1,1)"/>
+    </xsl:otherwise>
+</xsl:choose>
+        <xsl:value-of select="concat($firstname,'. ',$middlename,'. ',$lastname,', ')"/>
+
+        <!-- <xsl:if test="@fullname">
             <xsl:value-of select="@fullname" />
             <xsl:text>, </xsl:text>
-        </xsl:if>
+        </xsl:if> -->
         <xsl:value-of select="organization" />
         <xsl:if test="not(position() = last())">
             <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
@@ -958,7 +970,7 @@
 # blankLines = 5 - количество
 # без атрибута вставит одну
 -->
-<xsl:template match="//t//vspace[not(@blankLines)]|item//vspace[not(@blankLines)]">
+<xsl:template match="//vspace[not(@blankLines)]">
   <br />
 </xsl:template>
 
@@ -977,7 +989,7 @@
   </xsl:choose>
 </xsl:template>
 
-<xsl:template match="//t//vspace[@blankLines]|item//vspace[@blankLines]">
+<xsl:template match="//vspace[@blankLines]">
   <xsl:call-template name="insert-blank-lines">
     <xsl:with-param name="no" select="@blankLines"/>
   </xsl:call-template>
