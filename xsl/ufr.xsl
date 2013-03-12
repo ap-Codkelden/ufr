@@ -62,17 +62,17 @@
 
 <!-- КЛЮЧИ  -->
 <!-- для перекрестных ссылок -->
-<xsl:key name="cross-ref" match="//insert|//section|//appendix" use="@anchor"/>
+<xsl:key name="cross-ref" match="//insert|//section|//appendix" use="@id"/>
 <!-- ключ для ссылок на литературу  -->
-<xsl:key name="book-ref" match="//ref" use="@key"/>
+<xsl:key name="book-ref" match="//ref" use="@id"/>
 <!-- Для иллюстраций -->
-<xsl:key name="fig-search" match="//figure" use="@name"/>
+<xsl:key name="fig-search" match="//figure" use="@id"/>
 <!-- Для сносок -->
-<xsl:key name="ftnt-search" match="//footnote" use="@name"/>
+<xsl:key name="ftnt-search" match="//footnote" use="@id"/>
 <!-- Tables -->
-<xsl:key name="table-search" match="//table" use="@anchor"/> 
+<xsl:key name="table-search" match="//table" use="@id"/> 
 <!-- Ссылки link  (пара - <anchor>) 
-<xsl:key name="link-ref" match="//link" use="@target"/> -->
+<xsl:key name="link-ref" match="//link" use="@id"/> -->
 
 <!-- ***********ФУНКЦИИ************** -->
 
@@ -246,7 +246,7 @@
 #
  -->
         <xsl:for-each select="ufr/document/section|ufr/document/insert">
-            <h2><a id="{@anchor}"/>
+            <h2><a id="{@id}"/>
             <xsl:number level="any" count="ufr/document/section|ufr/document/insert" 
                 format="1. "/>
                 <xsl:value-of select="@name" />
@@ -266,7 +266,7 @@
         </xsl:for-each>
 
     <xsl:for-each select="ufr/document/references">
-            <h2><a id="{@anchor}"/>
+            <h2><a id="{@id}"/>
             <xsl:number level="multiple" count="section|insert|references" format="1. "/>
                 <xsl:value-of select="@name" />
             </h2> 
@@ -277,7 +277,7 @@
 #   Приложения
 -->
         <xsl:for-each select="ufr/document/appendixes">
-                <h2><a id="{@anchor}"/>
+                <h2><a id="{@id}"/>
                     <xsl:value-of select="@name" /></h2> 
                 <xsl:apply-templates />   
         </xsl:for-each>
@@ -368,16 +368,16 @@
     </xsl:template>
 
 <!-- ################### CROSS-REFERENCE HANDLING ############################# 
-# <fref name="circle"/> - на картинки (<figure name="circle"/>)
+# <fref id="circle"/> - на картинки (<figure id="circle"/>)
 #
 # <uref no="4"/> - на другие (<reference ufrno="5" />, без ука)
 #
-# <refref key=? [short='yes']> - на литературу <reference key="moon">
+# <refref id=? [short='yes']> - на литературу <reference id="moon">
 # 
-# <xref target="special-tags" /> -  на anchor="approved-tags"
+# <xref id="special-tags" /> -  на id="approved-tags"
 #
-# <link anchor="">  - ссылка на определенный заранее якорь без номера, 
-# e. g. <link target="tags">этих тегов</link> 
+# <link id="">  - ссылка на определенный заранее якорь без номера, 
+# e. g. <link id="tags">этих тегов</link> 
 #
 # <ftref name=""> - сторонняя ссылка на определенную заранее сноску, при этом 
 # приводит к тому, что невозможно возвратиться к тому месту, откуда ты пришел
@@ -386,7 +386,7 @@
 -->
 
 <!-- 
-    Якорь для сслыки типа <link anchor="someAnchor"> 
+    Якорь для сслыки типа <link id="someAnchor"> 
 -->
 <!-- заменено name -> id -->
 <xsl:template match="//anchor">
@@ -397,29 +397,29 @@
 </xsl:template> 
 
 <xsl:template match="//link">
-    <xsl:variable name="target" select="@target" />
-        <a href="{concat('#','link-',$target)}">
+    <xsl:variable name="id" select="@id" />
+        <a href="{concat('#','link-',$id)}">
             <xsl:apply-templates />
         </a>
 </xsl:template> 
 
 <xsl:template match="//tabref">
-    <xsl:variable name="anchor" select="@name" />
+    <xsl:variable name="id" select="@name" />
         <xsl:text>[</xsl:text>
-            <xsl:for-each select="key('table-search', $anchor)">
+            <xsl:for-each select="key('table-search', $id)">
             <xsl:variable name="tab-num">
                 <xsl:number level="any" count="table" />
             </xsl:variable> 
-            <a href="{concat('#','table-',$anchor)}">табл. <xsl:value-of select="$tab-num" /></a>
+            <a href="{concat('#','table-',$id)}">табл. <xsl:value-of select="$tab-num" /></a>
         </xsl:for-each>
         <xsl:text>]</xsl:text>
-        <a href="#{@target}"><xsl:apply-templates /></a> 
+        <a href="#{@id}"><xsl:apply-templates /></a> 
     </xsl:template> 
 
     <xsl:template match="//fref">
-    <xsl:variable name="name" select="@name" />
+    <xsl:variable name="id" select="@id" />
         <xsl:text>[</xsl:text>
-            <xsl:for-each select="key('fig-search', $name)">
+            <xsl:for-each select="key('fig-search', $id)">
             <xsl:variable name="fig-num">
                 <xsl:number level="any" count="figure" />
             </xsl:variable> 
@@ -443,10 +443,10 @@
     </xsl:template>
 
     <xsl:template match="//refref">
-    <xsl:variable name="ref_key" select="@key" />
+    <xsl:variable name="id" select="@id" />
     <xsl:choose>
         <xsl:when test="@short='yes'">
-            <xsl:for-each select="key('book-ref', $ref_key)">
+            <xsl:for-each select="key('book-ref', $id)">
                 <xsl:variable name="ref-num">
                     <xsl:number level="any" count="references/reference[@type='other']/ref"/>
                 </xsl:variable>
@@ -454,14 +454,14 @@
                     <xsl:value-of select="title"/>
                 </xsl:variable> 
                 <xsl:text>[</xsl:text>
-                    <a href="#{@key}" title="{$ref-title}"><xsl:value-of select="$ref-num"/></a>
+                    <a href="#{@id}" title="{$ref-title}"><xsl:value-of select="$ref-num"/></a>
                 <xsl:text>]</xsl:text>
             </xsl:for-each>
         </xsl:when>
         <xsl:when test="@short='no'">
-            <xsl:for-each select="key('book-ref', $ref_key)">
+            <xsl:for-each select="key('book-ref', $id)">
                 <xsl:text>[</xsl:text>
-                        <a href="#{@key}"><xsl:value-of select="title"/></a>
+                        <a href="#{@id}"><xsl:value-of select="title"/></a>
                 <xsl:text>]</xsl:text>
             </xsl:for-each>
         </xsl:when>
@@ -469,8 +469,8 @@
     </xsl:template>
 
     <xsl:template match="//xref[not(node())]">
-        <xsl:variable name="target" select="@target" />
-         <xsl:for-each select="key('cross-ref', $target)">
+        <xsl:variable name="id" select="@target" />
+         <xsl:for-each select="key('cross-ref', $id)">
             <xsl:choose>
                 <xsl:when test="name()='appendix'">
                         <xsl:text disable-output-escaping='yes'>прил.&lt;span class="nowrap"&gt;&#160;&lt;/span&gt;[</xsl:text>
@@ -479,7 +479,7 @@
                         <xsl:text disable-output-escaping='yes'>разд.&lt;span class="nowrap"&gt;&#160;&lt;/span&gt;[</xsl:text>
                     </xsl:otherwise>
             </xsl:choose>
-            <a href="#{$target}">
+            <a href="#{$id}">
                 <xsl:choose>
                     <xsl:when test="name()='appendix'">
                         <xsl:number level="multiple" format="A." count="appendix"/>
@@ -501,10 +501,10 @@
                 <span class="nowrap">&#160;</span>
                 <xsl:choose>
                     <xsl:when test="@xreftext">
-                        <xsl:value-of select="key('cross-ref', $target)/@xreftext" />
+                        <xsl:value-of select="key('cross-ref', $id)/@xreftext" />
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="key('cross-ref', $target)/@name" />
+                        <xsl:value-of select="key('cross-ref', $id)/@name" />
                     </xsl:otherwise>
                 </xsl:choose></a><xsl:text>]</xsl:text>
         </xsl:for-each>
@@ -529,9 +529,9 @@
         |ufr/document/section/section/section/section/section/section" mode="toc">
     <xsl:variable name="include-toc" select="@toc"/>
         <xsl:if test="$include-toc='include'">
-        <xsl:variable name="anchor" select="@anchor" />
+        <xsl:variable name="id" select="@id" />
         <div class="toc_inner">
-            <a href="#{$anchor}">
+            <a href="#{$id}">
                 <xsl:choose>
                     <xsl:when test="name()='insert' or name()='section' or name()='references'">
                         <xsl:number level="multiple" format="1.1.1.1.1."
@@ -550,7 +550,7 @@
 
     <xsl:template match="ufr/document/section|ufr/document/insert">
         <h2>
-            <a id="{@anchor}"/><xsl:number level="multiple"
+            <a id="{@id}"/><xsl:number level="multiple"
                  count="ufr/document/insert|ufr/document/section"
                  format="1. "/>
         <xsl:value-of select="@name" /></h2>
@@ -560,7 +560,7 @@
     <!--  LEVEL 2  -->
     <xsl:template match="ufr/document/section/section" priority="1" > 
         <h3>
-        <a id="{@anchor}"/><xsl:number level="multiple"
+        <a id="{@id}"/><xsl:number level="multiple"
                  count="insert
                  |ufr/document/section
                  |ufr/document/section/section"
@@ -572,7 +572,7 @@
     <!--  LEVEL 3 -->
     <xsl:template match="ufr/document/section/section/section" priority="1" > 
         <h4>
-        <a id="{@anchor}"/><xsl:number level="multiple"
+        <a id="{@id}"/><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
@@ -585,7 +585,7 @@
     <!--  LEVEL 4  -->
     <xsl:template match="ufr/document/section/section/section/section" priority="1" > 
         <h5>
-            <a id="{@anchor}"/><xsl:number level="multiple"
+            <a id="{@id}"/><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
@@ -598,7 +598,7 @@
     <!--  LEVEL 5  -->
     <xsl:template match="ufr/document/section/section/section/section/section" priority="1" > 
         <h6>
-            <a id="{@anchor}"/><xsl:number level="multiple"
+            <a id="{@id}"/><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
@@ -612,7 +612,7 @@
     <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
 
     <xsl:template match="appendixes/appendix"> 
-        <h3><a id="{@anchor}"/><xsl:text>Приложение </xsl:text>
+        <h3><a id="{@id}"/><xsl:text>Приложение </xsl:text>
         <xsl:number level="any"
                  count="appendix"
                  format="A. "/><xsl:value-of select="@name" /></h3>
@@ -795,7 +795,7 @@
                         <xsl:text>[</xsl:text><xsl:number level="single" count="ref"/><xsl:text>]</xsl:text>
                 <xsl:text  disable-output-escaping='yes'>&lt;/td&gt;</xsl:text>
                 <xsl:text  disable-output-escaping='yes'>&lt;td style="vertical-align:top"&gt;</xsl:text>
-                        <a id="{@key}">
+                        <a id="{@id}">
                         <xsl:value-of select="title"/></a>
                     <br />
                     <xsl:for-each select="author">
@@ -936,15 +936,15 @@
         <xsl:variable name="tab_num">
             <xsl:number level="any" count="table" format="1"/>
         </xsl:variable>
-        <xsl:if test="@anchor">
-            <xsl:variable name='anchor' select='@anchor'/>
-            <xsl:text disable-output-escaping='yes'>&lt;a id="</xsl:text><xsl:value-of select="concat('table-',$anchor)" /><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>
+        <xsl:if test="@id">
+            <xsl:variable name='id' select='@id'/>
+            <xsl:text disable-output-escaping='yes'>&lt;a id="</xsl:text><xsl:value-of select="concat('table-',$id)" /><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>
         </xsl:if>
         <div class="table">
             <p style="text-align:right;">Таблица&#160;<xsl:value-of select="$tab_num"/></p>
         <p style="text-align:center;"><xsl:value-of select="@caption" /></p>
         <p><xsl:apply-templates/></p></div>
-        <xsl:if test="@anchor">
+        <xsl:if test="@id">
             <xsl:text disable-output-escaping='yes'>&lt;</xsl:text>/a<xsl:text disable-output-escaping='yes'>&gt;</xsl:text>
         </xsl:if>
     </xsl:template>
