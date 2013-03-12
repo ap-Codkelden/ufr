@@ -76,14 +76,17 @@ p, ul, ol {
 	display: block;
 }
 
-p.element-syntax {
-	background-color:Gainsboro;
-	border:solid thin black;
+code, p.element-syntax {
 	white-space:pre;
-	font-family:monospace;
+	font-family: "Courier New", monospace;
 	font-size: 10pt;
 	margin-top: 1em;
 	margin-bottom: 1em;
+	}
+
+p.element-syntax {
+	background-color:Gainsboro;
+	border:solid thin black;
 	}
 
 p.block {
@@ -190,7 +193,7 @@ h6,h5,h4,h3,h2,h1 {
                 правила и нормативы, обязательные к использованию при участии в 
                 проекте "Созвездие", которые могут быть дополнены, улучшены 
                 или изменены. Допускается неограниченное распространение 
-                данного стандарта.</p><h2>Авторские права</h2><p>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p><h2>Лицензия</h2><p>В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div class="toc_inner"><a href="#intro">1.</a> Введение</div><div class="toc_inner"><a href="#therms-and-desc">2.</a> Терминология и обозначения<div class="toc_inner"><a href="#therms">2.1.</a> Терминология</div><div class="toc_inner"><a href="#definitions">2.2.</a> Обозначения<div class="toc_inner"><a href="#code-sample">2.2.1.</a> Пример кода</div></div></div><div class="toc_inner"><a href="#common-req">3.</a> Общие требования к документу, его структура и состав<div class="toc_inner"><a href="#common">3.1.</a> Общие положения</div><div class="toc_inner"><a href="#sec-structure">3.2.</a> Структура документа<div class="toc_inner"><a href="#runtime-sections">3.2.1.</a> Разделы, которые формируются XSLT-процессором на основании пользовательских данных</div><div class="toc_inner"><a href="#sec-front">3.2.2.</a> Заголовочная часть<div class="toc_inner"><a href="#creator">3.2.2.1.</a> Элемент creator</div><div class="toc_inner"><a href="#authors-element">3.2.2.2.</a> Элемент authors</div><div class="toc_inner"><a href="#ufrdata">3.2.2.3.</a> Элемент ufrdata</div></div><div class="toc_inner"><a href="#sec-document">3.2.3.</a> Документ<div class="toc_inner"><a href="#sec-abstract">3.2.3.1.</a> Аннотация</div><div class="toc_inner"><a href="#section-copyright">3.2.3.2.</a> Авторские права</div><div class="toc_inner"><a href="#sec-license">3.2.3.3.</a> Лицензия</div><div class="toc_inner"><a href="#sec-section">3.2.3.4.</a> Разделы документа</div></div><div class="toc_inner"><a href="#sec-text-elements">3.2.4.</a> Элементы текста<div class="toc_inner"><a href="#sec-par-format">3.2.4.1.</a> Абзац и его форматирование</div><div class="toc_inner"><a href="#sec-lists">3.2.4.2.</a> Списки</div></div></div><div class="toc_inner"><a href="#sec-back">3.3.</a> Заключительная часть</div></div><div class="toc_inner"><a href="#ufrstruct">4.</a> Структура UFR и всякоэ<div class="toc_inner"><a href="#doc_parts">4.1.</a> Структура документа</div><div class="toc_inner"><a href="#headers">4.2.</a> Заголовки и общая информация</div><div class="toc_inner"><a href="#not-in-t">4.3.</a> Элементы текста, не требующие объявления абзаца</div><div class="toc_inner"><a href="#toc_special_parts">4.4.</a> Особенности создания некоторых частей документа<div class="toc_inner"><a href="#toc_special">4.4.1.</a> Оглавление</div><div class="toc_inner"><a href="#symbols">4.4.2.</a> Символы<div class="toc_inner"><a href="#sgml-entity">4.4.2.1.</a> Ссылки на символы</div><div class="toc_inner"><a href="#punctuation">4.4.2.2.</a> Тире, кавычки и прочие символы</div></div></div></div><div class="toc_inner"><a href="#make-ufr">5.</a> Создание UFR при помощи XSLT-преобразований<div class="toc_inner"><a href="#make-ufr-commons">5.1.</a> Общие положения</div><div class="toc_inner"><a href="#xslt-transform">5.2.</a> XSLT-преобразование</div></div><div class="toc_inner"><a href="#further-processing">6.</a> Дальнейшее развитие</div><div class="toc_inner"><a href="#changes">7.</a> Внесение изменений</div><div class="toc_inner"><a href="#refs">8.</a> Сссылки</div><div class="toc_inner"><a href="#appendixes"></a> Приложения<div class="toc_inner"><a href="#appendix-copyright">A.</a> Объявление авторских прав</div><div class="toc_inner"><a href="#lonng">B.</a> О длине телеграфных проводов</div><div class="toc_inner"><a href="#lonng">C.</a> О длине телеграфных проводов</div></div><h2><a id="intro"></a>1. Введение</h2>
+                данного стандарта.</p><h2>Авторские права</h2><p>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p><h2>Лицензия</h2><p>В соответствии с §105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>)</p><h2>Содержание</h2><div class="toc_inner"><a href="#intro">1.</a> Введение</div><div class="toc_inner"><a href="#therms-and-desc">2.</a> Терминология и обозначения<div class="toc_inner"><a href="#therms">2.1.</a> Терминология</div><div class="toc_inner"><a href="#definitions">2.2.</a> Обозначения<div class="toc_inner"><a href="#code-sample">2.2.1.</a> Пример кода</div></div></div><div class="toc_inner"><a href="#common-req">3.</a> Общие требования к документу, его структура и состав<div class="toc_inner"><a href="#common">3.1.</a> Общие положения</div><div class="toc_inner"><a href="#sec-structure">3.2.</a> Структура документа<div class="toc_inner"><a href="#runtime-sections">3.2.1.</a> Разделы, которые формируются XSLT-процессором на основании пользовательских данных</div><div class="toc_inner"><a href="#sec-front">3.2.2.</a> Заголовочная часть<div class="toc_inner"><a href="#creator">3.2.2.1.</a> Элемент creator</div><div class="toc_inner"><a href="#authors-element">3.2.2.2.</a> Элемент authors</div><div class="toc_inner"><a href="#ufrdata">3.2.2.3.</a> Элемент ufrdata</div></div><div class="toc_inner"><a href="#sec-document">3.2.3.</a> Документ<div class="toc_inner"><a href="#sec-abstract">3.2.3.1.</a> Аннотация</div><div class="toc_inner"><a href="#section-copyright">3.2.3.2.</a> Авторские права</div><div class="toc_inner"><a href="#sec-license">3.2.3.3.</a> Лицензия</div><div class="toc_inner"><a href="#sec-section">3.2.3.4.</a> Разделы документа</div></div><div class="toc_inner"><a href="#sec-text-elements">3.2.4.</a> Элементы текста<div class="toc_inner"><a href="#sec-par-format">3.2.4.1.</a> Абзац и его форматирование</div><div class="toc_inner"><a href="#sec-lists">3.2.4.2.</a> Списки</div></div><div class="toc_inner"><a href="#cross-links-footnotes">3.2.5.</a> Ссылки и сноски<div class="toc_inner"><a href="#outer-links">3.2.5.1.</a> Внешние ссылки</div><div class="toc_inner"><a href="#cross-links">3.2.5.2.</a> Перекрестные ссылки<div class="toc_inner"><a href="#element-link-anchor">3.2.5.2.2.</a> Элементы link и anchor</div><div class="toc_inner"><a href="#element-footnote">3.2.5.2.3.</a> Элемент footnote</div></div></div></div></div><div class="toc_inner"><a href="#ufrstruct">4.</a> Структура UFR и всякоэ<div class="toc_inner"><a href="#doc_parts">4.1.</a> Структура документа</div><div class="toc_inner"><a href="#headers">4.2.</a> Заголовки и общая информация</div><div class="toc_inner"><a href="#not-in-t">4.3.</a> Элементы текста, не требующие объявления абзаца</div><div class="toc_inner"><a href="#toc_special_parts">4.4.</a> Особенности создания некоторых частей документа<div class="toc_inner"><a href="#toc_special">4.4.1.</a> Оглавление</div><div class="toc_inner"><a href="#symbols">4.4.2.</a> Символы<div class="toc_inner"><a href="#sgml-entity">4.4.2.1.</a> Ссылки на символы</div><div class="toc_inner"><a href="#punctuation">4.4.2.2.</a> Тире, кавычки и прочие символы</div></div></div></div><div class="toc_inner"><a href="#make-ufr">5.</a> Создание UFR при помощи XSLT-преобразований<div class="toc_inner"><a href="#make-ufr-commons">5.1.</a> Общие положения</div><div class="toc_inner"><a href="#xslt-transform">5.2.</a> XSLT-преобразование</div></div><div class="toc_inner"><a href="#further-processing">6.</a> Дальнейшее развитие</div><div class="toc_inner"><a href="#changes">7.</a> Внесение изменений</div><div class="toc_inner"><a href="#refs">8.</a> Сссылки</div><div class="toc_inner"><a href="#appendixes"></a> Приложения<div class="toc_inner"><a href="#appendix-copyright">A.</a> Объявление авторских прав</div><div class="toc_inner"><a href="#lonng">B.</a> О длине телеграфных проводов</div><div class="toc_inner"><a href="#lonng">C.</a> О длине телеграфных проводов</div></div><h2><a id="intro"></a>1. Введение</h2>
                 <p><a href="UFR1_20130203.html" target="_blank">Первый</a> из UFR (далее по 
                 тексту также именуется"— "документ") был написан с 
                 использованием plain HTML в простом текстовом редакторе, с ручным 
@@ -269,9 +272,10 @@ h6,h5,h4,h3,h2,h1 {
         </ul>
     
 
-        <h4><a id="sec-front"></a>3.2.2. Заголовочная часть</h4>
-        <p>Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"description"</code>.</p>
-        <p>Общий вид заголовочной части показан на [<a href="#pic1">рис. 1</a>].</p>
+
+<h4><a id="sec-front"></a>3.2.2. Заголовочная часть</h4>
+<p>Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"description"</code>.</p>
+<p>Общий вид заголовочной части показан на [<a href="#pic1">рис. 1</a>].</p>
 <p class="element-syntax">&lt;ufr&gt;
 &lt;description&gt;
     &lt;creator&gt;
@@ -299,94 +303,94 @@ h6,h5,h4,h3,h2,h1 {
         &lt;urfobsolete .../&gt;
     &lt;/ufrdata&gt;
 &lt;/description&gt;</p>
-        <p>Элемент <code>description</code> содержит элемент <code>creator</code>, элемент <code>authors</code>, и элемент <code>ufrdata</code>.</p>
-        <h5><a id="creator"></a>3.2.2.1. Элемент creator</h5>
-            Этот элемент содержит информацию о составителе URF, и описываемую данными, определенными 
-            в элементах <code>organization</code>, <code>unit</code> и <code>author</code>. 
-            <h6><a id="organization"></a>3.2.2.1.1. Элемент organization</h6>
-            <p class="element-syntax">&lt;organization&gt;<span style="font-style:oblique">организация</span>&lt;/organization&gt;</p>
-            <p>Элемент определяет организацию, к которой принадлежит составитель документа. 
-                Поскольку Лаборатория Ядерных Исследований является частью К-117 "Созвездие", то обычно 
-                это <span style="font-style:oblique">Звёздный флот Федерации</span>, но поскольку возможны и другие варианты, этот 
-                элемент изменяем.</p>
-            
+<p>Элемент <code>description</code> содержит элемент <code>creator</code>, элемент <code>authors</code>, и элемент <code>ufrdata</code>.</p>
 
-            <h6><a id="unit"></a>3.2.2.1.2. Элемент unit</h6>
-            <p class="element-syntax">&lt;unit&gt;<span style="font-style:oblique">подразделение</span>&lt;/unit&gt;</p>
-            <p>Элемент определяет подразделение, к которому принадлежит составитель документа, 
-            например <span style="font-style:oblique">К-117 "Созвездие"</span> или <span style="font-style:oblique">П-78 "Неустрашимый"</span>.</p>
-            
+    <h5><a id="creator"></a>3.2.2.1. Элемент creator</h5>
+    Этот элемент содержит информацию о составителе URF, и описываемую данными, определенными 
+    в элементах <code>organization</code>, <code>unit</code> и <code>author</code>. 
 
-            <h6><a id="author"></a>3.2.2.1.3. Элемент author</h6>
-            <p class="element-syntax">&lt;author&gt;<span style="font-style:oblique">имяАвтора</span>&lt;/author&gt;</p>
-            <p>Элемент определяет <span style="font-style:oblique">имяАвтора</span>, под которым тот выведен в
-            проекте, например <span style="font-style:oblique">Киркунов</span> или <span style="font-style:oblique">Дюшенков</span>.</p>
-            
-        
-        <h5><a id="authors-element"></a>3.2.2.2. Элемент authors</h5>
-            <p>Элемент <code>authors</code> содержит информацию о непосредственных авторах 
-            документа, принимавших участие в его создании.</p>
-            <p>Этот элемент <span class="rfc2119">должен</span> содетжать по меньшей мере один элемент 
-            <code>author</code> и <span class="rfc2119">может</span> содержать помимо него другие элементы 
-            <code>author</code>, как было сказано выше, если авторов несколько.</p>
-            <p>Элемент является контейнером для следующих элементов: <code>assignment</code>, <code>rank</code>, 
-                <code>name</code>, <code>unit</code> и <code>organization</code>.</p>
-
-                <h6><a id="assignment"></a>3.2.2.2.1. Элемент assignment</h6>
-                    <p class="element-syntax">&lt;assignment&gt;<span style="font-style:oblique">должностьАвтора</span>&lt;/assignment&gt;</p>
-            <p>Элемент определяет <span style="font-style:oblique">должностьАвтора</span>, под которым тот выведен в
-            проекте, например <span style="font-style:oblique">капитан корабля</span> или <span style="font-style:oblique">начальник спиртохранилища</span>.</p>
-                
-                <h6><a id="rank"></a>3.2.2.2.2. Элемент rank</h6>
-                    <p class="element-syntax">&lt;rank&gt;<span style="font-style:oblique">званиеАвтора</span>&lt;/rank&gt;</p>
-            <p>Элемент определяет <span style="font-style:oblique">званиеАвтора</span>, под которым тот выведен в
-            проекте, например <span style="font-style:oblique">капитан&nbsp;1 ранга&nbsp;ЗФ</span> или <span style="font-style:oblique">ст.&nbsp;сержант&nbsp;КД</span>.</p>
-            <p>Звания <span class="rfc2119">должны</span> соответствовать утвердженным Уставом ЗФ.</p>
-                
-
-                <h6><a id="author-name-element"></a>3.2.2.2.3. Элемент name</h6>
-                    <p class="element-syntax">&lt;name&gt;<span style="font-style:oblique">имяАвтора</span>&lt;/name&gt;</p>
-            <p>Элемент определяет <span style="font-style:oblique">имяАвтора</span>, под которым тот выведен в
-            проекте, например <span style="font-style:oblique">Морзе</span> или <span style="font-style:oblique">Р.&nbsp;Муррфи</span>.</p>
-            <p><span style="font-weight:700">Обратите внимание.</span> В случае, если составитель документа 
-            является также одним из его авторов, необходимо вносить его данные 
-            как в раздел <code>&lt;authors&gt;</code> в виде контейнера <code>&lt;author&gt;</code>, так и в раздел 
-            <code>&lt;creator&gt;</code>.</p>
-                
-
-                <h6><a id="author-unit-element"></a>3.2.2.2.4. Элемент unit</h6>
-            <p>Полностью аналогичен элементу <code>&lt;unit&gt;</code>, описанному <a href="#unit">выше</a>.</p>
-
-<h6><a id="author-organization-element"></a>3.2.2.2.5. Элемент organization</h6>
-            <p>Полностью аналогичен элементу <code>&lt;organization&gt;</code>, описанному <a href="#organization">выше</a>.</p>
+        <h6><a id="organization"></a>3.2.2.1.1. Элемент organization</h6>
+        <p class="element-syntax">&lt;organization&gt;<span style="font-style:oblique">организация</span>&lt;/organization&gt;</p>
+        <p>Элемент определяет организацию, к которой принадлежит составитель документа. 
+        Поскольку Лаборатория Ядерных Исследований является частью К-117 "Созвездие", то обычно это <span style="font-style:oblique">Звёздный флот Федерации</span>, но поскольку возможны и другие варианты, этот элемент изменяем.</p>
         
 
+        <h6><a id="unit"></a>3.2.2.1.2. Элемент unit</h6>
+        <p class="element-syntax">&lt;unit&gt;<span style="font-style:oblique">подразделение</span>&lt;/unit&gt;</p>
+        <p>Элемент определяет подразделение, к которому принадлежит составитель документа, 
+        например <span style="font-style:oblique">К-117 "Созвездие"</span> или <span style="font-style:oblique">П-78 "Неустрашимый"</span>.</p>
+        
 
-<h5><a id="ufrdata"></a>3.2.2.3. Элемент ufrdata</h5> 
-<p>Элемент идентифицирует UFR, определяя:</p>
-<ul>
-    <li><a href="#ufrdata-name">название и номер UFR</a></li> 
-    <li><a href="#ufrdata-cat">категорию UFR</a></li>
-    <li><a href="#ufrdata-date">дату UFR</a></li> 
-    <li><a href="#ufrdata-change">информацию об внесенных изменениях</a></li>  
-    <li><a href="#ufrdata-obsolete">информацию о том, устарел ли данный UFR вследствие принятия других UFR</a></li> 
-</ul>
-<h6><a id="ufrdata-name"></a>3.2.2.3.1. Элемент ufrname</h6>
+        <h6><a id="author"></a>3.2.2.1.3. Элемент author</h6>
+        <p class="element-syntax">&lt;author&gt;<span style="font-style:oblique">имяАвтора</span>&lt;/author&gt;</p>
+        <p>Элемент определяет <span style="font-style:oblique">имяАвтора</span>, под которым тот выведен в
+        проекте, например <span style="font-style:oblique">Киркунов</span> или <span style="font-style:oblique">Дюшенков</span>.</p>
+        
+    
+
+    <h5><a id="authors-element"></a>3.2.2.2. Элемент authors</h5>
+    <p>Элемент <code>authors</code> содержит информацию о непосредственных авторах 
+    документа, принимавших участие в его создании.</p>
+    <p>Этот элемент <span class="rfc2119">должен</span> содетжать по меньшей мере один элемент 
+    <code>author</code> и <span class="rfc2119">может</span> содержать помимо него другие элементы 
+    <code>author</code>, как было сказано выше, если авторов несколько.</p>
+    <p>Элемент является контейнером для следующих элементов: <code>assignment</code>, <code>rank</code>, <code>name</code>, <code>unit</code> и <code>organization</code>.</p>
+
+    <h6><a id="assignment"></a>3.2.2.2.1. Элемент assignment</h6>
+    <p class="element-syntax">&lt;assignment&gt;<span style="font-style:oblique">должностьАвтора</span>&lt;/assignment&gt;</p>
+    <p>Элемент определяет <span style="font-style:oblique">должностьАвтора</span>, под которым тот выведен в
+    проекте, например <span style="font-style:oblique">капитан корабля</span> или <span style="font-style:oblique">начальник спиртохранилища</span>.</p>
+    
+
+    <h6><a id="rank"></a>3.2.2.2.2. Элемент rank</h6>
+    <p class="element-syntax">&lt;rank&gt;<span style="font-style:oblique">званиеАвтора</span>&lt;/rank&gt;</p>
+    <p>Элемент определяет <span style="font-style:oblique">званиеАвтора</span>, под которым тот выведен в проекте, например <span style="font-style:oblique">капитан&nbsp;1 ранга&nbsp;ЗФ</span> или <span style="font-style:oblique">ст.&nbsp;сержант&nbsp;КД</span>.</p>
+    <p>Звания <span class="rfc2119">должны</span> соответствовать утвердженным Уставом ЗФ.</p>
+    
+
+    <h6><a id="author-name-element"></a>3.2.2.2.3. Элемент name</h6>
+    <p class="element-syntax">&lt;name&gt;<span style="font-style:oblique">имяАвтора</span>&lt;/name&gt;</p>
+    <p>Элемент определяет <span style="font-style:oblique">имяАвтора</span>, под которым тот выведен в
+    проекте, например <span style="font-style:oblique">Морзе</span> или <span style="font-style:oblique">Р.&nbsp;Муррфи</span>.</p>
+    <p><span style="font-weight:700">Обратите внимание.</span> В случае, если составитель документа 
+    является также одним из его авторов, необходимо вносить его данные 
+    как в раздел <code>&lt;authors&gt;</code> в виде контейнера <code>&lt;author&gt;</code>, так и в раздел 
+    <code>&lt;creator&gt;</code>.</p>
+    
+
+    <h6><a id="author-unit-element"></a>3.2.2.2.4. Элемент unit</h6>
+    <p>Полностью аналогичен элементу <code>&lt;unit&gt;</code>, описанному <a href="#unit">выше</a>.</p>
+    
+
+    <h6><a id="author-organization-element"></a>3.2.2.2.5. Элемент organization</h6>
+    <p>Полностью аналогичен элементу <code>&lt;organization&gt;</code>, описанному <a href="#organization">выше</a>.</p>
+    
+
+    <h5><a id="ufrdata"></a>3.2.2.3. Элемент ufrdata</h5> 
+    <p>Элемент идентифицирует UFR, определяя:</p>
+    <ul>
+        <li><a href="#ufrdata-name">название и номер UFR</a></li> 
+        <li><a href="#ufrdata-cat">категорию UFR</a></li>
+        <li><a href="#ufrdata-date">дату UFR</a></li> 
+        <li><a href="#ufrdata-change">информацию об внесенных изменениях</a></li>  
+        <li><a href="#ufrdata-obsolete">информацию о том, устарел ли данный UFR вследствие принятия других UFR</a></li> 
+    </ul>
+
+        <h6><a id="ufrdata-name"></a>3.2.2.3.1. Элемент ufrname</h6>
 <p class="element-syntax">&lt;ufrname 
-            number=<span style="font-style:oblique">"номерUFR"</span>&gt;<span style="font-style:oblique">названиеUFR</span>&lt;/ufrname&gt;</p>
-    <p>Элемент определяет название <span style="font-style:oblique">названиеUFR</span> и номер UFR <span style="font-style:oblique">номерUFR</span>.</p>
-    <p>Название UFR должно кратко и чётко отражать суть документа, и исключать двузначное толкование.</p>
-    <p>Номер UFR является целым положительным числом в десятичной записи, и определяется по порядку следования номеров UFR в Реестре UFR.</p>
+                number=<span style="font-style:oblique">"номерUFR"</span>&gt;<span style="font-style:oblique">названиеUFR</span>&lt;/ufrname&gt;</p>
+        <p>Элемент определяет название <span style="font-style:oblique">названиеUFR</span> и номер UFR <span style="font-style:oblique">номерUFR</span>.</p>
+        <p>Название UFR должно кратко и чётко отражать суть документа, и исключать двузначное толкование.</p>
+        <p>Номер UFR является целым положительным числом в десятичной записи, и определяется по порядку следования номеров UFR в Реестре UFR.</p>
+        
 
-
-<h6><a id="ufrdata-cat"></a>3.2.2.3.2. Элемент ufrcategory</h6>
+        <h6><a id="ufrdata-cat"></a>3.2.2.3.2. Элемент ufrcategory</h6>
 <p class="element-syntax">&lt;ufrcategory 
             cat=<span style="font-style:oblique">"категорияUFR"</span> 
             [draft=<span style="font-style:oblique">"yes"</span> | <span style="font-style:oblique">"no"</span>]/&gt;</p>
-<p>Элемент определяет категорию, к которй относится UFR при помощи 
-аттрибута <code>cat</code>, который может принимать следующие 
-значения [<a href="#table-cat">табл. 1</a>]<a href="#"></a>:</p>
-<a id="table-cat"><div class="table"><p style="text-align:right;">Таблица&nbsp;1</p><p style="text-align:center;">Значения атрибута cat элемента ufrcategory</p><p>
+        <p>Элемент определяет категорию, к которй относится UFR при помощи 
+        аттрибута <code>cat</code>, который может принимать следующие значения [<a href="#table-cat">табл. 1</a>]<a href="#"></a>:</p>
+        <a id="table-cat"><div class="table"><p style="text-align:right;">Таблица&nbsp;1</p><p style="text-align:center;">Значения атрибута cat элемента ufrcategory</p><p>
 /--------------------------------------------------------\
 |Атрибут |               Значение                        |
 |--------|-----------------------------------------------|
@@ -401,31 +405,29 @@ h6,h5,h4,h3,h2,h1 {
 |  info  |информационный - не устанавливает стандартов,  |
 |        |однако предоставляет информацию                |
 \--------------------------------------------------------/</p></div></a>
-<p>В зависимости от значения атрибута <code>cat</code> XSLT-процессор подставит 
-    необходимое пояснение в <a href="#sec-abstract">аннотацию</a> документа. </p>
-<p>Необязательный атрибут <code>draft</code> указывает на то, что 
-данный стандарт в настоящее время является черновым и находится в стадии 
-согласования.</p>
-<p>Для указания этого нужно присвоить атрибуту <code>draft</code> 
-значения <code>"yes"</code>.</p>
-<p>Если документ не является черновым изначально, атрибут 
-<code>draft</code> можно не указывать.</p>
-<p>Аннотация настоящего UFR является результатом присвоения атрибуту 
-<code>cat</code> значения <code>"std"</code>.</p>
+        <p>В зависимости от значения атрибута <code>cat</code> XSLT-процессор подставит 
+        необходимое пояснение в <a href="#sec-abstract">аннотацию</a> документа. </p>
+        <p>Необязательный атрибут <code>draft</code> указывает на то, что 
+        данный стандарт в настоящее время является черновым и находится в стадии 
+        согласования.</p>
+        <p>Для указания этого нужно присвоить атрибуту <code>draft</code> 
+        значения <code>"yes"</code>.</p>
+        <p>Если документ не является черновым изначально, атрибут 
+        <code>draft</code> можно не указывать.</p>
+        <p>Аннотация настоящего UFR является результатом присвоения атрибуту 
+        <code>cat</code> значения <code>"std"</code>.</p>
+        
 
-
-<h6><a id="ufrdata-date"></a>3.2.2.3.3. Элемент ufrdate</h6>
+        <h6><a id="ufrdata-date"></a>3.2.2.3.3. Элемент ufrdate</h6>
 <p class="element-syntax">&lt;ufrdate value=<span style="font-style:oblique">"2013-02-03"</span>/&gt;</p>
-<p>Определяет дату создания UFR.</p>
-<p>Дата создания хранится в атрибуте <code>value</code>. Значение даты 
-записывается в формате, соответствующем ISO&nbsp;8601 и определенном в 
-заметке W3C [<a href="#iso8601">Date and Time Formats</a>], 
-в частности полный формат даты имеет вид:</p>
-<p><code>YYYY-MM-DD (например 2027-07-25)</code></p>
+        <p>Определяет дату создания UFR.</p>
+        <p>Дата создания хранится в атрибуте <code>value</code>. Значение даты 
+        записывается в формате, соответствующем ISO&nbsp;8601 и определенном в 
+        заметке W3C [<a href="#iso8601">Date and Time Formats</a>], в частности полный формат даты имеет вид:</p>
+        <p><code>YYYY-MM-DD (например 2027-07-25)</code></p>
+        
 
-
-
-<h6><a id="ufrdata-change"></a>3.2.2.3.4. Элемент ufrchanged</h6>
+        <h6><a id="ufrdata-change"></a>3.2.2.3.4. Элемент ufrchanged</h6>
 <p class="element-syntax">&lt;ufrchanged&gt;
     &lt;changed number="115" 
         date="2027-09-03" 
@@ -437,24 +439,24 @@ h6,h5,h4,h3,h2,h1 {
         date="2027-10-13" 
         edition="1"/&gt;
     &lt;/ufrchanged&gt;</p>
-<p>Необязательный элемент. Употребляется в случае, если в данный UFR 
-    были внесены изменения. Является контейнером для элемента <code>changed</code> 
-    (или несколких таких элементов, если изменения вносились несколько раз и/или 
-    разными UFR).</p>
-<p>Каждый элемент <code>changed</code> в свою очередь определяет реквизиты 
-внесшего изменения UFR при помощи следующих атрибутов:</p>
-<ul>
-    <li><code>number</code> - определяет номер UFR, которым внесены изменения;</li>
-    <li><code>date</code> - определяет дату UFR, которым внесены изменения, в формате, определенном <a href="#ufrdata-date">выше</a>;</li>
-    <li><code>edition</code> - определяет версию правки в том случае, если за один день было внесено более одной правки в данный UFR. Разумеется, такая ситуация крайне маловероятна, но если в один день было внесено более одной правки, то:
-        <ol>
-        <li>Пусть первый раз за текущие сутки изменения в текущий UFR (UFR&nbsp;№110 от 25.07.2027) 
-            были внесены UFR&nbsp;№116 от 01.09.2027. Версия документа без исправлений получит имя 
-            <code>UFR110_20270725.html</code>, измененная версия -- <code>UFR110.html</code>.</li>
-        <li>Второй раз за текущие сутки изменения в текущий UFR вносятся UFR&nbsp;№117 от 01.09.2027. 
-            Устаревшая версия документа (<code>UFR110.html</code> из п.&nbsp;1) получит имя 
-            <code>UFR110_20270725-1.html</code>, измененная версия снова получит имя <code>UFR110.html</code>.</li>
-        <li>Элемент <code>ufrchanged</code> примет вид<a id="ftnti"><a href="#apply-change-urf"><sup>i</sup></a></a>:
+        <p>Необязательный элемент. Употребляется в случае, если в данный UFR 
+        были внесены изменения. Является контейнером для элемента <code>changed</code> 
+        (или несколких таких элементов, если изменения вносились несколько раз и/или 
+        разными UFR).</p>
+        <p>Каждый элемент <code>changed</code> в свою очередь определяет реквизиты 
+        внесшего изменения UFR при помощи следующих атрибутов:</p>
+        <ul>
+            <li><code>number</code> - определяет номер UFR, которым внесены изменения;</li>
+            <li><code>date</code> - определяет дату UFR, которым внесены изменения, в формате, определенном <a href="#ufrdata-date">выше</a>;</li>
+            <li><code>edition</code> - определяет версию правки в том случае, если за один день было внесено более одной правки в данный UFR. Разумеется, такая ситуация крайне маловероятна, но если в один день было внесено более одной правки, то:
+                <ol>
+                <li>Пусть первый раз за текущие сутки изменения в текущий UFR (UFR&nbsp;№110 от 25.07.2027) 
+                    были внесены UFR&nbsp;№116 от 01.09.2027. Версия документа без исправлений получит имя 
+                    <code>UFR110_20270725.html</code>, измененная версия -- <code>UFR110.html</code>.</li>
+                <li>Второй раз за текущие сутки изменения в текущий UFR вносятся UFR&nbsp;№117 от 01.09.2027. 
+                    Устаревшая версия документа (<code>UFR110.html</code> из п.&nbsp;1) получит имя 
+                    <code>UFR110_20270725-1.html</code>, измененная версия снова получит имя <code>UFR110.html</code>.</li>
+                <li>Элемент <code>ufrchanged</code> примет вид<a id="ftnti"><a href="#apply-change-urf"><sup>i</sup></a></a>:
             <p class="element-syntax">&lt;ufrchanged&gt;
     &lt;changed number="116" 
                 date="2027-09-01" 
@@ -463,24 +465,24 @@ h6,h5,h4,h3,h2,h1 {
                 date="2027-09-01" 
                 edition="1"/&gt;
 &lt;/ufrchanged&gt;</p>
-        </li>
-        </ol>
-    </li>
-</ul>
+                </li>
+                </ol>
+            </li>
+        </ul>
+        
 
-<h6><a id="ufrdata-obsolete"></a>3.2.2.3.5. Элемент urfobsolete</h6>
-<p class="element-syntax">&lt;urfobsolete ufrno=<span style="font-style:oblique">"номерUFR"</span>/&gt;</p>
-<p>Необязательный, однако <span class="rfc2119">рекомендуется</span> добавлять в 
-документ "пустой" элемент, объединяющий начальный и конечный теги: 
-<code>&lt;urfobsolete/&gt;</code>.</p>
-<p>Определяет номер UFR, которым отменяется данный, и предоставляет ссылку 
-на него.</p>
-<p>Результатом применения элемента является добавление следующего текста в 
-    заголовочную часть:</p>
-<p class="block">Данный UFR устарел - см. UFR №216</p>
-
-
-
+        <h6><a id="ufrdata-obsolete"></a>3.2.2.3.5. Элемент urfobsolete</h6>
+        <p class="element-syntax">&lt;urfobsolete ufrno=<span style="font-style:oblique">"номерUFR"</span>/&gt;</p>
+        <p>Необязательный, однако <span class="rfc2119">рекомендуется</span> добавлять в 
+        документ "пустой" элемент, объединяющий начальный и конечный теги: 
+        <code>&lt;urfobsolete/&gt;</code>.</p>
+        <p>Определяет номер UFR, которым отменяется данный, и предоставляет ссылку 
+        на него.</p>
+        <p>Результатом применения элемента является добавление следующего текста в 
+            заголовочную часть:</p>
+        <p class="block">Данный UFR устарел - см. UFR №216</p>
+        
+     
    <a id="pic1">
 <pre class="artwork">
 (1)Звёздный флот Федерации                 (2)К-117 "Созвездие"
@@ -515,13 +517,13 @@ h6,h5,h4,h3,h2,h1 {
             стандарта, в измененную версию добавляется информация о стандарте, 
             которым отменяется данный.</li>
     </ol>
-    
+     
 
     <h4><a id="sec-document"></a>3.2.3. Документ</h4>
-        Основная часть документа вложена в секцию, ограниченную 
-        элементом <code>document</code>. Ниже приведено краткое описание 
-        структуры секции (<span class="rfc2119">необходмио</span>, чтобы все UFR имели 
-        описанную структуру):
+    Основная часть документа вложена в секцию, ограниченную 
+    элементом <code>document</code>. Ниже приведено краткое описание 
+    структуры секции (<span class="rfc2119">необходмио</span>, чтобы все UFR имели 
+    описанную структуру):
 <p class="element-syntax">&lt;document&gt;
   &lt;abstract.../&gt;              | [Аннотация]
   &lt;copyright.../&gt;             | Авторские права
@@ -544,25 +546,25 @@ h6,h5,h4,h3,h2,h1 {
 &lt;/document&gt;</p>
 
 
-    <h5><a id="sec-abstract"></a>3.2.3.1. Аннотация</h5>
-        <p>Опциональный.</p>
-        <p>Раздел "Аннотация" формируется XSLT-процессором, если XSLT-процессор обнаружит 
-            в документе элемент <code>&lt;copyright/&gt;.</code></p>
-        <p>Содержание раздела определяется в зависимости от <a href="#ufrdata-cat">категории</a>, к которой относится документ.</p>
-    
+        <h5><a id="sec-abstract"></a>3.2.3.1. Аннотация</h5>
+            <p>Опциональный.</p>
+            <p>Раздел "Аннотация" формируется XSLT-процессором, если XSLT-процессор обнаружит 
+                в документе элемент <code>&lt;copyright/&gt;.</code></p>
+            <p>Содержание раздела определяется в зависимости от <a href="#ufrdata-cat">категории</a>, к которой относится документ.</p>
+        
 
-    <h5><a id="section-copyright"></a>3.2.3.2. Авторские права</h5>
-        <p>Раздел "Авторские права" формируется XSLT-процессором, его содержание определяется 
-        элементом <code>&lt;copyright/&gt;</code>:</p>
-        <p class="element-syntax">&lt;copyright name=<span style="font-style:oblique">"Авторские права"</span> efsf-only=<span style="font-style:oblique">"yes"</span> | <span style="font-style:oblique">"no"</span>/&gt;</p>
-        <p>Данному разделу <span class="rfc2119">необходимо</span> присвоить название "Авторские права" (путём присвоения значения атрибуту <code>name</code>), его <span class="rfc2119">следует</span> изменять лишь в случае публикации UFR на другом языке.</p>
-        <p>Атрибут <code>efsf-only</code> может принимать значения <span style="font-style:oblique">"yes"</span> или <span style="font-style:oblique">"no"</span>. В случае, если значение атрибута  
-        <span style="font-style:oblique">"yes"</span>, при объявлении авторских прав будет указано, что авторские права принадлежат Звёздному Флоту, а в случае если 
-        значение атрибута <span style="font-style:oblique">"no"</span> дополнительно будет указано, что авторские права принадлежат также лицам, указанным как авторы документа (см.&nbsp;прил.<span class="nowrap"> </span>[<a href="#appendix-copyright">A.<span class="nowrap">&nbsp;</span>Объявление авторских прав</a>]).</p>
-    
+        <h5><a id="section-copyright"></a>3.2.3.2. Авторские права</h5>
+            <p>Раздел "Авторские права" формируется XSLT-процессором, его содержание определяется 
+            элементом <code>&lt;copyright/&gt;</code>:</p>
+            <p class="element-syntax">&lt;copyright name=<span style="font-style:oblique">"Авторские права"</span> efsf-only=<span style="font-style:oblique">"yes"</span> | <span style="font-style:oblique">"no"</span>/&gt;</p>
+            <p>Данному разделу <span class="rfc2119">необходимо</span> присвоить название "Авторские права" (путём присвоения значения атрибуту <code>name</code>), его <span class="rfc2119">следует</span> изменять лишь в случае публикации UFR на другом языке.</p>
+            <p>Атрибут <code>efsf-only</code> может принимать значения <span style="font-style:oblique">"yes"</span> или <span style="font-style:oblique">"no"</span>. В случае, если значение атрибута  
+            <span style="font-style:oblique">"yes"</span>, при объявлении авторских прав будет указано, что авторские права принадлежат Звёздному Флоту, а в случае если 
+            значение атрибута <span style="font-style:oblique">"no"</span> дополнительно будет указано, что авторские права принадлежат также лицам, указанным как авторы документа (см.&nbsp;прил.<span class="nowrap"> </span>[<a href="#appendix-copyright">A.<span class="nowrap">&nbsp;</span>Объявление авторских прав</a>]).</p>
+        
 
-    <h5><a id="sec-license"></a>3.2.3.3. Лицензия</h5>
-        <p>Раздел "Лицензия" формируется XSLT-процессором на основании элемента <code>&lt;license/&gt;</code>:</p>
+        <h5><a id="sec-license"></a>3.2.3.3. Лицензия</h5>
+            <p>Раздел "Лицензия" формируется XSLT-процессором на основании элемента <code>&lt;license/&gt;</code>:</p>
         <p class="element-syntax">&lt;license type=<span style="font-style:oblique">"типЛицензии"</span> name=<span style="font-style:oblique">"названиеРаздела"</span> /&gt;</p>
 
         <p>Данному разделу <span class="rfc2119">необходимо</span> присвоить название "Лицензия" (путём присвоения значения атрибуту <code>name</code>), его <span class="rfc2119">следует</span> изменять лишь в случае публикации UFR на другом языке.</p>
@@ -576,24 +578,24 @@ h6,h5,h4,h3,h2,h1 {
             <code>anchor</code> элемента <code>section</code> которого <span class="rfc2119">необходимо</span> присвоить 
             значение <code>"full-copyright-statement"</code>, для того, чтобы XSLT-процессор мог создать соответствующие ссылки.</li>
         </ol>
-    
+        
 
-    <h5><a id="sec-section"></a>3.2.3.4. Разделы документа</h5>
-        <p>Разделы документа являются основным способом логического разделения документа на части.</p>
-        <p>Для того, чтобы начать новый раздел, нужно использовать элемент <code>section</code>:</p>
+        <h5><a id="sec-section"></a>3.2.3.4. Разделы документа</h5>
+            <p>Разделы документа являются основным способом логического разделения документа на части.</p>
+            <p>Для того, чтобы начать новый раздел, нужно использовать элемент <code>section</code>:</p>
         <p class="element-syntax">&lt;section name=<span style="font-style:oblique">"названиеРаздела"</span> 
     anchor=<span style="font-style:oblique">"имяЯкоря"</span> 
     [toc=<span style="font-style:oblique">"включитьВОглавление"</span>]&gt;
     <span style="font-style:oblique">Lorem ipsum dolor sit amet...</span>
 &lt;/section&gt;</p>
-        <p>Атрибуты элемента <code>section</code> <code>name</code> и <code>anchor</code> являются обязательными 
-        и определяют соответственно название раздела и якорь, используемый для ссылок на этот раздел внутри 
-        документа.</p>
-        <p>Значение атрибута <code>anchor "имяЯкоря"</code> должно сообтветствовать  
-        <a href="#http://www.w3.org/TR/html4/struct/links.html#adef-name-A">требованиям</a> спецификации 
-        HTML&nbsp;4.01 [<a href="#html401" title="HTML 4.01 Specification">4</a>].</p>
-        <p>Разделы документа могут быть вложенными друг в друга. Максимальное количество вложенных 
-            разделов&nbsp;— 5. </p>
+            <p>Атрибуты элемента <code>section</code> <code>name</code> и <code>anchor</code> являются обязательными 
+            и определяют соответственно название раздела и якорь, используемый для ссылок на этот раздел внутри 
+            документа.</p>
+            <p>Значение атрибута <code>anchor "имяЯкоря"</code> должно сообтветствовать  
+            <a href="#http://www.w3.org/TR/html4/struct/links.html#adef-name-A">требованиям</a> спецификации 
+            HTML&nbsp;4.01 [<a href="#html401" title="HTML 4.01 Specification">4</a>].</p>
+            <p>Разделы документа могут быть вложенными друг в друга. Максимальное количество вложенных 
+                разделов&nbsp;— 5. </p>
         <p class="element-syntax">&lt;section... &gt;
     &lt;section... &gt;
         <span style="font-style:oblique">Lorem ipsum dolor sit amet...</span>
@@ -608,27 +610,26 @@ h6,h5,h4,h3,h2,h1 {
                 1.1.1.<br>
                 1.1.1.1.<br>
                 1.1.1.1.1.<br></p></p>
+        
     
-
 
     <h4><a id="sec-text-elements"></a>3.2.4. Элементы текста</h4>
         <p>Внутри разделов документа могут находиться различные комбинации абзацев, списков, элементов
          для форматирования текста, вставки рисунков (как <a href="http://ru.wikipedia.org/w/index.php?title=ASCII-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0&amp;oldid=52861304" target="_blank">ASCII</a>, так и 
-            <a href="" target="_blank">SVG</a>), 
-            таблиц, примеров кода и прочего.</p>
-        <p>Полный перечень элементов:</p>
+            <a href="" target="_blank">SVG</a>), таблиц, примеров кода и прочего.</p>
+        <p>Полный перечень элементов приведен в ПВКРААВРАРАРАР</p>
         <h5><a id="sec-par-format"></a>3.2.4.1. Абзац и его форматирование</h5>
-        <h6><a id="element-t"></a>3.2.4.1.1. Элемент t</h6>
-<p class="element-syntax">&lt;t&gt;<span style="font-style:oblique">Всё смешалось в доме Облонских</span>&lt;/t&gt;</p>
-            <p>Элемент <code>t</code> является аналогом <a href="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1" target="_blank">элемента <code>&lt;p&gt;</code></a> HTML и создаёт абзац.</p>
-        
+            <h6><a id="element-t"></a>3.2.4.1.1. Элемент t</h6>
+    <p class="element-syntax">&lt;t&gt;<span style="font-style:oblique">Всё смешалось в доме Облонских</span>&lt;/t&gt;</p>
+                <p>Элемент <code>t</code> является аналогом <a href="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1" target="_blank">элемента <code>&lt;p&gt;</code></a> HTML и создаёт абзац.</p>
+            
 
-        <h6><a id="element-code"></a>3.2.4.1.2. Элемент code</h6>
-            <p>Элемент <code>code</code> используется для вставки в текст названий элементов, атрибутов, 
-            переменных, вводимого текста, команд, а также имен файлов, путей и комбинаций клавиш.</p>
-            <p>К содержимому элемента <code>code</code> не применяются преобразования, оно просто 
-            заключается в тег HTML <a href="http://www.w3.org/TR/html401/struct/text.html#edef-CODE" target="_blank">code</a>.</p>
-        
+            <h6><a id="element-code"></a>3.2.4.1.2. Элемент code</h6>
+                <p>Элемент <code>code</code> используется для вставки в текст названий элементов, атрибутов, 
+                переменных, вводимого текста, команд, а также имен файлов, путей и комбинаций клавиш.</p>
+                <p>К содержимому элемента <code>code</code> не применяются преобразования, оно просто 
+                заключается в тег HTML <a href="http://www.w3.org/TR/html401/struct/text.html#edef-CODE" target="_blank">code</a>.</p>
+            
 
         <h6><a id="element-codesample"></a>3.2.4.1.3. Элемент codesample</h6>
 <p class="element-syntax">#include &lt;stdio.h&gt;
@@ -654,29 +655,140 @@ h6,h5,h4,h3,h2,h1 {
 
         <h6><a id="element-it"></a>3.2.4.1.5. Элемент it</h6>
         <p class="element-syntax">Здесь будет &lt;it&gt;<span style="font-style:oblique">курсив</span>&lt;/it&gt;.</p>
-            <p></p>
+            <p>Задает отображение текста курсивом.</p>
+            <p>Возможно комбинирование с <span style="font-style:oblique"><span style="font-weight:700">полужирным</span></span> начертанием.</p>
         
 
         <h6><a id="element-bf"></a>3.2.4.1.6. Элемент bf</h6>
-            <p></p>
+            <p class="element-syntax">Этот текст &lt;bf&gt;<span style="font-weight:700">курсив</span>&lt;/bf&gt;.</p>
+            <p>Задает отображение полужирного текста.</p>
+            <p>Возможно комбинирование с <span style="font-style:oblique"><span style="font-weight:700">курсивным</span></span> начертанием.</p>
+        
         
 
-        <h6><a id="element-"></a>3.2.4.1.7. Элемент </h6>
-            <p></p>
+    <h5><a id="sec-lists"></a>3.2.4.2. Списки</h5>
+        <p>Файл XSLT-преобразования позволяет создавать простые одноуровневые 
+            вложенные списки&nbsp;— как нумерованные, так и маркированные.</p>
+        <p>Нумерованный и маркированный списки создаются при помощи инструкций 
+            <a href="#element-olist"><code>olist</code></a> и <a href="#element-ulist"><code>ulist</code></a> соответственно. Элемент списка в 
+            обоих случаях определен вложенным элементом <code>item</code>.</p>
+
+        <h6><a id="element-olist"></a>3.2.4.2.1. Нумерованный список</h6>
+<p class="element-syntax">&lt;olist&gt;
+    &lt;item&gt;<span style="font-style:oblique">Элемент 1</span>&lt;/item&gt;
+    &lt;item&gt;<span style="font-style:oblique">Элемент 2</span>&lt;/item&gt;
+&lt;/olist&gt;</p>
+        <p>Создает простой нумерованный список с элементами "1, 2,&nbsp;…&nbsp;10&nbsp;…".</p>
         
 
-//it
-//bf
-        
-        <h5><a id="sec-lists"></a>3.2.4.2. Списки</h5>
-olist-item
-ulist-item
+        <h6><a id="element-ulist"></a>3.2.4.2.2. Маркированный список</h6>
+            <p class="element-syntax">&lt;olist&gt;
+    &lt;item&gt;<span style="font-style:oblique">Элемент 1</span>&lt;/item&gt;
+    &lt;item&gt;<span style="font-style:oblique">Элемент 2</span>&lt;/item&gt;
+&lt;/olist&gt;</p>
+             <p>Создает простой маркированный список с элементами, помеченными кружком.</p>
         
 
-    
 
-                <h3><a id="sec-back"></a>3.3. Заключительная часть</h3>
-                
+<h4><a id="cross-links-footnotes"></a>3.2.5. Ссылки и сноски</h4>
+    <p>Документ содержит различную информацию, требующую организации ссылок 3 типов:</p>
+    <ol>
+        <li>внешних разд.<span class="nowrap"> </span>[<a href="#outer-links">3.2.5.1.<span class="nowrap">&nbsp;</span>Внешние ссылки</a>]  ссылок (на источники в сети Интернет)</li>
+        <li>перекрестных ссылок (на разделы, источники литературы, заранее определенные места в документе)</li>
+        <li>элементы документа (таблицы, рисунки, сноски)</li>
+    </ol>
+
+<h5><a id="outer-links"></a>3.2.5.1. Внешние ссылки</h5>
+    <h6><a id="element-eref"></a>3.2.5.1.1. Элемент eref</h6>
+    <p>Элемент <code>eref</code> предназначен для создания ссылок на ресурсы в сети Интернет.</p>
+    <p class="element-syntax">&lt;eref target="targetURL"&gt;Текст_ссылки&lt;/eref&gt;
+&lt;eref target="targetURL"/&gt;</p>
+    <p>Как видно из примера выше, синтаксис записи предполагает два варианта. В обоиих случаях атрибут 
+        <code>target</code> определяет URL ссылки.</p> 
+<p class="element-syntax">&lt;eref target="http://skobkin.ru/"&gt;
+    Место, где скрепляют бумагу.
+&lt;/eref&gt;</p>
+    <p>В первом случае, когда непустой элемент <code>eref</code> имеет как открывающий, так и закрывающий тег, содержимое элемента становится текстом ссылки на ресурс в сети Интернет:</p>
+    <p class="block"><a href="http://skobkin.ru/" target="_blank">Место, где скрепляют бумагу.</a></p>
+
+<p class="element-syntax">&lt;eref target="http://skobkin.ru/"/&gt;</p>
+    <p>Во втором случае, когда элемент <code>eref</code> является одиночным, в тексте документа отображается ссылка на на ресурс в сети Интернет, заключенная в угловые скобки:</p>
+    <p class="block">&lt;<a href="http://skobkin.ru/" target="_blank">http://skobkin.ru/</a>&gt;</p>
+
+<p><span style="font-weight:700">ПРИМЕЧАНИЕ</span>. В случае, если URL содержит знак амперсанда <code>&amp;</code>, его 
+<span class="rfc2119">необходимо</span> заменить мнемоникой <code>&amp;amp;</code>, как это определено в 
+разделе C.12 <a href="http://www.w3.org/TR/xhtml1/" target="_blank">спецификации 
+XHTML™&nbsp;1.0</a>, иначе это вызовет ошибку преобразования документа.</p>
+
+<h5><a id="cross-links"></a>3.2.5.2. Перекрестные ссылки</h5>
+<h6><a id="element-xref"></a>3.2.5.2.1. Элемент xref</h6>
+<p>Элемент <code>xref</code> предназначен для создания ссылок на разделы документа с использованием 
+<a href="#sec-section">заранее определенных</a> якорей. Синтаксис использования элемента схож с 
+синтаксисом использования <a href="#element-eref">элемента <code>eref</code></a>:</p>
+<p class="element-syntax">&lt;xref target="имяЯкоря"&gt;Текст_ссылки&lt;/xref&gt;
+&lt;xref target="имяЯкоря"/&gt;</p>
+<p>Как и в случае с элементом <code>eref</code>, непустой элемент <code>xref</code> генерирует 
+в выходном документе ссылку с текстом:</p>
+<p class="element-syntax">&lt;xref target="outer-links"&gt;внешние ссылки&lt;/xref&gt;</p>
+<p class="block"><a href="#outer-links">внешние ссылки</a></p>
+<p>Пустой элемент <code>xref</code> генерирует в выходном документе ссылку, текст которой 
+является номером и названием раздела, на который ссылается автор, заключенными в квадратные 
+скобки, с добавлением перед ними сокращения "разд.":</p>
+<p class="element-syntax">&lt;xref target="outer-links"/&gt;</p>
+<p class="block">разд.<span class="nowrap"> </span>[<a href="#outer-links">3.2.5.1.<span class="nowrap">&nbsp;</span>Внешние ссылки</a>]</p>
+
+
+
+
+<h6><a id="element-link-anchor"></a>3.2.5.2.2. Элементы link и anchor</h6>
+<p>В то время как элемент <code>xref</code> предназначены для создания ссылок на якоря, 
+определенные автором в заголовках разделов, пара элементов <code>link</code> и 
+<code>anchor</code> позволяет создать ссылку на любое произвольно определённое 
+место в документе.</p>
+<p class="element-syntax">&lt;anchor name="имяЯкоря"&gt;текст&lt;/anchor&gt;
+&lt;link anchor="имяЯкоря"&gt;текстСсылки&lt;/link&gt;</p>
+<p>Атрибут <code>name</code> элемента <code>anchor</code> задает имя якоря, согласно 
+соответствующим <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank"> требованиям</a> спецификации HTML&nbsp;5 [<a href="#html5-author" title="HTML5: Edition for Web Authors">5</a>].</p>
+
+
+
+<h6><a id="element-footnote"></a>3.2.5.2.3. Элемент footnote</h6>
+<p class="element-syntax">&lt;footnote name="cm-charmap"&gt;текстСноски&lt;/footnote&gt;</p>
+    <p>Элемент <code>footnote</code> предназначен для вставки в документ сносок. Сноски в 
+документе имеют сквозную нумерацию строчными римскими цифрами (i, ii,&nbsp;…&nbsp;iv)
+и отображаются группами в конце каждого раздела первого уровня.</p>
+<p>Каждая сноска позволяет вернуться к фрагменту тескта, который содержит сноску, для 
+    этого необходимо щёлкнуть мышью по символу "↑".</p>
+<p>Текст сноски заключается между начальным и конечным тегами элемента <code>footnote</code>. 
+Значение атрибута <code>name</code> представляет собой уникальный идентификатор, и должно 
+соответствовать <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank"> требованиям</a> спецификации HTML&nbsp;5 [<a href="#html5-author" title="HTML5: Edition for Web Authors">5</a>].</p>
+<p>Файл XSLT-шаблона предполагает также возможность произвольно сослаться на известный уникальный 
+    идентификатор существующей ссылки, для этого следует использовать элемент <a href="#element-ftref"><code>ftref</code></a>.</p>
+
+
+<h6><a id="element-ftref"></a>3.2.5.2.4. Элемент ftref</h6>
+    <p class="element-syntax">&lt;ftref name="имяСноски"&gt;текстСсылки&lt;/footnote&gt;</p>
+    <p></p>
+    <p>Элемент <code>ftref</code> позволяет </p>
+
+
+
+
+
+
+
+
+<h6><a id=""></a>3.2.5.2.5. </h6>
+    <p></p>
+
+
+
+
+
+
+
+
+
 <p><a id="apply-change-urf"><sup>i</sup><a href="#ftnti">↑</a></a><span class="footnote">См.&nbsp;"Порядок внесения изменений в UFR".</span></p><p><a id="saxon_tech_restr"><sup>ii</sup><a href="#ftntii">↑</a></a><span class="footnote">
             Из-за лингвистических ограничений, связанных с падежами.</span></p><h2><a id="ufrstruct"></a>4. Структура UFR и всякоэ</h2>
             <h3><a id="doc_parts"></a>4.1. Структура документа</h3>
@@ -728,7 +840,7 @@ ulist-item
                 (без кавычек).<br><a id="link-entity">Кроме этого, если вводить ссылки сущностей 
                 символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
                 <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
-                определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#inner-entity" title="Сущности и способы их подключения">5</a>]:</a><a id="ftntiii"><a href="#cm-charmap"><sup>iii</sup></a></a><br>
+                определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#inner-entity" title="Сущности и способы их подключения">6</a>]</a><a id="ftntiii"><a href="#cm-charmap"><sup>iii</sup></a></a>:<br>
                 <p class="element-syntax">&lt;!DOCTYPE xsl:stylesheet
   [
     &lt;!ENTITY nbsp   "&amp;#160;"&gt;
@@ -761,13 +873,15 @@ ulist-item
 <p>Однако не исключена возможность дальнейшей публикации стандартов в формате PDF, что 
     может повлечь за собой введение дополнительных переменных в инструментарий, но 
     не должно затронуть лёгкость подготовки стандартов.</p><h2><a id="changes"></a>7. Внесение изменений</h2><p>В соответствии с §§42, 64 раздела 5, §94 раздела 8 Устава Звёздного Флота внесение изменений в данный стандарт производится только стандартами UFR, принятыми в установленном порядке.</p><h2><a id="refs"></a>8. Сссылки</h2><h5>UFR References</h5><table width="100%" 
-                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a id="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a id="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5>Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a id="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br>В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a id="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br>. . , Звёздный Флот Федерации Земли<br /><<a href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a id="iso8601">Date and Time Formats</a><br>C. . Wicksteed, W3 Consortium<br />M. . Wolf, W3 Consortium<br /><<a href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr><tr><td style="vertical-align:top;width:10%">[4]</td><td style="vertical-align:top"><a id="html401">HTML 4.01 Specification</a><br>D. . Raggett, World Wide Web Consortium<br />A. . Le Hors, World Wide Web Consortium<br />I. . Jacobs, World Wide Web Consortium<br /><<a href="http://www.w3.org/TR/html401">www.w3.org</a>>, <br />24 декабря 1999 г.</td><tr><tr><td style="vertical-align:top;width:10%">[5]</td><td style="vertical-align:top"><a id="inner-entity">Сущности и способы их подключения</a><br>А. . Самиляк, Студия Артемия Лебедева<br /><<a href="http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/">www.artlebedev.ru</a>>, <br />26 июля 2011 г.</td><tr></table><h2><a id="appendixes"></a>Приложения</h2>
+                    style="border:0;border-spacing:0"><tr><td style="vertical-align:top;width:15%"><a id="ufr3">[<a href="ufr3.html">UFR3</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><tr><td style="vertical-align:top;width:15%"><a id="ufr5">[<a href="ufr5.html">UFR5</a>]</a></td><td>Капитан 1 ранга Морзе<br />К-117 "Созвездие"</td></tr><td style="vertical-align:top;width:15%"></td><td>Капитан-лейтенант Райан Муррфи<br />К-117 "Созвездие"</td></tr></table><h5>Другие источники</h5><table style="width:100%;border:0;border-spacing:0px 2px;"><tr><td style="vertical-align:top;width:10%">[1]</td><td style="vertical-align:top"><a id="orthography">Правила русской орфографии и пунктуации. Полный академический справочник.</a><br>В. В. Лопатин, <br />ЭКСМО, 2006 г.</td><tr><tr><td style="vertical-align:top;width:10%">[2]</td><td style="vertical-align:top"><a id="efsf_statut">Устав Звёздного Флота Федерации Земли</a><br>Звёздный Флот Федерации Земли<br /><<a href="https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802">en.wikipedia.org</a>>, <br />14 июля 2213 г.</td><tr><tr><td style="vertical-align:top;width:10%">[3]</td><td style="vertical-align:top"><a id="iso8601">Date and Time Formats</a><br>C. Wicksteed, W3 Consortium<br />M. C. Wolf, W3 Consortium<br /><<a href="http://www.w3.org/TR/NOTE-datetime">www.w3.org</a>>, <br />27 августа 1998 г.</td><tr><tr><td style="vertical-align:top;width:10%">[4]</td><td style="vertical-align:top"><a id="html401">HTML 4.01 Specification</a><br>D. Raggett, World Wide Web Consortium<br />A. Le Hors, World Wide Web Consortium<br />I. Jacobs, World Wide Web Consortium<br /><<a href="http://www.w3.org/TR/html401">www.w3.org</a>>, <br />24 декабря 1999 г.</td><tr><tr><td style="vertical-align:top;width:10%">[5]</td><td style="vertical-align:top"><a id="html5-author">HTML5: Edition for Web Authors</a><br>R. Berjon, W3C<br />T. Leithead, Microsoft<br />S. Pfeiffer, <br />E. O'Connor, Apple, Inc.<br />E. D. Navara, <br /><<a href="http://www.w3.org/TR/html5-author/global-attributes.html#the-id-attribute">www.w3.org</a>>, <br />25 октября 2012 г.</td><tr><tr><td style="vertical-align:top;width:10%">[6]</td><td style="vertical-align:top"><a id="inner-entity">Сущности и способы их подключения</a><br>А. Самиляк, Студия Артемия Лебедева<br /><<a href="http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/">www.artlebedev.ru</a>>, <br />26 июля 2011 г.</td><tr></table><h2><a id="appendixes"></a>Приложения</h2>
 
         <h3><a id="appendix-copyright"></a>Приложение A. Объявление авторских прав</h3>
             <p><span style="font-weight:700"><code>efsf-only="no"</code></span></p>
+            <br>
             <p>Copyright © 2013 Звёздный Флот Федерации Земли. Все права защищены.</p>
             <br>
             <p><span style="font-weight:700"><code>efsf-only="yes"</code></span></p>
+            <br>
             <p>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p>
         
 

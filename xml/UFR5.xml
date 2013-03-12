@@ -532,22 +532,111 @@
 &lt;/olist&gt;</codesample>
              <t>Создает простой маркированный список с элементами, помеченными кружком.</t>
         </section>
-       </section>
+</section></section>
 
+<section name="Ссылки и сноски" anchor="cross-links-footnotes" toc="include">
+    <t>Документ содержит различную информацию, требующую организации ссылок 3 типов:</t>
+    <olist>
+        <item>внешних <xref target="outer-links"/>  ссылок (на источники в сети Интернет)</item>
+        <item>перекрестных ссылок (на разделы, источники литературы, заранее определенные места в документе)</item>
+        <item>элементы документа (таблицы, рисунки, сноски)</item>
+    </olist>
+
+<section name="Внешние ссылки" anchor="outer-links" toc="include">
+    <section name="Элемент eref" anchor="element-eref">
+    <t>Элемент <code>eref</code> предназначен для создания ссылок на ресурсы в сети Интернет.</t>
+    <codesample>&lt;eref target=&quot;targetURL&quot;&gt;Текст_ссылки&lt;/eref&gt;
+&lt;eref target=&quot;targetURL&quot;/&gt;</codesample>
+    <t>Как видно из примера выше, синтаксис записи предполагает два варианта. В обоиих случаях атрибут 
+        <code>target</code> определяет URL ссылки.</t> 
+<codesample>&lt;eref target=&quot;http://skobkin.ru/&quot;&gt;
+    Место, где скрепляют бумагу.
+&lt;/eref&gt;</codesample>
+    <t>В первом случае, когда непустой элемент <code>eref</code> имеет как открывающий, так и закрывающий тег, содержимое элемента становится текстом ссылки на ресурс в сети Интернет:</t>
+    <block><eref target="http://skobkin.ru/">Место, где скрепляют бумагу.</eref></block>
+
+<codesample>&lt;eref target=&quot;http://skobkin.ru/&quot;/&gt;</codesample>
+    <t>Во втором случае, когда элемент <code>eref</code> является одиночным, в тексте документа отображается ссылка на на ресурс в сети Интернет, заключенная в угловые скобки:</t>
+    <block><eref target="http://skobkin.ru/"/></block>
+</section>
+<t><bf>ПРИМЕЧАНИЕ</bf>. В случае, если URL содержит знак амперсанда <code>&amp;</code>, его 
+<keyword>необходимо</keyword> заменить мнемоникой <code>&amp;amp;</code>, как это определено в 
+разделе C.12 <eref target="http://www.w3.org/TR/xhtml1/">спецификации 
+XHTML&#x2122;&nbsp;1.0</eref>, иначе это вызовет ошибку преобразования документа.</t></section>
+
+<section name="Перекрестные ссылки" anchor="cross-links"  toc="include">
+<section name="Элемент xref" anchor="element-xref">
+<t>Элемент <code>xref</code> предназначен для создания ссылок на разделы документа с использованием 
+<xref target="sec-section">заранее определенных</xref> якорей. Синтаксис использования элемента схож с 
+синтаксисом использования <xref target="element-eref">элемента <code>eref</code></xref>:</t>
+<codesample>&lt;xref target=&quot;имяЯкоря&quot;&gt;Текст_ссылки&lt;/xref&gt;
+&lt;xref target=&quot;имяЯкоря&quot;/&gt;</codesample>
+<t>Как и в случае с элементом <code>eref</code>, непустой элемент <code>xref</code> генерирует 
+в выходном документе ссылку с текстом:</t>
+<codesample>&lt;xref target="outer-links"&gt;внешние ссылки&lt;/xref&gt;</codesample>
+<block><xref target="outer-links">внешние ссылки</xref></block>
+<t>Пустой элемент <code>xref</code> генерирует в выходном документе ссылку, текст которой 
+является номером и названием раздела, на который ссылается автор, заключенными в квадратные 
+скобки, с добавлением перед ними сокращения &quot;разд.&quot;:</t>
+<codesample>&lt;xref target="outer-links"/&gt;</codesample>
+<block><xref target="outer-links"/></block>
+</section>
+
+<!-- //anchor
+//link -->
+
+<section name="Элементы link и anchor" anchor="element-link-anchor"  toc="include">
+<t>В то время как элемент <code>xref</code> предназначены для создания ссылок на якоря, 
+определенные автором в заголовках разделов, пара элементов <code>link</code> и 
+<code>anchor</code> позволяет создать ссылку на любое произвольно определённое 
+место в документе.</t>
+<codesample>&lt;anchor name="имяЯкоря"&gt;текст&lt;/anchor&gt;
+&lt;link anchor="имяЯкоря"&gt;текстСсылки&lt;/link&gt;</codesample>
+<t>Атрибут <code>name</code> элемента <code>anchor</code> задает имя якоря, согласно 
+соответствующим <eref target="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute"> требованиям</eref> спецификации HTML&nbsp;5 <refref key="html5-author" short="yes"/>.</t>
+</section>
+
+
+<section name="Элемент footnote" anchor="element-footnote"  toc="include">
+<codesample>&lt;footnote name="cm-charmap"&gt;текстСноски&lt;/footnote&gt;</codesample>
+    <t>Элемент <code>footnote</code> предназначен для вставки в документ сносок. Сноски в 
+документе имеют сквозную нумерацию строчными римскими цифрами (i, ii,&nbsp;&#8230;&nbsp;iv)
+и отображаются группами в конце каждого раздела первого уровня.</t>
+<t>Каждая сноска позволяет вернуться к фрагменту тескта, который содержит сноску, для 
+    этого необходимо щёлкнуть мышью по символу &quot;&#8593;&quot;.</t>
+<t>Текст сноски заключается между начальным и конечным тегами элемента <code>footnote</code>. 
+Значение атрибута <code>name</code> представляет собой уникальный идентификатор, и должно 
+соответствовать <eref target="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute"> требованиям</eref> спецификации HTML&nbsp;5 <refref key="html5-author" short="yes"/>.</t>
+<t>Файл XSLT-шаблона предполагает также возможность произвольно сослаться на известный уникальный 
+    идентификатор существующей ссылки, для этого следует использовать элемент <xref target="element-ftref"><code>ftref</code></xref>.</t>
+</section>
+
+<section name="Элемент ftref" anchor="element-ftref">
+    <codesample>&lt;ftref name="имяСноски"&gt;текстСсылки&lt;/footnote&gt;</codesample>
+    <t></t>
+    <t>Элемент <code>ftref</code> позволяет </t>
+</section>
+
+
+
+
+
+
+
+<section name="" anchor="">
+    <t></t>
+</section>
+
+</section>
 <!-- footnotes
 
 //figure
-//eref[not(node())] &amp в ссылках
-//eref[node()]
-//anchor
-//link
+
 //tabref
 //fref
 //uref
 //ftref
 //refref
-//xref[not(node())]
-//xref[node()]
 footnote
 
 document/section[1]//ufr3|document/section[2]//ufr3
@@ -561,10 +650,7 @@ document/section[1]//ufr3|document/section[2]//ufr3
 //t//vspace[not(@blankLines)]|item//vspace[not(@blankLines)]
 //t//vspace[@blankLines]|item//vspace[@blankLines] -->
 
-        <section name="Ссылки и сноски" anchor="cross-links-footnotes">
-            
-            <t></t>
-        </section>
+
 
 </section>
 </section>
@@ -616,7 +702,7 @@ document/section[1]//ufr3|document/section[2]//ufr3
                 <item>для вставки знака параграфа (&#167;) используется <code>&amp;#167;</code>;</item>
                 <item>для случая, когда необходимо вставить в текст длинное тире 
                 <it>по правилам типографики</it> (длинное тире, предваряемое неразрывным пробелом), следует использовать последовательность <code>"&amp;nbsp;&amp;mdash;"</code> 
-                (без кавычек).<vspace/><anchor target="entity">Кроме этого, если вводить ссылки сущностей 
+                (без кавычек).<vspace/><anchor id="entity">Кроме этого, если вводить ссылки сущностей 
                 символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
                 <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
                 определить в начале XML-документа внутреннее подключение сущностей, как описано в <refref key="inner-entity" short="yes"/></anchor><footnote name="cm-charmap">В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но 
@@ -710,6 +796,27 @@ document/section[1]//ufr3|document/section[2]//ufr3
                     </author>
                     <publisher name="World Wide Web Consortium" year="1999" month="12" day="24"/>
                     <url>http://www.w3.org/TR/html401</url>
+                </ref>
+
+                <ref key="html5-author">
+                    <title>HTML5: Edition for Web Authors</title> 
+                    <author firstname="Robin" middlename="" lastname="Berjon">
+                        <organization>W3C</organization>
+                    </author>
+                    <author firstname="Travis" middlename="" lastname="Leithead">
+                        <organization>Microsoft</organization>
+                    </author>
+                    <author firstname="Silvia" middlename="" lastname="Pfeiffer">
+                        <organization/>
+                    </author>
+                    <author firstname="Edward" middlename="" lastname="O'Connor">
+                        <organization>Apple, Inc.</organization>   
+                    </author>
+                    <author firstname="Erika" middlename="Doyle" lastname="Navara">
+                        <organization/>
+                    </author>
+                    <publisher name="World Wide Web Consortium" year="2012" month="10" day="25"/>
+                    <url>http://www.w3.org/TR/html5-author/global-attributes.html#the-id-attribute</url>
                 </ref>
 
                 <ref key="inner-entity">
