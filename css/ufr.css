@@ -190,3 +190,15 @@ h6,h5,h4,h3,h2,h1 {
 .svg { 	margin:0 auto;
 		display: block;
 		}
+
+sub, sup {
+	font-size: .83em
+}
+ 
+sub {
+	vertical-align: sub
+}
+
+sup {
+	vertical-align: super
+}
