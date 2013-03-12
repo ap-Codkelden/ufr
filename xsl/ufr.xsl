@@ -66,7 +66,7 @@
 <!-- ключ для ссылок на литературу  -->
 <xsl:key name="book-ref" match="//ref" use="@id"/>
 <!-- Для иллюстраций -->
-<xsl:key name="fig-search" match="//figure" use="@id"/>
+<xsl:key name="fig-search" match="//figure|//svg" use="@id"/>
 <!-- Для сносок -->
 <xsl:key name="ftnt-search" match="//footnote" use="@id"/>
 <!-- Tables -->
@@ -319,10 +319,10 @@
             <xsl:number  level="any" count="footnote" format="i"/>
         </xsl:variable> 
         <p>
-            <a id="{@name}">
+            <a id="{@id}">
             <sup><xsl:number  level="any" count="footnote" format="i"/></sup>
             <!-- &#8593; - стрелка вверх -->
-            <a href="#{concat('ftnt',$ftnumb)}">&#8593;</a>
+            <a href="#{concat('footnote',$ftnumb)}">&#8593;</a>
         </a>
             <span class="footnote"><xsl:apply-templates /></span></p>
   </xsl:for-each>
@@ -339,12 +339,12 @@
 
     <xsl:template match="//figure">  
         <xsl:variable name="fig_num">
-            <xsl:number level="any" count="figure" format="1"/>
+            <xsl:number level="any" count="figure|svg" format="1"/>
         </xsl:variable>
-        <a id="{concat('pic',$fig_num)}"><xsl:apply-templates />
+        <a id="{concat('pic',$fig_num)}"><xsl:apply-templates /><div>
         <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
-        <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@description" />
-        </p></a>
+        <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" />
+        </p></div></a>
     </xsl:template>
 
 <!-- Шаблон для вывода части неформатированного текста -->
@@ -397,8 +397,8 @@
 </xsl:template> 
 
 <xsl:template match="//link">
-    <xsl:variable name="id" select="@id" />
-        <a href="{concat('#','link-',$id)}">
+    <xsl:variable name="target" select="@target" />
+        <a href="{concat('#','link-',$target)}">
             <xsl:apply-templates />
         </a>
 </xsl:template> 
@@ -416,12 +416,12 @@
         <a href="#{@id}"><xsl:apply-templates /></a> 
     </xsl:template> 
 
-    <xsl:template match="//fref">
+    <xsl:template match="//fgref">
     <xsl:variable name="id" select="@id" />
         <xsl:text>[</xsl:text>
             <xsl:for-each select="key('fig-search', $id)">
             <xsl:variable name="fig-num">
-                <xsl:number level="any" count="figure" />
+                <xsl:number level="any" count="figure|svg" />
             </xsl:variable> 
             <a href="{concat('#','pic',$fig-num)}">рис. <xsl:value-of select="$fig-num" /></a>
         </xsl:for-each>
@@ -443,7 +443,7 @@
     </xsl:template>
 
     <xsl:template match="//refref">
-    <xsl:variable name="id" select="@id" />
+    <xsl:variable name="id" select="@target" />
     <xsl:choose>
         <xsl:when test="@short='yes'">
             <xsl:for-each select="key('book-ref', $id)">
@@ -627,7 +627,7 @@
         <xsl:variable name="ftnumb">
             <xsl:number  level="any" count="footnote" format="i"/>
         </xsl:variable> 
-        <a id="{concat('ftnt',$ftnumb)}"><a href="#{@name}"><sup><xsl:number  level="any" count="footnote" lang="ru" format="i"/></sup></a></a>
+        <a id="{concat('footnote',$ftnumb)}"><a href="#{@id}"><sup><xsl:number  level="any" count="footnote" lang="ru" format="i"/></sup></a></a>
     </xsl:template> 
 
      <!-- ################# LISTS ############################# -->
@@ -878,7 +878,7 @@
     </xsl:template>
 
 <xsl:template match="//code">
-        <code><xsl:value-of select="." /></code>
+        <code><!-- <xsl:value-of select="." /> --><xsl:apply-templates/></code>
     </xsl:template> 
 
     <!-- 
@@ -956,10 +956,30 @@
 # Требование к файлу - обрезка и небольшой размер.
 #
 -->
+
+ <!-- <xsl:template match="//figure">  
+         <xsl:variable name="fig_num">
+             <xsl:number level="any" count="figure" format="1"/>
+         </xsl:variable>
+         <a id="{concat('pic',$fig_num)}"><xsl:apply-templates />
+         <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
+         <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@description" />
+         </p></a>
+     </xsl:template> -->
+
+
+
 <xsl:template match="//svg">
+    <xsl:variable name="fig_num">
+        <xsl:number level="any" count="figure|svg" format="1"/>
+    </xsl:variable>
+    <a id="{concat('pic',$fig_num)}"><div>
             <xsl:text disable-output-escaping='yes'>&lt;object class="svg" data="</xsl:text>
             <xsl:value-of select="@file"/>
             <xsl:text disable-output-escaping='yes'>" type="image/svg+xml"&gt;&lt;/object&gt;</xsl:text>
+        <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
+         <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" />
+         </p></div></a>
 </xsl:template>
 
 <!--
