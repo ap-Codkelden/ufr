@@ -390,8 +390,8 @@
 -->
 <!-- заменено name -> id -->
 <xsl:template match="//anchor">
-    <xsl:variable name="target" select="@target" />
-        <a id="{concat('link-',$target)}">
+    <xsl:variable name="id" select="@id" />
+        <a id="{concat('link-',$id)}">
             <xsl:apply-templates />
         </a>
 </xsl:template> 
