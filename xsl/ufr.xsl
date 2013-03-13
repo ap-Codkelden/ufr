@@ -957,18 +957,6 @@
 #
 -->
 
- <!-- <xsl:template match="//figure">  
-         <xsl:variable name="fig_num">
-             <xsl:number level="any" count="figure" format="1"/>
-         </xsl:variable>
-         <a id="{concat('pic',$fig_num)}"><xsl:apply-templates />
-         <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
-         <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@description" />
-         </p></a>
-     </xsl:template> -->
-
-
-
 <xsl:template match="//svg">
     <xsl:variable name="fig_num">
         <xsl:number level="any" count="figure|svg" format="1"/>
