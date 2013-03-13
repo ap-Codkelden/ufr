@@ -66,11 +66,10 @@
 <!-- ключ для ссылок на литературу  -->
 <xsl:key name="book-ref" match="//ref" use="@id"/>
 <!-- Для иллюстраций -->
-<xsl:key name="fig-search" match="//figure|//svg" use="@id"/>
+<!-- <xsl:key name="fig-search" match="//figure|//svg" use="@id"/> -->
+<xsl:key name="fig-search" match="//figure" use="@id"/>
 <!-- Для сносок -->
 <xsl:key name="ftnt-search" match="//footnote" use="@id"/>
-<!-- Tables -->
-<xsl:key name="table-search" match="//table" use="@id"/> 
 <!-- Ссылки link  (пара - <anchor>) 
 <xsl:key name="link-ref" match="//link" use="@id"/> -->
 
@@ -339,7 +338,7 @@
 
     <xsl:template match="//figure">  
         <xsl:variable name="fig_num">
-            <xsl:number level="any" count="figure|svg" format="1"/>
+            <xsl:number level="any" count="figure" format="1"/>
         </xsl:variable>
         <a id="{concat('pic',$fig_num)}"><xsl:apply-templates /><div>
         <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
@@ -368,7 +367,7 @@
     </xsl:template>
 
 <!-- ################### CROSS-REFERENCE HANDLING ############################# 
-# <fref id="circle"/> - на картинки (<figure id="circle"/>)
+# <fgref id="circle"/> - на картинки (<figure id="circle"/>)
 #
 # <uref no="4"/> - на другие (<reference ufrno="5" />, без ука)
 #
@@ -403,7 +402,7 @@
         </a>
 </xsl:template> 
 
-<xsl:template match="//tabref">
+<!-- <xsl:template match="//tabref">
     <xsl:variable name="id" select="@name" />
         <xsl:text>[</xsl:text>
             <xsl:for-each select="key('table-search', $id)">
@@ -414,7 +413,7 @@
         </xsl:for-each>
         <xsl:text>]</xsl:text>
         <a href="#{@id}"><xsl:apply-templates /></a> 
-    </xsl:template> 
+    </xsl:template>  -->
 
     <xsl:template match="//fgref">
     <xsl:variable name="id" select="@id" />
@@ -957,17 +956,17 @@
 #
 -->
 
-<xsl:template match="//svg">
-    <xsl:variable name="fig_num">
+<xsl:template match="//figure/svg">
+    <!-- <xsl:variable name="fig_num">
         <xsl:number level="any" count="figure|svg" format="1"/>
     </xsl:variable>
-    <a id="{concat('pic',$fig_num)}"><div>
+    <a id="{concat('pic',$fig_num)}"><div> -->
             <xsl:text disable-output-escaping='yes'>&lt;object class="svg" data="</xsl:text>
             <xsl:value-of select="@file"/>
             <xsl:text disable-output-escaping='yes'>" type="image/svg+xml"&gt;&lt;/object&gt;</xsl:text>
-        <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
+        <!-- <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
          <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" />
-         </p></div></a>
+         </p></div></a> -->
 </xsl:template>
 
 <!--
