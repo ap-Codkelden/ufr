@@ -233,8 +233,9 @@
             cat=<it>"категорияUFR"</it> 
             [draft=<it>"yes"</it> | <it>"no"</it>]/&gt;</codesample>
         <t>Элемент определяет категорию, к которй относится UFR при помощи 
-        аттрибута <code>cat</code>, который может принимать следующие значения <tabref name="table-cat"/>:</t>
-        <table caption="Значения атрибута cat элемента ufrcategory" id="table-cat">
+        аттрибута <code>cat</code>, который может принимать следующие значения <fgref id="table-cat"/>:</t>
+        <figure name="Значения атрибута cat элемента ufrcategory" id="table-cat">
+            <artwork><![CDATA[
 /--------------------------------------------------------\
 |Атрибут |               Значение                        |
 |--------|-----------------------------------------------|
@@ -248,7 +249,7 @@
 |--------|-----------------------------------------------|
 |  info  |информационный - не устанавливает стандартов,  |
 |        |однако предоставляет информацию                |
-\--------------------------------------------------------/</table>
+\--------------------------------------------------------/]]></artwork></figure>
         <t>В зависимости от значения атрибута <code>cat</code> XSLT-процессор подставит 
         необходимое пояснение в <xref target="sec-abstract">аннотацию</xref> документа. </t>
         <t>Необязательный атрибут <code>draft</code> указывает на то, что 
@@ -538,8 +539,43 @@
 <section name="Рисунки и таблицы" id="other-objects" toc="include">
 
 <section name="Рисунки" id="pictures" toc="include">
-    <!-- Обязательно написать про CDATA -->
+    <!-- Обязательно написать про CDATA посклоььку копируется -->
+    <t>В файле преобразований определена возможность добавления рисунокв двух типов:
+    </t><ulist><item><eref target="http://ru.wikipedia.org/w/index.php?title=ASCII-%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0&amp;oldid=52861304">ASCII-графики</eref>&nbsp;&mdash; при помощи элемента <xref target="element-figure"><code>figure</code></xref>;</item>
+    <item>векторной графики в <eref target="http://ru.wikipedia.org/w/index.php?title=SVG&amp;oldid=52648309">формате SVG</eref>&nbsp;&mdash; при помощи элемента <xref target="element-svg"><code>svg</code></xref>.</item></ulist>
+
+<section name="вставка ASCII-графики" id="element-figure" toc="include">
+    <t>ASCII-графика добавляется в текст документа при помощи элемента 
+        <code>figure</code>.</t>
+<codesample>&lt;figure id=&quot;имяЯкоря&quot; name=&quot;имяРисунка&quot;/&gt;
+    &lt;artwork&gt;&lt;![CDATA[<![CDATA[
+ __...____________________          ,
+`(\ [ ===NCC-1700===--|__|) ___..--"_`--.._____
+  `"""""""""""""""""| |""` [_""_-___________"_/
+                    | |   /..../`'-._.-'`
+                ____| |__/::..'_
+               |\ ".`"` '_____//\
+               `"'-.   """""  \\/
+                    `""""""""""`]]>]]&gt;
+<!-- geosities.com/spunk1111/transp.htm -->
+    &lt;/artwork&gt;
+&lt;/figure&gt;</codesample>
+    <t>Как видно из приведенного примера<footnote id="ncc1700">Чудесная ASCII-графика 
+        NCC-1700 'Enterprise' взята с <eref target="http://geosities.com/spunk1111/transp.htm">этого сайта</eref>.</footnote>, собственно ASCII-графика располагается 
+        внутри элемента <code>artwork</code>, в свою очередь вложенного в 
+        элемент <code>figure</code>.</t>
+    <t>Значение <code>&quot;имяЯкоря&quot;</code> атрибута <code>id</code> элемента 
+    <code>figure</code> определяет уникальное имя, которое используется для ссылки 
+    на рисунок. Имя должно соответствовать <eref target="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute"> требованиям</eref> спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/>.</t>
     <t></t>
+</section>
+
+<section name="вставка векторной графики в формате SVG" id="element-svg" toc="include">
+    <t></t>
+</section>
+
+
+
 </section>
 
 <section name="Таблицы" id="tables" toc="include">
@@ -557,11 +593,11 @@
                 +----------+----------+----------+]]></artwork></figure>
 
 
-    <t>Учитывая это, для добавления таблиц в текст UFR используется элемент <code>figure</code>, 
-    и соотвестсвенно каждой таблице присваивается название вида:
+    <t>Учитывая это, для добавления таблиц в текст UFR используется 
+        элемент <code>figure</code>, и соотвестсвенно каждой таблице 
+        присваивается название вида:
     <block><code>Рисунок&nbsp;9.&nbsp;Название таблицы</code></block></t>
-    <t>Об особенностях добавления рисунков можно прочитать в <xref target="pictures">соответствующем 
-        разделе</xref>.</t>
+    <t>О добавлении рисунков при помощи элемента <code>figure</code> можно прочитать в <xref target="element-figure">соответствующем разделе</xref>.</t>
 
 </section>
 
@@ -778,14 +814,18 @@ document/section[1]//ufr3|document/section[2]//ufr3
     <t>Ввиду использования некоторого функционала (e.&#160;g. <code>xsl:function</code>, <code>xsl:format-date</code>) преобразование XML-документа в XHTML соответствует спецификации не ниже <eref target="http://www.w3.org/TR/xslt20/"><nobr>XSLT 2.0</nobr></eref> и производится XSLT-процессором, который поддерживает данную спецификацию.</t>
     <t>Учитывая особенности вывода формата даты, в Лаборатории Ядерных Исследований 
         используется XSLT-процессор <eref target="http://saxon.sourceforge.net">Saxon PE</eref> версии <eref target="http://saxon.sourceforge.net#F9.4PE">9.4</eref> с добавлением модифицированного класса <code>Numberer_ru</code>.</t>
-        <svg file="file.svg" id="redcircle" name="Красный круг"/>
+        <figure  id="redcircle" name="Красный круг">
+        <svg file="file.svg"/>
+        </figure>
     </section>
 </section>
 
 <section  name="Дальнейшее развитие" id="further-processing"  toc="include" >
 <t>Поскольку на момент принятия стандарта формат XHTML вполне достаточен, в применении 
-    колонтитулов и разрывов
-<svg file="file.svg" id="bluecircle" name="Красный круг"/>
+    колонтитулов и разрывов 
+    <figure  id="bluecircle" name="Красный круг">
+<svg file="file.svg"/>
+</figure>
      страниц нет необходимости. </t>
 <t>Однако не исключена возможность дальнейшей публикации стандартов в формате PDF, что 
     может повлечь за собой введение дополнительных переменных в инструментарий, но 
