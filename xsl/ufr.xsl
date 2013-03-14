@@ -44,6 +44,7 @@
 
 <!-- Обработка пробелов в элементах кода -->
 <xsl:strip-space elements="code"/> 
+<xsl:preserve-space elements="codesample"/>
 
 <xsl:variable name="ufr-sfonly-copyright">
     <xsl:value-of select="/ufr/document/copyright/@efsf-only" />
@@ -363,7 +364,9 @@
 
     <!-- ссылка в инет с текстом -->
     <xsl:template match="//eref[node()]">
-        <a href="{@target}" target="_blank"><xsl:apply-templates /></a> 
+<a href="{@target}" target="_blank">
+<xsl:apply-templates />
+</a> 
     </xsl:template>
 
 <!-- ################### CROSS-REFERENCE HANDLING ############################# 
@@ -381,7 +384,6 @@
 # <ftref name=""> - сторонняя ссылка на определенную заранее сноску, при этом 
 # приводит к тому, что невозможно возвратиться к тому месту, откуда ты пришел
 #
-# <tabref name=""> - на таблицу
 -->
 
 <!-- 
@@ -402,25 +404,12 @@
         </a>
 </xsl:template> 
 
-<!-- <xsl:template match="//tabref">
-    <xsl:variable name="id" select="@name" />
-        <xsl:text>[</xsl:text>
-            <xsl:for-each select="key('table-search', $id)">
-            <xsl:variable name="tab-num">
-                <xsl:number level="any" count="table" />
-            </xsl:variable> 
-            <a href="{concat('#','table-',$id)}">табл. <xsl:value-of select="$tab-num" /></a>
-        </xsl:for-each>
-        <xsl:text>]</xsl:text>
-        <a href="#{@id}"><xsl:apply-templates /></a> 
-    </xsl:template>  -->
-
     <xsl:template match="//fgref">
     <xsl:variable name="id" select="@id" />
         <xsl:text>[</xsl:text>
             <xsl:for-each select="key('fig-search', $id)">
             <xsl:variable name="fig-num">
-                <xsl:number level="any" count="figure|svg" />
+                <xsl:number level="any" count="figure" />
             </xsl:variable> 
             <a href="{concat('#','pic',$fig-num)}">рис. <xsl:value-of select="$fig-num" /></a>
         </xsl:for-each>
@@ -931,22 +920,6 @@
         </p>
     </xsl:template>
 
-    <xsl:template match="//table">
-        <xsl:variable name="tab_num">
-            <xsl:number level="any" count="table" format="1"/>
-        </xsl:variable>
-        <xsl:if test="@id">
-            <xsl:variable name='id' select='@id'/>
-            <xsl:text disable-output-escaping='yes'>&lt;a id="</xsl:text><xsl:value-of select="concat('table-',$id)" /><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>
-        </xsl:if>
-        <div class="table">
-            <p style="text-align:right;">Таблица&#160;<xsl:value-of select="$tab_num"/></p>
-        <p style="text-align:center;"><xsl:value-of select="@caption" /></p>
-        <p><xsl:apply-templates/></p></div>
-        <xsl:if test="@id">
-            <xsl:text disable-output-escaping='yes'>&lt;</xsl:text>/a<xsl:text disable-output-escaping='yes'>&gt;</xsl:text>
-        </xsl:if>
-    </xsl:template>
 
 <!-- 
 #
