@@ -99,14 +99,6 @@ p.center {
 	text-align:center;
 }
 
-div.table {
-	white-space:pre;
-	font-family:monospace;
-	color:#333333;
-	font-size: 10pt;
-	    line-height:1;
-	}
-
 span.nowrap {
 	white-space:pre;
 }
