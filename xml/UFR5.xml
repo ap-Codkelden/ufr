@@ -44,8 +44,7 @@
                 тексту также именуется"&#x2014; "документ") был написан с 
                 использованием plain HTML в простом текстовом редакторе, с ручным 
                 созданием оглавления и деления на разделы.</t>
-                <t>Впоследствии в Лаборатории Ядерных Исследований разведываетльного 
-                крейсера К-117 "Созвездие" был создани инструментарий для унификации 
+                <t>Впоследствии в Исследоввательской Лаборатории ЗФ был создани инструментарий для унификации 
                 создания UFR на основе <eref target="http://www.w3.org/TR/xslt20/">спецификации <nobr>XSLT 2.0</nobr></eref>
                  и XML, который и описывается данным документом.
                  </t></section>
@@ -548,7 +547,7 @@
     <t>ASCII-графика добавляется в текст документа при помощи элемента 
         <code>figure</code>.</t>
 <codesample>&lt;figure id=&quot;имяЯкоря&quot; name=&quot;имяРисунка&quot;/&gt;
-    &lt;artwork&gt;&lt;![CDATA[<![CDATA[
+    &lt;artwork&gt;&lt;![CDATA[
  __...____________________          ,
 `(\ [ ===NCC-1700===--|__|) ___..--"_`--.._____
   `"""""""""""""""""| |""` [_""_-___________"_/
@@ -556,22 +555,45 @@
                 ____| |__/::..'_
                |\ ".`"` '_____//\
                `"'-.   """""  \\/
-                    `""""""""""`]]>]]&gt;
-<!-- geosities.com/spunk1111/transp.htm -->
+                    `""""""""""`]]&gt;
     &lt;/artwork&gt;
 &lt;/figure&gt;</codesample>
     <t>Как видно из приведенного примера<footnote id="ncc1700">Чудесная ASCII-графика 
         NCC-1700 'Enterprise' взята с <eref target="http://geosities.com/spunk1111/transp.htm">этого сайта</eref>.</footnote>, собственно ASCII-графика располагается 
         внутри элемента <code>artwork</code>, в свою очередь вложенного в 
         элемент <code>figure</code>.</t>
+    <t>Текстовое содержимое элемента <code>artwork</code> <keyword>рекомендуется</keyword> заключать
+    в контейнер <eref target="http://www.w3.org/TR/REC-xml/#dt-cdsection"><code>CDATA</code></eref>, как показано в примере&nbsp;&mdash; для обеспечения корректного отображения символьных данных.</t>
+    <t>Контейнер <code>CDATA</code> имеет вид:</t>
+<codesample>&lt;![CDATA[
+символьные данные
+ ]]&gt;</codesample>
+    <t>Все рисунки в документе имеют подписи и сквозную нумерацию. Подпись рисунка 
+        имеет вид:
+        <block><code>Рисунок&nbsp;9.&nbsp;Название рисунка</code></block></t>
+        <anchor id="figure-attributes">
+<t>Название рисунка определяется значением атрибута <code>name</code>.</t>
     <t>Значение <code>&quot;имяЯкоря&quot;</code> атрибута <code>id</code> элемента 
     <code>figure</code> определяет уникальное имя, которое используется для ссылки 
-    на рисунок. Имя должно соответствовать <eref target="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute"> требованиям</eref> спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/>.</t>
-    <t></t>
+    на рисунок. 
+    Имя должно соответствовать <eref target=
+    "http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute">требованиям</eref> спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/>.</t></anchor>
 </section>
 
 <section name="вставка векторной графики в формате SVG" id="element-svg" toc="include">
-    <t></t>
+    <t>Шаблон XSL позволяет добавить в текст документа векторную графику в <eref target="http://ru.wikipedia.org/w/index.php?title=SVG&amp;oldid=52648309">формате SVG</eref>. 
+    Для этой цели также используется элемент <code>figure</code>, но со вложенным 
+     одиночным элементом <code>svg</code>:</t>
+<codesample>&lt;figure id="имяЯкоря" name="имяРисунка"/&gt;
+    &lt;svg file=&quot;file.svg&quot;/&gt;
+&lt;/figure&gt;</codesample>
+    <t>Значения атрибутов <code>id</code> и <code>name</code> <link target="figure-attributes">полностью аналогичны</link> тем, которые используются для вставки ASCII-графики.</t>
+    <t>Элемент <code>svg</code> имеет единственный атрибут <code>file</code>, который принимает в качестве своего 
+    значения относительный путь к SVG-файлу.</t>
+    <t>Следует помнить, что текущая версия файла пребразования: 1) не поддерживает напрямую указания размера файла
+        и 2) ширина документа установлена в 80&nbsp;ex.</t>
+    <t>Учитывая эти два условия, <keyword>необходимо</keyword> использовать только такие SVG-файлы, 
+которые не нарушат целостного вида документа.</t>
 </section>
 
 
@@ -617,7 +639,9 @@
     <codesample>&lt;eref target=&quot;targetURL&quot;&gt;Текст_ссылки&lt;/eref&gt;
 &lt;eref target=&quot;targetURL&quot;/&gt;</codesample>
     <t>Как видно из примера выше, синтаксис записи предполагает два варианта. В обоиих случаях атрибут 
-        <code>target</code> определяет URL ссылки.</t> 
+        <code>target</code> определяет URL ссылки. При этом при указании URL 
+        <keyword>необходимо</keyword> указывать схему обращения к ресурсу (сетевой протокол), 
+        в большинстве случаев это <code>http</code>.</t> 
 <codesample>&lt;eref target=&quot;http://skobkin.ru/&quot;&gt;
     Место, где скрепляют бумагу.
 &lt;/eref&gt;</codesample>
