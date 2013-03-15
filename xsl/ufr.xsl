@@ -239,7 +239,7 @@
             <xsl:apply-templates select="ufr/document/section
                 |ufr/document/insert
                 |//appendixes
-                |//references" mode="toc"/> 
+                |/ufr/back/references" mode="toc"/> 
 <!--
 #
 #   Main document processing
@@ -265,9 +265,12 @@
             </xsl:if> 
         </xsl:for-each>
 
-    <xsl:for-each select="ufr/document/references">
+    <xsl:for-each select="ufr/back/references">
             <h2><a id="{@id}"/>
-            <xsl:number level="multiple" count="section|insert|references" format="1. "/>
+            <xsl:number level="any" 
+                count="ufr/document/section
+                    |ufr/document/insert
+                    |ufr/back/references" format="1. "/>
                 <xsl:value-of select="@name" />
             </h2> 
             <xsl:call-template name="insertReferences"/>
@@ -276,7 +279,7 @@
 <!--
 #   Приложения
 -->
-        <xsl:for-each select="ufr/document/appendixes">
+        <xsl:for-each select="ufr/back/appendixes">
                 <h2><a id="{@id}"/>
                     <xsl:value-of select="@name" /></h2> 
                 <xsl:apply-templates />   
@@ -372,7 +375,7 @@
 <!-- ################### CROSS-REFERENCE HANDLING ############################# 
 # <fgref id="circle"/> - на картинки (<figure id="circle"/>)
 #
-# <uref no="4"/> - на другие (<reference ufrno="5" />, без ука)
+# <ufrref no="4"/> - на другие (<reference ufrno="5" />, без ука)
 #
 # <refref id=? [short='yes']> - на литературу <reference id="moon">
 # 
@@ -416,7 +419,7 @@
         <xsl:text>]</xsl:text>
     </xsl:template>
 
-    <xsl:template match="//uref">
+    <xsl:template match="//ufrref">
         <xsl:text>[</xsl:text><a href="{concat('#','ufr',@no)}">
         <xsl:text>UFR</xsl:text>
         <xsl:value-of select='@no' /></a><xsl:text>]</xsl:text>
@@ -436,7 +439,7 @@
         <xsl:when test="@short='yes'">
             <xsl:for-each select="key('book-ref', $id)">
                 <xsl:variable name="ref-num">
-                    <xsl:number level="any" count="references/reference[@type='other']/ref"/>
+                    <xsl:number level="any" count="back/references/reference[@type='other']/ref"/>
                 </xsl:variable>
                 <xsl:variable name="ref-title">
                     <xsl:value-of select="title"/>
@@ -474,8 +477,7 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:number level="multiple" format="1.1.1.1.1."
-                        count="section
-                        |insert
+                        count="insert
                         |appendix
                         |references
                         |ufr/document/section
@@ -521,9 +523,13 @@
         <div class="toc_inner">
             <a href="#{$id}">
                 <xsl:choose>
-                    <xsl:when test="name()='insert' or name()='section' or name()='references'">
+                    <xsl:when test="name()='insert' or name()='section'">
                         <xsl:number level="multiple" format="1.1.1.1.1."
-                        count="insert|references|section"/>
+                        count="insert|section"/>
+                    </xsl:when>
+                    <xsl:when test="name()='references'">
+                        <xsl:number level="any" format="1.1.1.1.1."
+                        count="ufr/document/insert|references|ufr/document/section"/>
                     </xsl:when>
                     <xsl:when test="name()='appendix'">
                         <xsl:number level="multiple" format="A." count="appendix"/>
@@ -727,7 +733,7 @@
             <span class='rfc2119'>рекомендуется</span>, <span class='rfc2119'>не следует</span>,
             <span class='rfc2119'>не рекомендуется</span>, <span class='rfc2119'>возможно</span>, 
             <span class='rfc2119'>необязательно</span> в соответствующих формах в данном документе 
-            должны интерпретироваться в соответствии с требованиями <a href="UFR3.html">URF3</a>.</p>
+            должны интерпретироваться в соответствии с требованиями <a href="UFR3.html" target="_blank">URF3</a>.</p>
     </xsl:template>     
 
 <!-- 
@@ -736,7 +742,7 @@
 #
  -->
     <xsl:template name="insertReferences">
-        <xsl:for-each select="//references/reference">
+        <xsl:for-each select="/ufr/back/references/reference">
         <h5><xsl:value-of select="@title"/></h5>
         <xsl:variable name="type">
             <xsl:value-of select="@type" />
@@ -749,6 +755,7 @@
                     <xsl:variable name="ufrno" select="@ufrno" />
                     <xsl:variable name="ufrfile" select="concat('../xml/ufr',$ufrno,'.xml')" />
                     <xsl:variable name="authors_info" select="document($ufrfile)/ufr/description/authors"/>
+                    <xsl:variable name="ufr_name" select="document($ufrfile)/ufr/description/ufrdata/ufrname/text()"/>
                     <xsl:variable name="auth_count" select="count($authors_info/author)" /> 
                     <xsl:text  disable-output-escaping='yes'>&lt;tr&gt;</xsl:text>
                     <xsl:for-each select="$authors_info/author">
@@ -762,6 +769,11 @@
                         <!-- Вставка данных автора из другого UFR -->
                         <xsl:text disable-output-escaping='yes'>&lt;/td&gt;</xsl:text>
                         <xsl:text disable-output-escaping='yes'>&lt;td&gt;</xsl:text>
+                        <!-- Название UFR -->
+                        <xsl:if test="position() = 1">
+                            <xsl:value-of select="$ufr_name" />
+                            <xsl:text disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
+                        </xsl:if>
                         <xsl:value-of select="rank" /><xsl:text> </xsl:text>
                         <xsl:value-of select="name" />
                         <xsl:text disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
