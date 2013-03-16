@@ -919,6 +919,10 @@
         <abbr><xsl:value-of select="."/></abbr>
     </xsl:template> 
 
+    <xsl:template match="//acronym">
+        <acronym><xsl:value-of select="."/></acronym>
+    </xsl:template> 
+
     <!-- KEYWORD as it described in RFC2119 -->
     <xsl:template match="//keyword">
         <span class="rfc2119">
