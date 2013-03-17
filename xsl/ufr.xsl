@@ -543,73 +543,68 @@
 <!-- ############################################################# -->
 
     <xsl:template match="ufr/document/section|ufr/document/insert">
-        <h2>
-            <a id="{@id}"/><xsl:number level="multiple"
+            <a id="{@id}"><h2><xsl:number level="multiple"
                  count="ufr/document/insert|ufr/document/section"
                  format="1. "/>
-        <xsl:value-of select="@name" /></h2>
+        <xsl:value-of select="@name" /></h2></a>
         <xsl:apply-templates/> 
     </xsl:template>
 
     <!--  LEVEL 2  -->
     <xsl:template match="ufr/document/section/section" priority="1" > 
-        <h3>
-        <a id="{@id}"/><xsl:number level="multiple"
+        <a id="{@id}"><h3><xsl:number level="multiple"
                  count="insert
                  |ufr/document/section
                  |ufr/document/section/section"
                  format="1.1. "/>
-        <xsl:value-of select="@name" /></h3>
+        <xsl:value-of select="@name" /></h3></a>
         <xsl:apply-templates/> 
     </xsl:template> 
 
     <!--  LEVEL 3 -->
     <xsl:template match="ufr/document/section/section/section" priority="1" > 
-        <h4>
-        <a id="{@id}"/><xsl:number level="multiple"
+        <a id="{@id}"><h4><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
                  |ufr/document/section/section/section"
                  format="1.1.1. "/>
-        <xsl:value-of select="@name" /></h4>
+        <xsl:value-of select="@name" /></h4></a>
         <xsl:apply-templates/> 
     </xsl:template> 
 
     <!--  LEVEL 4  -->
     <xsl:template match="ufr/document/section/section/section/section" priority="1" > 
-        <h5>
-            <a id="{@id}"/><xsl:number level="multiple"
+        <a id="{@id}"><h5><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
                  |ufr/document/section/section/section
                  |ufr/document/section/section/section/section" format="1.1.1.1. "/>
-        <xsl:value-of select="@name" /></h5>
+        <xsl:value-of select="@name" /></h5></a>
         <xsl:apply-templates/> 
     </xsl:template> 
 
     <!--  LEVEL 5  -->
     <xsl:template match="ufr/document/section/section/section/section/section" priority="1" > 
-        <h6>
-            <a id="{@id}"/><xsl:number level="multiple"
+        <a id="{@id}"><h6><xsl:number level="multiple"
                  count="ufr/document/insert
                  |ufr/document/section
                  |ufr/document/section/section
                  |ufr/document/section/section/section
                  |ufr/document/section/section/section/section
                  |ufr/document/section/section/section/section/section" format="1.1.1.1.1. "/>
-        <xsl:value-of select="@name" /></h6>
+        <xsl:value-of select="@name" /></h6></a>
         <xsl:apply-templates/> 
     </xsl:template> 
 
     <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
 
     <xsl:template match="appendixes/appendix"> 
-        <h3><a id="{@id}"/><xsl:text>Приложение </xsl:text>
+        <a id="{@id}"><h3><xsl:text>Приложение </xsl:text>
         <xsl:number level="any"
                  count="appendix"
-                 format="A. "/><xsl:value-of select="@name" /></h3>
+                 format="A. "/><xsl:value-of select="@name" /></h3></a>
         <xsl:apply-templates/>
         <xsl:call-template name="footnotes"/>
     </xsl:template> 
