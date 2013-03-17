@@ -421,7 +421,7 @@
 
     <xsl:template match="//ufrref">
         <xsl:text>[</xsl:text><a href="{concat('#','ufr',@no)}">
-        <xsl:text>UFR</xsl:text>
+        <xsl:text>UFR&#8470;</xsl:text>
         <xsl:value-of select='@no' /></a><xsl:text>]</xsl:text>
     </xsl:template>
 
@@ -759,7 +759,7 @@
                                 <a id="{concat('ufr',$ufrno)}">
                                 <xsl:text disable-output-escaping='yes'>[&lt;a href="</xsl:text>
                                     <xsl:value-of select="concat('ufr',$ufrno,'.html')" /><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>
-                                    <xsl:value-of select="concat(upper-case('ufr'),$ufrno)"/><xsl:text  disable-output-escaping='yes'>&lt;/a&gt;]</xsl:text></a>
+                                    <xsl:value-of select="concat(upper-case('ufr&#8470;'),$ufrno)"/><xsl:text  disable-output-escaping='yes'>&lt;/a&gt;]</xsl:text></a>
                             </xsl:if>
                         <!-- Вставка данных автора из другого UFR -->
                         <xsl:text disable-output-escaping='yes'>&lt;/td&gt;</xsl:text>
@@ -815,8 +815,11 @@
                                 </xsl:variable>
                                 <xsl:value-of select="concat(format-date($refdate, '[D01] [MNn] [Y0001]', 'ru', (), ()),' г.')" />
                             </xsl:when>
+                            <xsl:when test="publisher/@month!='' or publisher/@day!=''">
+                                <xsl:call-template name="publisher-year"/>
+                            </xsl:when>
                             <xsl:otherwise>
-                                <xsl:value-of select="concat(publisher/@name,', ',publisher/@year,' г.')" />
+                                <xsl:call-template name="publisher-year"/>
                             </xsl:otherwise>
                         </xsl:choose>
                     <!-- </p> -->
@@ -829,6 +832,10 @@
     </xsl:for-each>
     </xsl:template> 
 
+    <xsl:template name="publisher-year">
+        <xsl:value-of select="concat(publisher/@name,', ',publisher/@year,' г.')" />
+    </xsl:template>
+
     <!-- 
     #
     #   Шаблон обработки автора
@@ -839,16 +846,28 @@
         <xsl:variable name="lastname" select="@lastname"/>
         <xsl:variable name="middlename" select="@middlename"/>
         <xsl:if test="@firstname != '' or @lastname != ''">
-            <xsl:choose>
-                <xsl:when test="@middlename=''">
-                    <xsl:value-of select="concat(substring($firstname,1,1),'. ',$lastname,', ')"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="concat(substring($firstname,1,1),'. ',substring($middlename,1,1),'. ',$lastname,', ')"/>
-                </xsl:otherwise>
-            </xsl:choose>
+        <xsl:choose>
+            <xsl:when test="@middlename=''">
+                <xsl:choose>
+                    <xsl:when test="not(@firstname='')">
+                        <xsl:value-of select="concat(substring($firstname,1,1),'. ',$lastname,' ')"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="concat(substring($firstname,1,1),$lastname,' ')"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <xsl:when test="@middlename='' and @firstname=''">
+                <xsl:value-of select="concat($lastname,' . ')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="concat(substring($firstname,1,1),'. ',substring($middlename,1,1),'. ', $lastname,' ')"/>
+            </xsl:otherwise>
+        </xsl:choose>
         </xsl:if>
-        <xsl:value-of select="organization" />
+        <xsl:if test="organization">
+            <xsl:text>(</xsl:text><xsl:value-of select="organization" /><xsl:text>)</xsl:text>
+        </xsl:if>
         <xsl:if test="not(position() = last())">
             <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
         </xsl:if>
@@ -873,7 +892,7 @@
     </xsl:template>
 
 <xsl:template match="//code">
-        <code><!-- <xsl:value-of select="." /> --><xsl:apply-templates/></code>
+        <code><xsl:apply-templates/></code>
     </xsl:template> 
 
     <!-- 
