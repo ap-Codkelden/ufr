@@ -30,8 +30,8 @@
         </authors>
         <ufrdata>
             <ufrname number="5">Инструкции авторам UFR</ufrname>
-            <ufrcategory cat="tech" />
-            <ufrdate value="2013-02-25" />
+            <ufrcategory cat="tech" draft="yes" />
+            <ufrdate value="2013-03-17" />
             <ufrchanged />
         </ufrdata>
     </description>
@@ -47,7 +47,7 @@
                 <t>Впоследствии в Исследоввательской Лаборатории ЗФ был создани инструментарий для унификации создания UFR на основе <eref target="http://www.w3.org/TR/xslt20/">спецификации <nobr>XSLT 2.0</nobr></eref>
                  и XML, который и описывается данным документом.
                  </t></section>
-    <section name="Терминология и обозначения"  toc="include" id="therms-and-desc">
+<section name="Терминология и обозначения"  toc="include" id="therms-and-desc">
                  <section name="Терминология" toc="include" id="therms"><ufr3/></section>
     <section name="Обозначения" toc="include" id="definitions">
         <section  name="Пример кода" id="code-sample"  toc="include" >
@@ -77,27 +77,13 @@
         <t>С целью правильного отображения символов национальных алфавитов
         и некоторых других символов, исходные тексты <keyword>должны</keyword> быть подготовлены только в кодировке <eref target="http://www.unicode.org">символов Unicode</eref>.</t>
 
-<!-- <t> --><olist>
+    <olist>
         <item>Основной шрифт документа - 12pt, междустрочный интервал - 10pt;</item>
         <item>Ширина документа - 70ex (включая отступы);</item>
         <item>Шрифты документа - моноширинные.</item>
     </olist><!-- </t> -->
 
-    </section>
-    <section name="Структура документа" toc="include" id="sec-structure">
-        <t>XML-документ UFR начинается с объявления XML, ссылки на стилевой документ 
-        <code>ufr.xsl</code> и корневого элеиента "ufr":</t>
-<codesample><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="ufr.xsl"?>
-<ufr>
-    ...
-</ufr>]]></codesample>
-        <t>Документ имееет следующую структуру:</t>
-        <olist>
-        <item>Заголовочная часть</item>
-        <item>Документ</item>
-        <item>Заключительная часть</item>
-        </olist>
+</section>
 
     <section  name="Разделы, которые формируются XSLT-процессором на основании пользовательских данных" 
         id="runtime-sections"  toc="include" >
@@ -106,16 +92,98 @@
         писать их самим <keyword>не разрешается</keyword>.</t>
         <t>Перечень разделов (в порядке следования):</t>
         <ulist>
-            <item>Аннотация</item>
-            <item>Авторские права</item>
-            <item>Лицензия</item>
-            <item>Терминология</item>
-            <item>Внесение изменений</item>
+            <item><xref target="sec-abstract">Аннотация</xref></item>
+            <item><xref target="section-copyright">Авторские права</xref></item>
+            <item><xref target="sec-license">Лицензия</xref></item>
+            <item><xref target="ufr3">Терминология</xref></item>
+            <item><xref target="sec-make-changes">Внесение изменений</xref></item>
         </ulist>
+            <section id="ufr3" name='Раздел "Терминология"'  toc="include">
+                <t>В случае <xref target="element-keyword">использования</xref> в документе ключевых слов, определенных <ufrref no="3"/>, 
+                <keyword>необходимо</keyword> добавить в документ соответствующее определение.</t>
+                <t>Указанное определение добавляется при обработке XML-файла XSLT-процессором. Для того, 
+                    чтобы это произошло, необохдимо добавить в документ элемент <code>ufr3</code>. Этот 
+                    элемент <keyword>должен</keyword> быть добавлен в <it>один из первых двух разделов 
+                    документа</it> в качестве любого из подразделов, в противном случае XSLT-процессор 
+                    не произведет добавления.</t>
+            </section>
+            <section name="Внесение изменений" id="sec-make-changes"  toc="include" >
+                <t>Каждый документ UFR <keyword>должен</keyword> содержать уведомление 
+                о внесении изменений в документ только в порядке, определенном действующим 
+                Уставом Звёздного Флота.</t>
+                <t>Раздел добавляется в процессе обработки XML-файла, никаких изменений автору UFR 
+                    вносить не нужно.</t>
+            </section>
+
     </section>
 
+    <section name="Особенности создания некоторых частей документа" toc="include" id="toc_special_parts">
+        <section name="Оглавление" toc="include" id="toc_special">
+        <t>Оглавление формируется XSLT-процессором на основании <xref target="doc_parts">частей</xref> документа, разделов, подразделов и т. д. Включение определенной части документа в оглавление производится в зависимости от наличия у элемента, указывающего на начало раздела (<code>&lt;section&gt;|&lt;section&gt;|&#8230;|&lt;section&gt;</code>), атрибута </t></section>
+        <section name="Символы" toc="include" id="symbols">
+            <section name="Ссылки на символы" toc="include" id="sgml-entity">
+                <t>Спецификация XML&#160;1.0 <eref target="http://www.w3.org/TR/REC-xml/#sec-predefined-ent">определяет</eref> пять символов, которые можно вставить в текст документа 
+                    при помощи мнемоник:</t>
+                    <ulist>
+                        <item>открывающая (левая) угловая скобка <code>&lt;</code> (<code>&amp;lt;</code>)</item>
+                        <item>закрывающая (правая) угловая скобка <code>&gt;</code> (<code>&amp;gt;</code>)</item>
+                        <item>амперсанд <code>&amp;</code> (<code>&amp;amp;</code>)</item>
+                        <item>апостроф <code>&apos;</code> (<code>&amp;apos;</code>)</item>
+                        <item>символ кавычки <code>&quot;</code> (<code>&amp;quot;</code>)</item>
+                    </ulist>
+                <t>Для вставки символов, отличных от определенных спецификацией XML&#160;1.0 
+                    (например, знак параграфа <code>&#167;</code>) <keyword>необходимо</keyword> использовать 
+                    числовую форму ссылки из соотвестсвующей <eref target="http://www.w3.org/TR/html4/sgml/entities.html">спецификации HTML</eref>, например для получения знака параграфа следует писать <code>"&amp;#167;"</code> (без кавычек).</t>
+            </section>
+             <section name="Тире, кавычки и прочие символы" toc="include" id="punctuation">
+                <t>Хотя возможности SGML и позволяют при помощи ссылок на символы из 
+                    набора символов документа добавить практически любые из 
+                    определенных в кодировке символов Unicode знаков пунктуации, с целью унификации 
+                <keyword>рекомендуется</keyword> придерживаться таких соглашений:
+                <ulist>
+                <item>закрывающая и открывающая кавычки обозначаются символом 
+                    одиночной кавычки <code>&quot;</code>;</item>
+                <item>для вставки неразрывного пробела используется ссылка на символ 
+                    <code>&amp;#160;</code>;</item>
+                <item>для вставки длинного тире используется ссылка на символ 
+                    <code>&amp;#8212;</code>;</item>
+                <item>для вставки знака параграфа (&#167;) используется <code>&amp;#167;</code>;</item>
+                <item>для случая, когда необходимо вставить в текст длинное тире 
+                <it>по правилам типографики</it> (длинное тире, предваряемое неразрывным пробелом), следует использовать последовательность <code>"&amp;nbsp;&amp;mdash;"</code> 
+                (без кавычек).<vspace/><anchor id="entity">Кроме этого, если вводить ссылки сущностей 
+                символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
+                <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
+                определить в начале XML-документа внутреннее подключение сущностей, как описано в <refref target="inner-entity" short="yes"/></anchor><footnote id="cm-charmap">В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но по умолчанию он закоментирован, так как делает невозможным использование символа длинного тире без пробела перед ним.<vspace/>Для его использования необходимо 1) раскомментировать упомянутую инструкцию и 2) удалить определение <code>&lt;!ENTITY mdash  "&amp;#8212;"&gt;</code>, если оно 
+                <link target="entity">было определено</link>.</footnote>:<vspace/>
+                <codesample>&lt;!DOCTYPE xsl:stylesheet
+  [
+    &lt;!ENTITY nbsp   "&amp;#160;"&gt;
+    &lt;!ENTITY mdash  "&amp;#8212;"&gt;
+  ]&gt;</codesample></item>
+                </ulist></t>
+             </section>
+        </section>
+    </section>
+
+<section name="Структура документа" id="ufr-structure"  toc="include" >            
+    <t>Как и любой XML-документ, документ UFR начинается с объявления XML, ссылки на стилевой документ 
+    <code>ufr.xsl</code> и корневого элеиента "ufr":</t>
+<codesample><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ufr.xsl"?>
+<ufr>
+    ...
+</ufr>]]></codesample>
+<t>Документ имееет следующую структуру:</t>
+        <olist>
+        <item><xref target="sec-description">Заголовочная часть</xref></item>
+        <item><xref target="sec-document">Документ</xref></item>
+        <item><xref target="seс-back">Заключительная часть</xref></item>
+        </olist>
+
+    <t>К заголовкам и общей информации относятся <fgref id="ufrheader"/>:</t>
+
 <!-- заголовочная часть -->
-<section  name="Заголовочная часть" id="sec-front"  toc="include" >
+<section  name="Заголовочная часть" id="sec-description"  toc="include" >
 <t>Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"description"</code>.</t>
 <t>Общий вид заголовочной части показан на <fgref id="ufrheader"/>.</t>
 <codesample>&lt;ufr&gt;
@@ -151,19 +219,19 @@
     Этот элемент содержит информацию о составителе URF, и описываемую данными, определенными 
     в элементах <code>organization</code>, <code>unit</code> и <code>author</code>. 
 
-        <section name="Элемент organization" id="organization">
+        <section name="Элемент organization" id="organization" toc="include">
         <codesample>&lt;organization&gt;<it>организация</it>&lt;/organization&gt;</codesample>
         <t>Элемент определяет организацию, к которой принадлежит составитель документа. 
         Поскольку Лаборатория Ядерных Исследований является частью К-117 "Созвездие", то обычно это <it>Звёздный флот Федерации</it>, но поскольку возможны и другие варианты, этот элемент изменяем.</t>
         </section>
 
-        <section name="Элемент unit" id="unit">
+        <section name="Элемент unit" id="unit" toc="include">
         <codesample>&lt;unit&gt;<it>подразделение</it>&lt;/unit&gt;</codesample>
         <t>Элемент определяет подразделение, к которому принадлежит составитель документа, 
         например <it>К-117 "Созвездие"</it> или <it>П-78 "Неустрашимый"</it>.</t>
         </section>
 
-        <section name="Элемент author" id="author">
+        <section name="Элемент author" id="author" toc="include">
         <codesample>&lt;author&gt;<it>имяАвтора</it>&lt;/author&gt;</codesample>
         <t>Элемент определяет <it>имяАвтора</it>, под которым тот выведен в
         проекте, например <it>Киркунов</it> или <it>Дюшенков</it>.</t>
@@ -178,19 +246,19 @@
     <code>author</code>, как было сказано выше, если авторов несколько.</t>
     <t>Элемент является контейнером для следующих элементов: <code>assignment</code>, <code>rank</code>, <code>name</code>, <code>unit</code> и <code>organization</code>.</t>
 
-    <section name="Элемент assignment" id="assignment">
+    <section name="Элемент assignment" id="assignment" toc="include">
     <codesample>&lt;assignment&gt;<it>должностьАвтора</it>&lt;/assignment&gt;</codesample>
     <t>Элемент определяет <it>должностьАвтора</it>, под которым тот выведен в
     проекте, например <it>капитан корабля</it> или <it>начальник спиртохранилища</it>.</t>
     </section>
 
-    <section name="Элемент rank" id="rank">
+    <section name="Элемент rank" id="rank" toc="include">
     <codesample>&lt;rank&gt;<it>званиеАвтора</it>&lt;/rank&gt;</codesample>
     <t>Элемент определяет <it>званиеАвтора</it>, под которым тот выведен в проекте, например <it>капитан&#160;1 ранга&#160;ЗФ</it> или <it>ст.&#160;сержант&#160;КД</it>.</t>
     <t>Звания <keyword>должны</keyword> соответствовать утвердженным Уставом ЗФ.</t>
     </section>
 
-    <section name="Элемент name" id="author-name-element">
+    <section name="Элемент name" id="author-name-element" toc="include">
     <codesample>&lt;name&gt;<it>имяАвтора</it>&lt;/name&gt;</codesample>
     <t>Элемент определяет <it>имяАвтора</it>, под которым тот выведен в
     проекте, например <it>Морзе</it> или <it>Р.&#160;Муррфи</it>.</t>
@@ -200,11 +268,11 @@
     <code>&lt;<xref target="creator">creator</xref>&gt;</code>.</t>
     </section>
 
-    <section name="Элемент unit" id="author-unit-element">
+    <section name="Элемент unit" id="author-unit-element" toc="include">
     <t>Полностью аналогичен элементу <code>&lt;unit&gt;</code>, описанному <xref target="unit">выше</xref>.</t>
     </section>
 
-    <section name="Элемент organization" id="author-organization-element">
+    <section name="Элемент organization" id="author-organization-element" toc="include">
     <t>Полностью аналогичен элементу <code>&lt;organization&gt;</code>, описанному <xref target="organization">выше</xref>.</t></section>
     </section>
 
@@ -218,7 +286,7 @@
         <item><xref target="ufrdata-obsolete">информацию о том, устарел ли данный UFR вследствие принятия других UFR</xref></item> 
     </ulist>
 
-        <section name="Элемент ufrname" id="ufrdata-name">
+        <section name="Элемент ufrname" id="ufrdata-name" toc="include">
 <codesample>&lt;ufrname 
     number=<it>"номерUFR"</it>&gt;<it>названиеUFR</it>&lt;/ufrname&gt;</codesample>
         <t>Элемент определяет название <it>названиеUFR</it> и номер UFR <it>номерUFR</it>.</t>
@@ -226,7 +294,7 @@
         <t>Номер UFR является целым положительным числом в десятичной записи, и определяется по порядку следования номеров UFR в Реестре UFR.</t>
         </section>
 
-        <section name="Элемент ufrcategory" id="ufrdata-cat">
+        <section name="Элемент ufrcategory" id="ufrdata-cat" toc="include">
 <codesample>&lt;ufrcategory 
             cat=<it>"категорияUFR"</it> 
             [draft=<it>"yes"</it> | <it>"no"</it>]/&gt;</codesample>
@@ -255,13 +323,12 @@
         согласования.</t>
         <t>Для указания этого нужно присвоить атрибуту <code>draft</code> 
         значения <code>"yes"</code>.</t>
-        <t>Если документ не является черновым изначально, атрибут 
-        <code>draft</code> можно не указывать.</t>
+        <t>Если документ не является черновым изначально, атрибут <code>draft</code> можно не указывать.</t>
         <t>Аннотация настоящего UFR является результатом присвоения атрибуту 
         <code>cat</code> значения <code>"std"</code>.</t>
         </section>
 
-        <section name="Элемент ufrdate" id="ufrdata-date">
+        <section name="Элемент ufrdate" id="ufrdata-date" toc="include">
 <codesample>&lt;ufrdate value=<it>"2013-02-03"</it>/&gt;</codesample>
         <t>Определяет дату создания UFR.</t>
         <t>Дата создания хранится в атрибуте <code>value</code>. Значение даты 
@@ -270,7 +337,7 @@
         <t><code>YYYY-MM-DD (например 2027-07-25)</code></t>
         </section>
 
-        <section name="Элемент ufrchanged" id="ufrdata-change">
+        <section name="Элемент ufrchanged" id="ufrdata-change" toc="include">
 <codesample>&lt;ufrchanged&gt;
     &lt;changed number="115" 
         date="2027-09-03" 
@@ -314,7 +381,7 @@
         </ulist>
         </section>
 
-        <section name="Элемент urfobsolete" id="ufrdata-obsolete">
+        <section name="Элемент urfobsolete" id="ufrdata-obsolete" toc="include">
         <codesample>&lt;urfobsolete ufrno=<it>"номерUFR"</it>/&gt;</codesample>
         <t>Необязательный, однако <keyword>рекомендуется</keyword> добавлять в 
         документ "пустой" элемент, объединяющий начальный и конечный теги: 
@@ -363,7 +430,7 @@
     </olist>
     </section> <!-- Конец заголовочной части -->
 
-    <section  name="Документ" idr="sec-document"  toc="include" >
+    <section  name="Документ" id="sec-document"  toc="include" >
     Основная часть документа вложена <fgref id="redcircle"/> в секцию, ограниченную 
     элементом <code>document</code>. Ниже приведено краткое описание 
     структуры секции (<keyword>необходмио</keyword>, чтобы все UFR имели 
@@ -809,25 +876,61 @@ elit, sed do eiusmod tempor incididunt
 &lt;/block&gt;</codesample>
     <t>Для логического выделения части текста, например демонстрации результата вывода, испотльзуется врезка. 
         Врезка в документе представляет собой абзац, сдвинутый вправо относительно левого края основного
-        текста.
+        текста:
     </t>
-    <t>Текст врезки заключается между открывающим и закрывающим тегами элемента.</t> 
-</section>
-<!--
-
-//keyword
-
-
-
- -->
-
+<block>
+Lorem ipsum dolor sit amet, consectetur adipisicing 
+elit, sed do eiusmod tempor incididunt
+</block>
+<t>Текст врезки заключается между открывающим и закрывающим тегами элемента.</t> 
 </section>
 
+<section name="Элемент keyword" id="element-keyword"  toc="include" >
+<t>Для корректного использования в документе ключевых слов, определенных <ufrref no="3"/>, 
+<keyword>необходимо</keyword> использовать элемент <code>keyword</code>:</t>
+<codesample>&lt;keyword&gt;необходимо&lt;/keyword&gt;</codesample>
+<t>Специально набирать ключевые слова прописными буквами <keyword>не следует</keyword>, регистр 
+будет изменен при помощи соответствующего правила CSS в выходном файле.</t>
+</section>
+<!-- La fédération de La Terre -->
+</section>
+
 
 </section>
 </section>
 
-<section  name="Приложения" id="element-appendix"  toc="include" >
+
+<section  name="Заключительная часть" id="seс-back"  toc="include">
+    <t>Заключительная часть документа включает в себя два раздела:
+        <ulist>
+            <item><xref target="sec-references">Источники</xref></item>
+            <item><xref target="sec-appendix">Приложения</xref></item>
+        </ulist>
+    </t>
+<section  name="Источники" id="sec-references"  toc="include">
+
+<codesample><![CDATA[
+<references name="Сссылки" toc="include" id="refs">
+            <reference type="ufr" title="Источники UFR">
+               <ref ufrno="3" />
+               <ref ufrno="5" />
+            </reference>
+
+            <reference type="other" title="Другие источники">
+                <ref id="orthography">
+                    <title>Правила русской орфографии и пунктуации. Полный академический справочник.</title>
+                    <author firstname="В" middlename="В" lastname="Лопатин">
+                    <organization/>
+                    </author> 
+                    <description>Правила русской орфографии и пунктуации</description> 
+                    <publisher name="ЭКСМО" year="2006" month="" day=""/>
+                </ref>
+</reference></references>]]></codesample>
+
+
+</section>
+
+<section  name="Приложения" id="sec-appendix"  toc="include">
     <t>Некоторые UFR могут содержать материалы, которые нецелесообразно включать 
         в основной текст&nbsp;&mdash; в основном из-за их размера, реже&nbsp;&mdash; 
         из-за их справочного значения.</t>
@@ -856,77 +959,7 @@ elit, sed do eiusmod tempor incididunt
 использовать элементы струтуры документа <code>section</code> или <code>insert</code>, но 
 <keyword>разрешается</keyword> использовать элементы форматирования и сноски.</t>
 </section>
-
-    <section name="Особенности создания некоторых частей документа" toc="include" id="toc_special_parts">
-        <section name="Оглавление" toc="include" id="toc_special">
-        <t>Оглавление формируется XSLT-процессором на основании <xref target="doc_parts">частей</xref> документа, разделов, подразделов и т. д. Включение определенной части документа в оглавление производится в зависимости от наличия у элемента, указывающего на начало раздела (<code>&lt;section&gt;|&lt;section&gt;|&#8230;|&lt;section&gt;</code>), атрибута </t></section>
-        <section name="Символы" toc="include" id="symbols">
-            <section name="Ссылки на символы" toc="include" id="sgml-entity">
-                <t>Спецификация XML&#160;1.0 <eref target="http://www.w3.org/TR/REC-xml/#sec-predefined-ent">определяет</eref> пять символов, которые можно вставить в текст документа 
-                    при помощи мнемоник:</t>
-                    <ulist>
-                        <item>открывающая (левая) угловая скобка <code>&lt;</code> (<code>&amp;lt;</code>)</item>
-                        <item>закрывающая (правая) угловая скобка <code>&gt;</code> (<code>&amp;gt;</code>)</item>
-                        <item>амперсанд <code>&amp;</code> (<code>&amp;amp;</code>)</item>
-                        <item>апостроф <code>&apos;</code> (<code>&amp;apos;</code>)</item>
-                        <item>символ кавычки <code>&quot;</code> (<code>&amp;quot;</code>)</item>
-                    </ulist>
-                <t>Для вставки символов, отличных от определенных спецификацией XML&#160;1.0 
-                    (например, знак параграфа <code>&#167;</code>) <keyword>необходимо</keyword> использовать 
-                    числовую форму ссылки из соотвестсвующей <eref target="http://www.w3.org/TR/html4/sgml/entities.html">спецификации HTML</eref>, например для получения знака параграфа следует писать <code>"&amp;#167;"</code> (без кавычек).</t>
-            </section>
-             <section name="Тире, кавычки и прочие символы" toc="include" id="punctuation">
-                <t>Хотя возможности SGML и позволяют при помощи ссылок на символы из 
-                    набора символов документа добавить практически любые из 
-                    определенных в кодировке символов Unicode знаков пунктуации, с целью унификации 
-                <keyword>рекомендуется</keyword> придерживаться таких соглашений:
-                <ulist>
-                <item>закрывающая и открывающая кавычки обозначаются символом 
-                    одиночной кавычки <code>&quot;</code>;</item>
-                <item>для вставки неразрывного пробела используется ссылка на символ 
-                    <code>&amp;#160;</code>;</item>
-                <item>для вставки длинного тире используется ссылка на символ 
-                    <code>&amp;#8212;</code>;</item>
-                <item>для вставки знака параграфа (&#167;) используется <code>&amp;#167;</code>;</item>
-                <item>для случая, когда необходимо вставить в текст длинное тире 
-                <it>по правилам типографики</it> (длинное тире, предваряемое неразрывным пробелом), следует использовать последовательность <code>"&amp;nbsp;&amp;mdash;"</code> 
-                (без кавычек).<vspace/><anchor id="entity">Кроме этого, если вводить ссылки сущностей 
-                символов тире и пробела <code>&amp;#160;</code>, <code>&amp;#xA0;</code>, 
-                <code>&amp;#8212;</code> и <code>&amp;#x2014;</code> утомительно или надоедает, можно 
-                определить в начале XML-документа внутреннее подключение сущностей, как описано в <refref target="inner-entity" short="yes"/></anchor><footnote id="cm-charmap">В файле XSL-преобразования <code>ufr.xsl</code> определен элемент <code>&lt;xsl:output-character&gt;</code>, заменяющий числовую форму символа тире (<code>&amp;#8212;</code> или <code>&amp;#x2014;</code>) на последовательность <code>&amp;nbsp;&amp;mdash;</code>, но по умолчанию он закоментирован, так как делает невозможным использование символа длинного тире без пробела перед ним.<vspace/>Для его использования необходимо 1) раскомментировать упомянутую инструкцию и 2) удалить определение <code>&lt;!ENTITY mdash  "&amp;#8212;"&gt;</code>, если оно 
-                <link target="entity">было определено</link>.</footnote>:<vspace/>
-                <codesample>&lt;!DOCTYPE xsl:stylesheet
-  [
-    &lt;!ENTITY nbsp   "&amp;#160;"&gt;
-    &lt;!ENTITY mdash  "&amp;#8212;"&gt;
-  ]&gt;</codesample></item>
-                </ulist></t>
-             </section>
-        </section>
-    </section>
-
-<section name="Структура UFR и всякоэ" toc="include" id="ufrstruct">
-            <section name="Структура документа" id="doc_parts"  toc="include" >
-                <!-- Часть - глава - секция... -->
-                <t>vfbdbfdb</t>
-            </section>
-            <section name="Заголовки и общая информация" id="headers"  toc="include" >            
-                <t>К заголовкам и общей информации относятся <fgref id="ufrheader"/>:</t>
-             
-            </section>
-            <section id="not-in-t" name="Элементы текста, не требующие объявления абзаца" toc="include">
-                <section id="ufr3" name='Раздел "Терминология"'>
-                    <t>В случае использования в документе ключевых слов, определенных <ufrref no="3"/>, 
-                    <keyword>необходимо</keyword> добавить в документ соответствующее определение.</t>
-                    <t>Указанное определение добавляется при обработке XML-файла XSLT-процессором. Для того, 
-                        чтобы это произошло, необохдимо добавить в документ элемент <code>ufr3</code>. Этот 
-                        элемент <keyword>должен</keyword> быть добавлен в <it>один из первых двух разделов 
-                        документа</it> в качестве любого из подразделов, в противном случае XSLT-процессор 
-                        не произведет добавления.
-                    </t>
-                </section>
-            </section>
-        </section>
+</section>
 
 <section  name="Дальнейшее развитие" id="further-processing"  toc="include" >
 <t>Поскольку на момент принятия стандарта формат XHTML вполне достаточен, в применении 
