@@ -65,8 +65,20 @@ pre {
 	font-family:monospace
 }
 
+dd, ul, ol, p, p.block {
+	text-align: justify;	
+}
+
+dt {
+	margin-bottom: 0.5em;
+	font-weight: 600;
+}
+
+dd {
+	margin-left: 36px;
+}
+
 p, p.block {
-	text-align: justify;
 	margin-bottom: 0.5em;
 	margin-bottom: 0.5em
 }
@@ -130,11 +142,9 @@ ul, ol {
 
 ul {
 	list-style-type: circle;
-	text-align: justify;
 } 
 
 ol {
-	text-align: justify;
 	list-style-type: decimal;
 }
 
