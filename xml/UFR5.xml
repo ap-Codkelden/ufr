@@ -20,13 +20,6 @@
                 <unit>К-117 "Созвездие"</unit>
                 <organization>Звёздный Флот Федерации Земли</organization>
             </author>
-            <author>
-                <assignment>заместитель начальника Особого отдела</assignment>
-                <rank>Капитан-лейтенант</rank>
-                <name>Райан Муррфи</name>
-                <unit>К-117 "Созвездие"</unit>
-                <organization>Звёздный Флот Федерации Земли</organization>
-            </author>
         </authors>
         <ufrdata>
             <ufrname number="5">Инструкции авторам UFR</ufrname>
@@ -1056,7 +1049,6 @@ elit, sed do eiusmod tempor incididunt
 <references name="Сссылки" toc="include" id="refs">
             <reference type="ufr" title="Источники UFR">
                <ref ufrno="3" />
-               <ref ufrno="5" />
             </reference>
 
             <reference type="other" title="Другие источники">
@@ -1065,15 +1057,6 @@ elit, sed do eiusmod tempor incididunt
                     <author firstname="В" middlename="В" lastname="Лопатин">
                     </author> 
                     <publisher name="ЭКСМО" year="2006" month="" day=""/>
-                </ref>
-
-                <ref id="efsf_statut">
-                    <title>Устав Звёздного Флота Федерации Земли</title>   
-                    <author>
-                        <organization>Звёздный Флот Федерации Земли</organization>
-                    </author> 
-                    <publisher name="Earth Federation" year="2213" month="" day="14"/>
-                    <url>https://en.wikipedia.org/w/index.php?title=Literate_programming&amp;oldid=535987802</url>
                 </ref>
 
                 <ref id="iso8601">
@@ -1135,11 +1118,11 @@ elit, sed do eiusmod tempor incididunt
     <appendixes name="Приложения"  toc="include" xreftext="Приложения" id="appendixes">
 
         <appendix toc="include" name="Объявление авторских прав" id="appendix-copyright">
-            <t><bf><code>efsf-only="no"</code></bf></t>
+            <t><bf>efsf-only="no"</bf></t>
             <vspace/>
             <t>Copyright © 2013 Звёздный Флот Федерации Земли. Все права защищены.</t>
             <vspace blanklines="2"/>
-            <t><bf><code>efsf-only="yes"</code></bf></t>
+            <t><bf>efsf-only="yes"</bf></t>
             <vspace/>
             <t>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</t>
         </appendix>
