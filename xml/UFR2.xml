@@ -19,25 +19,19 @@
         </authors>
         <ufrdata>
             <ufrname number="2">Изменения в тегах записи бортового журнала</ufrname>
-            <ufrcategory cat="std" draft="no"/>
+            <ufrcategory cat="info" draft="no"/>
             <ufrdate value="2013-02-24" />
              <ufrchanged />
         </ufrdata>
     </description>
     <document>
-            <section name="Аннотация" anchor='abstract' toc="include" >
-                <t>С целью соответствия реальному положению дел, а именно учитывая то, 
-                что достаточно большое количество пользователей заменяет при наборе 
-                букву "ё" буквой "е", командованием корабля принято решение внести 
-                изменения в стандарт UFR1.</t>
-                <t>Допускается неограниченное распространение данного стандарта.</t>
-            </section> 
+        <abstract name="Аннотация" />
 
-        <copyright name="Авторские права" />
+        <copyright name="Авторские права" efsf-only="yes"/>
 
-        <license type="cc-license" name="Лицензия" xreftext="Лицензия" toc="include" anchor="license" />
+        <license type="cc-license" name="Лицензия" xreftext="Лицензия" toc="include" id="license" />
 
-        <section name="Введение"  toc="include" anchor="intro">
+        <section name="Введение"  toc="include" id="intro">
                 <t>Поскольку действующие правила русского языка <refref key='orthography' short='yes'/> 
                 допускают в обычном письме замену букву "ё" буквой "е", настоящий стандарт 
                 дополняет список допустимых тегов.</t>
@@ -45,7 +39,7 @@
                     сериализацией в виде XHTML-документа с помощью <eref target="http://ru.wikipedia.org/w/index.php?title=XSLT&amp;oldid=52141094">XSLT</eref> изменен порядок обязтаельных разделов.</t>
         </section>
 
-        <section name="Добавление тега *звездолет" toc="include" anchor="add_tag">
+        <section name="Добавление тега *звездолет" toc="include" id="add_tag">
                 <t>Добавить к списку допустимых тегов (раздел 4.1 URF1 от <nobr>2013-02-03</nobr>) тег <code>*звездолет</code>
                 и разрешить использовать его наравне с тегом <code>*звездолёт</code>.</t>
                 <t>Лицам, использующим какие-либо средства подписки на теги, рекомендуется 
@@ -53,9 +47,9 @@
                     событий на корабле.</t>
         </section>
 
-        <insert type="apply-changes" name="Внесение изменений" toc="include" anchor="changes" />
+        <insert type="apply-changes" name="Внесение изменений" toc="include" id="changes" />
 
-        <references name="Ссылки"  toc="include"  anchor='references'>
+        <references name="Ссылки"  toc="include"  id='references'>
             <reference type="other" title="Другие источники">
                 <ref key="orthography">
                     <title>Правила русской орфографии и пунктуации. Полный академический справочник.</title>   

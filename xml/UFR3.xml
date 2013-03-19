@@ -37,7 +37,7 @@
         <abstract name="Аннотация" />
         <license type="cc-license" name="Лицензия" />
 
-        <chapter name="Введение"  toc="include" anchor="intro">
+        <section name="Введение"  toc="include" id="intro">
                 <t>Во многих UFR, особенно категории "рекомендация" и "стандарт", 
                     реже -- "технический" могут использоваться различные слова 
                     для определения степени требований соблюдения того или иного параметра, 
@@ -48,10 +48,10 @@
                     <t>Продолжая подобную практику, Исследоввательская Лаборатория 
                     ЗФ рекомендует использовать нижеперечисленные ключевые слова 
                     для определения требований к участникам проекта "Созвездие".</t>
-        </chapter>
+        </section>
 
-        <chapter name="Ключевые слова" toc="include" anchor="keywords">
-            <section name="Перечень ключевых слов" toc="include" anchor="keywords-list">
+        <section name="Ключевые слова" toc="include" id="keywords">
+            <section name="Перечень ключевых слов" toc="include" id="keywords-list">
                 <olist>
                     <item>
                         <definition>
@@ -72,13 +72,13 @@
                     </item>
                 </olist>
 </section>
-<section name="Рекомендации по использованию" anchor="use"  toc="include" >
-    <subsection name="Избегайте чрезмерного употребления" anchor="be-careful"  toc="include" >
+<section name="Рекомендации по использованию" id="use"  toc="include" >
+    <subsection name="Избегайте чрезмерного употребления" id="be-careful"  toc="include" >
         <t>К использованию указанных выше ключевых слов необходмимо подходить 
         взвешенно и не использовать их необдуманно, чтобы исключить затруднения чтения документа.</t>
     </subsection>
-    <subsection name="Объявление использования" anchor="declare-of-usage"  toc="include" >
-        <t>Авторам документов, следующих приведенным здесь требованиям, рекомендуется помещать в начале документов следующий текст:<footnote name="xsl-paste">В стилевом файле преобразований <code>ufr.xsl</code> определен специальный элемент <code>&lt;ufr3/&gt;</code>, см.&#160;документацию.</footnote></t>
+    <subsection name="Объявление использования" id="declare-of-usage"  toc="include" >
+        <t>Авторам документов, следующих приведенным здесь требованиям, рекомендуется помещать в начале документов следующий текст:<footnote name="xsl-paste">В стилевом файле преобразований <code>ufr.xsl</code> определен специальный элемент <code>&lt;ufr3/&gt;</code>, см.&#160;<eref target="UFR5.html#element-ufr3">документацию</eref>.</footnote></t>
         <block>Ключевые слова <keyword>необходимо</keyword>, <keyword>требуется</keyword>, 
             <keyword>нужно</keyword>, <keyword>недопустимо</keyword>, <keyword>не разрешается</keyword>, 
             <keyword>следует</keyword>, <keyword>рекомендуется</keyword>, <keyword>не следует</keyword>, 
@@ -90,27 +90,21 @@
         раздела&#160;2.</t>
     </subsection>
 </section>
-</chapter>
+</section>
 
-<insert type="apply-changes" name="Внесение изменений" toc="include" anchor="changes" />
-
-<chapter name="Ссылки"  toc="include"  anchor='references'>
-        <references type="other" title="Другие источники">
-             <reference key="rfc2119">
+<insert type="apply-changes" name="Внесение изменений" toc="include" id="changes" />
+ </document>
+    <back>
+<references name="Ссылки"  toc="include"  id='references'>
+        <reference type="other" title="Другие источники">
+             <ref key="rfc2119">
                     <title>Key words for use in RFCs to Indicate Requirement Levels</title>   
-                    <author name="Scott" surname="Bradner" initials="" fullname="S. Bradner">
-                        <organization abbrev='Harvard University'>Harvard University</organization>
+                    <author firstname="Scott" lastname="Bradner" middlename="">
+                        <organization>Harvard University</organization>
                     </author> 
-                    <description>RFC2119</description> 
                     <publisher name="IETF" year="1997" month="03" day=""/>
             <url>http://www.ietf.org/rfc/rfc2119.txt</url>
-        </reference> 
+        </ref> 
+    </reference>
     </references>
-</chapter>
-
-
-   
-
-
-    </document>
-</ufr>
+</back></ufr>

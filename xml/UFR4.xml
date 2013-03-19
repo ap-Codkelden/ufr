@@ -29,28 +29,28 @@
         <abstract name="Аннотация" />
         <license type="cc-license" name="Лицензия" />
 
-        <section name="Введение"  toc="include" anchor="intro">
+        <section name="Введение"  toc="include" id="intro">
             <t>Не секрет, что телевизионный сериал <eref target="http://ru.wikipedia.org/w/index.php?title=%D0%92%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE%D0%BD-5&amp;oldid=51847782">&quot;Вавилон-5&quot;</eref> оказал более чем огромное влияние на проект &quot;Созвездие&quot;.</t>
             <t>Не стал исключением и Космический десант, хотя сама суть его, вероятно, была взята из романа Роберта Хайнлайна <refref key="starshiptroopers" short="no">&quot;Звёздный десант&quot;</refref>.</t>
         </section>
 
-        <section name="Космический десант" toc="include" anchor="spaceborn-troops">
+        <section name="Космический десант" toc="include" id="spaceborn-troops">
             <t>Идея Космического десанта возникла непосредственно под влиянием 
                 сюжета <eref target="http://en.wikipedia.org/w/index.php?title=Gropos&amp;oldid=465525095">10 серии</eref> 
                 второго сезона сериала &quot;Вавилон-5&quot;, позже идея получила некоторые штрихи из романа 
                 Олега Дивова &quot;Лучший экипаж Солнечной&quot; <refref key="bestsolar" short="yes"/>.</t>
         </section>
 
-        <section name="Колонисты" toc="include" anchor="colonist">
+        <section name="Колонисты" toc="include" id="colonist">
             <t>Хотя такая категория пассажиров, как колонисты упоминается не часто, но они есть.</t>
             <t>Идея колонистов почерпнута опять же из романа Роберта Хайнлайна <eref target="http://ru.wikipedia.org/w/index.php?title=%D0%9D%D0%B5%D0%B1%D0%B5%D1%81%D0%BD%D1%8B%D0%B9_%D1%84%D0%B5%D1%80%D0%BC%D0%B5%D1%80&amp;oldid=46675190">&quot;Фермер в небе&quot;</eref> 
             <refref key="farmersky" short="yes"/>. 
             Впрочем, как экипаж корабля, так и десантники относятся к колонистам не в пример доброжелательнее, чем команда &quot;Мэйфлауэра&quot; из романа.</t>
         </section>
 
-<insert type="apply-changes" name="Внесение изменений" toc="include" anchor="changes" />
+<insert type="apply-changes" name="Внесение изменений" toc="include" id="changes" />
 
-<references name="Ссылки"  toc="include"  anchor='references'>
+<references name="Ссылки"  toc="include"  id='references'>
     <reference type="other" title="Другие источники">
          <ref key="starshiptroopers">
             <title>Звёздный десант</title>   
