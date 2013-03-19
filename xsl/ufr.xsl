@@ -726,7 +726,7 @@
                 <span class='rfc2119'>рекомендуется</span>, <span class='rfc2119'>не следует</span>,
                 <span class='rfc2119'>не рекомендуется</span>, <span class='rfc2119'>возможно</span>, 
                 <span class='rfc2119'>необязательно</span> в соответствующих формах в данном документе 
-                должны интерпретироваться в соответствии с требованиями <a href="UFR3.html" target="_blank">URF3</a>.</p>
+                должны интерпретироваться в соответствии с требованиями <a href="UFR3.html" target="_blank">UFR3</a>.</p>
         </xsl:template>     
 
     <!-- 
