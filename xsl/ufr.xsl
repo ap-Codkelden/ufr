@@ -339,10 +339,11 @@
             <xsl:variable name="fig_num">
                 <xsl:number level="any" count="figure" format="1"/>
             </xsl:variable>
-            <a id="{concat('pic',$fig_num)}"><xsl:apply-templates /><div>
-            <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
+            <div>
+            <p class="center"><a id="{concat('pic',$fig_num)}"><xsl:apply-templates />
+            <xsl:text>Рисунок&#160;</xsl:text>
             <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" />
-            </p></div></a>
+            </a></p></div>
         </xsl:template>
 
     <!-- Шаблон для вывода части неформатированного текста -->
@@ -538,68 +539,68 @@
     <!-- ############################################################# -->
 
         <xsl:template match="ufr/document/section|ufr/document/insert">
-                <a id="{@id}"><h2><xsl:number level="multiple"
+                <h2><a id="{@id}"><xsl:number level="multiple"
                      count="ufr/document/insert|ufr/document/section"
                      format="1. "/>
-            <xsl:value-of select="@name" /></h2></a>
+            <xsl:value-of select="@name" /></a></h2>
             <xsl:apply-templates/> 
         </xsl:template>
 
         <!--  LEVEL 2  -->
         <xsl:template match="ufr/document/section/section" priority="1" > 
-            <a id="{@id}"><h3><xsl:number level="multiple"
+            <h3><a id="{@id}"><xsl:number level="multiple"
                      count="insert
                      |ufr/document/section
                      |ufr/document/section/section"
                      format="1.1. "/>
-            <xsl:value-of select="@name" /></h3></a>
+            <xsl:value-of select="@name" /></a></h3>
             <xsl:apply-templates/> 
         </xsl:template> 
 
         <!--  LEVEL 3 -->
         <xsl:template match="ufr/document/section/section/section" priority="1" > 
-            <a id="{@id}"><h4><xsl:number level="multiple"
+            <h4><a id="{@id}"><xsl:number level="multiple"
                      count="ufr/document/insert
                      |ufr/document/section
                      |ufr/document/section/section
                      |ufr/document/section/section/section"
                      format="1.1.1. "/>
-            <xsl:value-of select="@name" /></h4></a>
+            <xsl:value-of select="@name" /></a></h4>
             <xsl:apply-templates/> 
         </xsl:template> 
 
         <!--  LEVEL 4  -->
         <xsl:template match="ufr/document/section/section/section/section" priority="1" > 
-            <a id="{@id}"><h5><xsl:number level="multiple"
+            <h5><a id="{@id}"><xsl:number level="multiple"
                      count="ufr/document/insert
                      |ufr/document/section
                      |ufr/document/section/section
                      |ufr/document/section/section/section
                      |ufr/document/section/section/section/section" format="1.1.1.1. "/>
-            <xsl:value-of select="@name" /></h5></a>
+            <xsl:value-of select="@name" /></a></h5>
             <xsl:apply-templates/> 
         </xsl:template> 
 
         <!--  LEVEL 5  -->
         <xsl:template match="ufr/document/section/section/section/section/section" priority="1" > 
-            <a id="{@id}"><h6><xsl:number level="multiple"
+            <h6><a id="{@id}"><xsl:number level="multiple"
                      count="ufr/document/insert
                      |ufr/document/section
                      |ufr/document/section/section
                      |ufr/document/section/section/section
                      |ufr/document/section/section/section/section
                      |ufr/document/section/section/section/section/section" format="1.1.1.1.1. "/>
-            <xsl:value-of select="@name" /></h6></a>
+            <xsl:value-of select="@name" /></a></h6>
             <xsl:apply-templates/> 
         </xsl:template> 
 
         <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
 
         <xsl:template match="appendixes/appendix"> 
-            <a id="{@id}"><h3><xsl:text>Приложение </xsl:text>
+            <h3><a id="{@id}"><xsl:text>Приложение </xsl:text>
             <xsl:number level="any"
                      count="appendix"
-                     format="A. "/><xsl:value-of select="@name" /></h3></a>
+                     format="A. "/><xsl:value-of select="@name" /></a></h3>
             <xsl:apply-templates/>
             <xsl:call-template name="footnotes"/>
         </xsl:template> 
@@ -958,10 +959,6 @@
     -->
 
     <xsl:template match="//figure/svg">
-        <!-- <xsl:variable name="fig_num">
-            <xsl:number level="any" count="figure|svg" format="1"/>
-        </xsl:variable>
-        <a id="{concat('pic',$fig_num)}"><div> -->
                 <xsl:text disable-output-escaping='yes'>&lt;object class="svg" data="</xsl:text>
                 <xsl:value-of select="@file"/>
                 <xsl:text disable-output-escaping='yes'>" type="image/svg+xml"&gt;&lt;/object&gt;</xsl:text>
