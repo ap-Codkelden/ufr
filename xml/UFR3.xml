@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../xsl/ufr.xsl"?>
 <ufr>
-    <description>
+    <front>
         <creator>
             <organization>Звёздный флот Федерации</organization>
             <unit>К-117 "Созвездие"</unit>
@@ -18,21 +18,15 @@
             </author>
         </authors>
         <ufrdata>
-            <ufrname number="3">Ключевые слова для обозначения уровня требований в UFR</ufrname>
-            <!-- <ufrcategory></ufrcategory> 
-            # параметр 
-            # draft? = { "yes" | "no" }
-            # определяет, является ли стандарт черновым, 
-            # тогда добавляется "(черновой)"
-            -->
+            <ufrname number="3">
+                Ключевые слова для обозначения уровня требований в UFR
+            </ufrname>
             <ufrcategory cat="rec" draft="no"/>
             <ufrdate value="2013-02-27" />
-            <!-- Изменен ли стандарт, или нет, 
-            указывать номера URF и дату в формате -->
             <ufrchanged />
         </ufrdata>
-    </description>
-    <document>
+    </front>
+    <middle>
         <copyright name="Авторские права" />
         <abstract name="Аннотация" />
         <license type="cc-license" name="Лицензия" />
@@ -44,7 +38,7 @@
                     требования или рекомендации.</t>
                     <t>В практике <eref target="http://ru.wikipedia.org/wiki/RFC">RFC</eref> 
                     такие слова именовались ключевыми, и зачастую были набраны 
-                    заглавными буквами <ref key="rfc2119" short="yes"/>.</t>
+                    заглавными буквами <ref id="rfc2119" short="yes"/>.</t>
                     <t>Продолжая подобную практику, Исследоввательская Лаборатория 
                     ЗФ рекомендует использовать нижеперечисленные ключевые слова 
                     для определения требований к участникам проекта "Созвездие".</t>
@@ -93,11 +87,11 @@
 </section>
 
 <insert type="apply-changes" name="Внесение изменений" toc="include" id="changes" />
- </document>
+</middle>
     <back>
 <references name="Ссылки"  toc="include"  id='references'>
         <reference type="other" title="Другие источники">
-             <ref key="rfc2119">
+             <ref id="rfc2119">
                     <title>Key words for use in RFCs to Indicate Requirement Levels</title>   
                     <author firstname="Scott" lastname="Bradner" middlename="">
                         <organization>Harvard University</organization>

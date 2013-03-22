@@ -6,7 +6,7 @@
     <!ENTITY mdash  "&#8212;">
   ]>
 <ufr>
-    <description>
+    <front>
         <creator>
             <organization>Звёздный флот Федерации</organization>
             <unit>К-117 "Созвездие"</unit>
@@ -27,8 +27,8 @@
             <ufrdate value="2013-03-17" />
             <ufrchanged />
         </ufrdata>
-    </description>
-    <document>
+</front>
+    <middle>
         <copyright name="Авторские права" efsf-only="no"/>
         <abstract name="Аннотация" />
         <license type="mit-license" name="Лицензия" />
@@ -189,19 +189,19 @@
 </ufr>]]></codesample>
 <t>Документ имееет следующую структуру:</t>
         <olist>
-        <item><xref target="sec-description">Заголовочная часть</xref></item>
-        <item><xref target="sec-document">Документ</xref></item>
-        <item><xref target="sec-back">Заключительная часть</xref></item>
+        <item><xref target="sec-description">Заголовочная часть (элемент front)</xref></item>
+        <item><xref target="sec-document">Документ (элемент middle)</xref></item>
+        <item><xref target="sec-back">Заключительная часть (элемент back)</xref></item>
         </olist>
 
     <t>К заголовкам и общей информации относятся <fgref id="ufrheader"/>:</t>
 
 <!-- заголовочная часть -->
 <section  name="Заголовочная часть" id="sec-description"  toc="include" >
-<t>Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"description"</code>.</t>
+<t>Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"front"</code>.</t>
 <t>Общий вид заголовочной части показан на <fgref id="ufrheader"/>.</t>
 <codesample>&lt;ufr&gt;
-&lt;description&gt;
+&lt;front&gt;
     &lt;creator&gt;
         &lt;organization ...&gt;
         &lt;unit ...&gt;
@@ -226,8 +226,8 @@
         &lt;ufrchanged ...&gt;
         &lt;ufrobsolete .../&gt;
     &lt;/ufrdata&gt;
-&lt;/description&gt;</codesample>
-<t>Элемент <code>description</code> содержит элемент <code>creator</code>, элемент <code>authors</code>, и элемент <code>ufrdata</code>.</t>
+&lt;/front&gt;</codesample>
+<t>Элемент <code>front</code> содержит элемент <code>creator</code>, элемент <code>authors</code>, и элемент <code>ufrdata</code>.</t>
 
     <section  name="Элемент creator" id="creator"  toc="include" >
     Этот элемент содержит информацию о составителе UFR, описываемую данными, определенными 
@@ -446,10 +446,10 @@
 
     <section  name="Документ" id="sec-document"  toc="include" >
     <t>Основная часть документа вложена в секцию, ограниченную 
-    элементом <code>document</code>. Ниже приведено краткое описание 
+    элементом <code>middle</code>. Ниже приведено краткое описание 
     структуры этой секции (<keyword>необходимо</keyword>, чтобы все UFR имели 
     описанную структуру):</t>
-<codesample>&lt;document&gt;
+<codesample>&lt;middle&gt;
   &lt;abstract.../&gt;              | [Аннотация]
   &lt;copyright.../&gt;             | Авторские права
   &lt;license.../&gt;               | Лицензия
@@ -457,7 +457,7 @@
     &lt;section...&gt;              | до 5 уровней
       &lt;section...&gt;            | (1 - 1.1.1.1.1)
   &lt;insert.../&gt;                | Элемент вставки
-  &lt;/document&gt;                 |
+  &lt;/middle&gt;                 |
   &lt;back&gt;                      | Заключительная часть
     &lt;references...&gt;           | Ссылки на источники
       &lt;reference... /&gt;        |   UFR...
@@ -908,9 +908,9 @@ elit, sed do eiusmod tempor incididunt
             <item>Приложения</item>
         </ulist>
 <codesample>...
-&lt;document&gt;
+&lt;middle&gt;
     ...
-&lt;/document&gt;                 
+&lt;/middle&gt;                 
 &lt;back&gt;                      | Заключительная часть
     &lt;references...&gt;         | <xref target="sec-references">Ссылки на источники</xref>
         &lt;reference... /&gt;    | - " -
@@ -942,7 +942,7 @@ elit, sed do eiusmod tempor incididunt
         &lt;author...&gt;
         [&lt;organization/&gt;]
         &lt;/author&gt; 
-        &lt;description&gt;...&lt;/description&gt; 
+        &lt;front&gt;...&lt;/front&gt; 
         &lt;publisher.../&gt;
         &lt;url&gt;...&lt;/url&gt;
     &lt;/ref&gt;
@@ -1056,7 +1056,7 @@ elit, sed do eiusmod tempor incididunt
 
 <insert type="apply-changes" name="Внесение изменений" toc="include" id="changes" />
 
-    </document>
+</middle>
     <back>
 <references name="Сссылки" toc="include" id="refs">
             <reference type="ufr" name="Источники UFR">
@@ -1141,7 +1141,7 @@ elit, sed do eiusmod tempor incididunt
                     </author>
                     <author firstname="Fran&#231;ois" middlename="" lastname="Yergeau"/>
                     <publisher name="World Wide Web Consortium" year="2008" month="11" day="26"/>
-                    <url>http://www.artlebedev.ru/tools/technogrette/xslt/entity-1/</url>
+                    <url>http://www.w3.org/TR/REC-xml/</url>
                 </ref>
             </reference>
         </references>

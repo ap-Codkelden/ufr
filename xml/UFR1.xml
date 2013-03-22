@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="../xsl/ufr.xsl"?>
 <ufr>
-    <description>
+    <front>
         <creator>
             <organization>Звёздный флот Федерации</organization>
             <unit>К-117 "Созвездие"</unit>
@@ -25,8 +25,8 @@
                 <changed number="2" previous-ufr-date="2013-02-03" edition="" /> 
             </ufrchanged>
         </ufrdata>
-    </description>
-    <document>
+    </front>
+    <middle>
             <section name="Аннотация" anchor='abstract' toc="include" >
                 <t>Стандарт определяет использование тегов при публикации 
                 записей на сервисе микроблогов <eref target="http://juick.com">Juick</eref>. 
@@ -87,29 +87,24 @@
     
 
         <insert type="apply-changes" name="Внесение изменений" toc="include" anchor="changes" />
-
-
+</middle>
+<back>
 <references name="Сссылки" toc="include" anchor="refs">
-            <reference type="other" title="Другие источники">
-                <ref key="orthography">
-                    <title>Правила русской орфографии и пунктуации. Полный академический справочник.</title>   
-                    <author surname="Лопатин" initials="В. В." fullname="В. В. Лопатин">
-                    <organization/>
-                        <!-- <organization abbrev='ЭКСМО'>ЭКСМО</organization> -->
-                    </author> 
-                    <description>Правила русской орфографии и пунктуации</description> 
-                    <publisher name="ЭКСМО" year="2006" month="" day=""/>
-                </ref>
-
-                <ref key="efsf_statut">
-                    <title>Устав Звёздного Флота Федерации Земли</title>   
-                    <author>
-                        <organization abbrev='ЗФФЗ'>Звёздный Флот Федерации Земли</organization>
-                    </author> 
-                    <description>E. F. Code</description> 
-                    <publisher name="Earth Federation" year="2213" month="07" day="14"/>
-                </ref>
-</reference>
-            </references>
-    </document>
+    <reference type="other" title="Другие источники">
+        <ref id="efsf_statut">
+            <title>Устав Звёздного Флота Федерации Земли</title>   
+            <author>
+                <organization abbrev='ЗФФЗ'>Звёздный Флот Федерации Земли</organization>
+            </author> 
+            <description>E. F. Code</description> 
+            <publisher name="Earth Federation" year="2213" month="07" day="14"/>
+        </ref>
+        <ref id="orthography">
+            <title>Правила русской орфографии и пунктуации. Полный академический справочник.</title>   
+            <author lastname="Лопатин" firstname="В" middlename="В"/>
+            <publisher name="ЭКСМО" year="2006" month="" day=""/>
+        </ref>
+    </reference>
+</references>
+</back>
 </ufr>
