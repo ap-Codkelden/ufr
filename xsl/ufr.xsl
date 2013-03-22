@@ -47,18 +47,18 @@
     <xsl:preserve-space elements="codesample"/>
 
     <xsl:variable name="ufr-sfonly-copyright">
-        <xsl:value-of select="/ufr/document/copyright/@efsf-only" />
+        <xsl:value-of select="/ufr/middle/copyright/@efsf-only" />
     </xsl:variable>
 
     <!-- Номер -->
-    <xsl:variable name="this-ufr-num" select="/ufr/description/ufrdata/ufrname/@number" />
+    <xsl:variable name="this-ufr-num" select="/ufr/front/ufrdata/ufrname/@number" />
 
     <!-- Категория -->
-    <xsl:variable name="urfcat" select="ufr/description/ufrdata/ufrcategory/@cat" />
+    <xsl:variable name="urfcat" select="ufr/front/ufrdata/ufrcategory/@cat" />
 
     <!-- Дата -->
     <xsl:variable name="d">
-        <xsl:value-of select="/ufr/description/ufrdata/ufrdate/@value" />
+        <xsl:value-of select="/ufr/front/ufrdata/ufrdate/@value" />
     </xsl:variable>
 
     <!-- КЛЮЧИ  -->
@@ -108,28 +108,28 @@
         <xsl:call-template name="insertCSS" />
         <title>
             <xsl:text>URF </xsl:text><xsl:value-of select="$this-ufr-num" />
-            <xsl:text> - </xsl:text><xsl:value-of select="ufr/description/ufrdata/ufrname/text()" /> 
+            <xsl:text> - </xsl:text><xsl:value-of select="ufr/front/ufrdata/ufrname/text()" /> 
         </title>
         </head> 	
         <body>
             <table style="width:100%;border:0px;border-spacing:0px">
             <tbody>
             <tr>
-                <td style="text-align:left"><xsl:value-of select="ufr/description/creator/organization/text()" /></td>
-                <td style="text-align:right"><xsl:value-of select="ufr/description/creator/unit/text()"/></td>
+                <td style="text-align:left"><xsl:value-of select="ufr/front/creator/organization/text()" /></td>
+                <td style="text-align:right"><xsl:value-of select="ufr/front/creator/unit/text()"/></td>
             </tr>
             <tr>
                 <td style="text-align:left">
-                    <xsl:text>UFR &#8470;</xsl:text><xsl:value-of select="ufr/description/ufrdata/ufrname/@number" />
+                    <xsl:text>UFR &#8470;</xsl:text><xsl:value-of select="ufr/front/ufrdata/ufrname/@number" />
                 </td>
                 <td style="text-align:right">
-                    <xsl:value-of select="ufr/description/creator/author/text()"/>
+                    <xsl:value-of select="ufr/front/creator/author/text()"/>
                 </td>
             </tr>
             <tr>
                 <td style="text-align:left">
                     <xsl:text>Категория: </xsl:text>
-                    <xsl:variable name="is_draft" select="ufr/description/ufrdata/ufrcategory/@draft" />
+                    <xsl:variable name="is_draft" select="ufr/front/ufrdata/ufrcategory/@draft" />
                     <xsl:variable name="draft">
                         <xsl:choose>
                             <xsl:when test="$is_draft='yes'">
@@ -164,7 +164,7 @@
             </tbody>
             </table>
             <!-- <div class="caption">-->
-                <h1 class="caption"><xsl:value-of select="upper-case(ufr/description/ufrdata/ufrname)" /></h1>
+                <h1 class="caption"><xsl:value-of select="upper-case(ufr/front/ufrdata/ufrname)" /></h1>
                 <p class="caption">
                     <xsl:value-of select="format-date($d, '[D] [MNn] [Y0001]', 'ru', (), ())"/>
                 </p>
@@ -181,13 +181,13 @@
             #   date
             ################################################################## -->
 
-            <xsl:if test="ufr/description/ufrdata/ufrchanged/changed" >
+            <xsl:if test="ufr/front/ufrdata/ufrchanged/changed" >
                 <p class="center">Изменен:</p>
                 <xsl:text  disable-output-escaping='yes'>&lt;</xsl:text>p class="center"
-                <xsl:if test="not(ufr/description/ufrdata/urfobsolete)"> style="margin-bottom:10ex"</xsl:if>
+                <xsl:if test="not(ufr/front/ufrdata/urfobsolete)"> style="margin-bottom:10ex"</xsl:if>
                 <xsl:text  disable-output-escaping='yes'>&gt;</xsl:text>
 
-                <xsl:for-each select="ufr/description/ufrdata/ufrchanged/changed">
+                <xsl:for-each select="ufr/front/ufrdata/ufrchanged/changed">
                     <xsl:variable name="date-of-change" select="@date" />
                     <a href="{concat('ufr',@number,'.html')}"><xsl:text>UFR &#8470;</xsl:text><xsl:value-of select="@number" /></a>
                     <xsl:text> (</xsl:text>
@@ -203,7 +203,7 @@
                     <a href="{concat('ufr',$this-ufr-num, '_', format-date($date-of-change, '[Y0001][M01][D01]'),$delimiter, @edition,'.html')}">
                         <xsl:text>предыдущая версия</xsl:text></a><xsl:text> UFR &#8470;</xsl:text>
                     <xsl:value-of select="$this-ufr-num" /><xsl:text>)</xsl:text>
-                    <xsl:if test="count(/ufr/description/ufrdata/ufrchanged/changed) &gt; 1">
+                    <xsl:if test="count(/ufr/front/ufrdata/ufrchanged/changed) &gt; 1">
                         <xsl:if test="not(position() = last())">
                             <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
                         </xsl:if>
@@ -215,9 +215,9 @@
             <!-- 
             #    O B S O L E T E   U F R
             -->
-            <xsl:if test="ufr/description/ufrdata/urfobsolete">
+            <xsl:if test="ufr/front/ufrdata/urfobsolete">
                 <xsl:call-template name="obsoleteUFR">
-                    <xsl:with-param name="obsolete" select="ufr/description/ufrdata/urfobsolete/@ufrno" />
+                    <xsl:with-param name="obsolete" select="ufr/front/ufrdata/urfobsolete/@ufrno" />
                 </xsl:call-template>
             </xsl:if>
 
@@ -229,16 +229,16 @@
             #           TABLE OF CONTENTS 
             # -->
             <h2>Содержание</h2>
-                <xsl:apply-templates select="ufr/document/section
-                    |ufr/document/insert
+                <xsl:apply-templates select="ufr/middle/section
+                    |ufr/middle/insert
                     |//appendixes
                     |/ufr/back/references" mode="toc"/> 
             <!--
             #   Main document processing
              -->
-            <xsl:for-each select="ufr/document/section|ufr/document/insert">
+            <xsl:for-each select="ufr/middle/section|ufr/middle/insert">
                 <h2><a id="{@id}"/>
-                <xsl:number level="any" count="ufr/document/section|ufr/document/insert" 
+                <xsl:number level="any" count="ufr/middle/section|ufr/middle/insert" 
                     format="1. "/>
                     <xsl:value-of select="@name" />
                 </h2>
@@ -259,8 +259,8 @@
         <xsl:for-each select="ufr/back/references">
             <h2><a id="{@id}"/>
             <xsl:number level="any" 
-                count="ufr/document/section
-                |ufr/document/insert
+                count="ufr/middle/section
+                |ufr/middle/insert
                 |ufr/back/references" format="1. "/>
             <xsl:value-of select="@name" />
             </h2> 
@@ -282,7 +282,7 @@
         ########################################################### -->
         <xsl:variable name="author">
             <xsl:choose>
-                <xsl:when test="count(/ufr/description/authors/author) &gt; 1">
+                <xsl:when test="count(/ufr/front/authors/author) &gt; 1">
                     Авторы
                 </xsl:when>
                 <xsl:otherwise>
@@ -291,7 +291,7 @@
             </xsl:choose>
         </xsl:variable>
         <h2><xsl:value-of select="$author" /></h2>
-        <xsl:for-each select="ufr/description/authors/author">
+        <xsl:for-each select="ufr/front/authors/author">
             <p><xsl:value-of select="assignment" />
             <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
             <xsl:value-of select="rank" />
@@ -476,12 +476,12 @@
                             count="insert
                             |appendix
                             |references
-                            |ufr/document/section
-                            |ufr/document/section/section
-                            |ufr/document/section/section/section
-                            |ufr/document/section/section/section/section
-                            |ufr/document/section/section/section/section/section
-                            |ufr/document/section/section/section/section/section/section" />
+                            |ufr/middle/section
+                            |ufr/middle/section/section
+                            |ufr/middle/section/section/section
+                            |ufr/middle/section/section/section/section
+                            |ufr/middle/section/section/section/section/section
+                            |ufr/middle/section/section/section/section/section/section" />
                         </xsl:otherwise>
                     </xsl:choose>
                     <span class="nowrap">&#160;</span>
@@ -507,12 +507,12 @@
             |appendix
             |insert
             |references
-            |ufr/document/section
-            |ufr/document/section/section
-            |ufr/document/section/section/section
-            |ufr/document/section/section/section/section
-            |ufr/document/section/section/section/section/section
-            |ufr/document/section/section/section/section/section/section" mode="toc">
+            |ufr/middle/section
+            |ufr/middle/section/section
+            |ufr/middle/section/section/section
+            |ufr/middle/section/section/section/section
+            |ufr/middle/section/section/section/section/section
+            |ufr/middle/section/section/section/section/section/section" mode="toc">
         <xsl:variable name="include-toc" select="@toc"/>
             <xsl:if test="$include-toc='include'">
             <xsl:variable name="id" select="@id" />
@@ -525,7 +525,7 @@
                         </xsl:when>
                         <xsl:when test="name()='references'">
                             <xsl:number level="any" format="1.1.1.1.1."
-                            count="ufr/document/insert|references|ufr/document/section"/>
+                            count="ufr/middle/insert|references|ufr/middle/section"/>
                         </xsl:when>
                         <xsl:when test="name()='appendix'">
                             <xsl:number level="multiple" format="A." count="appendix"/>
@@ -538,58 +538,58 @@
         </xsl:template> 
     <!-- ############################################################# -->
 
-        <xsl:template match="ufr/document/section|ufr/document/insert">
+        <xsl:template match="ufr/middle/section|ufr/middle/insert">
                 <h2><a id="{@id}"><xsl:number level="multiple"
-                     count="ufr/document/insert|ufr/document/section"
+                     count="ufr/middle/insert|ufr/middle/section"
                      format="1. "/>
             <xsl:value-of select="@name" /></a></h2>
             <xsl:apply-templates/> 
         </xsl:template>
 
         <!--  LEVEL 2  -->
-        <xsl:template match="ufr/document/section/section" priority="1" > 
+        <xsl:template match="ufr/middle/section/section" priority="1" > 
             <h3><a id="{@id}"><xsl:number level="multiple"
                      count="insert
-                     |ufr/document/section
-                     |ufr/document/section/section"
+                     |ufr/middle/section
+                     |ufr/middle/section/section"
                      format="1.1. "/>
             <xsl:value-of select="@name" /></a></h3>
             <xsl:apply-templates/> 
         </xsl:template> 
 
         <!--  LEVEL 3 -->
-        <xsl:template match="ufr/document/section/section/section" priority="1" > 
+        <xsl:template match="ufr/middle/section/section/section" priority="1" > 
             <h4><a id="{@id}"><xsl:number level="multiple"
-                     count="ufr/document/insert
-                     |ufr/document/section
-                     |ufr/document/section/section
-                     |ufr/document/section/section/section"
+                     count="ufr/middle/insert
+                     |ufr/middle/section
+                     |ufr/middle/section/section
+                     |ufr/middle/section/section/section"
                      format="1.1.1. "/>
             <xsl:value-of select="@name" /></a></h4>
             <xsl:apply-templates/> 
         </xsl:template> 
 
         <!--  LEVEL 4  -->
-        <xsl:template match="ufr/document/section/section/section/section" priority="1" > 
+        <xsl:template match="ufr/middle/section/section/section/section" priority="1" > 
             <h5><a id="{@id}"><xsl:number level="multiple"
-                     count="ufr/document/insert
-                     |ufr/document/section
-                     |ufr/document/section/section
-                     |ufr/document/section/section/section
-                     |ufr/document/section/section/section/section" format="1.1.1.1. "/>
+                     count="ufr/middle/insert
+                     |ufr/middle/section
+                     |ufr/middle/section/section
+                     |ufr/middle/section/section/section
+                     |ufr/middle/section/section/section/section" format="1.1.1.1. "/>
             <xsl:value-of select="@name" /></a></h5>
             <xsl:apply-templates/> 
         </xsl:template> 
 
         <!--  LEVEL 5  -->
-        <xsl:template match="ufr/document/section/section/section/section/section" priority="1" > 
+        <xsl:template match="ufr/middle/section/section/section/section/section" priority="1" > 
             <h6><a id="{@id}"><xsl:number level="multiple"
-                     count="ufr/document/insert
-                     |ufr/document/section
-                     |ufr/document/section/section
-                     |ufr/document/section/section/section
-                     |ufr/document/section/section/section/section
-                     |ufr/document/section/section/section/section/section" format="1.1.1.1.1. "/>
+                     count="ufr/middle/insert
+                     |ufr/middle/section
+                     |ufr/middle/section/section
+                     |ufr/middle/section/section/section
+                     |ufr/middle/section/section/section/section
+                     |ufr/middle/section/section/section/section/section" format="1.1.1.1.1. "/>
             <xsl:value-of select="@name" /></a></h6>
             <xsl:apply-templates/> 
         </xsl:template> 
@@ -658,15 +658,15 @@
         </xsl:template>
 
     <xsl:template name="insertLicense">
-        <h2><xsl:value-of select="ufr/document/license/@name" /></h2>
+        <h2><xsl:value-of select="ufr/middle/license/@name" /></h2>
         <xsl:choose>
-    <xsl:when test="ufr/document/license/@type='cc-license'">
+    <xsl:when test="ufr/middle/license/@type='cc-license'">
     <p>В соответствии с &#167;105 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/">CC-BY-NC-ND-3.0</a>).</p>
     </xsl:when>
-    <xsl:when  test="ufr/document/license/@type='mit-license'">
+    <xsl:when  test="ufr/middle/license/@type='mit-license'">
     <p>В соответствии с &#167;106 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии MIT (<a href="http://opensource.org/licenses/MIT">MIT License</a>).</p>
     </xsl:when>
-    <xsl:when test="ufr/document/license/@type='other-license'">
+    <xsl:when test="ufr/middle/license/@type='other-license'">
         <!-- !!! Необходимо определять лицензию в соответствующем разделе !!! -->
         <p>В соответствии с &#167;107 раздела 17 Устава Звёздного Флота данный стандарт распространяется на условиях лицензии, отличной от указанных в &#167;&#167;105, 106 раздела 17 Устава Звёздного Флота, и изложенных в <a href="full-copyright-statement">соответствующем разделе этого</a> документа.</p>
     </xsl:when>
@@ -675,13 +675,13 @@
 
         <xsl:template name="insertCopyright"> 
             <xsl:param name="starfleet"/> 
-            <h2><xsl:value-of select="ufr/document/copyright/@name" /></h2>
+            <h2><xsl:value-of select="ufr/middle/copyright/@name" /></h2>
             <p>Copyright &#169; <xsl:value-of select="format-date($d, '[Y0001]', (), (), ())" /> Звёздный Флот Федерации Земли<xsl:if test="$ufr-sfonly-copyright='no'"> и лица, указанные как авторы документа</xsl:if>. Все права защищены.</p>
         </xsl:template> 
 
         <xsl:template name="insertAbstract">
-            <xsl:if test='ufr/document/abstract'>
-            <h2><xsl:value-of select="ufr/document/abstract/@name" /></h2>
+            <xsl:if test='ufr/middle/abstract'>
+            <h2><xsl:value-of select="ufr/middle/abstract/@name" /></h2>
             <xsl:choose>
                 <xsl:when test="$urfcat='std'">
                     <p>Этот документ устанавливает обязательные к использованию 
@@ -720,7 +720,7 @@
         </xsl:template> 
 
     <!-- Объявление ключевых слов -->
-        <xsl:template match="document/section[1]//ufr3|document/section[2]//ufr3">
+        <xsl:template match="middle/section[1]//ufr3|middle/section[2]//ufr3">
             <p>Ключевые слова <span class='rfc2119'>необходимо</span>, <span class='rfc2119'>требуется</span>, 
                 <span class='rfc2119'>нужно</span>, <span class='rfc2119'>недопустимо</span>, 
                 <span class='rfc2119'>не разрешается</span>, <span class='rfc2119'>следует</span>, 
@@ -748,8 +748,8 @@
                     <xsl:for-each select="ref">
                         <xsl:variable name="ufrno" select="@ufrno" />
                         <xsl:variable name="ufrfile" select="concat('../xml/ufr',$ufrno,'.xml')" />
-                        <xsl:variable name="authors_info" select="document($ufrfile)/ufr/description/authors"/>
-                        <xsl:variable name="ufr_name" select="document($ufrfile)/ufr/description/ufrdata/ufrname/text()"/>
+                        <xsl:variable name="authors_info" select="document($ufrfile)/ufr/front/authors"/>
+                        <xsl:variable name="ufr_name" select="document($ufrfile)/ufr/front/ufrdata/ufrname/text()"/>
                         <xsl:variable name="auth_count" select="count($authors_info/author)" /> 
                         <xsl:text  disable-output-escaping='yes'>&lt;tr&gt;</xsl:text>
                         <xsl:for-each select="$authors_info/author">
