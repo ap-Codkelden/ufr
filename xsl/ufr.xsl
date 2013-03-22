@@ -349,7 +349,9 @@
     <!-- Шаблон для вывода части неформатированного текста -->
 
     <xsl:template match="//figure/artwork/text()">
-            <pre class="artwork"><xsl:copy/></pre>
+            <pre class="artwork">
+                <xsl:copy/>
+            </pre>
     </xsl:template>  
 
     <!-- ССЫЛКИ НА ВНЕШНИЕ ИСТОЧНИКИ -->
