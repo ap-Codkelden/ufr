@@ -1,0 +1,68 @@
+<snippet>
+	<content><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/ufr.xsl"?>
+<!DOCTYPE xsl:stylesheet
+  [
+    <!ENTITY nbsp   "&#160;">
+    <!ENTITY mdash  "&#8212;">
+  ]>
+<ufr>
+    <front>
+        <creator>
+            <organization>Звёздный флот Федерации</organization>
+            <unit>К-117 "Созвездие"</unit>
+            <author></author>
+        </creator>
+        <authors>
+            <author>
+                <assignment></assignment>
+                <rank></rank>
+                <name></name>
+                <unit></unit>
+                <organization></organization>
+            </author>
+        </authors>
+        <ufrdata>
+            <ufrname number=""></ufrname>
+            <ufrcategory cat="" draft="yes" />
+            <ufrdate value="" />
+            <ufrchanged />
+        </ufrdata>
+	</front>
+	<middle>
+	    <copyright name="Авторские права" efsf-only="no"/>
+	    <abstract name="Аннотация" />
+	    <license type="" name="Лицензия" />
+	    <section name="Введение"  toc="include" id="intro">
+	    	<t></t>
+	    </section>
+	</middle>
+    <back>
+		<references name="Сссылки" toc="include" id="refs">
+            <reference type="ufr" name="Источники UFR">
+            	<ref ufrno="" />
+            </reference>
+	        <reference type="other" name="Другие источники">
+	            <ref id="">
+	                <title></title>
+	                <author firstname="" middlename="" lastname="">
+	                	<!-- <organization></organization> -->
+	                </author> 
+	                    <publisher name="" year="" month="" day=""/>
+	            </ref>
+	        </reference>
+		</references>
+		<appendixes name="Приложения"  toc="include" id="appendixes">
+	        <appendix toc="include" name="" id="">
+
+	        </appendix>
+    	</appendixes>
+	</back>
+</ufr>
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>hello</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
