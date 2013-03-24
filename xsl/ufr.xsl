@@ -713,50 +713,52 @@
             </xsl:for-each>
         </xsl:template> -->
 
+<xsl:variable name="tdiv">
+    <br/>
+    <xsl:text disable-output-escaping="yes">$-------------------$</xsl:text>
+    <br/>
+</xsl:variable>
+
 <xsl:template match="//texttable">
-<!--  <xsl:apply-templates select="preamble" />
-  <table summary="{preamble}" border="1" cellpadding="3" cellspacing="0">
-    <thead>
-      <tr>
+    <div style="color:#333333;font-family:monospace;">
+
+<!--  <xsl:apply-templates select="preamble" />  -->
+<xsl:copy-of select="$tdiv"/><xsl:text>|</xsl:text>
         <xsl:apply-templates select="ttcol" />
-      </tr>
-    </thead>
-    <tbody> -->
+
       <xsl:variable name="columns" select="count(ttcol)" />
       <xsl:for-each select="c[(position() mod $columns) = 1]">
-        <!-- <tr> --> <xsl:text>-</xsl:text>
+
+        <xsl:text>|</xsl:text>
+
           <xsl:for-each select=". | following-sibling::c[position() &lt; $columns]">
-            <xsl:text>|</xsl:text>
+            <xsl:value-of select="position()" />
               <xsl:variable name="pos" select="position()" />
               <xsl:variable name="col" select="../ttcol[position() = $pos]" />
               <xsl:if test="$col/@align">
-                <!-- <xsl:attribute name="style">text-align: <xsl:value-of select="$col/@align" />;</xsl:attribute> -->
               </xsl:if>
               <xsl:apply-templates select="node()" />
               &#0160;
-            <xsl:text>|</xsl:text>
+              <xsl:if test="position()=$columns">
+               <xsl:copy-of select="$tdiv"/>
+            </xsl:if>
+            
           </xsl:for-each>
-        <!-- </tr> --> <xsl:text>-</xsl:text><br/>
       </xsl:for-each>
-<!--    </tbody>
-  </table> 
-  <xsl:apply-templates select="postamble" /> -->
+<!--   <xsl:apply-templates select="postamble" /> -->
+</div>
 </xsl:template>
 
 <xsl:template match="ttcol">
-  <th valign="top">
+    <xsl:variable name="columns" select="count(../ttcol)" />
+  <!-- <th valign="top"> -->
     <xsl:variable name="width">
       <xsl:if test="@width">width: <xsl:value-of select="@width" />; </xsl:if>
     </xsl:variable>
-    <xsl:variable name="align">
-      <xsl:choose>
-        <xsl:when test="@align">text-align: <xsl:value-of select="@align" />;</xsl:when>
-        <xsl:otherwise>text-align: left;</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:attribute name="style"><xsl:value-of select="concat($width,$align)" /></xsl:attribute>
-    <xsl:apply-templates />
-  </th>
+   
+        <xsl:value-of select="position()" /><xsl:apply-templates /> <xsl:text>|</xsl:text> 
+        <xsl:if test="position() = $columns" ><xsl:copy-of select="$tdiv"/></xsl:if>
+ <!-- </th> -->
 </xsl:template>
 
 
