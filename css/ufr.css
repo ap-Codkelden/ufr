@@ -109,6 +109,7 @@ p.block {
 
 p.center {
 	text-align:center;
+	margin-left:-30pt;
 }
 
 span.nowrap {
