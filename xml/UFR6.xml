@@ -25,7 +25,13 @@
             <ufrname number="6">Порядок создания UFR и внесения в них изменений</ufrname>
             <ufrcategory cat="std" draft="yes" />
             <ufrdate value="2013-03-19" />
-            <ufrchanged />
+            <ufrchanged>
+                 <changed number="2" date="2013-02-05" edition=""/>
+                 <changed number="2" date="2013-02-05" edition="1"/>
+                 <changed number="2" date="2013-02-05" edition="2"/>
+                 <changed number="9" date="2013-07-15" edition=""/>
+            </ufrchanged> 
+            <urfobsolete ufrno="2316"/>
         </ufrdata>
 </front>
 <middle>
@@ -72,7 +78,20 @@
             информации, не попадающей под все описанные выше определения - UFR категории 
             "информационный".</item>
         </ulist>
-
+       <texttable anchor='table_example'>
+           <preamble>So,
+           putting it all together, we have, e.g.,</preamble>
+           <ttcol align='center'>ttcol #1</ttcol>
+           <ttcol align='center'>ttcol #2</ttcol>
+           <c>c #1</c>
+           <c>c #2</c>
+           <c>c #3</c>
+           <c>c #4</c>
+           <c>c #5</c>
+           <c>c #6</c>
+           <postamble>which is a very simple example.</postamble>
+       </texttable>
+       <!--
         <texttable>
             <ttcol>C</ttcol>
             <ttcol>C2fdfffgdgdfgdg</ttcol>
@@ -94,7 +113,7 @@
             <c>areg</c>
             <c>gggdon</c>
             <c>for</c>
-        </texttable>
+        </texttable> -->
 
 
         </section>
