@@ -118,22 +118,33 @@
         </title>
         </head> 	
         <body>
-            <table style="width:100%;border:0px;border-spacing:0px">
+            <table>
+            <!-- <table style="width:100%;border:0px;border-spacing:0px"> -->
+            <xsl:attribute name="style">width:100%;border:0px;border-spacing:0px</xsl:attribute>
             <tbody>
             <tr>
-                <td style="text-align:left"><xsl:value-of select="ufr/front/creator/organization/text()" /></td>
-                <td style="text-align:right"><xsl:value-of select="ufr/front/creator/unit/text()"/></td>
+                <td>
+                    <xsl:attribute name="style">text-align:left</xsl:attribute>
+                    <xsl:value-of select="ufr/front/creator/organization/text()" />
+                </td>
+                <td>
+                    <xsl:attribute name="style">text-align:right</xsl:attribute>
+                    <xsl:value-of select="ufr/front/creator/unit/text()"/>
+                </td>
             </tr>
             <tr>
-                <td style="text-align:left">
+                <td>
+                    <xsl:attribute name="style">text-align:left</xsl:attribute>
                     <xsl:text>UFR &#8470;</xsl:text><xsl:value-of select="ufr/front/ufrdata/ufrname/@number" />
                 </td>
-                <td style="text-align:right">
+                <td>
+                    <xsl:attribute name="style">text-align:right</xsl:attribute>
                     <xsl:value-of select="ufr/front/creator/author/text()"/>
                 </td>
             </tr>
             <tr>
-                <td style="text-align:left">
+                <td>
+                    <xsl:attribute name="style">text-align:left</xsl:attribute>
                     <xsl:text>Категория: </xsl:text>
                     <xsl:variable name="is_draft" select="ufr/front/ufrdata/ufrcategory/@draft" />
                     <xsl:variable name="draft">
@@ -165,7 +176,8 @@
                     </xsl:choose> 
                 </td>
                         <!-- конец КАТЕГОРИИ -->
-                <td style="text-align:right"><xsl:value-of select="format-date($d, '[M01] месяц [Y0001]', 'ru', (), ())"/></td>    
+                <td>
+                    <xsl:attribute name="style">text-align:right</xsl:attribute><xsl:value-of select="format-date($d, '[M01] месяц [Y0001]', 'ru', (), ())"/></td>    
             </tr>
             </tbody>
             </table>
@@ -175,7 +187,9 @@
                     <xsl:value-of select="format-date($d, '[D] [MNn] [Y0001]', 'ru', (), ())"/>
                 </p>
             <!--</div>-->
-            <div style="margin-left:36pt">
+            <div>
+                <xsl:attribute name="style">margin-left:36pt</xsl:attribute>
+
             <!-- ################# DOCUMENT CHANGED-BY ##########################  
             # <urfchanged>
             #   <changed no="2" date="2013-02-03" edition=""/> 
@@ -188,11 +202,15 @@
             ################################################################## -->
 
             <xsl:if test="ufr/front/ufrdata/ufrchanged/changed" >
-                <p class="center">Изменен:</p>
-                <xsl:text  disable-output-escaping='yes'>&lt;</xsl:text>p class="center"
-                <xsl:if test="not(ufr/front/ufrdata/urfobsolete)"> style="margin-bottom:10ex"</xsl:if>
-                <xsl:text  disable-output-escaping='yes'>&gt;</xsl:text>
-
+                <p>
+                <xsl:attribute name="class">center</xsl:attribute>
+                Изменен:</p>
+                
+                <p>
+                <xsl:if test="not(ufr/front/ufrdata/urfobsolete)">
+                    <xsl:attribute name="style">margin-bottom:10ex;</xsl:attribute>
+                </xsl:if>
+                    <xsl:attribute name="class">center</xsl:attribute>
                 <xsl:for-each select="ufr/front/ufrdata/ufrchanged/changed">
                     <xsl:variable name="date-of-change" select="@date" />
                     <a href="{concat('ufr',@number,'.html')}"><xsl:text>UFR &#8470;</xsl:text><xsl:value-of select="@number" /></a>
@@ -210,12 +228,12 @@
                         <xsl:text>предыдущая версия</xsl:text></a><xsl:text> UFR &#8470;</xsl:text>
                     <xsl:value-of select="$this-ufr-num" /><xsl:text>)</xsl:text>
                     <xsl:if test="count(/ufr/front/ufrdata/ufrchanged/changed) &gt; 1">
-                        <xsl:if test="not(position() = last())">
-                            <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
+                        <xsl:if test="not(position() = last())"><br/>
+                            <!-- <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text> -->
                         </xsl:if>
                     </xsl:if>
                 </xsl:for-each>
-                <xsl:text  disable-output-escaping='yes'>&lt;</xsl:text>/p<xsl:text  disable-output-escaping='yes'>&gt;</xsl:text>
+                </p>
             </xsl:if>
 
             <!-- 
@@ -695,6 +713,51 @@
             </xsl:for-each>
         </xsl:template> -->
 
+<xsl:template match="//texttable">
+<!--  <xsl:apply-templates select="preamble" />
+  <table summary="{preamble}" border="1" cellpadding="3" cellspacing="0">
+    <thead>
+      <tr>
+        <xsl:apply-templates select="ttcol" />
+      </tr>
+    </thead>
+    <tbody> -->
+      <xsl:variable name="columns" select="count(ttcol)" />
+      <xsl:for-each select="c[(position() mod $columns) = 1]">
+        <!-- <tr> --> <xsl:text>-</xsl:text>
+          <xsl:for-each select=". | following-sibling::c[position() &lt; $columns]">
+            <xsl:text>|</xsl:text>
+              <xsl:variable name="pos" select="position()" />
+              <xsl:variable name="col" select="../ttcol[position() = $pos]" />
+              <xsl:if test="$col/@align">
+                <!-- <xsl:attribute name="style">text-align: <xsl:value-of select="$col/@align" />;</xsl:attribute> -->
+              </xsl:if>
+              <xsl:apply-templates select="node()" />
+              &#0160;
+            <xsl:text>|</xsl:text>
+          </xsl:for-each>
+        <!-- </tr> --> <xsl:text>-</xsl:text><br/>
+      </xsl:for-each>
+<!--    </tbody>
+  </table> 
+  <xsl:apply-templates select="postamble" /> -->
+</xsl:template>
+
+<xsl:template match="ttcol">
+  <th valign="top">
+    <xsl:variable name="width">
+      <xsl:if test="@width">width: <xsl:value-of select="@width" />; </xsl:if>
+    </xsl:variable>
+    <xsl:variable name="align">
+      <xsl:choose>
+        <xsl:when test="@align">text-align: <xsl:value-of select="@align" />;</xsl:when>
+        <xsl:otherwise>text-align: left;</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:attribute name="style"><xsl:value-of select="concat($width,$align)" /></xsl:attribute>
+    <xsl:apply-templates />
+  </th>
+</xsl:template>
 
 
         <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
@@ -846,89 +909,104 @@
             </xsl:variable>
             <xsl:choose>
                 <xsl:when test="$type='ufr'">
-                    <xsl:text  disable-output-escaping='yes'>&lt;table width="100%" 
-                        style="border:0;border-spacing:0"&gt;</xsl:text>
+                    <table>
+                    <xsl:attribute name="width">
+                        <xsl:value-of select="'100%'"/>
+                    </xsl:attribute>
                     <xsl:for-each select="ref">
                         <xsl:variable name="ufrno" select="@ufrno" />
                         <xsl:variable name="ufrfile" select="concat('../xml/ufr',$ufrno,'.xml')" />
                         <xsl:variable name="authors_info" select="document($ufrfile)/ufr/front/authors"/>
                         <xsl:variable name="ufr_name" select="document($ufrfile)/ufr/front/ufrdata/ufrname/text()"/>
                         <xsl:variable name="auth_count" select="count($authors_info/author)" /> 
-                        <xsl:text  disable-output-escaping='yes'>&lt;tr&gt;</xsl:text>
+                        <tr>
                         <xsl:for-each select="$authors_info/author">
-                            <xsl:text  disable-output-escaping='yes'>&lt;td style="vertical-align:top;width:15%"&gt;</xsl:text>
+                            <td>
+                                <xsl:attribute name="style">
+                                    <xsl:value-of select="'vertical-align:top;width:15%'"/>
+                                </xsl:attribute>
                                 <xsl:if test="position() = 1">
                                     <a id="{concat('ufr',$ufrno)}">
-                                    <xsl:text disable-output-escaping='yes'>[&lt;a href="</xsl:text>
-                                        <xsl:value-of select="concat('ufr',$ufrno,'.html')" /><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>
-                                        <xsl:value-of select="concat(upper-case('ufr&#8470;'),$ufrno)"/><xsl:text  disable-output-escaping='yes'>&lt;/a&gt;]</xsl:text></a>
+                                    [<a>
+                                    <xsl:attribute name="href">
+                                            <xsl:value-of select="concat('ufr',$ufrno,'.html')"/>
+                                        </xsl:attribute>
+                                        <xsl:value-of select="concat(upper-case('ufr&#8470;'),$ufrno)"/></a>]</a>
                                 </xsl:if>
                             <!-- Вставка данных автора из другого UFR -->
-                            <xsl:text disable-output-escaping='yes'>&lt;/td&gt;</xsl:text>
-                            <xsl:text disable-output-escaping='yes'>&lt;td&gt;</xsl:text>
+                            </td>
+                            <td>
                             <!-- Название UFR -->
                             <xsl:if test="position() = 1">
-                                <xsl:value-of select="$ufr_name" />
-                                <xsl:text disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
+                                <xsl:value-of select="$ufr_name" /><br />
                             </xsl:if>
                             <xsl:value-of select="rank" /><xsl:text> </xsl:text>
                             <xsl:value-of select="name" />
-                            <xsl:text disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
+                            <br/>
                             <xsl:value-of select="unit" />
-                            <xsl:text disable-output-escaping='yes'>&lt;/td&gt;</xsl:text>
-                            <xsl:text disable-output-escaping='yes'>&lt;/tr&gt;</xsl:text>
-                        </xsl:for-each>
+                            </td></xsl:for-each>
+                            </tr>
+                        <!-- </xsl:for-each> -->
                     </xsl:for-each>
-                    <xsl:text  disable-output-escaping='yes'>&lt;/table&gt;</xsl:text>
-                    <!-- <xsl:text  disable-output-escaping='yes'>&lt;/div&gt;</xsl:text> -->
+                    </table>
                 </xsl:when>
 
                 <!-- Другие источники   -->
                 <xsl:when test="$type='other'">
-                    <xsl:text  disable-output-escaping='yes'>&lt;table style="width:100%;border:0;border-spacing:0px 2px;"&gt;</xsl:text>
+                <table>
+                    <xsl:attribute name="style">
+                        <xsl:value-of select="'width:100%;border:0;border-spacing:0px 2px;'"/>
+                    </xsl:attribute>
+
                     <xsl:for-each select="ref">
-                    <xsl:text  disable-output-escaping='yes'>&lt;tr&gt;</xsl:text>    
-                    <xsl:text  disable-output-escaping='yes'>&lt;td style="vertical-align:top;width:10%"&gt;</xsl:text>
+                    <tr> 
+                    <td>
+                     <xsl:attribute name="style"><xsl:value-of select="'vertical-align:top;width:10%'"/>
+                    </xsl:attribute>
                             <xsl:text>[</xsl:text><xsl:number level="single" count="ref"/><xsl:text>]</xsl:text>
-                    <xsl:text  disable-output-escaping='yes'>&lt;/td&gt;</xsl:text>
-                    <xsl:text  disable-output-escaping='yes'>&lt;td style="vertical-align:top"&gt;</xsl:text>
-                            <a id="{@id}">
-                            <xsl:value-of select="title"/></a>
-                        <br />
-                        <xsl:for-each select="author">
-                            <xsl:call-template name="author"/>
-                        </xsl:for-each>
-                            <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
+                    </td>
+        <td>
+                    <xsl:attribute name="style"><xsl:value-of select="'vertical-align:top'"/>
+                    </xsl:attribute>
 
-                            <xsl:if test="url/text()">
-                                <xsl:variable name="referenceURL">
-                                    <xsl:value-of select="url/text()" />
-                                </xsl:variable>
-                                <xsl:text  disable-output-escaping='yes'>&lt;</xsl:text>
-                                <a href="{$referenceURL}"><xsl:value-of select="sk:trimURL($referenceURL)"/></a>
-                                <xsl:text  disable-output-escaping='yes'>&gt;</xsl:text><xsl:text>, </xsl:text>
-                                <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
-                            </xsl:if>
+            <a id="{@id}">
+                <xsl:value-of select="title"/>
+            </a>
+            <br />
+            <xsl:for-each select="author">
+                <xsl:call-template name="author"/>
+            </xsl:for-each>
+                            
+            <br/>
 
-                            <xsl:choose>
-                                <xsl:when test="publisher/@month!='' and publisher/@day!=''">
-                                    <xsl:variable name="refdate">
-                                        <xsl:value-of select="concat(publisher/@year,'-',publisher/@month,'-',publisher/@day)" />
-                                    </xsl:variable>
-                                    <xsl:value-of select="concat(format-date($refdate, '[D01] [MNn] [Y0001]', 'ru', (), ()),' г.')" />
-                                </xsl:when>
-                                <xsl:when test="publisher/@month!='' or publisher/@day!=''">
-                                    <xsl:call-template name="publisher-year"/>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:call-template name="publisher-year"/>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        <!-- </p> -->
-                        <xsl:text  disable-output-escaping='yes'>&lt;/td&gt;</xsl:text>                    
-                        <xsl:text  disable-output-escaping='yes'>&lt;tr&gt;</xsl:text> 
+            <xsl:if test="url/text()">
+                <xsl:variable name="referenceURL">
+                    <xsl:value-of select="url/text()" />
+                </xsl:variable>
+                <xsl:text  disable-output-escaping='yes'>&lt;</xsl:text>
+                <a href="{$referenceURL}"><xsl:value-of select="sk:trimURL($referenceURL)"/></a>
+                <xsl:text  disable-output-escaping='yes'>&gt;, </xsl:text>
+                <br/>
+            </xsl:if>
+
+            <xsl:choose>
+                <xsl:when test="publisher/@month!='' and publisher/@day!=''">
+                    <xsl:variable name="refdate">
+                        <xsl:value-of select="concat(publisher/@year,'-',publisher/@month,'-',publisher/@day)" />
+                    </xsl:variable>
+                    <xsl:value-of select="concat(format-date($refdate, '[D01] [MNn] [Y0001]', 'ru', (), ()),' г.')" />
+                </xsl:when>
+                <xsl:when test="publisher/@month!='' or publisher/@day!=''">
+                    <xsl:call-template name="publisher-year"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="publisher-year"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </td>                    
+                        </tr> 
                     </xsl:for-each>
-                    <xsl:text  disable-output-escaping='yes'>&lt;/table&gt;</xsl:text>
+                    </table>
                 </xsl:when>
             </xsl:choose>
         </xsl:for-each>
