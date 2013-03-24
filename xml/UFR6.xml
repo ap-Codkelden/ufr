@@ -83,12 +83,16 @@
            putting it all together, we have, e.g.,</preamble>
            <ttcol align='center'>ttcol #1</ttcol>
            <ttcol align='center'>ttcol #2</ttcol>
+           <ttcol align='center'>ttcol #3</ttcol>
            <c>c #1</c>
            <c>c #2</c>
            <c>c #3</c>
            <c>c #4</c>
            <c>c #5</c>
            <c>c #6</c>
+           <c>c #1</c>
+           <c>c #2</c>
+           <c>c #3</c>
            <postamble>which is a very simple example.</postamble>
        </texttable>
        <!--
