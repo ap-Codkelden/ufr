@@ -30,7 +30,8 @@
 <xsl:stylesheet version="2.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:sks="http://f.skobkin.ru/other/constellation/UFR">
+    xmlns:sk="http://f.skobkin.ru/other/constellation/UFR"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <!-- <xsl:character-map name="dash">
         <xsl:output-character character="&#x2014;" string="&amp;nbsp;&amp;mdash;"/>
     </xsl:character-map> -->
@@ -45,6 +46,9 @@
     <!-- Обработка пробелов в элементах кода -->
     <xsl:strip-space elements="code"/> 
     <xsl:preserve-space elements="codesample"/>
+
+    <!-- Перевод строки -->
+    <xsl:variable name="newline" select="'&#10;'"/>
 
     <xsl:variable name="ufr-sfonly-copyright">
         <xsl:value-of select="/ufr/middle/copyright/@efsf-only" />
@@ -73,7 +77,7 @@
 
     <!-- ***********ФУНКЦИИ************** -->
 
-    <xsl:function name="sks:trimURL"> 
+    <xsl:function name="sk:trimURL"> 
         <xsl:param name="inputURL"/> 
         <xsl:variable name="http_trim">
             <xsl:choose>
@@ -97,6 +101,8 @@
         </xsl:variable>
         <xsl:value-of select="$base_url"/>
     </xsl:function>
+
+
 
     <!-- ################################################## -->
 
@@ -596,6 +602,101 @@
             <xsl:apply-templates/> 
         </xsl:template> 
 
+        <!-- ################# Т А Б Л И Ц Ы #############################3 -->
+    <!--    <xsl:function name="sk:padding">
+            <xsl:param name="itemPosition" />
+            <xsl:param name="colSequence" />
+            <xsl:param name="rowStartIndex" />
+            <xsl:value-of select="'g'"/>
+        </xsl:function>
+
+
+        <xsl:template match="texttable">
+        <xsl:variable name="seqColWidth"  as="xs:integer*">
+            <xsl:for-each select="ttcol">
+                <xsl:sequence select="string-length(normalize-space(text()))"/>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="columnCount" as="xs:integer">
+            <xsl:value-of select="count(ttcol)"/>
+        </xsl:variable>
+        <xsl:variable name="cellCount">
+            <xsl:value-of select="count(c|ttcol)"/>
+        </xsl:variable>
+        <xsl:variable name="rowCount">
+            <xsl:value-of select="$cellCount div $columnCount"/>
+        </xsl:variable>
+        <xsl:variable name="strLengths" as="xs:integer*">
+            <xsl:for-each select="c">
+                <xsl:sequence select="string-length(normalize-space(child::text()|child::node()))"></xsl:sequence>
+            </xsl:for-each>
+        </xsl:variable>
+
+
+        <xsl:variable name="rowsSequence" as="xs:integer*">
+            <xsl:sequence select="(1 to $rowCount)"/>
+        </xsl:variable>
+
+        <xsl:variable name="colsSequence" as="xs:integer*">
+            <xsl:sequence select="(1 to $columnCount)"/>
+        </xsl:variable>
+
+        <xsl:variable name="rowStartIndex" as="xs:integer*">
+            <xsl:sequence select="for $i in $colsSequence return 
+                                                (if ($i = 1) then $i 
+                                                else
+                                                ($i - 1) * $columnCount + 1)"/>
+        </xsl:variable>
+
+        <xsl:variable name="maxCellWidth" as="xs:integer*">
+            <xsl:sequence select="for $i in $colsSequence return max(for $j in $rowStartIndex return 
+                                                subsequence($strLengths,$j + $i - 1, 1))"/>
+        </xsl:variable>
+
+        <xsl:variable name="maxGlobalWidth" as="xs:integer*">
+            <xsl:sequence select="for $i in $colsSequence return 
+                (if ($seqColWidth[$i] &gt; $maxCellWidth[$i]) 
+                    then $seqColWidth[$i] 
+                    else $maxCellWidth[$i])"/>
+        </xsl:variable>
+
+
+            <xsl:text>Cell </xsl:text><xsl:value-of select="$cellCount"/><br/>
+            <xsl:text>Row </xsl:text><xsl:value-of select="$rowCount"/><br/>
+            <xsl:text>Column </xsl:text><xsl:value-of select="$columnCount"/><br/>
+            <xsl:text>S </xsl:text><xsl:value-of select="$strLengths"/><br/>
+            <xsl:text>colsSequence</xsl:text><xsl:value-of select="$colsSequence"/><br/>
+            <xsl:text>rowStartIndex</xsl:text><xsl:value-of select="$rowStartIndex" /><br/>
+            <xsl:text>seqColWidth</xsl:text><xsl:value-of select="$seqColWidth" /><br/>
+            <xsl:text>maxCellWidth</xsl:text><xsl:value-of select="$maxCellWidth"/><br/>
+            <xsl:text>maxGlobalWidth</xsl:text><xsl:value-of select="$maxGlobalWidth"/><br/>
+
+
+            <xsl:call-template name="writeRow">
+                <xsl:with-param name="colCount" select="$columnCount" />
+                <xsl:with-param name="rowCount" select="$rowCount" />
+                <xsl:with-param name="rowStartIndex" select="$rowStartIndex"/>
+            </xsl:call-template>
+        </xsl:template>
+
+        <xsl:template name = "writeRow">
+            <xsl:param name="colCount"/>
+            <xsl:param name="rowCount"/>
+            <xsl:param name="rowStartIndex"/>
+            <xsl:for-each select="c">
+                <xsl:value-of select=" "/>
+            <xsl:if test="(position() - 1) mod $colCount = 0">
+                <xsl:text>|</xsl:text>
+            </xsl:if>
+                <xsl:value-of select="."/><xsl:text>|</xsl:text>
+                    <xsl:if test="position() mod $colCount = 0">
+                         <br/>
+                    </xsl:if>
+            </xsl:for-each>
+        </xsl:template> -->
+
+
+
         <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
 
         <xsl:template match="appendixes/appendix"> 
@@ -804,7 +905,7 @@
                                     <xsl:value-of select="url/text()" />
                                 </xsl:variable>
                                 <xsl:text  disable-output-escaping='yes'>&lt;</xsl:text>
-                                <a href="{$referenceURL}"><xsl:value-of select="sks:trimURL($referenceURL)"/></a>
+                                <a href="{$referenceURL}"><xsl:value-of select="sk:trimURL($referenceURL)"/></a>
                                 <xsl:text  disable-output-escaping='yes'>&gt;</xsl:text><xsl:text>, </xsl:text>
                                 <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
                             </xsl:if>
