@@ -620,147 +620,104 @@
             <xsl:apply-templates/> 
         </xsl:template> 
 
-        <!-- ################# Т А Б Л И Ц Ы #############################3 -->
-    <!--    <xsl:function name="sk:padding">
-            <xsl:param name="itemPosition" />
-            <xsl:param name="colSequence" />
-            <xsl:param name="rowStartIndex" />
-            <xsl:value-of select="'g'"/>
-        </xsl:function>
+        <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
+        <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
+        <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->                
 
-
-        <xsl:template match="texttable">
-        <xsl:variable name="seqColWidth"  as="xs:integer*">
-            <xsl:for-each select="ttcol">
-                <xsl:sequence select="string-length(normalize-space(text()))"/>
-            </xsl:for-each>
-        </xsl:variable>
-        <xsl:variable name="columnCount" as="xs:integer">
-            <xsl:value-of select="count(ttcol)"/>
-        </xsl:variable>
-        <xsl:variable name="cellCount">
-            <xsl:value-of select="count(c|ttcol)"/>
-        </xsl:variable>
-        <xsl:variable name="rowCount">
-            <xsl:value-of select="$cellCount div $columnCount"/>
-        </xsl:variable>
-        <xsl:variable name="strLengths" as="xs:integer*">
-            <xsl:for-each select="c">
-                <xsl:sequence select="string-length(normalize-space(child::text()|child::node()))"></xsl:sequence>
-            </xsl:for-each>
-        </xsl:variable>
-
-
-        <xsl:variable name="rowsSequence" as="xs:integer*">
-            <xsl:sequence select="(1 to $rowCount)"/>
-        </xsl:variable>
-
-        <xsl:variable name="colsSequence" as="xs:integer*">
-            <xsl:sequence select="(1 to $columnCount)"/>
-        </xsl:variable>
-
-        <xsl:variable name="rowStartIndex" as="xs:integer*">
-            <xsl:sequence select="for $i in $colsSequence return 
-                                                (if ($i = 1) then $i 
-                                                else
-                                                ($i - 1) * $columnCount + 1)"/>
-        </xsl:variable>
-
-        <xsl:variable name="maxCellWidth" as="xs:integer*">
-            <xsl:sequence select="for $i in $colsSequence return max(for $j in $rowStartIndex return 
-                                                subsequence($strLengths,$j + $i - 1, 1))"/>
-        </xsl:variable>
-
-        <xsl:variable name="maxGlobalWidth" as="xs:integer*">
-            <xsl:sequence select="for $i in $colsSequence return 
-                (if ($seqColWidth[$i] &gt; $maxCellWidth[$i]) 
-                    then $seqColWidth[$i] 
-                    else $maxCellWidth[$i])"/>
-        </xsl:variable>
-
-
-            <xsl:text>Cell </xsl:text><xsl:value-of select="$cellCount"/><br/>
-            <xsl:text>Row </xsl:text><xsl:value-of select="$rowCount"/><br/>
-            <xsl:text>Column </xsl:text><xsl:value-of select="$columnCount"/><br/>
-            <xsl:text>S </xsl:text><xsl:value-of select="$strLengths"/><br/>
-            <xsl:text>colsSequence</xsl:text><xsl:value-of select="$colsSequence"/><br/>
-            <xsl:text>rowStartIndex</xsl:text><xsl:value-of select="$rowStartIndex" /><br/>
-            <xsl:text>seqColWidth</xsl:text><xsl:value-of select="$seqColWidth" /><br/>
-            <xsl:text>maxCellWidth</xsl:text><xsl:value-of select="$maxCellWidth"/><br/>
-            <xsl:text>maxGlobalWidth</xsl:text><xsl:value-of select="$maxGlobalWidth"/><br/>
-
-
-            <xsl:call-template name="writeRow">
-                <xsl:with-param name="colCount" select="$columnCount" />
-                <xsl:with-param name="rowCount" select="$rowCount" />
-                <xsl:with-param name="rowStartIndex" select="$rowStartIndex"/>
-            </xsl:call-template>
-        </xsl:template>
-
-        <xsl:template name = "writeRow">
-            <xsl:param name="colCount"/>
-            <xsl:param name="rowCount"/>
-            <xsl:param name="rowStartIndex"/>
-            <xsl:for-each select="c">
-                <xsl:value-of select=" "/>
-            <xsl:if test="(position() - 1) mod $colCount = 0">
-                <xsl:text>|</xsl:text>
-            </xsl:if>
-                <xsl:value-of select="."/><xsl:text>|</xsl:text>
-                    <xsl:if test="position() mod $colCount = 0">
-                         <br/>
-                    </xsl:if>
-            </xsl:for-each>
-        </xsl:template> -->
-
-<xsl:variable name="tdiv">
-    <br/>
-    <xsl:text disable-output-escaping="yes">$-------------------$</xsl:text>
-    <br/>
-</xsl:variable>
-
-<xsl:template match="//texttable">
-    <div style="color:#333333;font-family:monospace;">
-
-<!--  <xsl:apply-templates select="preamble" />  -->
-<xsl:copy-of select="$tdiv"/><xsl:text>|</xsl:text>
-        <xsl:apply-templates select="ttcol" />
-
-      <xsl:variable name="columns" select="count(ttcol)" />
-      <xsl:for-each select="c[(position() mod $columns) = 1]">
-
-        <xsl:text>|</xsl:text>
-
-          <xsl:for-each select=". | following-sibling::c[position() &lt; $columns]">
-            <xsl:value-of select="position()" />
-              <xsl:variable name="pos" select="position()" />
-              <xsl:variable name="col" select="../ttcol[position() = $pos]" />
-              <xsl:if test="$col/@align">
-              </xsl:if>
-              <xsl:apply-templates select="node()" />
-              &#0160;
-              <xsl:if test="position()=$columns">
-               <xsl:copy-of select="$tdiv"/>
-            </xsl:if>
-            
-          </xsl:for-each>
-      </xsl:for-each>
-<!--   <xsl:apply-templates select="postamble" /> -->
-</div>
-</xsl:template>
-
-<xsl:template match="ttcol">
-    <xsl:variable name="columns" select="count(../ttcol)" />
-  <!-- <th valign="top"> -->
-    <xsl:variable name="width">
-      <xsl:if test="@width">width: <xsl:value-of select="@width" />; </xsl:if>
+<xsl:template match="//test">
+    <xsl:variable name="sp">
+        <xsl:choose>
+        <xsl:when test="(substring( . , 1, 2)='r ') or (substring( . , 1, 2)='c ')">
+            <xsl:value-of select="10 - (string-length(normalize-space(substring(( . ), 3))))"/>
+        </xsl:when>
+        <xsl:otherwise>
+        <xsl:value-of select="10 - (string-length(normalize-space( . )))"/>
+    </xsl:otherwise>
+    </xsl:choose>
     </xsl:variable>
-   
-        <xsl:value-of select="position()" /><xsl:apply-templates /> <xsl:text>|</xsl:text> 
-        <xsl:if test="position() = $columns" ><xsl:copy-of select="$tdiv"/></xsl:if>
- <!-- </th> -->
+
+    <xsl:variable name="needSpaces">
+        <xsl:call-template name="padding">
+            <xsl:with-param name="need_length" select="$sp"/>
+        </xsl:call-template>
+    </xsl:variable>
+
+<xsl:choose>
+    <xsl:when test="substring( . , 1, 2)='r '">
+        <xsl:value-of select="$needSpaces"/><xsl:value-of select='substring( . , 3)'/>
+    </xsl:when>
+    <xsl:when test="substring( . , 1, 2)='c '">
+        <!-- <xsl:choose>
+                    <xsl:when test="$needSpaces mod 2 = 0">
+                        <xsl:variable name="startSpace">
+                            <xsl:call-template name="padding">
+                                <xsl:with-param name="need_length" select="$needSpaces div 2"/>
+                            </xsl:call-template>
+                        </xsl:variable>
+                        <xsl:value-of select="$startSpace"/>
+                            <xsl:value-of select='substring( . , 3)'/>
+                        <xsl:value-of select="$startSpace"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:variable name="startSpace">
+                            <xsl:value-of select="(($needSpaces - 1) div 2) + 1"/>
+                        </xsl:variable>
+                        <xsl:variable name="endSpace">
+                            <xsl:value-of select="($needSpaces - 1) div 2"/>
+                        </xsl:variable>
+                        <xsl:value-of select="$startSpace"/>
+                            <xsl:value-of select='substring( . , 3)'/>
+                        <xsl:value-of select="$endSpace"/>
+                    </xsl:otherwise>
+                </xsl:choose> -->
+                CENTRE
+    </xsl:when>
+    <xsl:otherwise>
+        <xsl:value-of select=" . "/><xsl:value-of select="$needSpaces"/>
+    </xsl:otherwise>
+</xsl:choose>
+</xsl:template> 
+
+<xsl:template name="padding">
+    <xsl:param name="need_length"/>
+    <xsl:if test="$need_length &gt; 0">
+        <xsl:text>4</xsl:text>
+        <xsl:call-template name="padding">
+            <xsl:with-param name="need_length" select="$need_length - 1"/>
+        </xsl:call-template>
+    </xsl:if>
+</xsl:template> 
+
+<!--
+      <xsl:param name="no"/>
+      <xsl:choose>
+        <xsl:when test="$no &lt;= 0">
+          <br/>
+        </xsl:when>
+        <xsl:otherwise>
+          <br/>
+          <xsl:call-template name="insert-blank-lines">
+            <xsl:with-param name="no" select="$no - 1"/>
+          </xsl:call-template>
+        </xsl:otherwise>
+      </xsl:choose>
+
+
+
+<xsl:template name="msg23" match="msg23">
+  <xsl:call-template name="localized-message">
+    <xsl:with-param name="msgcode">msg23</xsl:with-param>
+  </xsl:call-template>
 </xsl:template>
 
+<xsl:template name="localized-message">
+  <xsl:param name="msgcode"/>
+
+  <xsl:message terminate="yes">
+    <xsl:value-of select="$messages/message[@name=$msgcode]"/>
+  </xsl:message>
+</xsl:template>
+-->
 
         <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
 
