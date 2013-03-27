@@ -42,6 +42,7 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -204,4 +205,28 @@ sub {
 
 sup {
 	vertical-align: super
+}
+
+.authorname {
+	font-variant: small-caps;
+}
+
+/* iCat Tables */
+.headertable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0 none;
+}
+.headertable th, .headertable td {
+  border: 0 none;
+}
+
+.simpletable {
+  margin: 0 auto;
+  border: 1px solid #000000;
+}
+.simpletable th, .simpletable td {
+  border: 1px solid #000000;
+  padding: 2px;
 }

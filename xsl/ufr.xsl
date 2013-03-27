@@ -74,7 +74,8 @@
     <xsl:key name="fig-search" match="//figure" use="@id"/>
     <!-- Для сносок -->
     <xsl:key name="ftnt-search" match="//footnote" use="@id"/>
-
+    <!-- Для таблиц -->
+    <xsl:key name="table-search" match="//texttable" use="@id"/>
     <!-- ***********ФУНКЦИИ************** -->
 
     <xsl:function name="sk:trimURL"> 
@@ -118,9 +119,9 @@
         </title>
         </head> 	
         <body>
+            <!-- <table style="width:100%;border:0px;border-spacing:0px"> --> 
             <table>
-            <!-- <table style="width:100%;border:0px;border-spacing:0px"> -->
-            <xsl:attribute name="style">width:100%;border:0px;border-spacing:0px</xsl:attribute>
+                <xsl:attribute name="class">headertable</xsl:attribute>
             <tbody>
             <tr>
                 <td>
@@ -319,8 +320,11 @@
             <p><xsl:value-of select="assignment" />
             <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
             <xsl:value-of select="rank" />
-            <xsl:text  disable-output-escaping='yes'> </xsl:text>
-            <xsl:value-of select="name" />
+            <xsl:text> </xsl:text>
+            <span>
+                <xsl:attribute name="class">authorname</xsl:attribute>
+                <xsl:value-of select="name" />
+            </span>
             <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
             <xsl:value-of select="unit" />
             <xsl:text disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
@@ -430,13 +434,25 @@
     </xsl:template> 
 
         <xsl:template match="//fgref">
-        <xsl:variable name="id" select="@id" />
+        <xsl:variable name="id" select="@target" />
             <xsl:text>[</xsl:text>
                 <xsl:for-each select="key('fig-search', $id)">
                 <xsl:variable name="fig-num">
                     <xsl:number level="any" count="figure" />
                 </xsl:variable> 
                 <a href="{concat('#','pic',$fig-num)}">рис. <xsl:value-of select="$fig-num" /></a>
+            </xsl:for-each>
+            <xsl:text>]</xsl:text>
+        </xsl:template>
+
+        <xsl:template match="//tabref">
+        <xsl:variable name="id" select="@target" />
+            <xsl:text>[</xsl:text>
+                <xsl:for-each select="key('table-search', $id)">
+                <xsl:variable name="table_num">
+                    <xsl:number level="any" count="texttable" />
+                </xsl:variable> 
+                <a href="{concat('#','table',$table_num)}">табл.&#160;<xsl:value-of select="$table_num" /></a>
             </xsl:for-each>
             <xsl:text>]</xsl:text>
         </xsl:template>
@@ -467,7 +483,7 @@
                         <xsl:value-of select="title"/>
                     </xsl:variable> 
                     <xsl:text>[</xsl:text>
-                        <a href="#{@id}" title="{$ref-title}"><xsl:value-of select="$ref-num"/></a>
+                        <a href="#{@target}" title="{$ref-title}"><xsl:value-of select="$ref-num"/></a>
                     <xsl:text>]</xsl:text>
                 </xsl:for-each>
             </xsl:when>
@@ -624,100 +640,72 @@
         <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
         <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->                
 
-<xsl:template match="//test">
-    <xsl:variable name="sp">
-        <xsl:choose>
-        <xsl:when test="(substring( . , 1, 2)='r ') or (substring( . , 1, 2)='c ')">
-            <xsl:value-of select="10 - (string-length(normalize-space(substring(( . ), 3))))"/>
-        </xsl:when>
-        <xsl:otherwise>
-        <xsl:value-of select="10 - (string-length(normalize-space( . )))"/>
-    </xsl:otherwise>
-    </xsl:choose>
-    </xsl:variable>
+<!-- experimental table formatting -->
 
-    <xsl:variable name="needSpaces">
-        <xsl:call-template name="padding">
-            <xsl:with-param name="need_length" select="$sp"/>
-        </xsl:call-template>
-    </xsl:variable>
-
-<xsl:choose>
-    <xsl:when test="substring( . , 1, 2)='r '">
-        <xsl:value-of select="$needSpaces"/><xsl:value-of select='substring( . , 3)'/>
-    </xsl:when>
-    <xsl:when test="substring( . , 1, 2)='c '">
-        <!-- <xsl:choose>
-                    <xsl:when test="$needSpaces mod 2 = 0">
-                        <xsl:variable name="startSpace">
-                            <xsl:call-template name="padding">
-                                <xsl:with-param name="need_length" select="$needSpaces div 2"/>
-                            </xsl:call-template>
-                        </xsl:variable>
-                        <xsl:value-of select="$startSpace"/>
-                            <xsl:value-of select='substring( . , 3)'/>
-                        <xsl:value-of select="$startSpace"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:variable name="startSpace">
-                            <xsl:value-of select="(($needSpaces - 1) div 2) + 1"/>
-                        </xsl:variable>
-                        <xsl:variable name="endSpace">
-                            <xsl:value-of select="($needSpaces - 1) div 2"/>
-                        </xsl:variable>
-                        <xsl:value-of select="$startSpace"/>
-                            <xsl:value-of select='substring( . , 3)'/>
-                        <xsl:value-of select="$endSpace"/>
-                    </xsl:otherwise>
-                </xsl:choose> -->
-                CENTRE
-    </xsl:when>
-    <xsl:otherwise>
-        <xsl:value-of select=" . "/><xsl:value-of select="$needSpaces"/>
-    </xsl:otherwise>
-</xsl:choose>
-</xsl:template> 
-
-<xsl:template name="padding">
-    <xsl:param name="need_length"/>
-    <xsl:if test="$need_length &gt; 0">
-        <xsl:text>4</xsl:text>
-        <xsl:call-template name="padding">
-            <xsl:with-param name="need_length" select="$need_length - 1"/>
-        </xsl:call-template>
+<xsl:template match="//section/texttable">
+  <xsl:apply-templates select="preamble" />
+  <div>
+    <xsl:attribute name="style">width:90%;</xsl:attribute>
+    <xsl:if test="@id">
+        <a><xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute></a>
     </xsl:if>
-</xsl:template> 
+  <table>
+    <xsl:attribute name="class">simpletable</xsl:attribute>
+    <thead>
+        <xsl:apply-templates select="ttcol" />
+    </thead>
+    <tbody>
+        <xsl:for-each select = 'r'>
+            <tr>
+            <xsl:for-each select= 'c'>
+                <td>
+                    <xsl:choose>
+                        <xsl:when test="@rowspan">
+                            <xsl:attribute name="rowspan"><xsl:value-of select="@rowspan"/></xsl:attribute>
+                        </xsl:when>
+                        <xsl:when test="@colspan">
+                            <xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
+                        </xsl:when>
+                    </xsl:choose>
+                    <xsl:apply-templates/>
+                </td>
+            </xsl:for-each>
+            </tr>
+        </xsl:for-each>
+    </tbody>
+  </table>
+</div>
+  <xsl:apply-templates select="postamble" />
+</xsl:template>
 
-<!--
-      <xsl:param name="no"/>
+<xsl:template match="ttcol">
+  <th valign="top">
+    <xsl:variable name="width">
+      <xsl:if test="@width">width: <xsl:value-of select="@width" />; </xsl:if>
+    </xsl:variable>
+    <xsl:variable name="align">
       <xsl:choose>
-        <xsl:when test="$no &lt;= 0">
-          <br/>
-        </xsl:when>
-        <xsl:otherwise>
-          <br/>
-          <xsl:call-template name="insert-blank-lines">
-            <xsl:with-param name="no" select="$no - 1"/>
-          </xsl:call-template>
-        </xsl:otherwise>
+        <xsl:when test="@align">text-align: <xsl:value-of select="@align" />;</xsl:when>
+        <xsl:otherwise>text-align: left;</xsl:otherwise>
       </xsl:choose>
-
-
-
-<xsl:template name="msg23" match="msg23">
-  <xsl:call-template name="localized-message">
-    <xsl:with-param name="msgcode">msg23</xsl:with-param>
-  </xsl:call-template>
+    </xsl:variable>
+    <xsl:attribute name="style"><xsl:value-of select="concat($width,$align)" /></xsl:attribute>
+    <xsl:apply-templates />
+  </th>
 </xsl:template>
 
-<xsl:template name="localized-message">
-  <xsl:param name="msgcode"/>
-
-  <xsl:message terminate="yes">
-    <xsl:value-of select="$messages/message[@name=$msgcode]"/>
-  </xsl:message>
-</xsl:template>
+<!-- 
+Преамбула и постамбула
 -->
+
+    <xsl:template match="postamble">
+        <p style="margin-top:1em;color:red"><xsl:apply-templates/></p>
+    </xsl:template>
+
+    <xsl:template match="preamble">
+        <p style="margin-bottom:1em;color:red"><xsl:apply-templates/></p>
+    </xsl:template>
+
 
         <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
 

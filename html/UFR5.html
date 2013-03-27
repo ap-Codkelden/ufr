@@ -42,6 +42,7 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -204,7 +205,31 @@ sub {
 
 sup {
 	vertical-align: super
-}</style><title>URF 5 - Инструкции авторам UFR</title></head><body><table style="width:100%;border:0px;border-spacing:0px"><tbody><tr><td style="text-align:left">Звёздный флот Федерации</td><td style="text-align:right">К-117 "Созвездие"</td></tr><tr><td style="text-align:left">UFR №5</td><td style="text-align:right">Морзе</td></tr><tr><td style="text-align:left">Категория: технический (черновой)</td><td style="text-align:right">03 месяц 2013</td></tr></tbody></table><h1 class="caption">ИНСТРУКЦИИ АВТОРАМ UFR</h1><p class="caption">17 марта 2013</p><div style="margin-left:36pt"><h2>Аннотация</h2><p>Этот документ устанавливает в качестве стандартных технические 
+}
+
+.authorname {
+	font-variant: small-caps;
+}
+
+/* iCat Tables */
+.headertable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0 none;
+}
+.headertable th, .headertable td {
+  border: 0 none;
+}
+
+.simpletable {
+  margin: 0 auto;
+  border: 1px solid #000000;
+}
+.simpletable th, .simpletable td {
+  border: 1px solid #000000;
+  padding: 2px;
+}</style><title>URF 5 - Инструкции авторам UFR</title></head><body><table class="headertable"><tbody><tr><td style="text-align:left">Звёздный флот Федерации</td><td style="text-align:right">К-117 "Созвездие"</td></tr><tr><td style="text-align:left">UFR №5</td><td style="text-align:right">Морзе</td></tr><tr><td style="text-align:left">Категория: технический (черновой)</td><td style="text-align:right">03 месяц 2013</td></tr></tbody></table><h1 class="caption">ИНСТРУКЦИИ АВТОРАМ UFR</h1><p class="caption">17 марта 2013</p><div style="margin-left:36pt"><h2>Аннотация</h2><p>Этот документ устанавливает в качестве стандартных технические 
                     правила и нормативы, обязательные к использованию при участии в 
                     проекте "Созвездие", которые могут быть дополнены, улучшены 
                     или изменены. Допускается неограниченное распространение 
@@ -324,7 +349,7 @@ sup {
                    <p><a id="link-entity">Кроме этого, если вводить ссылки сущностей 
                 символов тире (<code>&amp;#8212;</code>, <code>&amp;#x2014;</code>), неразрывного пробела (<code>&amp;#160;</code>, <code>&amp;#xA0;</code>), и 
                 прочих утомительно или надоедает, можно 
-                определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#inner-entity" title="Сущности и способы их подключения">5</a>]</a><a id="footnotei"><a href="#cm-charmap"><sup>i</sup></a></a>:<br>
+                определить в начале XML-документа внутреннее подключение сущностей, как описано в [<a href="#" title="Сущности и способы их подключения">5</a>]</a><a id="footnotei"><a href="#cm-charmap"><sup>i</sup></a></a>:<br>
                 <p class="element-syntax">&lt;!DOCTYPE xsl:stylesheet
   [
     &lt;!ENTITY nbsp   "&amp;#160;"&gt;
@@ -369,12 +394,12 @@ sup {
         <li><a href="#sec-back">Заключительная часть (элемент back)</a></li>
         </ol>
 
-    <p>К заголовкам и общей информации относятся [<a href="#pic2">рис. 2</a>]:</p>
+    <p>К заголовкам и общей информации относятся []:</p>
 
 
 <h4><a id="sec-description">3.4.1. Заголовочная часть</a></h4>
 <p>Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"front"</code>.</p>
-<p>Общий вид заголовочной части показан на [<a href="#pic2">рис. 2</a>].</p>
+<p>Общий вид заголовочной части показан на [].</p>
 <p class="element-syntax">&lt;ufr&gt;
 &lt;front&gt;
     &lt;creator&gt;
@@ -488,7 +513,7 @@ sup {
             cat=<span style="font-style:oblique">"категорияUFR"</span> 
             [draft=<span style="font-style:oblique">"yes"</span> | <span style="font-style:oblique">"no"</span>]/&gt;</p>
         <p>Элемент определяет категорию, к которй относится UFR при помощи 
-        аттрибута <code>cat</code>, который может принимать следующие значения [<a href="#pic1">рис. 1</a>]:</p>
+        аттрибута <code>cat</code>, который может принимать следующие значения []:</p>
         <div><p class="center"><a id="pic1">
             <pre class="artwork">
 /--------------------------------------------------------\
@@ -686,7 +711,7 @@ sup {
 &lt;/section&gt;</p>
             <a id="link-element-section-id-attr"><p>Атрибуты элемента <code>section</code> <code>name</code> и <code>id</code> являются обязательными и определяют соответственно название раздела и якорь, используемый для ссылок на этот раздел внутри документа.</p>
             <p>Значение атрибута <code>id <span style="font-style:oblique">"имяЯкоря"</span></code> должно соответствовать 
-            <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank"> требованиям</a> спецификации HTML&nbsp;5 [<a href="#html5-author" title="HTML5: Edition for Web Authors">4</a>]</p></a>
+            <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank"> требованиям</a> спецификации HTML&nbsp;5 [<a href="#" title="HTML5: Edition for Web Authors">4</a>]</p></a>
 
             <p>Необязательный атрибут <code>toc</code> определяет необходимость включения 
             раздела в оглавление (например, если необходимо включить в оглавление только 
@@ -834,7 +859,7 @@ sup {
     <p>Значение <code>"имяЯкоря"</code> атрибута <code>id</code> элемента 
     <code>figure</code> определяет уникальное имя, которое используется для ссылки 
     на рисунок. 
-    Имя должно соответствовать <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank">требованиям</a> спецификации HTML&nbsp;5 [<a href="#html5-author" title="HTML5: Edition for Web Authors">4</a>].</p></a>
+    Имя должно соответствовать <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank">требованиям</a> спецификации HTML&nbsp;5 [<a href="#" title="HTML5: Edition for Web Authors">4</a>].</p></a>
 
 
 <h6><a id="element-svg">3.4.4.1.2. вставка векторной графики в формате SVG</a></h6>
@@ -902,7 +927,7 @@ sup {
     <p>Во втором случае, когда элемент <code>eref</code> является одиночным, в тексте документа отображается ссылка на на ресурс в сети Интернет, заключенная в угловые скобки:</p>
     <p class="block">&lt;<a href="http://skobkin.ru/" target="_blank">http://skobkin.ru/</a>&gt;</p>
 
-<p><span style="font-weight:700">ПРИМЕЧАНИЕ</span>. В случае, если URL содержит знак амперсанда&nbsp;<code>&amp;</code>, его <span class="rfc2119">необходимо</span> заменить мнемоникой <code>&amp;amp;</code>, как это определено в разделе <a href="http://www.w3.org/TR/REC-xml/#syntax" target="_blank">2.4&nbsp;"Character Data and Markup"</a>, рекомендации W3C Extensible Markup Language (XML)&nbsp;1.0 [<a href="#rec-xml" title="Extensible Markup Language (XML) 1.0 (Fifth Edition)">6</a>] иначе это вызовет ошибку преобразования документа.</p>
+<p><span style="font-weight:700">ПРИМЕЧАНИЕ</span>. В случае, если URL содержит знак амперсанда&nbsp;<code>&amp;</code>, его <span class="rfc2119">необходимо</span> заменить мнемоникой <code>&amp;amp;</code>, как это определено в разделе <a href="http://www.w3.org/TR/REC-xml/#syntax" target="_blank">2.4&nbsp;"Character Data and Markup"</a>, рекомендации W3C Extensible Markup Language (XML)&nbsp;1.0 [<a href="#" title="Extensible Markup Language (XML) 1.0 (Fifth Edition)">6</a>] иначе это вызовет ошибку преобразования документа.</p>
 
 <h5><a id="cross-links">3.4.5.2. Перекрестные ссылки</a></h5>
 <h6><a id="element-xref">3.4.5.2.1. Элемент xref</a></h6>
@@ -930,7 +955,7 @@ sup {
 <p class="element-syntax">&lt;anchor id="<span style="font-style:oblique">имяЯкоря</span>"&gt;текст&lt;/anchor&gt;
 &lt;link target="<span style="font-style:oblique">имяЯкоря</span>"&gt;текстСсылки&lt;/link&gt; </p>
 <p>Атрибут <code>id</code> элемента <code>anchor</code> задает имя якоря, согласно 
-соответствующим <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank"> требованиям</a> спецификации HTML&nbsp;5 [<a href="#html5-author" title="HTML5: Edition for Web Authors">4</a>].</p>
+соответствующим <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank"> требованиям</a> спецификации HTML&nbsp;5 [<a href="#" title="HTML5: Edition for Web Authors">4</a>].</p>
 <p>Это же имя используется в качестве значения атрибута <code>target</code> элемента <code>link</code>.</p>
 
 
@@ -944,7 +969,7 @@ sup {
     чего необходимо перейти по ссылке, представленной символом "↑".</p>
 <p>Текст сноски заключается между начальным и конечным тегами элемента <code>footnote</code>. 
 <a id="link-footnote-name-attr">Значение атрибута <code>id</code> представляет собой уникальный идентификатор, и должно 
-соответствовать <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank"> требованиям</a> спецификации HTML&nbsp;5 [<a href="#html5-author" title="HTML5: Edition for Web Authors">4</a>].</a></p>
+соответствовать <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank"> требованиям</a> спецификации HTML&nbsp;5 [<a href="#" title="HTML5: Edition for Web Authors">4</a>].</a></p>
 <p>Файл XSLT-шаблона предоставляет также возможность произвольно сослаться на известный уникальный 
     идентификатор существующей ссылки, для этого следует использовать элемент <a href="#element-ftref"><code>ftref</code></a>.</p>
 
@@ -1174,7 +1199,7 @@ elit, sed do eiusmod tempor incididunt
     [&lt;url&gt;<span style="font-style:oblique">URLДокумента</span>&lt;/url&gt;</p>
 <p><a id="link-other-ref-id">Элемент <code>id</code> определяет якорь источника, при помощи которого 
 создаются ссылки на этот источник.</a> Значение атрибута 
-<code>id <span style="font-style:oblique">"якорьЗаписи"</span></code> должно соответствовать <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank">требованиям</a> спецификации HTML&nbsp;5 [<a href="#html5-author" title="HTML5: Edition for Web Authors">4</a>].</p>
+<code>id <span style="font-style:oblique">"якорьЗаписи"</span></code> должно соответствовать <a href="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute" target="_blank">требованиям</a> спецификации HTML&nbsp;5 [<a href="#" title="HTML5: Edition for Web Authors">4</a>].</p>
 <p>Элемент <code>title</code> определяет название источника.</p>
 <p>Элемент <code>author</code> определяет данные об авторе (авторах). Атрибуты <code>firstname</code>, 
 <code>middlename</code> и <code>lastname</code> определяют фамилию, имя и отчество автора соотвестственно.</p>
@@ -1239,5 +1264,5 @@ elit, sed do eiusmod tempor incididunt
             <p>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</p>
         
     <h2>
-                    Автор
-                </h2><p>Старший помощник капитана корабля<br />Капитан 1 ранга Морзе<br />К-117 "Созвездие"<br />Звёздный Флот Федерации Земли</p></div></body></html>
+                    Авторы
+                </h2><p>Старший помощник капитана корабля<br />Капитан 1 ранга <span class="authorname">Морзе</span><br />К-117 "Созвездие"<br />Звёздный Флот Федерации Земли</p><p>Старший научный сотрудник<br />Ph.&nbsp;D. <span class="authorname">mr. iCat</span><br />White Mesa<br />CTRN</p></div></body></html>

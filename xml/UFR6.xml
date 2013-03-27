@@ -42,10 +42,10 @@
         <t>UFR (User Feature Request) - стандарты, рекомендации и описания, 
 		создаваемые с целью регулирования деятельности участников проекта 
 		"Созвездие".</t>
-		<t>Ситуации, возникающие в процессе реализации проекта "Созвездие" 
+		<t>Ситуации, <tabref target="table_example">возникающие</tabref> в процессе реализации проекта "Созвездие" 
 		на практике, зачастую требуют регулирования во избежание нарушения 
 		отклонений от запланированного его протекания. </t>
-		<t>Порядок создания UFR и внесения изменений в них регулируется 
+		<t>Порядок <tabref target="table_example"/> создания UFR и внесения изменений в них регулируется 
 		исключительно Уставом Звёздного Флота, этим UFR, а также другими 
 		UFR.</t>
 	</section>
@@ -78,21 +78,58 @@
             информации, не попадающей под все описанные выше определения - UFR категории 
             "информационный".</item>
         </ulist>
-<!--        <texttable anchor='table_example'>
+
+       <texttable id='table_example'>
            <preamble>So,
            putting it all together, we have, e.g.,</preamble>
            <ttcol align='center'>ttcol #1</ttcol>
            <ttcol align='center'>ttcol #2</ttcol>
-           <ttcol align='center'>ttcol #2</ttcol>
-           <c>a23hhhj</c>            <c>k</c>         <c>ghfd</c>
-           <c>hdfhdhhhnfgn</c>          <c>ss</c>         <c>vbnjh</c> 
-           <c>gvxhhhhhf</c>            <c>fff</c>     <c>gcxjjj</c>
+           <ttcol align='left'>ttcol #3</ttcol>
+           <ttcol align='center'>ttcol #4</ttcol>
+           <r>
+           <c rowspan="2">c #1</c>
+           <c>c #2</c>
+           <c>c #3</c>
+           <c>4f</c>
+         </r>
+         <r>
+           <!-- <c>c #5</c> -->
+           <c colspan="2">c #6</c>
+           <!-- <c>c #7</c> -->
+           <c>c #8</c>
+         </r>
+         <r>
+           <c>c #9</c>
+           <c>c #10</c>
+           <c>c #11</c>
+           <c>c #12</c>
+         </r>
            <postamble>which is a very simple example.</postamble>
-       </texttable> -->
+       </texttable>
+       <!--
+        <texttable>
+            <ttcol>C</ttcol>
+            <ttcol>C2fdfffgdgdfgdg</ttcol>
+            <ttcol>C</ttcol>
+            <ttcol>C</ttcol>
 
-        <test>fdff</test>
-        <test>c fdff</test>
-        <test>r fdff</test>
+
+            <c>sll</c>
+            <c>nexgdfdfgdf</c>
+            <c>fofd</c>
+            <c>fsor</c>
+
+            <c>Vaffgdld</c>
+            <c>nefsx</c>
+            <c>ffdr</c>
+            <c>fffdgfgdgddr</c>
+
+            <c>Val ccfd</c>
+            <c>areg</c>
+            <c>gggdon</c>
+            <c>for</c>
+        </texttable> -->
+
 
         </section>
 	</section>
@@ -102,8 +139,21 @@
 	</section>
 	</middle>
 	</ufr>
+<!-- ==========
 
-<!--      - кэп и/или старпом
+        <ttcol>C</ttcol>             <ttcol>Cgyjgjg2</ttcol>           <ttcol>C</ttcol>
+            <c>sll</c>                   <c>nex</c>                  <c>fofd</c>
+            <c>fsor</c>                  <c>Cgygjg2</c>                 <c>nefgfgfgfgfsx</c>
+            <c>ffjdr</c>                  <c>ffdr</c>                 <c>Val fd</c>
+            <c>areg</c>                  <c>gon</c>                  <c>for</c>
+
+
+
+
+==========
+
+
+	 - кэп и/или старпом
 
 
 ==
@@ -145,5 +195,18 @@
 
 Время создания УФР ограничивается лишь необходимыми сроками внедрения УФР.
 
-==реестр УФР 
- -->
+==
+
+
+
+
+
+
+
+
+
+
+
+
+
+реестр УФР -->
