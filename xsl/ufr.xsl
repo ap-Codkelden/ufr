@@ -75,7 +75,7 @@
     <!-- Для сносок -->
     <xsl:key name="ftnt-search" match="//footnote" use="@id"/>
     <!-- Для таблиц -->
-    <xsl:key name="table-search" match="//texttable" use="@id"/>
+    <xsl:key name="table-search" match="//table" use="@id"/>
     <!-- ***********ФУНКЦИИ************** -->
 
     <xsl:function name="sk:trimURL"> 
@@ -119,7 +119,6 @@
         </title>
         </head> 	
         <body>
-            <!-- <table style="width:100%;border:0px;border-spacing:0px"> --> 
             <table>
                 <xsl:attribute name="class">headertable</xsl:attribute>
             <tbody>
@@ -204,14 +203,14 @@
 
             <xsl:if test="ufr/front/ufrdata/ufrchanged/changed" >
                 <p>
-                <xsl:attribute name="class">center</xsl:attribute>
+                <xsl:attribute name="class">centerpage</xsl:attribute>
                 Изменен:</p>
                 
                 <p>
                 <xsl:if test="not(ufr/front/ufrdata/urfobsolete)">
                     <xsl:attribute name="style">margin-bottom:10ex;</xsl:attribute>
                 </xsl:if>
-                    <xsl:attribute name="class">center</xsl:attribute>
+                    <xsl:attribute name="class">centerpage</xsl:attribute>
                 <xsl:for-each select="ufr/front/ufrdata/ufrchanged/changed">
                     <xsl:variable name="date-of-change" select="@date" />
                     <a href="{concat('ufr',@number,'.html')}"><xsl:text>UFR &#8470;</xsl:text><xsl:value-of select="@number" /></a>
@@ -230,7 +229,6 @@
                     <xsl:value-of select="$this-ufr-num" /><xsl:text>)</xsl:text>
                     <xsl:if test="count(/ufr/front/ufrdata/ufrchanged/changed) &gt; 1">
                         <xsl:if test="not(position() = last())"><br/>
-                            <!-- <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text> -->
                         </xsl:if>
                     </xsl:if>
                 </xsl:for-each>
@@ -307,12 +305,8 @@
         ########################################################### -->
         <xsl:variable name="author">
             <xsl:choose>
-                <xsl:when test="count(/ufr/front/authors/author) &gt; 1">
-                    Авторы
-                </xsl:when>
-                <xsl:otherwise>
-                    Автор
-                </xsl:otherwise>
+                <xsl:when test="count(/ufr/front/authors/author) &gt; 1">Авторы</xsl:when>
+                <xsl:otherwise>Автор</xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
         <h2><xsl:value-of select="$author" /></h2>
@@ -354,33 +348,88 @@
       </xsl:for-each>
     </xsl:template>
 
-
+            <xsl:template match="//t|//preamble|//postamble">
+                <p><xsl:apply-templates /></p>
+            </xsl:template>  
     <!-- **************************** ШАБЛОНЫ ***************************** -->
-    <!-- Шаблон абзаца (самая маленькая единица в документе) -->
+    <!-- Шаблон абзаца (самая маленькая единица в документе) 
         <xsl:template match="//t">  
             <p><xsl:apply-templates /></p>
-        </xsl:template>
+        </xsl:template>-->
 
     <!-- Шаблон рисунка с номером -->
 
         <xsl:template match="//figure">  
-            <xsl:variable name="fig_num">
-                <xsl:number level="any" count="figure" format="1"/>
-            </xsl:variable>
-            <div>
-            <p class="center"><a id="{concat('pic',$fig_num)}"><xsl:apply-templates />
-            <xsl:text>Рисунок&#160;</xsl:text>
-            <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" />
-            </a></p></div>
+            <xsl:apply-templates/>
         </xsl:template>
 
     <!-- Шаблон для вывода части неформатированного текста -->
 
-    <xsl:template match="//figure/artwork/text()">
+<xsl:template match="artwork|svg">
+    <xsl:variable name="fig_num">
+        <xsl:number level="any" count="figure" format="1"/>
+    </xsl:variable>
+    <div class="centertext">
+        <a id="{concat('pic',$fig_num)}">
+            <xsl:choose>
+                <xsl:when test="name()='artwork'">
+                    <pre class="artwork">
+                        <xsl:value-of select="text()"/>
+                    </pre>
+                </xsl:when>
+                <xsl:when test="name()='svg'">
+                    <object>
+                        <xsl:attribute name="class">svg</xsl:attribute>
+                        <xsl:attribute name="data"><xsl:value-of select="@file"/></xsl:attribute>
+                        <xsl:attribute name="type"><xsl:text>image/svg+xml</xsl:text></xsl:attribute>
+                    </object>
+                </xsl:when>
+            </xsl:choose>
+        <p><xsl:attribute name="class">centertext</xsl:attribute>
+            Рисунок&#160;<xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="../@name" /></p>
+        </a>
+    </div>
+</xsl:template>
+
+
+
+<!-- <xsl:template match="artwork">
+    <xsl:variable name="fig_num">
+        <xsl:number level="any" count="figure" format="1"/>
+    </xsl:variable>
+    <div class="centertext">
+        <a id="{concat('pic',$fig_num)}">
+
+            <xsl:value-of select="name()"/>
+
             <pre class="artwork">
-                <xsl:copy/>
+                <xsl:value-of select="text()"/>
             </pre>
-    </xsl:template>  
+            <p><xsl:attribute name="class">centertext</xsl:attribute>
+            Рисунок&#160;<xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" /></p>
+        </a>
+    </div>
+</xsl:template>  
+
+
+<xsl:template match="svg">
+    <xsl:variable name="fig_num">
+        <xsl:number level="any" count="figure" format="1"/>
+    </xsl:variable>
+    <div class="centertext">
+        <xsl:value-of select="name()"/>
+        <a id="{concat('pic',$fig_num)}">
+        <object>
+        <xsl:attribute name="class">svg</xsl:attribute>
+        <xsl:attribute name="data"><xsl:value-of select="@file"/></xsl:attribute>
+        <xsl:attribute name="type"><xsl:text>image/svg+xml</xsl:text></xsl:attribute>
+        </object>
+        <p><xsl:attribute name="class">centertext</xsl:attribute>
+            Рисунок&#160;<xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" /></p>
+        </a>
+    </div>
+</xsl:template> -->
+
 
     <!-- ССЫЛКИ НА ВНЕШНИЕ ИСТОЧНИКИ -->
 
@@ -418,7 +467,7 @@
     <!-- 
         Якорь для сслыки типа <link id="someAnchor"> 
     -->
-    <!-- заменено name -> id -->
+
     <xsl:template match="//anchor">
         <xsl:variable name="id" select="@id" />
             <a id="{concat('link-',$id)}">
@@ -446,13 +495,13 @@
         </xsl:template>
 
         <xsl:template match="//tabref">
-        <xsl:variable name="id" select="@target" />
+        <xsl:variable name="target" select="@target" />
             <xsl:text>[</xsl:text>
-                <xsl:for-each select="key('table-search', $id)">
-                <xsl:variable name="table_num">
-                    <xsl:number level="any" count="texttable" />
+                <xsl:for-each select="key('table-search', $target)">
+                <xsl:variable name="id">
+                  <xsl:number level="any" count="table" />
                 </xsl:variable> 
-                <a href="{concat('#','table',$table_num)}">табл.&#160;<xsl:value-of select="$table_num" /></a>
+                <a href="{concat('#',$target)}">табл.&#160;<xsl:value-of select="$id" /></a>
             </xsl:for-each>
             <xsl:text>]</xsl:text>
         </xsl:template>
@@ -483,7 +532,7 @@
                         <xsl:value-of select="title"/>
                     </xsl:variable> 
                     <xsl:text>[</xsl:text>
-                        <a href="#{@target}" title="{$ref-title}"><xsl:value-of select="$ref-num"/></a>
+                        <a href="#{@id}" title="{$ref-title}"><xsl:value-of select="$ref-num"/></a>
                     <xsl:text>]</xsl:text>
                 </xsl:for-each>
             </xsl:when>
@@ -636,19 +685,31 @@
             <xsl:apply-templates/> 
         </xsl:template> 
 
-        <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
-        <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
-        <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->                
+        <!-- ####################### т а б л и ц ы #############################3 -->                
 
-<!-- experimental table formatting -->
 
-<xsl:template match="//section/texttable">
-  <xsl:apply-templates select="preamble" />
+
+<xsl:template match="//section/table">
+    <xsl:variable name="table_num">
+        <xsl:number level="any" count="table" />
+    </xsl:variable> 
+    <xsl:apply-templates select="preamble" />
+    <p>
+        <xsl:attribute name="style">text-align:right;</xsl:attribute>
+        Таблица&#160;<xsl:value-of select="$table_num"/>
+    </p>
+
   <div>
-    <xsl:attribute name="style">width:90%;</xsl:attribute>
-    <xsl:if test="@id">
-        <a><xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute></a>
+    <xsl:attribute name="style">margin-left:30pt;width:90%;</xsl:attribute>
+    <a><xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute></a>
+
+    <xsl:if test="@name">
+    <p>
+        <xsl:attribute name="class">centertext</xsl:attribute>
+        <xsl:value-of select="@name"/>
+    </p>
     </xsl:if>
+
   <table>
     <xsl:attribute name="class">simpletable</xsl:attribute>
     <thead>
@@ -667,6 +728,7 @@
                             <xsl:attribute name="colspan"><xsl:value-of select="@colspan"/></xsl:attribute>
                         </xsl:when>
                     </xsl:choose>
+                    <xsl:call-template name="cell-formatting" />
                     <xsl:apply-templates/>
                 </td>
             </xsl:for-each>
@@ -675,37 +737,42 @@
     </tbody>
   </table>
 </div>
-  <xsl:apply-templates select="postamble" />
+<xsl:apply-templates select="postamble" />
 </xsl:template>
 
 <xsl:template match="ttcol">
-  <th valign="top">
-    <xsl:variable name="width">
-      <xsl:if test="@width">width: <xsl:value-of select="@width" />; </xsl:if>
-    </xsl:variable>
-    <xsl:variable name="align">
-      <xsl:choose>
-        <xsl:when test="@align">text-align: <xsl:value-of select="@align" />;</xsl:when>
-        <xsl:otherwise>text-align: left;</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:attribute name="style"><xsl:value-of select="concat($width,$align)" /></xsl:attribute>
+  <th>
+    <xsl:call-template name="cell-formatting" />
     <xsl:apply-templates />
   </th>
 </xsl:template>
 
-<!-- 
-Преамбула и постамбула
--->
 
-    <xsl:template match="postamble">
-        <p style="margin-top:1em;color:red"><xsl:apply-templates/></p>
+<xsl:template name="cell-formatting">
+    <xsl:variable name="width">
+        <xsl:if test="@width">width: <xsl:value-of select="@width" />; </xsl:if>
+    </xsl:variable>
+
+    <xsl:variable name="height">
+        <xsl:if test="@height">height: <xsl:value-of select="@height" />; </xsl:if>
+    </xsl:variable>
+
+    <xsl:variable name="align">
+        <xsl:choose>
+        <xsl:when test="@align">text-align: <xsl:value-of select="@align" />;</xsl:when>
+        <xsl:otherwise>text-align: left;</xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="valign">
+        <xsl:choose>
+        <xsl:when test="@valign">vertical-align: <xsl:value-of select="@valign" />;</xsl:when>
+        <xsl:otherwise>vertical-align:middle;</xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
+        <xsl:attribute name="style"><xsl:value-of select="concat($width,$height,$align,$valign)" /></xsl:attribute>
     </xsl:template>
-
-    <xsl:template match="preamble">
-        <p style="margin-bottom:1em;color:red"><xsl:apply-templates/></p>
-    </xsl:template>
-
 
         <!-- ################# ПРИЛОЖЕНИЯ #############################3 -->
 
@@ -753,7 +820,7 @@
 
     <xsl:template name="obsoleteUFR">
       <xsl:param name="obsolete" />
-      <p class="center" style="color:FireBrick;margin-bottom:10ex">
+      <p class="centerpage" style="color:FireBrick;margin-bottom:10ex">
     <xsl:text disable-output-escaping='yes'>Данный UFR устарел - см. &lt;a href="</xsl:text><xsl:value-of select="concat('ufr',$obsolete,'.html')"/><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>UFR &#8470;<xsl:value-of select="$obsolete" /><xsl:text disable-output-escaping='yes'>&lt;/a&gt;</xsl:text></p>
     </xsl:template>
 
@@ -1086,15 +1153,7 @@
     #
     -->
 
-    <xsl:template match="//figure/svg">
-                <xsl:text disable-output-escaping='yes'>&lt;object class="svg" data="</xsl:text>
-                <xsl:value-of select="@file"/>
-                <xsl:text disable-output-escaping='yes'>" type="image/svg+xml"&gt;&lt;/object&gt;</xsl:text>
-            <!-- <p class="center"><xsl:text>Рисунок&#160;</xsl:text>
-             <xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" />
-             </p></div></a> -->
-    </xsl:template>
-
+    
     <!--
     # Вставка пустых строк
     # blankLines = 5 - количество
