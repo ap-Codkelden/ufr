@@ -320,7 +320,7 @@
             cat=<it>"категорияUFR"</it> 
             [draft=<it>"yes"</it> | <it>"no"</it>]/&gt;</codesample>
         <t>Элемент определяет категорию, к которй относится UFR при помощи 
-        аттрибута <code>cat</code>, который может принимать следующие значения <fgref id="table-cat"/>:</t>
+        аттрибута <code>cat</code>, который может принимать следующие значения <tabref target="table-cat"/>:</t>
         <figure name="Значения атрибута cat элемента ufrcategory" id="table-cat">
             <artwork><![CDATA[
 /--------------------------------------------------------\
@@ -621,10 +621,25 @@
         </section>
 </section></section>
 
-<section name="Рисунки и таблицы" id="other-objects" toc="include">
+<section name="Иллюстрации и таблицы" id="other-objects" toc="include">
+
+<section name="Элементы preamlbe и postamble" id="element-preamble" toc="include">
+<t>При вставке <xref target="element-figure">рисунков</xref> и <xref target="element-table">таблиц</xref> существует 
+возможность добавлять к иллюстрациям и таблицам преамбулу и постамбулу, которые определяются соответственно 
+элементами <code>preamble</code> и <code>postamble</code>, размещаемых до и после объекта:</t>
+<codesample>&lt;!-- Начальный тег контейнера: <xref target="element-figure">figure</xref> или <xref target="element-table">table</xref> --&gt;
+    &lt;preamble&gt;<it>Lorem ipsum...</it>&lt;/preamble&gt;
+        &lt;!-- 
+        Объект:
+        - ASCII- или SVG-графика
+        - таблица
+        --&gt;
+    &lt;postamble&gt;<it>...dolor sit amet</it>&lt;/postamble&gt;
+&lt;!-- Конечный тег контейнера figure или table --&gt;</codesample>
+<t>Оба элемента, <code>preamble</code> и <code>postamble</code>, являются необязательными.</t>
+</section>
 
 <section name="Рисунки" id="element-figure" toc="include">
-    <!-- Обязательно написать про CDATA посклоььку копируется -->
     <t>В файле преобразований определена возможность добавления рисунков. Для этой цели служит элемент <code>figure</code>, который в зависимости от своего содержания определяет вставку одного из двух типов рисунка:</t>
     <ulist>
         <item>
@@ -636,31 +651,6 @@
         </item>
     </ulist>
 
-<section name="вставка ASCII-графики" id="element-artwork" toc="include">
-    <t>ASCII-графика добавляется в текст документа при помощи элемента 
-        <code>figure</code>.</t>
-<codesample>&lt;figure id=&quot;<it>имяЯкоря</it>&quot; name=&quot;<it>имяРисунка</it>&quot;/&gt;
-    &lt;artwork&gt;&lt;![CDATA[
- __...____________________          ,
-`(\ [ ===NCC-1700===--|__|) ___..--"_`--.._____
-  `"""""""""""""""""| |""` [_""_-___________"_/
-                    | |   /..../`'-._.-'`
-                ____| |__/::..'_
-               |\ ".`"` '_____//\
-               `"'-.   """""  \\/
-                    `""""""""""`]]&gt;
-    &lt;/artwork&gt;
-&lt;/figure&gt;</codesample>
-    <t>Как видно из приведенного примера<footnote id="ncc1700">Чудесная ASCII-графика 
-        NCC-1700 'Enterprise' взята с <eref target="http://reocities.com/soho/7373/transp.htm#star%20trek">этого сайта</eref>.</footnote>, собственно ASCII-графика располагается 
-        внутри элемента <code>artwork</code>, в свою очередь вложенного в 
-        элемент <code>figure</code>.</t>
-    <t>Текстовое содержимое элемента <code>artwork</code> <keyword>рекомендуется</keyword> заключать
-    в секцию <eref target="http://www.w3.org/TR/REC-xml/#dt-cdsection"><code>CDATA</code></eref>, как показано в примере&nbsp;&mdash; для обеспечения корректного отображения символьных данных.</t>
-    <t>Контейнер <code>CDATA</code> имеет вид:</t>
-<codesample>&lt;![CDATA[
-символьные данные
- ]]&gt;</codesample>
     <t>Все рисунки в документе имеют подписи и сквозную нумерацию. Подпись рисунка 
         имеет вид:
         <block><code>Рисунок&nbsp;9.&nbsp;Название рисунка</code></block></t>
@@ -671,6 +661,35 @@
     на рисунок. 
     Имя должно соответствовать <eref target=
     "http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute">требованиям</eref> спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/>.</t></anchor>
+
+<section name="вставка ASCII-графики" id="element-artwork" toc="include">
+    <t>ASCII-графика добавляется в текст документа при помощи элемента 
+        <code>figure</code>.</t>
+<codesample>&lt;figure id=&quot;<it>имяЯкоря</it>&quot; name=&quot;<it>имяРисунка</it>&quot;/&gt;
+    [&lt;preamble&gt;<it>текст</it>&lt;/preamble&gt;]
+        &lt;artwork&gt;&lt;![CDATA[
+ __...____________________          ,
+`(\ [ ===NCC-1700===--|__|) ___..--"_`--.._____
+  `"""""""""""""""""| |""` [_""_-___________"_/
+                    | |   /..../`'-._.-'`
+                ____| |__/::..'_
+               |\ ".`"` '_____//\
+               `"'-.   """""  \\/
+                    `""""""""""`]]&gt;
+        &lt;/artwork&gt;
+    [&lt;postamble&gt;<it>текст</it>&lt;/postamble&gt;]
+&lt;/figure&gt;</codesample>
+    <t>Как видно из приведенного примера<footnote id="ncc1700">Чудесная ASCII-графика 
+        NCC-1700 'Enterprise' взята с <eref target="http://reocities.com/soho/7373/transp.htm#star%20trek">этого сайта</eref>.</footnote>, собственно ASCII-графика располагается 
+        внутри элемента <code>artwork</code>, в свою очередь вложенного в 
+        элемент <code>figure</code>.</t>
+        <t>О назначении элементов <code>preamble</code> и <code>postamble</code> излагается в <xref target="element-preamble"/>.</t>
+    <t>Текстовое содержимое элемента <code>artwork</code> <keyword>рекомендуется</keyword> заключать
+    в секцию <eref target="http://www.w3.org/TR/REC-xml/#dt-cdsection"><code>CDATA</code></eref>, как показано в примере&nbsp;&mdash; для обеспечения корректного отображения символьных данных.</t>
+    <t>Контейнер <code>CDATA</code> имеет вид:</t>
+<codesample>&lt;![CDATA[
+символьные данные
+ ]]&gt;</codesample>
 </section>
 
 <section name="вставка векторной графики в формате SVG" id="element-svg" toc="include">
@@ -678,35 +697,83 @@
     Для этой цели также используется элемент <code>figure</code>, но со вложенным 
      одиночным элементом <code>svg</code>:</t>
 <codesample>&lt;figure id="<it>имяЯкоря</it>" name="<it>имяРисунка</it>"/&gt;
-    &lt;svg file=&quot;file.svg&quot;/&gt;
+    [&lt;preamble&gt;<it>текст</it>&lt;/preamble&gt;]
+        &lt;svg file=&quot;file.svg&quot;/&gt;
+    [&lt;postamble&gt;<it>текст</it>&lt;/postamble&gt;]
 &lt;/figure&gt;</codesample>
+
     <t>Значения атрибутов <code>id</code> и <code>name</code> <link target="figure-attributes">полностью аналогичны</link> тем, которые используются для вставки ASCII-графики.</t>
     <t>Элемент <code>svg</code> имеет единственный атрибут <code>file</code>, который принимает в качестве своего 
     значения относительный путь к SVG-файлу.</t>
-    <t>Следует помнить, что текущая версия файла пребразования: 1) не поддерживает напрямую указания размера файла
-        и 2) ширина документа установлена в 80&nbsp;ex.</t>
+    <t>О назначении элементов <code>preamble</code> и <code>postamble</code> излагается в <xref target="element-preamble"/>.</t>
+
+    <t>Следует помнить, что текущая версия файла пребразования: 1)&nbsp;не поддерживает напрямую указания размера файла
+        и 2)&nbsp;ширина документа установлена в 80&nbsp;ex.</t>
     <t>Учитывая эти два условия, <keyword>необходимо</keyword> использовать только такие SVG-файлы, 
-которые не нарушат целостного вида документа.</t>
+которые не нарушат целостного вида документа. В большинстве случаев достаточно изменить SVG-файл таким образом, 
+чтобы его корневой элемент <eref target="http://www.w3.org/TR/SVG/struct.html#NewDocument"><code>svg</code></eref>  помимо атрибутов <eref target="http://www.w3.org/TR/SVG/single-page.html#filters-FilterPrimitiveWidthAttribute"><code>width</code></eref> и <eref target="http://www.w3.org/TR/SVG/single-page.html#filters-FilterPrimitiveHeightAttribute"><code>height</code></eref> содержал атрибут <eref target="http://www.w3.org/TR/SVG11/coords.html#ViewBoxAttribute"><code>viewBox</code></eref>, что позволит определить в пространстве пользователя  прямоугольник для отображения изображения с учетом атрибута <code>preserveAspectRatio</code>.</t>
 </section>
 </section>
 
 <section name="Таблицы" id="tables" toc="include">
-    <t>Таблицы в UFR являются аналогами таблиц в RFC, то есть состоят из различных знаков 
-        пунктуации, например: <code>=</code>, <code>|</code>, <code>+</code>, <code>=</code>,
-        <code>/</code> и прочих.</t>
+    <t>Вставка таблицы в UFR производится при помощи элемента <code>table</code>, который является упрощенной реализацией <eref target="http://www.w3.org/TR/html5-author/the-table-element.html#the-table-element">одноименного элемента</eref> HTML5 <refref target="html5-author" short="yes"/>.</t>
 
-<figure id="simple-table" name="Пример таблицы">
-<artwork><![CDATA[                +----------+----------+----------+        
-                | Столбец1 | Столбец2 | Столбец3 |
-                +==========+==========+==========+
-                | Ячейка 1 |          |          |
-                +----------+----------+----------+
-                |          | Ячейка 5 |    :)    |
-                +----------+----------+----------+]]></artwork></figure>
+<codesample>&lt;table id="якорьТаблицы" name="Пример таблицы"&gt;
+    [&lt;preamble&gt;В этом примере мы увидим то,&lt;/preamble&gt;]
+    &lt;ttcol align='center'&gt;Колонка 1&lt;/ttcol&gt;
+    &lt;ttcol align='center'&gt;Колонка 2&lt;/ttcol&gt;
+    &lt;r&gt;
+        &lt;c&gt;Ячейка 1&lt;/c&gt;
+        &lt;c&gt;Ячейка 2&lt;/c&gt;
+    &lt;/r&gt;
+    &lt;r&gt;
+        &lt;c&gt;Ячейка 3&lt;/c&gt;
+        &lt;c&gt;Ячейка 4&lt;/c&gt;
+    &lt;/r&gt;
+    [&lt;postamble&gt;что мы увидим в этом примере&lt;/postamble&gt;]
+    &lt;/table&gt;</codesample>
 
+    <t>Для добавления таблиц в текст UFR используется элемент <code>table</code>, который служит контейнером для элементов, определяющих содержимое таблицы. Таблица состоит из заголовка, строк и ячеек, которые задаются с помощью элементов <code>ttcol</code>, <code>r</code> и <code>c</code> соответственно.</t> 
 
-    <t>Для добавления таблиц в текст UFR используется элемент <code>figure</code>, и соотвестсвенно каждой таблице присваивается название вида:
-    <block><code>Рисунок&nbsp;9.&nbsp;Название таблицы</code></block></t>
+    <t>Как и тег HTML <code>td</code>, соотвествтующий ему элемент <code>c</code> поддерживает следующие атрибуты:</t>
+    <ulist>
+        <item><code>colspan</code></item>
+        <item><code>rowspan</code></item>
+    </ulist>
+    <t>Кроме этого, элементы <code>ttcol</code> и <code>c</code> поодерживают указание 
+    ширины столбцов, высоты строк, а также вертикального и горизонтального выравнивания 
+    текста в ячейках с помощью атрибутов, описанных <link target="cell-attributes">ниже</link>:</t>
+
+    <anchor id="cell-attributes"><ulist>
+        <item><code>width</code></item>http://www.w3.org/TR/CSS21/visudet.html#propdef-width
+        <item><code>height</code></item>http://www.w3.org/TR/CSS21/visudet.html#propdef-height
+        <item><code>align</code></item>http://www.w3.org/TR/CSS21/text.html#propdef-text-align
+        <item><code>valign</code></item>http://www.w3.org/TR/CSS21/visudet.html#propdef-vertical-align
+    </ulist></anchor>
+    <!-- 
+    http://www.w3.org/TR/CSS21/
+Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification
+
+W3C Recommendation 07 June 2011
+
+This version:
+http://www.w3.org/TR/2011/REC-CSS2-20110607
+Latest version:
+http://www.w3.org/TR/CSS2
+Previous versions:
+http://www.w3.org/TR/2011/PR-CSS2-20110412
+http://www.w3.org/TR/2008/REC-CSS2-20080411/
+Editors:
+Bert Bos <bert @w3.org>
+Tantek Çelik <tantek @cs.stanford.edu>
+Ian Hickson <ian @hixie.ch>
+Håkon Wium Lie <howcome @opera.com>
+
+Заменить HTML4 на 5
+Рисунок в прилож
+    -->
+    <t>Таблица центрируется по центру документа.</t>
+    <block><code>Рисунок&nbsp;9.&nbsp;Название таблицы</code></block>
     <t>О добавлении рисунков при помощи элемента <code>figure</code> можно прочитать в <xref target="element-figure">соответствующем разделе</xref>.</t>
 </section>
 </section>

@@ -67,7 +67,7 @@
             <item>необходимость введения в действие стандарта, регулирующего те или 
             иные правила проекта (например, теги записи бортового журнала) - 
             UFR категории "стандарт";</item>
-            <item>необходимость указать на рекомендуемые правила, придерживаться
+            <item>необходимость <tabref target="table_example"/> указать на рекомендуемые правила, придерживаться
             которых необязательно, но крайне желательно - UFR категории "рекомендация";</item>
             <item>необходимость введения в действие технических стандартов на используемое 
             ПО и компоненты - UFR категории "технический";</item>
@@ -79,58 +79,43 @@
             "информационный".</item>
         </ulist>
 
-       <texttable id='table_example'>
-           <preamble>So,
-           putting it all together, we have, e.g.,</preamble>
-           <ttcol align='center'>ttcol #1</ttcol>
-           <ttcol align='center'>ttcol #2</ttcol>
-           <ttcol align='left'>ttcol #3</ttcol>
-           <ttcol align='center'>ttcol #4</ttcol>
-           <r>
-           <c rowspan="2">c #1</c>
-           <c>c #2</c>
-           <c>c #3</c>
-           <c>4f</c>
-         </r>
-         <r>
-           <!-- <c>c #5</c> -->
-           <c colspan="2">c #6</c>
-           <!-- <c>c #7</c> -->
-           <c>c #8</c>
-         </r>
-         <r>
-           <c>c #9</c>
-           <c>c #10</c>
-           <c>c #11</c>
-           <c>c #12</c>
-         </r>
-           <postamble>which is a very simple example.</postamble>
-       </texttable>
-       <!--
-        <texttable>
-            <ttcol>C</ttcol>
-            <ttcol>C2fdfffgdgdfgdg</ttcol>
-            <ttcol>C</ttcol>
-            <ttcol>C</ttcol>
+    <table id='table_example' name="Пример таблицы">
+    [<preamble>В этом примере мы увидим то,</preamble>]
+    <ttcol align='center'>Колонка 1</ttcol>
+    <ttcol align='center'>Колонка 2</ttcol>
+    <r>
+    <c>Ячейка 1</c>
+    <c>Ячейка 2</c>
+    </r>
+    <r>
+    <c valign='bottom' align="right" width="20ex" height="40ex">Ячейка 3</c>
+    <c>Ячейка 4</c>
+    </r>
+    [<postamble>что мы увидим в этом примере</postamble>]
+    </table>
+
+       <figure id="wer" name="rew">
+        <preamble>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labor</preamble>
+        <artwork><![CDATA[
+                          ("") ("")]]></artwork>
+        <postamble>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et d</postamble>
+       </figure>
+
+<t>ABZATS</t>
 
 
-            <c>sll</c>
-            <c>nexgdfdfgdf</c>
-            <c>fofd</c>
-            <c>fsor</c>
-
-            <c>Vaffgdld</c>
-            <c>nefsx</c>
-            <c>ffdr</c>
-            <c>fffdgfgdgddr</c>
-
-            <c>Val ccfd</c>
-            <c>areg</c>
-            <c>gggdon</c>
-            <c>for</c>
-        </texttable> -->
-
-
+       <figure id="wehr" name="rew">
+        <preamble>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur.</preamble>
+        <svg file="XML.svg"/>
+        <postamble>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et d</postamble>
+       </figure>
         </section>
 	</section>
 	
@@ -139,6 +124,7 @@
 	</section>
 	</middle>
 	</ufr>
+
 <!-- ==========
 
         <ttcol>C</ttcol>             <ttcol>Cgyjgjg2</ttcol>           <ttcol>C</ttcol>
