@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+<t>$TM_SELECTED_TEXT${0}.</t>
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>hello</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>text.xml</scope>
+</snippet>
