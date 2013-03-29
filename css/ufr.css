@@ -118,9 +118,9 @@ p.block {
 	/*margin-left:36pt;*/
 }
 
-span.nowrap {
+/*span.nowrap {
 	white-space:pre;
-}
+}*/
 
 .artwork {
 	color:#333333;
@@ -252,9 +252,4 @@ a[href^="http://"]:after, a[href^="https://"]:after {
   height: 12px;
   vertical-align: baseline;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAV0lEQVR4Xq2QwQ2AAAwC3cmd2Kk7sRP64CEJ9qOX8OPatMc/QKppnEPhTmJh23CLiwAqIw21CybKQ28qQi37WGFYBJcwfJQpP8LlEHKyZMF0IdmF13zlAjZ/6H4wb+mUAAAAAElFTkSuQmCC);
-}
-a[href^="#element-"] {
-  color: orange; } 
-.toc_inner a:link {
-  color: blue !important;
 }
