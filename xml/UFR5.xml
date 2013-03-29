@@ -169,7 +169,7 @@
                 <t>Хотя возможности SGML и позволяют при помощи ссылок на символы из 
                     набора символов документа добавить практически любые из 
                     определенных в кодировке символов Unicode знаков пунктуации, с целью унификации 
-                <keyword>рекомендуется</keyword> придерживаться таких соглашений:
+                <keyword>рекомендуется</keyword> придерживаться таких соглашений:</t>
                 <ulist>
                 <item>закрывающая и открывающая кавычки обозначаются символом 
                     одиночной кавычки <code>&quot;</code>;</item>
@@ -181,7 +181,7 @@
                 <item>для случая, когда необходимо вставить в текст длинное тире 
                 <it>по правилам типографики</it> (длинное тире, предваряемое неразрывным пробелом), следует использовать последовательность <code>"&amp;nbsp;&amp;mdash;"</code> 
                 (без кавычек).</item>
-                </ulist></t>
+                </ulist>
              </section>
         </section>
     </section>
@@ -464,7 +464,7 @@
     &lt;section...&gt;              | до 5 уровней
       &lt;section...&gt;            | (1 - 1.1.1.1.1)
   &lt;insert.../&gt;                | Элемент вставки
-  &lt;/middle&gt;                 |
+  &lt;/middle&gt;                   |
   &lt;back&gt;                      | Заключительная часть
     &lt;references...&gt;           | Ссылки на источники
       &lt;reference... /&gt;        |   UFR...
@@ -549,20 +549,31 @@
             <eref terget="http://ru.wikipedia.org/w/index.php?title=SVG&amp;oldid=52648309">SVG</eref>), таблиц, примеров кода и прочего.</t>
         <!-- <t>Полный перечень элементов приведен в ПВКРААВРАРАРАР</t> -->
         <section name="Абзац и его форматирование" id="sec-par-format" toc="include">
-            <section name="Элемент t" id="element-t" toc="include">
+
+            <section name="Абзац" id="element-t" toc="include">
     <codesample>&lt;t&gt;<it>Всё смешалось в доме Облонских</it>&lt;/t&gt;</codesample>
                 <t>Элемент <code>t</code> является аналогом <eref target="http://www.w3.org/TR/html401/struct/text.html#h-9.3.1">элемента <code>&lt;p&gt;</code></eref> HTML и создаёт абзац.</t>
                 <t>Внутри элемента <code>t</code> можно использовать списки, различные элементы форматирования и <xref target="logical-markup">логической организации текста</xref>, а также <xref target="cross-links-footnotes">сноски и ссылки разных типов</xref>.</t>
+                <t>Некоторые из описанных ниже в этом разделе элементов форматирования текста можно 
+                    комбинировать между собой:</t>
+                    <ulist>
+                        <item><xref target="element-code">Программный код</xref></item>
+                        <item><xref target="element-nobr">Неразрывный текст</xref></item>
+                        <item><xref target="element-bf-it">Полужирное и курсивное начертание</xref></item>
+                        <item><xref target="element-color">Цвет текста</xref></item>
+                    </ulist>
+
+
             </section>
 
-            <section name="Элемент code" id="element-code" toc="include">
+            <section name="Программный код" id="element-code" toc="include">
                 <t>Элемент <code>code</code> используется для вставки в текст названий элементов, атрибутов, 
                 переменных, вводимого текста, команд, а также имен файлов и путей к ним.</t>
                 <t>При обработке XML-файла XSLT-процессором содержимое элемента 
                     <code>code</code> заключается в тег HTML <eref target="http://www.w3.org/TR/html401/struct/text.html#edef-CODE">code</eref>, при этом к нему применяется преобразование в случае соответствия шаблонов.</t>
             </section>
 
-        <section name="Элемент codesample" id="element-codesample" toc="include">
+        <section name="Листинг кода" id="element-codesample" toc="include">
 <codesample>#include &amp;lt;stdio.h&amp;gt;
  int main()
 {
@@ -579,22 +590,27 @@
             но при этом такое текстовое содержимое не будет обрабатывается XSLT-процессором.</t>
         </section>
 
-        <section name="Элемент nobr" id="element-nobr" toc="include">
+        <section name="Неразрывный текст" id="element-nobr" toc="include">
         <codesample>превышает &lt;nobr&gt;<nobr><it>1 млн. крх.</it></nobr>&lt;/nobr&gt;</codesample>
-            <t>Формирует текст, который в документе будет отображен без переносов. Хотя элемент и повторяет названием тег HTML <code>&lt;nobr&gt;</code>, он не копирует его из-за отсутсвия последнего в спецификации HTML. Вместо этого он использует инструкцию CSS <eref target="http://www.w3.org/TR/CSS21/text.html#white-space-prop"><code>white-space</code></eref>.</t>
+            <t>Элемент <code>nobr</code> формирует текст, который в документе будет отображен без переносов. Пробелы не учитываются, переносы строк игнорируются, весь текст отображается одной строкой. Для переноса текста на новую строку внутри элемента <code>nobr</code> следует использовать элемент <xref target="element-vspace"><code>vspace</code></xref>.</t>
+            <t>Хотя элемент и повторяет названием тег HTML <code>&lt;nobr&gt;</code>, он не копирует его из-за отсутсвия последнего в спецификации HTML. Вместо этого он использует инструкцию CSS <eref target="http://www.w3.org/TR/CSS21/text.html#white-space-prop"><code>white-space</code></eref>.</t>
         </section>
 
-        <section name="Элемент it" id="element-it" toc="include">
-        <codesample>Здесь будет &lt;it&gt;<it>курсив</it>&lt;/it&gt;.</codesample>
-            <t>Задает отображение текста курсивом.</t>
-            <t>Возможно комбинирование с <it><bf>полужирным</bf></it> начертанием.</t>
+        <section name="Полужирное и курсивное начертание" id="element-bf-it" toc="include">
+        <codesample>Здесь будет &lt;it&gt;курсив&lt;/it&gt;. 
+А этот текст &lt;bf&gt;полужирный&lt;/bf&gt;.</codesample>
+            <t>Элементы <code>bf</code> и <code>it</code> используются для применения к тексту соответственно полужирного и курсивного начертания.</t>
         </section>
 
-        <section name="Элемент bf" id="element-bf" toc="include">
-            <codesample>Этот текст &lt;bf&gt;<bf>полужирный</bf>&lt;/bf&gt;.</codesample>
-            <t>Задает отображение полужирного текста.</t>
-            <t>Возможно комбинирование с <it><bf>курсивным</bf></it> начертанием.</t>
+        <section name="Цвет текста" id="element-color" toc="include">
+        <codesample>&lt;color color="цветТекста"&gt;Этого текста цвет 
+автором определен .&lt;/color&gt;</codesample>
+        <t>Для определения цвета текста в документе используется элемент <code>color</code>. Его единственный атрибут 
+        <code>color</code> принимает в качестве значения либо название цвета, либо его шестнадцатеричное значение, определенные в 
+        рекомендациях <eref target="http://www.w3.org/TR/CSS21/syndata.html#color-units">CSS&nbsp;2.1</eref> 
+        и <eref target="http://www.w3.org/html/wg/drafts/html/master/infrastructure.html#colors">HTML5</eref>.</t>
         </section>
+
         </section>
 
     <section  name="Списки" id="sec-lists"  toc="include">
@@ -735,46 +751,49 @@
 
     <t>Для добавления таблиц в текст UFR используется элемент <code>table</code>, который служит контейнером для элементов, определяющих содержимое таблицы. Таблица состоит из заголовка, строк и ячеек, которые задаются с помощью элементов <code>ttcol</code>, <code>r</code> и <code>c</code> соответственно.</t> 
 
-    <t>Как и тег HTML <code>td</code>, соотвествтующий ему элемент <code>c</code> поддерживает следующие атрибуты:</t>
+    <t>Как и теги HTML <code>th</code> и <code>td</code>, соотвествтующие им элементы <code>ttcol</code> 
+    и <code>c</code> поддерживают атрибуты объединения ячеек:</t>
     <ulist>
-        <item><code>colspan</code></item>
-        <item><code>rowspan</code></item>
+        <item><code>colspan</code> устанавливает число ячеек, которые должны быть объединены по горизонтали. Принимает в качестве значения любое целое положительное число больше&nbsp;1:
+<codesample>&lt;rowspan="число"&gt;...&lt;/td&gt;</codesample></item> 
+        <item><code>rowspan</code> устанавливает число ячеек, которые должны быть объединены по вертикали. Принимает в качестве значения любое целое положительное число больше&nbsp;1:
+<codesample>&lt;rowspan="число"&gt;...&lt;/td&gt;</codesample></item>
     </ulist>
+
+
+
     <t>Кроме этого, элементы <code>ttcol</code> и <code>c</code> поодерживают указание 
     ширины столбцов, высоты строк, а также вертикального и горизонтального выравнивания 
-    текста в ячейках с помощью атрибутов, описанных <link target="cell-attributes">ниже</link>:</t>
+    текста в ячейках с помощью атрибутов, описанных <link target="cell-attributes">ниже</link>.</t>
+    <t>Несмотря на то, что названия <nobr><color color="red"><bf><it>имен</it> атрибутов</bf></color></nobr> аналогичны именам атрибутов тегов HTML <code>th</code> и <code>td</code>, правила отображения содержимого ячеек задаются при помощи селекторов CSS, что позволяет указывать в качестве значения этих атрибутов согласно синтаксиса, определенного спецификацией CSS <refref target="css21" short="yes"/>:</t>
 
     <anchor id="cell-attributes"><ulist>
-        <item><code>width</code></item>http://www.w3.org/TR/CSS21/visudet.html#propdef-width
-        <item><code>height</code></item>http://www.w3.org/TR/CSS21/visudet.html#propdef-height
-        <item><code>align</code></item>http://www.w3.org/TR/CSS21/text.html#propdef-text-align
-        <item><code>valign</code></item>http://www.w3.org/TR/CSS21/visudet.html#propdef-vertical-align
+        <item><eref target="http://www.w3.org/TR/CSS21/visudet.html#propdef-height"><code>height</code></eref> и <eref target="http://www.w3.org/TR/CSS21/visudet.html#propdef-width"><code>width</code></eref>: <code>значение | проценты | auto | inherit</code></item>
+        <item><eref target="http://www.w3.org/TR/CSS21/text.html#propdef-text-align"><code>align</code></eref>: <code>center | justify | left | right | inherit</code></item>
+        <item><eref target="http://www.w3.org/TR/CSS21/visudet.html#propdef-vertical-align"><code>valign</code></eref>: <code>baseline | bottom | middle | sub | super | text-bottom <vspace/>| text-top | top | inherit | значение | проценты</code></item>
     </ulist></anchor>
+
+    <t>Значения <code>значение</code> или <code>проценты</code> этих атрибутов указываются согласно <refref target="css21" short="no"/> для <eref target="http://www.w3.org/TR/CSS21/syndata.html#length-units">чисел</eref> и <eref target="http://www.w3.org/TR/CSS21/syndata.html#percentage-units">процентов</eref>.</t>
     <!-- 
-    http://www.w3.org/TR/CSS21/
-Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification
-
-W3C Recommendation 07 June 2011
-
-This version:
-http://www.w3.org/TR/2011/REC-CSS2-20110607
-Latest version:
-http://www.w3.org/TR/CSS2
-Previous versions:
-http://www.w3.org/TR/2011/PR-CSS2-20110412
-http://www.w3.org/TR/2008/REC-CSS2-20080411/
-Editors:
-Bert Bos <bert @w3.org>
-Tantek Çelik <tantek @cs.stanford.edu>
-Ian Hickson <ian @hixie.ch>
-Håkon Wium Lie <howcome @opera.com>
-
-Заменить HTML4 на 5
-Рисунок в прилож
+    Заменить HTML4 на 5
+    Рисунок в прилож
     -->
-    <t>Таблица центрируется по центру документа.</t>
-    <block><code>Рисунок&nbsp;9.&nbsp;Название таблицы</code></block>
-    <t>О добавлении рисунков при помощи элемента <code>figure</code> можно прочитать в <xref target="element-figure">соответствующем разделе</xref>.</t>
+    <t>Таблица центрируется по центру документа, все таблицы имеют сквозную нумерацию в пределах документа. Так, после обработки XSLT-проессором примера, приведенного в начале этого раздела в результирующем HTML-документе будет отображаться таблица (с учетом сквозной нумерации номер таблицы может быть другим):</t>
+    
+<table id="якорьТаблицы" name="Пример таблицы">
+    <preamble>В этом примере мы увидим то,</preamble>
+    <ttcol align='center'>Колонка 1</ttcol>
+    <ttcol align='center'>Колонка 2</ttcol>
+    <r>
+        <c>Ячейка 1</c>
+        <c>Ячейка 2</c>
+    </r>
+    <r>
+        <c>Ячейка 3</c>
+        <c>Ячейка 4</c>
+    </r>
+    <postamble>что мы увидим в этом примере</postamble>
+    </table>
 </section>
 </section>
 
@@ -878,10 +897,11 @@ Håkon Wium Lie <howcome @opera.com>
 <t>Файл XSLT-преобразования позволяет создавать ссылки на источники, определенные в разделе 
 &quot;Ссылки&quot;, который создается при помощи инструкции 
 <xref target="sec-references"><code>reference</code></xref>.</t>
-<t>Существет два типа ссылок на источники:<ulist>
+<t>Существет два типа ссылок на источники:</t>
+<ulist>
     <item><xref target="reference-to-ufr">на другие UFR</xref></item>
     <item><xref target="reference-to-book">на источники в сети Интернет и литературу</xref></item>
-</ulist></t>
+</ulist>
 
 <section name="Ссылки на другие UFR" id="reference-to-ufr" toc="include">
     <t>Для создания ссылки на другой UFR используется элемент <code>ufrref</code>:</t>
@@ -976,7 +996,7 @@ elit, sed do eiusmod tempor incididunt
 
 <section  name="Заключительная часть" id="sec-back"  toc="include">
 <t>Заключительная часть документа вложена в элемент <code>back</code> и включает в себя 
-следующие разделы:
+следующие разделы:</t>
         <ulist>
             <item>Ссылки на источники</item>
             <item>Приложения</item>
@@ -992,7 +1012,7 @@ elit, sed do eiusmod tempor incididunt
     &lt;appendixes...&gt;         | <xref target="sec-appendix">Приложения</xref>
         &lt;appendix...&gt;       | Приложение
 &lt;/back&gt;
-...</codesample></t>
+...</codesample>
 
 <section  name="Список источников" id="sec-references"  toc="include">
     <t>В процессе создания UFR его автор или авторы могут использовать 
@@ -1085,13 +1105,13 @@ elit, sed do eiusmod tempor incididunt
 <t>Элемент <code>organization</code> является необязательным и определяет организацию, к которой 
 принаджежит автор. Его <keyword>следует</keyword> использовать лишь в том случае, если автор принадлежит 
 к какой-либо организации.</t>
-<t>Элемент <code>publisher</code> определяет информацию об издателе источника. Он имеет следующие атрибуты:
+<t>Элемент <code>publisher</code> определяет информацию об издателе источника. Он имеет следующие атрибуты:</t>
     <ulist>
         <item><code>name</code>&nbsp;&mdash; значением атрибута является название издателя источника.</item>
         <item>Атрибуты <code>year</code>, <code>month</code> и <code>day</code> вместе составляют 
         значение даты издания документа. Значение года указывать <keyword>необходимо</keyword>  в любом случае, значения месяца и дня <keyword>следует</keyword> указывать, если только они известны.</item>
     </ulist>
-</t>
+
 <t>Необязательный элемент <code>url</code> опрелеляет ссылку на источник, если источник является документом 
 Интернета.</t>
 <t></t>
@@ -1216,6 +1236,18 @@ elit, sed do eiusmod tempor incididunt
                     <author firstname="Fran&#231;ois" middlename="" lastname="Yergeau"/>
                     <publisher name="World Wide Web Consortium" year="2008" month="11" day="26"/>
                     <url>http://www.w3.org/TR/REC-xml/</url>
+                </ref>
+
+                <ref id="css21">
+                    <title>Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</title>
+                    <author firstname="Bert" middlename="" lastname="Bos"/>
+                    <author firstname="Tantek" middlename="" lastname="Çelik"/>
+                    <author firstname="Ian" middlename="" lastname="Hickson">
+                        <organization>W3C</organization>
+                    </author>
+                    <author firstname="Håkon" middlename="Wium" lastname="Lie"/>
+                    <publisher name="World Wide Web Consortium" year="2011" month="06" day="07"/>
+                    <url>http://www.w3.org/TR/2011/REC-CSS2-20110607</url>
                 </ref>
             </reference>
         </references>
