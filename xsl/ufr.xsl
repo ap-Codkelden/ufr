@@ -1092,10 +1092,16 @@
         <!-- 
         # ПОЛУЖИРНЫЙ И КУРСИВ (ASCII STYLE)
         -->
+
+        <xsl:template match="//color">
+                <span>
+                <xsl:attribute name="style">color:<xsl:value-of select="@color"/></xsl:attribute>
+                    <xsl:apply-templates/>
+                </span>
+        </xsl:template>
+
         <xsl:template match="//nobr">
-            <nobr>
                 <span class="nowrap"><xsl:apply-templates/></span>
-            </nobr>
         </xsl:template>
 
         <xsl:template match="//it">
@@ -1109,6 +1115,7 @@
                 <xsl:apply-templates/>
             </span>
         </xsl:template>
+
 
         <xsl:template match="//definition">
         <dl>
