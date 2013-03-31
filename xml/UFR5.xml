@@ -48,7 +48,11 @@
                  и XML, который и описывается данным документом.
                  </t></section>
 <section name="Терминология и обозначения"  toc="include" id="terms-and-desc">
-                 <section name="Ключевые слова" toc="include" id="therms"><ufr3/></section>
+
+<section name="Ключевые слова" toc="include" id="therms">
+    <ufr3/>
+</section>
+
     <section name="Обозначения" toc="include" id="definitions">
         <section  name="Пример кода" id="code-sample"  toc="include" >
             <t>Пример описания кода:</t>
@@ -113,9 +117,8 @@
 ...</codesample>
                 <t>Для того, 
                     чтобы это произошло, необохдимо добавить в документ элемент <code>ufr3</code>. Этот 
-                    элемент <keyword>должен</keyword> быть добавлен в <it>один из первых двух разделов 
-                    документа</it> в качестве любого из подразделов, в противном случае XSLT-процессор 
-                    не произведет добавления.</t>
+                    элемент <keyword>должен</keyword> быть добавлен <it>как один из первых трёх разделов 
+                    документа</it> или же <it>в качестве любого из их подразделов</it>, в противном случае XSLT-процессор не произведет добавления.</t>
             </section>
             <section name="Внесение изменений" id="sec-make-changes"  toc="include" >
                 <t>Каждый документ UFR <keyword>должен</keyword> содержать уведомление 
@@ -1200,7 +1203,7 @@ elit, sed do eiusmod tempor incididunt
 
 </middle>
     <back>
-<references name="Сссылки" toc="include" id="refs">
+<references name="Ссылки" toc="include" id="refs">
             <reference type="ufr" name="Источники UFR">
                <ref ufrno="3" />
             </reference>

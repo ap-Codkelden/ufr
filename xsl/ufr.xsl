@@ -924,7 +924,8 @@
         </xsl:template> 
 
     <!-- Объявление ключевых слов -->
-        <xsl:template match="middle/section[1]//ufr3|middle/section[2]//ufr3">
+
+        <xsl:template match="middle/section[position() &lt; 4]//ufr3">
             <p>Ключевые слова <span class='rfc2119'>необходимо</span>, <span class='rfc2119'>требуется</span>, 
                 <span class='rfc2119'>нужно</span>, <span class='rfc2119'>недопустимо</span>, 
                 <span class='rfc2119'>не разрешается</span>, <span class='rfc2119'>следует</span>, 
