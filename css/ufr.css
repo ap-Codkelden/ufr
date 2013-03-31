@@ -118,9 +118,9 @@ p.block {
 	/*margin-left:36pt;*/
 }
 
-/*span.nowrap {
+span.nowrap {
 	white-space:pre;
-}*/
+}
 
 .artwork {
 	color:#333333;
@@ -237,6 +237,10 @@ sup {
   padding: 2px;
 }
 
+.simpletable th {
+  font-weight: bolder;
+}
+
 
 a:link {
   color: blue;
@@ -244,12 +248,13 @@ a:link {
 a:visited {
   color: grey;
 }
-a[href^="http://"]:after, a[href^="https://"]:after { 
-  display: inline-block;
+
+a[href]:after {
   content: "";
-  margin-left: 1px;
-  width: 12px;
-  height: 12px;
-  vertical-align: baseline;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAV0lEQVR4Xq2QwQ2AAAwC3cmd2Kk7sRP64CEJ9qOX8OPatMc/QKppnEPhTmJh23CLiwAqIw21CybKQ28qQi37WGFYBJcwfJQpP8LlEHKyZMF0IdmF13zlAjZ/6H4wb+mUAAAAAElFTkSuQmCC);
+  margin-left: 0; 
+}
+
+a[href^="http://"]:after, a[href^="https://"]:after { 
+	content: "⇗"; 
+	vertical-align: baseline; 
 }
