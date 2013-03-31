@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/ufr.xsl"?>
+<!DOCTYPE xsl:stylesheet
+  [
+    <!ENTITY nbsp   "&#160;">
+    <!ENTITY mdash  "&#8212;">
+  ]>
+<ufr>
+    <front>
+        <creator>
+            <organization>Звёздный флот Федерации</organization>
+            <unit>К-117 "Созвездие"</unit>
+            <author>Морзе</author>
+        </creator>
+        <authors>
+            <author>
+                <assignment>Старший помощник капитана корабля</assignment>
+                <rank>Капитан 1 ранга</rank>
+                <name>Морзе</name>
+                <unit>К-117 "Созвездие"</unit>
+                <organization>Звёздный Флот Федерации Земли</organization>
+            </author>
+        </authors>
+        <ufrdata>
+            <ufrname number="6">Порядок создания UFR и внесения в них изменений</ufrname>
+            <ufrcategory cat="std" draft="yes" />
+            <ufrdate value="2013-03-19" />
+            <ufrchanged>
+                 <changed number="2" date="2013-02-05" edition=""/>
+                 <changed number="2" date="2013-02-05" edition="1"/>
+                 <changed number="2" date="2013-02-05" edition="2"/>
+                 <changed number="9" date="2013-07-15" edition=""/>
+            </ufrchanged> 
+            <urfobsolete ufrno="2316"/>
+        </ufrdata>
+</front>
+<middle>
+    <copyright name="Авторские права" efsf-only="no"/>
+    <abstract name="Аннотация" />
+    <license type="cc-license" name="Лицензия" />
+    <section name="Введение"  toc="include" id="intro">
+        <t>UFR (User Feature Request) - стандарты, рекомендации и описания, 
+		создаваемые с целью регулирования деятельности участников проекта 
+		"Созвездие".</t>
+		<t>Ситуации, <tabref target="table_example">возникающие</tabref> в процессе реализации проекта "Созвездие" 
+		на практике, зачастую требуют регулирования во избежание нарушения 
+		отклонений от запланированного его протекания. </t>
+		<t>Порядок <tabref target="table_example"/> создания UFR и внесения изменений в них регулируется 
+		исключительно Уставом Звёздного Флота, этим UFR, а также другими 
+		UFR.</t>
+	</section>
+    <section name="Ключевые слова" toc="include" id="therms"><ufr3/></section>    
+	<section name="Термины" toc="include" id="keywords">
+        <definition>
+            <term name="Командование корабля">Капитан и старший помощник капитана. В 
+                случае отсутствия капитана и/или его старшего помощника под определением "командование корабля" понимаются лица, исполняющее обязанности капитана и старшего помощника капитана.</term>
+            <term name="Термин 2">Определение термина 2</term>
+        </definition>
+    </section>
+
+	<section name="Создание UFR"  toc="include" id="create-ufr">
+        <section name="Необходимые Условия Создания UFR" toc="include" id="ufr-cond">
+    <t>Для создания нового UFR обязательно <keyword>должна</keyword> существовать 
+    одна из следующих предпосылок, характер которых также определяет 
+    категорию будущего UFR:</t>
+        <ulist>
+            <item>необходимость введения в действие стандарта, регулирующего те или 
+            иные правила проекта (например, теги записи бортового журнала) - 
+            UFR категории "стандарт";</item>
+            <item>необходимость <tabref target="table_example"/> указать на рекомендуемые правила, придерживаться
+            которых необязательно, но крайне желательно - UFR категории "рекомендация";</item>
+            <item>необходимость введения в действие технических стандартов на используемое 
+            ПО и компоненты - UFR категории "технический";</item>
+            <item>необходимость доведения до сведения всех участников проекта текущего 
+            состояния сюжетной линии проекта во избежание отклонений от неё - UFR 
+            категории "исторический";</item>
+            <item>необходимость доведения до сведения всех усатников проекта какой-либо 
+            информации, не попадающей под все описанные выше определения - UFR категории 
+            "информационный".</item>
+        </ulist>
+
+    <table id='table_example' name="Пример таблицы">
+    [<preamble>В этом примере мы увидим то,</preamble>]
+    <ttcol align='center'>Колонка 1</ttcol>
+    <ttcol align='center'>Колонка 2</ttcol>
+    <r>
+    <c>Ячейка 1</c>
+    <c>Ячейка 2</c>
+    </r>
+    <r>
+    <c valign='bottom' align="right" width="20ex" height="40ex">Ячейка 3</c>
+    <c>Ячейка 4</c>
+    </r>
+    [<postamble>что мы увидим в этом примере</postamble>]
+    </table>
+
+       <figure id="wer" name="rew">
+        <preamble>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labor</preamble>
+        <artwork><![CDATA[
+                          ("") ("")]]></artwork>
+        <postamble>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et d</postamble>
+       </figure>
+
+<t>ABZATS</t>
+
+
+       <figure id="wehr" name="rew">
+        <preamble>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur.</preamble>
+        <svg file="XML.svg"/>
+        <postamble>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et d</postamble>
+       </figure>
+        </section>
+	</section>
+	
+	
+	<section name="Внесение изменений в UFR"  toc="include" id="change-ufr">
+	</section>
+	</middle>
+	</ufr>
+
+<!-- ==========
+
+        <ttcol>C</ttcol>             <ttcol>Cgyjgjg2</ttcol>           <ttcol>C</ttcol>
+            <c>sll</c>                   <c>nex</c>                  <c>fofd</c>
+            <c>fsor</c>                  <c>Cgygjg2</c>                 <c>nefgfgfgfgfsx</c>
+            <c>ffjdr</c>                  <c>ffdr</c>                 <c>Val fd</c>
+            <c>areg</c>                  <c>gon</c>                  <c>for</c>
+
+
+
+
+==========
+
+
+	 - кэп и/или старпом
+
+
+==
+
+
+
+=Лица, имеющие право на создание UFR=
+Право на создание UFR имеет любой активный участник проекта. Активным участником 
+проекта считается участник, принимающий участие в проекте не менее 3 месяцев и 
+создавший за это время не менее 120 записей, не противоречащих сюжетной линии 
+"Созвездия" (далее по тексту - "автор"). 
+
+==Создание УФР==
+
+Перед созданием УФР автор обязан обратиться при помощи любого доступного канала 
+связи (кроме устного) к командованию корабля, (либо к лицу, ответственному за 
+процедуру согласования УФР - при наличии такового) с заявкой для согласования 
+необходимости создания УФР.
+
+В своем обращении автор обязан предоставить обоснование необходимости создания 
+УФР, и описание ожидаемого эффекта от его принятия.
+
+Командование корабля, либо лицо, ответственное за процедуру согласования УФР (при 
+наличии такового) рассматривает предоставленные автором материалы и в течение 
+двух суток с момента обращения уведомляет о результате рассмотрения. 
+
+В случае отклонения заявки командование корабля, либо лицо, ответственное за процедуру 
+согласования УФР (при наличии такового) обязано предоставить обоснованные причины отказа 
+(за исключением случаев, когда заявка на создание УФР не имеет отношения к проекту 
+"Созвездие" либо грубо нарушает сюжетную линию).
+
+СНС Для целей этого пункта отсчет времени начинается от начала следующего за моментом 
+обращения часа и заканчивается через 48 часов после этого. Например, если время 
+обращения автора - 22 ч 10 мин 21 июня, то предельный срок ответа - 23 ч 00 мин 23 июня.
+
+==
+
+В случае положительного рассмотрения заявки автор УФР разрабатывает УФР (далее по тексту - документ) в соответствии и способом, укзанным в УФР6 "Минимальные требования к UFR". 
+
+Время создания УФР ограничивается лишь необходимыми сроками внедрения УФР.
+
+==
+
+
+
+
+
+
+
+
+
+
+
+
+
+реестр УФР -->

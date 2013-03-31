@@ -82,18 +82,14 @@
 <section name="Общие требования к документу, его структура и состав" toc="include" id="common-req">
     <section name="Общие положения" toc="include" id="common">
         <t>Исходный текст стандарта представляет собой XML-документ, соответствующий 
-        <eref target="ufr.xsd">XSD-схеме</eref> (valid, предпочтительный вариант) или же правильно сформированный (<eref target="http://en.wikipedia.org/w/index.php?title=Well-formed_document&amp;oldid=527402113">well-formed</eref>, допустимый вариант).</t>
-        <t>На момент написания документа, инструментарий поддерживал XSL-преобразование только в формат XHTML, который был выбран в силу его широкого распространения и поддержки значительным  количеством устройств - пользователь сможет загрузить UFR, открыть и распечатать на своем оборудовании.</t>
+        <eref target="ufr.xsd">XSD-схеме</eref> (valid, предпочтительный вариант) или же правильно 
+        сформированный (<eref target="http://en.wikipedia.org/w/index.php?title=Well-formed_document&amp;oldid=527402113">well-formed</eref>, допустимый вариант).</t>
+        <t>На момент написания документа, инструментарий поддерживал XSL-преобразование только в 
+            формат XHTML, который был выбран в силу его широкого распространения и поддержки значительным  количеством устройств - пользователь сможет загрузить UFR, открыть и распечатать на своем оборудовании.</t>
         <t>С целью правильного отображения символов национальных алфавитов
-        и некоторых других символов, исходные тексты <keyword>должны</keyword> быть подготовлены только в кодировке <eref target="http://www.unicode.org">символов Unicode</eref>.</t>
-
-    <olist>
-        <item>Основной шрифт документа - 12pt, междустрочный интервал - 10pt;</item>
-        <item>Ширина документа - 70ex (включая отступы);</item>
-        <item>Шрифты документа - моноширинные.</item>
-    </olist><!-- </t> -->
-
-</section>
+            и некоторых других символов, исходные тексты <keyword>должны</keyword> быть подготовлены 
+            только в кодировке <eref target="http://www.unicode.org">символов Unicode</eref>.</t>
+    </section>
 
     <section  name="Разделы, которые формируются XSLT-процессором на основании пользовательских данных" 
         id="runtime-sections"  toc="include" >
@@ -135,7 +131,10 @@
         <section name="Оглавление" toc="include" id="toc_special">
         <t>Оглавление формируется XSLT-процессором на основании <xref target="doc_parts">частей</xref> документа, разделов, подразделов и т. д. Включение определенной части документа в оглавление производится в зависимости от наличия у  элемента <code>&lt;section&gt;</code>, указывающего на начало раздела, атрибута 
         <code>toc</code> со значением <code>"include"</code> (без кавычек):
-<codesample>&lt;section name="названиеРаздела" id="якорьРаздела"&gt;  toc="include"</codesample></t>
+<codesample>&lt;section 
+    name="названиеРаздела" 
+    id="якорьРаздела"&gt;  
+    toc="include"</codesample></t>
 </section>
         <section name="Символы" toc="include" id="symbols">
             <section name="Ссылки на символы" toc="include" id="sgml-entity">
@@ -188,7 +187,7 @@
 
 <section name="Структура документа" id="ufr-structure"  toc="include" >            
     <t>Как и любой XML-документ, документ UFR начинается с объявления XML, ссылки на стилевой документ 
-    <code>ufr.xsl</code> и корневого элемента "ufr":</t>
+    <code>ufr.xsl</code> и корневого элемента <code>ufr</code>:</t>
 <codesample><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="ufr.xsl"?>
 <ufr>
@@ -196,17 +195,53 @@
 </ufr>]]></codesample>
 <t>Документ имееет следующую структуру:</t>
         <olist>
-        <item><xref target="sec-description">Заголовочная часть (элемент front)</xref></item>
-        <item><xref target="sec-document">Документ (элемент middle)</xref></item>
-        <item><xref target="sec-back">Заключительная часть (элемент back)</xref></item>
+        <item><xref target="sec-description">Заголовочная часть (элемент <code>front</code>)</xref></item>
+        <item><xref target="sec-document">Документ (элемент <code>middle</code>)</xref></item>
+        <item><xref target="sec-back">Заключительная часть (элемент <code>back</code>)</xref></item>
         </olist>
 
-    <t>К заголовкам и общей информации относятся <fgref id="ufrheader"/>:</t>
+    <t>К заголовкам и общей информации относятся <fgref target="ufrheader"/>:</t>
+
+<figure id="ufrheader" name="Заголовок UFR">
+<artwork><![CDATA[
+(1)Звёздный флот Федерации                 (2)К-117 "Созвездие"
+(3)UFR №110                                            (4)Морзе
+(5)Категория: информационный                   (6)07 месяц 2027
+                     
+                          (7)ЕЩЁ ОДИН UFR
+
+                          (8)25 июля 2027
+
+                            (9)Изменен:
+
+               (9)UFR №116 (предыдущая версия UFR№110)
+                  UFR №117 (предыдущая версия UFR№110)
+
+                (10)Данный UFR устарел - см. UFR №216]]></artwork></figure>
+    <olist>
+        <item>название органицации, издавшей стандарт (строка 1, слева);</item>
+        <item>название подразделения, к которому принадлежит составитель 
+            стандарта (строка 1, справа);</item>
+        <item>номер UFR (строка 2, слева);</item>
+        <item>составитель стандарта (строка 2, справа);</item>
+        <item>категория стандарта (строка 3, слева);</item>
+        <item>месяц и год издания стандарта (строка 3, справа), в 
+            формате MM {<it>название месяца</it>} YYYY<footnote id="saxon_tech_restr">
+            Из-за лингвистических ограничений, связанных с падежами.</footnote>;</item>
+        <item>Название UFR (отцентрировано);</item>
+        <item>Дата UFR (отцентрировано)</item>
+        <item>В случае наличия друх стандартов, изменяющих данный, 
+            в измененную версию добавляется информация о стандарте, которым 
+            внесены изменения в данный.</item>
+        <item>В случае наличия друх стандартов, отменяющих действие данного 
+            стандарта, в измененную версию добавляется информация о стандарте, 
+            которым отменяется данный.</item>
+    </olist>
 
 <!-- заголовочная часть -->
 <section  name="Заголовочная часть" id="sec-description"  toc="include" >
 <t>Заголовочная часть начинается непосредственно после элемента <code>"ufr"</code> и вложена в элемент <code>"front"</code>.</t>
-<t>Общий вид заголовочной части показан на <fgref id="ufrheader"/>.</t>
+
 <codesample>&lt;ufr&gt;
 &lt;front&gt;
     &lt;creator&gt;
@@ -237,13 +272,13 @@
 <t>Элемент <code>front</code> содержит элемент <code>creator</code>, элемент <code>authors</code>, и элемент <code>ufrdata</code>.</t>
 
     <section  name="Элемент creator" id="creator"  toc="include" >
-    Этот элемент содержит информацию о составителе UFR, описываемую данными, определенными 
-    в элементах <code>organization</code>, <code>unit</code> и <code>author</code>. 
+    <t>Этот элемент содержит информацию о составителе UFR, описываемую данными, определенными 
+    в элементах <code>organization</code>, <code>unit</code> и <code>author</code>.</t>
 
         <section name="Элемент organization" id="organization" toc="include">
         <codesample>&lt;organization&gt;<it>организация</it>&lt;/organization&gt;</codesample>
         <t>Элемент определяет организацию, к которой принадлежит составитель документа. 
-        Поскольку Исследовательская Лаборатория ЗФ является частью Звёздного Флота, то обычно это <it>Звёздный флот Федерации</it>, но поскольку возможны и другие варианты, этот элемент изменяем.</t>
+        Поскольку Исследовательская Лаборатория ЗФ является частью Звёздного Флота, то обычно это <it>Звёздный Флот Федерации</it>, но поскольку возможны и другие варианты, этот элемент изменяем.</t>
         </section>
 
         <section name="Элемент unit" id="unit" toc="include">
@@ -283,10 +318,11 @@
     <codesample>&lt;name&gt;<it>имяАвтора</it>&lt;/name&gt;</codesample>
     <t>Элемент определяет <it>имяАвтора</it>, под которым тот выведен в
     проекте, например <it>Морзе</it> или <it>Р.&#160;Муррфи</it>.</t>
-    <block><bf>ВАЖНО:</bf> В случае, если составитель документа 
-    является также одним из его авторов, необходимо вносить его данные 
-    как в раздел <code>&lt;authors&gt;</code> в виде контейнера <code>&lt;author&gt;</code>, так и в раздел 
-    <code>&lt;<xref target="creator">creator</xref>&gt;</code>.</block>
+
+    <block><color color="red"><bf>ВАЖНО:</bf></color> В случае, если составитель 
+    документа  является также одним из его авторов, необходимо вносить его данные 
+    как в раздел <code>authors</code> в виде контейнера <code>author</code>, 
+    так и в раздел <code><xref target="creator">creator</xref></code>.</block>
     </section>
 
     <section name="Элемент unit" id="author-unit-element" toc="include">
@@ -317,26 +353,37 @@
 
         <section name="Элемент ufrcategory" id="ufrdata-cat" toc="include">
 <codesample>&lt;ufrcategory 
-            cat=<it>"категорияUFR"</it> 
-            [draft=<it>"yes"</it> | <it>"no"</it>]/&gt;</codesample>
+    cat=<it>"категорияUFR"</it> 
+    [draft=<it>"yes"</it> | <it>"no"</it>]/&gt;</codesample>
         <t>Элемент определяет категорию, к которй относится UFR при помощи 
         аттрибута <code>cat</code>, который может принимать следующие значения <tabref target="table-cat"/>:</t>
-        <figure name="Значения атрибута cat элемента ufrcategory" id="table-cat">
-            <artwork><![CDATA[
-/--------------------------------------------------------\
-|Атрибут |               Значение                        |
-|--------|-----------------------------------------------|
-|  std   |стандарт - устанавливает обязательные стандарты|
-|--------|-----------------------------------------------|
-|  rec   |рекомендация - предоставляет рекомендации      |
-|--------|-----------------------------------------------|
-|  tech  |технический - технические правила и нормативы  |
-|--------|-----------------------------------------------|
-|historic|исторический - состояние сюжетной линии        |
-|--------|-----------------------------------------------|
-|  info  |информационный - не устанавливает стандартов,  |
-|        |однако предоставляет информацию                |
-\--------------------------------------------------------/]]></artwork></figure>
+
+
+    <table id='table-cat' name="Значения атрибута cat элемента ufrcategory">
+    <ttcol align='center'>Атрибут</ttcol>
+    <ttcol align='center'>Значение</ttcol>
+    <r>
+    <c><code>std</code></c>
+    <c>стандарт - устанавливает обязательные стандарты</c>
+    </r>
+    <r>
+    <c><code>rec</code></c>
+    <c>рекомендация - предоставляет рекомендации</c>
+    </r>
+    <r>
+    <c><code>tech</code></c>
+    <c>технический - технические правила и нормативы</c>
+    </r>
+    <r>
+    <c><code>historic</code></c>
+    <c>исторический - описывает состояние сюжетной линии</c>
+    </r>
+    <r>
+    <c><code>info</code></c>
+    <c>информационный - не устанавливает стандартов, однако предоставляет информацию</c>
+    </r>
+    </table>
+
         <t>В зависимости от значения атрибута <code>cat</code> XSLT-процессор подставит 
         необходимое пояснение в <xref target="sec-abstract">аннотацию</xref> документа. </t>
         <t>Необязательный атрибут <code>draft</code> указывает на то, что 
@@ -350,7 +397,8 @@
         </section>
 
         <section name="Элемент ufrdate" id="ufrdata-date" toc="include">
-<codesample>&lt;ufrdate value=<it>"2013-02-03"</it>/&gt;</codesample>
+<codesample>&lt;ufrdate 
+    value=<it>"2013-02-03"</it>/&gt;</codesample>
         <t>Определяет дату создания UFR.</t>
         <t>Дата создания хранится в атрибуте <code>value</code>. Значение даты 
         записывается в формате, соответствующем ISO&#160;8601 и определенном в 
@@ -379,9 +427,12 @@
         <ulist>
             <item><code>number</code> - определяет номер UFR, которым внесены изменения;</item>
             <item><code>date</code> - определяет дату UFR, которым внесены изменения, в формате, определенном <xref target="ufrdata-date">выше</xref>;</item>
-            <item><code>edition</code> - определяет версию правки в том случае, если за один день было внесено более одной правки в данный UFR. Разумеется, такая ситуация крайне маловероятна, но если в один день было внесено более одной правки, то:
+            <item><code>edition</code> - определяет версию правки в том случае, если за один день было внесено более одной правки в данный UFR.</item>
+        </ulist>
+
+        <t>Ситуация, когда за один день было внесено более одной правки, крайне маловероятна, но если такое происходит, то:</t>
                 <olist>
-                <item>Пусть первый раз за текущие сутки изменения в текущий UFR (UFR&#160;№110 от 25.07.2027) 
+                <item>Первый раз за текущие сутки изменения в текущий UFR (UFR&#160;№110 от 25.07.2027) 
                     были внесены UFR&#160;№116 от 01.09.2027. Версия документа без исправлений получит имя 
                     <code>UFR110_20270725.html</code>, измененная версия&nbsp;&mdash; <code>UFR110.html</code>.</item>
                 <item>Второй раз за текущие сутки изменения в текущий UFR вносятся UFR&#160;№117 от 01.09.2027. 
@@ -398,12 +449,12 @@
 &lt;/ufrchanged&gt;</codesample>
                 </item>
                 </olist>
-            </item>
-        </ulist>
+
         </section>
 
         <section name="Элемент ufrobsolete" id="ufrdata-obsolete" toc="include">
-        <codesample>&lt;ufrobsolete ufrno=<it>"номерUFR"</it>/&gt;</codesample>
+        <codesample>&lt;ufrobsolete 
+    ufrno=<it>"номерUFR"</it>/&gt;</codesample>
         <t>Необязательный, однако <keyword>рекомендуется</keyword> добавлять в 
         документ "пустой" элемент, объединяющий начальный и конечный теги: 
         <code>&lt;ufrobsolete/&gt;</code>.</t>
@@ -414,41 +465,6 @@
         <block>Данный UFR устарел - см. UFR №216</block>
         </section>
     </section> <!-- ufrdata -->
-   <figure id="ufrheader" name="Заголовок UFR">
-<artwork><![CDATA[
-(1)Звёздный флот Федерации                 (2)К-117 "Созвездие"
-(3)UFR №110                                            (4)Морзе
-(5)Категория: информационный                   (6)07 месяц 2027
-                     
-                          (7)ЕЩЁ ОДИН UFR
-
-                          (8)25 июля 2027
-
-                            (9)Изменен:
-
-               (9)UFR №116 (предыдущая версия UFR№110)
-                  UFR №117 (предыдущая версия UFR№110)
-
-                (10)Данный UFR устарел - см. UFR №216]]></artwork></figure>
-    <olist>
-        <item>название органицации, издавшей стандарт (строка 1, слева);</item>
-        <item>название подразделения, к которому принадлежит составитель 
-            стандарта (строка 1, справа);</item>
-        <item>номер UFR (строка 2, слева);</item>
-        <item>составитель стандарта (строка 2, справа);</item>
-        <item>категория стандарта (строка 3, слева);</item>
-        <item>месяц и год издания стандарта (строка 3, справа), в 
-            формате MM {<it>название месяца</it>} YYYY<footnote id="saxon_tech_restr">
-            Из-за лингвистических ограничений, связанных с падежами.</footnote>;</item>
-        <item>Название UFR (отцентрировано);</item>
-        <item>Дата UFR (отцентрировано)</item>
-        <item>В случае наличия друх стандартов, изменяющих данный, 
-            в измененную версию добавляется информация о стандарте, которым 
-            внесены изменения в данный.</item>
-        <item>В случае наличия друх стандартов, отменяющих действие данного 
-            стандарта, в измененную версию добавляется информация о стандарте, 
-            которым отменяется данный.</item>
-    </olist>
     </section> <!-- Конец заголовочной части -->
 
     <section  name="Документ" id="sec-document"  toc="include" >
@@ -484,7 +500,9 @@
         <section  name="Авторские права" id="section-copyright"  toc="include" >
             <t>Раздел "Авторские права" формируется XSLT-процессором, его содержание определяется 
             элементом <code>&lt;copyright/&gt;</code>:</t>
-            <codesample>&lt;copyright name=<it>&quot;Авторские права&quot;</it> efsf-only=<it>"yes"</it> | <it>"no"</it>/&gt;</codesample>
+            <codesample>&lt;copyright 
+    name=<it>&quot;Авторские права&quot;</it> 
+    efsf-only=<it>"yes"</it> | <it>"no"</it>/&gt;</codesample>
             <t>Данному разделу <keyword>необходимо</keyword> присвоить название "Авторские права" (путём присвоения значения атрибуту <code>name</code>), его <keyword>следует</keyword> изменять лишь в случае публикации UFR на другом языке.</t>
             <t>Атрибут <code>efsf-only</code> может принимать значения <it>"yes"</it> или <it>"no"</it>. В случае, если значение атрибута  
             <it>"yes"</it>, при объявлении авторских прав будет указано, что авторские права принадлежат <it>только</it> Звёздному Флоту, а в случае если 
@@ -493,7 +511,9 @@
 
         <section  name="Лицензия" id="sec-license"  toc="include" >
             <t>Раздел "Лицензия" формируется XSLT-процессором на основании элемента <code>&lt;license/&gt;</code>:</t>
-        <codesample>&lt;license type=<it>"типЛицензии"</it> name=<it>"названиеРаздела"</it> /&gt;</codesample>
+        <codesample>&lt;license 
+    type=<it>"типЛицензии"</it> 
+    name=<it>"названиеРаздела"</it> /&gt;</codesample>
 
         <t>Данному разделу <keyword>необходимо</keyword> присвоить название "Лицензия" (путём присвоения значения атрибуту <code>name</code>), его <keyword>следует</keyword> изменять лишь в случае публикации UFR на другом языке.</t>
 
@@ -512,15 +532,18 @@
             <t>Разделы документа являются основным способом логического разделения документа на части.</t>
             <section  name="Элемент section" id="element-section"  toc="include" >
             <t>Для того, чтобы начать новый раздел, нужно использовать элемент <code>section</code>:</t>
-        <codesample>&lt;section name=<it>"названиеРаздела"</it> 
+
+        <codesample>&lt;section 
+    name=<it>"названиеРаздела"</it> 
     id=<it>"имяЯкоря"</it> 
     [toc=<it>"include"</it>]&gt;
     <it>Lorem ipsum dolor sit amet...</it>
 &lt;/section&gt;</codesample>
+
             <anchor id="element-section-id-attr"><t>Атрибуты элемента <code>section</code> <code>name</code> и <code>id</code> являются обязательными и определяют соответственно название раздела и якорь, используемый для ссылок на этот раздел внутри документа.</t>
             <t>Значение атрибута <code>id <it>"имяЯкоря"</it></code> должно соответствовать 
             <eref target=
-    "http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute"> требованиям</eref> спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/></t></anchor>
+    "http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute">требованиям</eref> спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/></t></anchor>
 
             <t>Необязательный атрибут <code>toc</code> определяет необходимость включения 
             раздела в оглавление (например, если необходимо включить в оглавление только 
@@ -535,12 +558,12 @@
         &lt;/section&gt;
     &lt;/section&gt;
 &lt;/section&gt;</codesample>
-            <t>При этом каждый раздел последовательно нумеруетя арабскими цифрами следующим образом:</t>
-            <t><block>1<vspace/>
-                1.1.<vspace/>
-                1.1.1.<vspace/>
-                1.1.1.1.<vspace/>
-                1.1.1.1.1.<vspace/></block></t>
+            <t>При этом каждый раздел последовательно нумеруется арабскими цифрами следующим образом:</t>
+            <block><code>1
+1.1.
+1.1.1.
+1.1.1.1.
+1.1.1.1.1.</code></block>
             </section></section></section>
 
     <section  name="Элементы текста" id="sec-text-elements"  toc="include" >
@@ -603,8 +626,9 @@
         </section>
 
         <section name="Цвет текста" id="element-color" toc="include">
-        <codesample>&lt;color color="цветТекста"&gt;Этого текста цвет 
-автором определен .&lt;/color&gt;</codesample>
+        <codesample>&lt;color 
+    color="цветТекста"&gt;Этого текста цвет 
+                        автором определен.&lt;/color&gt;</codesample>
         <t>Для определения цвета текста в документе используется элемент <code>color</code>. Его единственный атрибут 
         <code>color</code> принимает в качестве значения либо название цвета, либо его шестнадцатеричное значение, определенные в 
         рекомендациях <eref target="http://www.w3.org/TR/CSS21/syndata.html#color-units">CSS&nbsp;2.1</eref> 
@@ -708,7 +732,7 @@
  ]]&gt;</codesample>
 </section>
 
-<section name="вставка векторной графики в формате SVG" id="element-svg" toc="include">
+<section name="Вставка векторной графики в формате SVG" id="element-svg" toc="include">
     <t>Шаблон XSL позволяет добавить в текст документа векторную графику в <eref target="http://ru.wikipedia.org/w/index.php?title=SVG&amp;oldid=52648309">формате SVG</eref>. 
     Для этой цели также используется элемент <code>figure</code>, но со вложенным 
      одиночным элементом <code>svg</code>:</t>
@@ -728,6 +752,7 @@
     <t>Учитывая эти два условия, <keyword>необходимо</keyword> использовать только такие SVG-файлы, 
 которые не нарушат целостного вида документа. В большинстве случаев достаточно изменить SVG-файл таким образом, 
 чтобы его корневой элемент <eref target="http://www.w3.org/TR/SVG/struct.html#NewDocument"><code>svg</code></eref>  помимо атрибутов <eref target="http://www.w3.org/TR/SVG/single-page.html#filters-FilterPrimitiveWidthAttribute"><code>width</code></eref> и <eref target="http://www.w3.org/TR/SVG/single-page.html#filters-FilterPrimitiveHeightAttribute"><code>height</code></eref> содержал атрибут <eref target="http://www.w3.org/TR/SVG11/coords.html#ViewBoxAttribute"><code>viewBox</code></eref>, что позволит определить в пространстве пользователя  прямоугольник для отображения изображения с учетом атрибута <code>preserveAspectRatio</code>.</t>
+<t>Пример вставки векторной графики в формате SVG можно увидеть в <xref target="appendix-example-svg"></xref>.</t>
 </section>
 </section>
 
@@ -765,7 +790,7 @@
     <t>Кроме этого, элементы <code>ttcol</code> и <code>c</code> поодерживают указание 
     ширины столбцов, высоты строк, а также вертикального и горизонтального выравнивания 
     текста в ячейках с помощью атрибутов, описанных <link target="cell-attributes">ниже</link>.</t>
-    <t>Несмотря на то, что названия <nobr><color color="red"><bf><it>имен</it> атрибутов</bf></color></nobr> аналогичны именам атрибутов тегов HTML <code>th</code> и <code>td</code>, правила отображения содержимого ячеек задаются при помощи селекторов CSS, что позволяет указывать в качестве значения этих атрибутов согласно синтаксиса, определенного спецификацией CSS <refref target="css21" short="yes"/>:</t>
+    <t>Несмотря на то, что названия имен атрибутов аналогичны именам атрибутов тегов HTML <code>th</code> и <code>td</code>, правила отображения содержимого ячеек задаются при помощи селекторов CSS, что позволяет указывать в качестве значения этих атрибутов согласно синтаксиса, определенного спецификацией CSS <refref target="css21" short="yes"/>:</t>
 
     <anchor id="cell-attributes"><ulist>
         <item><eref target="http://www.w3.org/TR/CSS21/visudet.html#propdef-height"><code>height</code></eref> и <eref target="http://www.w3.org/TR/CSS21/visudet.html#propdef-width"><code>width</code></eref>: <code>значение | проценты | auto | inherit</code></item>
@@ -780,7 +805,7 @@
     -->
     <t>Таблица центрируется по центру документа, все таблицы имеют сквозную нумерацию в пределах документа. Так, после обработки XSLT-проессором примера, приведенного в начале этого раздела в результирующем HTML-документе будет отображаться таблица (с учетом сквозной нумерации номер таблицы может быть другим):</t>
     
-<table id="якорьТаблицы" name="Пример таблицы">
+<table id="tableid" name="Пример таблицы">
     <preamble>В этом примере мы увидим то,</preamble>
     <ttcol align='center'>Колонка 1</ttcol>
     <ttcol align='center'>Колонка 2</ttcol>
@@ -800,16 +825,18 @@
 <section name="Ссылки и сноски" id="cross-links-footnotes" toc="include">
     <t>Документ содержит различную информацию, требующую организации ссылок 3 типов:</t>
     <olist>
-        <item>внешних ссылок (на источники в сети Интернет)</item>
-        <item>перекрестных ссылок (на разделы, источники литературы, заранее определенные места в документе)</item>
-        <item>элементы документа (таблицы, рисунки, сноски)</item>
+        <item><xref target="outer-links">внешних ссылок</xref> (на источники в сети Интернет)</item>
+        <item>перекрестных ссылок (на <xref target="cross-links">разделы</xref>, <xref target="reference-to-references">источники литературы</xref>, <xref target="element-link-anchor">заранее определенные места в документе</xref>)</item>
+        <item>элементы документа (<xref target="element-table-reference">таблицы</xref>, <xref target="element-figure-reference">иллюстрации</xref>, <xref target="element-footnote">сноски</xref>)</item>
     </olist>
 
 <section name="Внешние ссылки" id="outer-links" toc="include">
-    <section name="Элемент eref" id="element-eref">
+    <section name="Создание ссылок на ресурсы Интернета" id="element-eref">
     <t>Элемент <code>eref</code> предназначен для создания ссылок на ресурсы в сети Интернет.</t>
-    <codesample>&lt;eref target=&quot;<it>targetURL</it>&quot;&gt;Текст_ссылки&lt;/eref&gt;
-&lt;eref target=&quot;<it>targetURL</it>&quot;/&gt;</codesample>
+    <codesample>&lt;eref 
+    target=&quot;<it>targetURL</it>&quot;&gt;Текст_ссылки&lt;/eref&gt;
+&lt;eref 
+    target=&quot;<it>targetURL</it>&quot;/&gt;</codesample>
     <t>Как видно из примера выше, синтаксис записи предполагает два варианта. В обоиих случаях атрибут 
         <code>target</code> определяет URL ссылки. При этом при указании URL 
         <keyword>необходимо</keyword> указывать схему обращения к ресурсу (сетевой протокол), 
@@ -824,18 +851,24 @@
     <t>Во втором случае, когда элемент <code>eref</code> является одиночным, в тексте документа отображается ссылка на на ресурс в сети Интернет, заключенная в угловые скобки:</t>
     <block><eref target="http://skobkin.ru/"/></block>
 </section>
-<t><bf>ПРИМЕЧАНИЕ</bf>. В случае, если URL содержит знак амперсанда&nbsp;<code>&amp;</code>, его <keyword>необходимо</keyword> заменить мнемоникой <code>&amp;amp;</code>, как это определено в разделе <eref target="http://www.w3.org/TR/REC-xml/#syntax">2.4&#160;"Character Data and Markup"</eref>, рекомендации W3C Extensible Markup Language (XML)&nbsp;1.0 <refref target="rec-xml" short="yes"/> иначе это вызовет ошибку преобразования документа.</t></section>
+<block><bf>ПРИМЕЧАНИЕ</bf>. В случае, если URL содержит знак амперсанда&nbsp;<code>&amp;</code>, его <keyword>необходимо</keyword> заменить мнемоникой <code>&amp;amp;</code>, как это определено в разделе <eref target="http://www.w3.org/TR/REC-xml/#syntax">2.4&#160;"Character Data and Markup"</eref>, рекомендации W3C Extensible Markup Language (XML)&nbsp;1.0 <refref target="rec-xml" short="yes"/> иначе это вызовет ошибку преобразования документа.</block></section>
 
 <section name="Перекрестные ссылки" id="cross-links"  toc="include">
-<section name="Элемент xref" id="element-xref">
+<section name="Ссылки на разделы документа" id="element-xref">
 <t>Элемент <code>xref</code> предназначен для создания ссылок на разделы документа с использованием 
 <xref target="sec-section">заранее определенных</xref> якорей. Синтаксис использования элемента схож с 
 синтаксисом использования <xref target="element-eref">элемента <code>eref</code></xref>:</t>
-<codesample>&lt;xref target=&quot;<it>имяЯкоря</it>&quot;&gt;Текст_ссылки&lt;/xref&gt;
-&lt;xref target=&quot;<it>имяЯкоря</it>&quot;/&gt;</codesample>
+
+<codesample>&lt;xref 
+    target=&quot;<it>имяЯкоря</it>&quot;&gt;Текст_ссылки&lt;/xref&gt;
+&lt;xref 
+    target=&quot;<it>имяЯкоря</it>&quot;/&gt;</codesample>
+
 <t>Как и в случае с элементом <code>eref</code>, непустой элемент <code>xref</code> генерирует 
 в выходном документе ссылку с текстом:</t>
+
 <codesample>&lt;xref target="outer-links"&gt;внешние ссылки&lt;/xref&gt;</codesample>
+
 <block><xref target="outer-links">внешние ссылки</xref></block>
 <t>Пустой элемент <code>xref</code> генерирует в выходном документе ссылку, текст которой 
 является номером и названием раздела, на который ссылается автор, заключенными в квадратные 
@@ -844,21 +877,26 @@
 <block><xref target="outer-links"/></block>
 </section>
 
-<section name="Элементы link и anchor" id="element-link-anchor"  toc="include">
+<section name="Ссылки на определенные места в документе" id="element-link-anchor"  toc="include">
 <t>В то время как элемент <code>xref</code> предназначены для создания ссылок на якоря, 
 определенные автором в заголовках разделов, пара элементов <code>link</code> и 
 <code>anchor</code> позволяет создать ссылку на любое произвольно определённое 
 место в документе.</t>
-<codesample>&lt;anchor id="<it>имяЯкоря</it>"&gt;текст&lt;/anchor&gt;
-&lt;link target="<it>имяЯкоря</it>"&gt;текстСсылки&lt;/link&gt; </codesample>
+<codesample>&lt;anchor 
+    id="<it>имяЯкоря</it>"&gt;текст&lt;/anchor&gt;
+&lt;link 
+    target="<it>имяЯкоря</it>"&gt;текстСсылки&lt;/link&gt; </codesample>
 <t>Атрибут <code>id</code> элемента <code>anchor</code> задает имя якоря, согласно 
 соответствующим <eref target="http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute"> требованиям</eref> спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/>.</t>
 <t>Это же имя используется в качестве значения атрибута <code>target</code> элемента <code>link</code>.</t>
 </section>
 
 
-<section name="Элемент footnote" id="element-footnote"  toc="include">
-<codesample>&lt;footnote id="<it>имяСноски</it>"&gt;текстСноски&lt;/footnote&gt;</codesample>
+<section name="Сноски" id="element-footnote"  toc="include">
+
+<codesample>&lt;footnote 
+    id="<it>имяСноски</it>"&gt;текстСноски&lt;/footnote&gt;</codesample>
+
     <t>Элемент <code>footnote</code> предназначен для вставки в документ сносок. Сноски в 
 документе имеют сквозную нумерацию строчными римскими цифрами (<code>i</code>, <code>ii</code>,&nbsp;<code>&#8230;</code>&nbsp;<code>iv</code>)
 и отображаются группами в конце каждого раздела первого уровня.</t>
@@ -871,8 +909,9 @@
     идентификатор существующей ссылки, для этого следует использовать элемент <xref target="element-ftref"><code>ftref</code></xref>.</t>
 </section>
 
-<section name="Элемент ftref" id="element-ftref">
-    <codesample>&lt;ftref name="<it>имяСноски</it>"&gt;текстСсылки&lt;/footnote&gt;</codesample>
+<section name="Ссылки на сноски &#9787;" id="element-ftref"  toc="include">
+    <codesample>&lt;ftref 
+        name="<it>имяСноски</it>"&gt;текстСсылки&lt;/footnote&gt;</codesample>
     <t>Элемент <code>ftref</code> позволяет определить в тексте ссылку на имеющуюся 
     сноску по известному имени сноски&nbsp;&mdash; атрибуту <link target="footnote-name-attr"><code>id</code></link> элемента <xref target="element-footnote"><code>footnote</code></xref>.</t>
     <t>Следует отметить, что в отличие от механизма создания сносок, механизм 
@@ -880,15 +919,28 @@
         тому месту документа, откуда был произведен переход. Для этого необходимо воспользоваться штатными средставми, определенными опреционной системой.</t>
 </section>
 
-<section name="Элемент fgref" id="element-figure-reference" toc="include">
+<section name="Ссылки на иллюстрации" id="element-figure-reference" toc="include">
     <t>Элемент <code>fgref</code> позволяет определить в тексте ссылку на рисунок по 
     известному <xref target="element-figure"><code>id</code></xref> этого рисунка.</t>
-    <codesample>&lt;fgref id="<it>имяЯкоря</it>"/&gt;</codesample>
+    <codesample>&lt;fgref 
+    target="<it>имяЯкоря</it>"/&gt;</codesample>
     <t>Атрибут <code>id</code> принимает в качестве значения имя якоря рисунка, на который 
     создается ссылка.</t>
     <t>Созданная ссылка будет иметь вид:</t>
     <block><code>[Рис. 6]</code></block>
 </section>
+
+<section name="Ссылки на таблицы" id="element-table-reference" toc="include">
+    <t>Элемент <code>tabref</code> позволяет определить в тексте ссылку на рисунок по 
+    известному <xref target="element-figure"><code>id</code></xref> такой таблицы.</t>
+    <codesample>&lt;tabref 
+    target="<it>имяЯкоря</it>"/&gt;</codesample>
+    <t>Атрибут <code>id</code> принимает в качестве значения имя якоря таблицы, на которую  
+    создается ссылка.</t>
+    <t>Созданная ссылка будет иметь вид:</t>
+    <block><code>[табл. 5.1]</code></block>
+</section>
+
 </section>
 
 <section name="Ссылки на источники" id="reference-to-references" toc="include">
@@ -905,7 +957,8 @@
 
 <section name="Ссылки на другие UFR" id="reference-to-ufr" toc="include">
     <t>Для создания ссылки на другой UFR используется элемент <code>ufrref</code>:</t>
-    <codesample>&lt;ufrref no="<it>номерUFR</it>"/&gt;</codesample>
+    <codesample>&lt;ufrref 
+    no="<it>номерUFR</it>"/&gt;</codesample>
     <t>Атрибут <code>no</code> элемента <code>ufrref</code> определяет номер UFR, 
     на который создается ссылка.</t>
     <t>Созданная ссылка будет иметь вид</t>
@@ -915,7 +968,10 @@
 
 <section name="Ссылки на источники из списка источников" id="reference-to-book" toc="include">
     <t>Для создания ссылки на источник из списка источников, отличный от UFR используется элемент <code>refref</code>:</t>
-    <codesample>&lt;refref target="<it>идентификаторИсточника</it>" short="yes|no"/&gt;</codesample>
+
+    <codesample>&lt;refref 
+    target="<it>идентификаторИсточника</it>" short="yes|no"/&gt;</codesample>
+
     <t>Элемент имеет два атрибута: первый, <code>target</code>, содержит значение 
     <link target="other-ref-id">атрибута <code>id</code> элемента <code>ref</code></link>.</t>
     <t>Второй атрибут <code>short</code> может принимать значения <code>"yes"</code> 
@@ -923,10 +979,10 @@
     краткая или полная форма ссылки.</t>
     <t>Полная форма ссылки представляет собой название источника, заключенное 
     в квадратные скобки и имеет вид:</t>
-    <block>[О росте телеграфных столбов]</block>
+    <block><code>[О росте телеграфных столбов]</code></block>
     <t>Краткая форма ссылки представляет собой номер источника в разделе "Другие источники", 
         заключенный в квадратные скобки и имеет вид:
-    <block>[6]</block></t>
+    <block><code>[6]</code></block></t>
 </section>
 </section>
 </section>
@@ -934,7 +990,10 @@
 <section name="Элементы логической разметки" id="logical-markup"  toc="include" >
 <section name="Перевод строк" id="element-vspace"  toc="include" >
 <t>Для организации перевода строки (в документ при этом вставляется элемент <eref target="http://dev.w3.org/html5/html-author/#the-br-element"><code>&lt;br&gt;</code></eref>) используется элемент <code>vspace</code>.</t>
-<codesample>&lt;vspace [blankLines=<it>"количествоПереводовСтроки"</it>]/&gt;</codesample>
+
+<codesample>&lt;vspace 
+    [blankLines=<it>"количествоПереводовСтроки"</it>]/&gt;</codesample>
+
 <t>Значенте необязательного атрибута <code>blankLines</code> задает количество переводов строк, 
 которые нужно добавить в документ. Соответственно, значение атрибута <code>blankLines</code> 
 <keyword>должно</keyword> быть натуральным числом (при значении атрибута <code>blankLines="0"</code> 
@@ -947,22 +1006,13 @@
     <t>В документ можно вставить список определений (в результирующем документе он будет представлен 
         <eref target="http://www.w3.org/TR/html401/struct/lists.html#h-10.3">тройкой тегов HTML</eref> <code>dl</code>, <code>dt</code>, <code>dd</code>), для чего используется элемент <code>definition</code>:</t>
         <codesample>&lt;definition&gt;
-    &lt;term name="<it>Термин 1</it>"&gt;Определение термина 1&lt;/term&gt;
-    &lt;term name="<it>Термин 2</it>"&gt;Определение термина 2&lt;/term&gt;
+    &lt;term 
+        name="<it>Термин 1</it>"&gt;Определение термина 1&lt;/term&gt;
+    &lt;term 
+        name="<it>Термин 2</it>"&gt;Определение термина 2&lt;/term&gt;
 &lt;/definition&gt;</codesample>
 <t>В элемент <code>definition</code> вложены элементы <code>term</code>. Каждый элемент <code>term</code> заключает 
 определение термина междлу своими начальным и конечным тегами, а значение атрибута <code>name</code> элемента <code>term</code> задаёт название для соответствующего термина.</t>
-</section>
-
-<section name="Определение аббревиатур и акронимов" id="element-abbr"  toc="include" >
-    <t>С помощью элемента <code>abbr</code> можно указать, что последовательность символов является аббревиатурой.</t>
-    <codesample>&lt;abbr title="<it>Звёздный Флот</it>"&gt;Зф&lt;/abbr&gt;</codesample>
-    <t>Атрибут <code>name</code> определяет расшифровку сокращения.</t>
-    <t>Элемент <code>abbr</code> полностью повторяет функциональность тега HTML <eref target="http://www.w3.org/TR/html401/struct/text.html#edef-ABBR"><code>abbr</code></eref>.</t>
-    <t><eref target="http://ru.wikipedia.org/w/index.php?title=%D0%90%D0%BA%D1%80%D0%BE%D0%BD%D0%B8%D0%BC&amp;oldid=53230024">Акронимы</eref> в документе создаются при помощи элемента <code>acronym</code>, который также 
-    полностью повторяет функциональность тега HTML <eref target="http://www.w3.org/TR/html401/struct/text.html#edef-ACRONYM"><code>abbr</code></eref>:
-    <codesample>&lt;acronym&gt;<it>бейсик</it>&lt;/acronym&gt;</codesample></t>
-    <t>Акроним помещается между начальным и конечным тегами элемента.</t>
 </section>
 
 <section name="Врезка" id="element-abbr"  toc="include" >
@@ -981,14 +1031,13 @@ elit, sed do eiusmod tempor incididunt
 <t>Текст врезки заключается между открывающим и закрывающим тегами элемента.</t> 
 </section>
 
-<section name="Элемент keyword" id="element-keyword"  toc="include" >
+<section name="Ключевые слова" id="element-keyword"  toc="include" >
 <t>Для корректного использования в документе ключевых слов, определенных <ufrref no="3"/>, 
 <keyword>необходимо</keyword> использовать элемент <code>keyword</code>:</t>
 <codesample>&lt;keyword&gt;<it>необходимо</it>&lt;/keyword&gt;</codesample>
 <t>Специально набирать ключевые слова прописными буквами <keyword>не следует</keyword>, регистр 
 будет изменен при помощи соответствующего правила CSS в выходном файле.</t>
 </section>
-<!-- La fédération de La Terre -->
 </section>
 </section>
 </section>
@@ -999,7 +1048,7 @@ elit, sed do eiusmod tempor incididunt
 следующие разделы:</t>
         <ulist>
             <item>Ссылки на источники</item>
-            <item>Приложения</item>
+            <item><xref target="sec-appendix">Приложения</xref></item>
         </ulist>
 <codesample>...
 &lt;middle&gt;
@@ -1031,15 +1080,14 @@ elit, sed do eiusmod tempor incididunt
         &lt;ref ufrno=.../&gt;
     &lt;/reference&gt;
     &lt;reference  type="<xref target="other-references"><it>other</it></xref>" name="<it>Другие источники</it>"&gt;
-    &lt;ref...&gt;
-        &lt;title&gt;...&lt;/title&gt;
-        &lt;author...&gt;
-        [&lt;organization/&gt;]
-        &lt;/author&gt; 
-        &lt;front&gt;...&lt;/front&gt; 
-        &lt;publisher.../&gt;
-        &lt;url&gt;...&lt;/url&gt;
-    &lt;/ref&gt;
+        &lt;ref...&gt;
+            &lt;title&gt;...&lt;/title&gt;
+            &lt;author...&gt;
+            [&lt;organization/&gt;]
+            &lt;/author&gt; 
+            &lt;publisher.../&gt;
+            [&lt;url&gt;...&lt;/url&gt;]
+        &lt;/ref&gt;
     &lt;/reference&gt;
 &lt;/references&gt;</codesample>
 
@@ -1141,7 +1189,7 @@ elit, sed do eiusmod tempor incididunt
 содержание приложения:</t>
 <codesample>&lt;appendix name=<it>"названиеРазделаПриложения"</it> 
     id=<it>"имяЯкоря"</it> 
-    [toc=<it>"include"</it>&gt;...&lt;/appendix&gt;</codesample>
+    [toc=<it>"include"]</it>&gt;...&lt;/appendix&gt;</codesample>
     <t>Внутри элементов <code>appendix</code> <keyword>не разрешается</keyword> 
 использовать элементы струтуры документа <code>section</code> или <code>insert</code>, но 
 <keyword>разрешается</keyword> использовать элементы форматирования и сноски.</t>
@@ -1263,6 +1311,14 @@ elit, sed do eiusmod tempor incididunt
             <vspace/>
             <t>Copyright © 2013 Звёздный Флот Федерации Земли и лица, указанные как авторы документа. Все права защищены.</t>
         </appendix>
-    </appendixes>
+
+<appendix toc="include" name="Пример вставки иллюстрации в формате SVG" id="appendix-example-svg">
+<figure id="xmlsvg" name="A beautiful SVG">
+
+<svg file="XML.svg"/>
+
+</figure>
+</appendix>
+</appendixes>
 </back>
 </ufr>
