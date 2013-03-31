@@ -47,9 +47,6 @@
     <xsl:strip-space elements="code"/> 
     <xsl:preserve-space elements="codesample"/>
 
-    <!-- Перевод строки -->
-    <xsl:variable name="newline" select="'&#10;'"/>
-
     <xsl:variable name="ufr-sfonly-copyright">
         <xsl:value-of select="/ufr/middle/copyright/@efsf-only" />
     </xsl:variable>
@@ -76,6 +73,7 @@
     <xsl:key name="ftnt-search" match="//footnote" use="@id"/>
     <!-- Для таблиц -->
     <xsl:key name="table-search" match="//table" use="@id"/>
+
     <!-- ***********ФУНКЦИИ************** -->
 
     <xsl:function name="sk:trimURL"> 
@@ -357,79 +355,86 @@
             <p><xsl:apply-templates /></p>
         </xsl:template>-->
 
-    <!-- Шаблон рисунка с номером -->
-
         <xsl:template match="//figure">  
             <xsl:apply-templates/>
         </xsl:template>
 
-    <!-- Шаблон для вывода части неформатированного текста -->
-
-<xsl:template match="artwork|svg">
-    <xsl:variable name="fig_num">
-        <xsl:number level="any" count="figure" format="1"/>
-    </xsl:variable>
-    <div class="centertext">
-        <a id="{concat('pic',$fig_num)}">
-            <xsl:choose>
-                <xsl:when test="name()='artwork'">
-                    <pre class="artwork">
-                        <xsl:value-of select="text()"/>
-                    </pre>
-                </xsl:when>
-                <xsl:when test="name()='svg'">
-                    <object>
-                        <xsl:attribute name="class">svg</xsl:attribute>
-                        <xsl:attribute name="data"><xsl:value-of select="@file"/></xsl:attribute>
-                        <xsl:attribute name="type"><xsl:text>image/svg+xml</xsl:text></xsl:attribute>
-                    </object>
-                </xsl:when>
-            </xsl:choose>
-        <p><xsl:attribute name="class">centertext</xsl:attribute>
-            Рисунок&#160;<xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="../@name" /></p>
-        </a>
-    </div>
+<!-- 
+    Номер раздела рисунка/таблицы
+-->
+<xsl:template name="parent_section_number_item">
+    <xsl:choose>
+        <xsl:when test="../name(parent::*)='appendix'">
+            <xsl:number level="any" count="appendix" format="A"/>
+            </xsl:when>
+            <xsl:otherwise>
+            <xsl:number level="any" count="middle/section" format="1"/>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
+<!-- 
+    Порядковый номер рисунка
+-->
+<xsl:template name="number_item">
+        <xsl:choose>
+            <xsl:when test="../name(parent::*)='appendix'">
+            <xsl:number level="any" count="appendix/figure" format="1"/>
+            </xsl:when>
+            <xsl:otherwise>
+            <xsl:number level="multiple" count="figure[not(../section/middle)]" format="1"/>
+            </xsl:otherwise>
+        </xsl:choose>
+</xsl:template>
 
+<!-- 
+    Порядковый номер of table
+-->
+<xsl:template name="number_table_item">
+        <xsl:choose>
+            <xsl:when test="../name(parent::*)='appendix'">
+            <xsl:number level="any" count="table" format="1"/>
+            </xsl:when>
+            <xsl:otherwise>
+            <xsl:number level="multiple" count="table[not(../section/middle)]" format="1"/>
+            </xsl:otherwise>
+        </xsl:choose>
+</xsl:template>
 
-<!-- <xsl:template match="artwork">
-    <xsl:variable name="fig_num">
-        <xsl:number level="any" count="figure" format="1"/>
-    </xsl:variable>
-    <div class="centertext">
-        <a id="{concat('pic',$fig_num)}">
+<xsl:template match="artwork|svg">
 
-            <xsl:value-of select="name()"/>
+<xsl:variable name="parent_item_num">
+    <xsl:call-template name="parent_section_number_item"/>
+</xsl:variable> 
 
-            <pre class="artwork">
+<xsl:variable name="item_num">
+    <xsl:call-template name="number_item"/>
+</xsl:variable>
+
+<!-- <div class="centertext"> -->
+<div>
+    <a id="{concat('pic',$parent_item_num,$item_num)}">
+        <xsl:choose>
+            <xsl:when test="name()='artwork'">
+                <pre class="artwork">
                 <xsl:value-of select="text()"/>
-            </pre>
-            <p><xsl:attribute name="class">centertext</xsl:attribute>
-            Рисунок&#160;<xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" /></p>
-        </a>
-    </div>
-</xsl:template>  
-
-
-<xsl:template match="svg">
-    <xsl:variable name="fig_num">
-        <xsl:number level="any" count="figure" format="1"/>
-    </xsl:variable>
-    <div class="centertext">
-        <xsl:value-of select="name()"/>
-        <a id="{concat('pic',$fig_num)}">
-        <object>
-        <xsl:attribute name="class">svg</xsl:attribute>
-        <xsl:attribute name="data"><xsl:value-of select="@file"/></xsl:attribute>
-        <xsl:attribute name="type"><xsl:text>image/svg+xml</xsl:text></xsl:attribute>
-        </object>
-        <p><xsl:attribute name="class">centertext</xsl:attribute>
-            Рисунок&#160;<xsl:value-of select="$fig_num" /><xsl:text>. </xsl:text><xsl:value-of select="@name" /></p>
-        </a>
-    </div>
-</xsl:template> -->
-
+                </pre>
+            </xsl:when>
+            <xsl:when test="name()='svg'">
+                <object>
+                <xsl:attribute name="class">svg</xsl:attribute>
+                <xsl:attribute name="data"><xsl:value-of select="@file"/></xsl:attribute>
+                <xsl:attribute name="type"><xsl:text>image/svg+xml</xsl:text></xsl:attribute>
+                </object>
+            </xsl:when>
+        </xsl:choose>
+    <p>
+        <xsl:attribute name="class">centertext</xsl:attribute>
+        Рисунок&#160;<xsl:value-of select="$parent_item_num"/>.<xsl:value-of select="$item_num" />
+        <xsl:text>. </xsl:text><xsl:value-of select="../@name" /></p>
+    </a>
+</div>
+</xsl:template>
 
     <!-- ССЫЛКИ НА ВНЕШНИЕ ИСТОЧНИКИ -->
 
@@ -486,10 +491,16 @@
         <xsl:variable name="id" select="@target" />
             <xsl:text>[</xsl:text>
                 <xsl:for-each select="key('fig-search', $id)">
-                <xsl:variable name="fig-num">
-                    <xsl:number level="any" count="figure" />
+
+                <xsl:variable name="parent_item_num">
+                    <xsl:call-template name="parent_section_number_item"/>
                 </xsl:variable> 
-                <a href="{concat('#','pic',$fig-num)}">рис. <xsl:value-of select="$fig-num" /></a>
+
+                <xsl:variable name="item_num">
+                    <xsl:call-template name="number_item"/>
+                </xsl:variable>
+
+                <a href="{concat('#','pic',$parent_item_num,$item_num)}">рис.&#0160;<xsl:value-of select="$parent_item_num" />.<xsl:value-of select="$item_num" /></a>
             </xsl:for-each>
             <xsl:text>]</xsl:text>
         </xsl:template>
@@ -498,10 +509,16 @@
         <xsl:variable name="target" select="@target" />
             <xsl:text>[</xsl:text>
                 <xsl:for-each select="key('table-search', $target)">
-                <xsl:variable name="id">
-                  <xsl:number level="any" count="table" />
+                
+                <xsl:variable name="parent_item_num">
+                    <xsl:call-template name="parent_section_number_item"/>
                 </xsl:variable> 
-                <a href="{concat('#',$target)}">табл.&#160;<xsl:value-of select="$id" /></a>
+
+                <xsl:variable name="item_num">
+                    <xsl:call-template name="number_table_item"/>
+                </xsl:variable>
+
+                <a href="{concat('#table',$parent_item_num,$item_num)}">табл.&#160;<xsl:value-of select="$parent_item_num" />.<xsl:value-of select="$item_num" /></a>
             </xsl:for-each>
             <xsl:text>]</xsl:text>
         </xsl:template>
@@ -690,18 +707,25 @@
 
 
 <xsl:template match="//section/table">
-    <xsl:variable name="table_num">
-        <xsl:number level="any" count="table" />
-    </xsl:variable> 
+
+<xsl:variable name="parent_item_num">
+    <xsl:call-template name="parent_section_number_item"/>
+</xsl:variable> 
+
+<xsl:variable name="item_num">
+    <xsl:call-template name="number_table_item"/>
+</xsl:variable>
+
+
     <xsl:apply-templates select="preamble" />
     <p>
         <xsl:attribute name="style">text-align:right;</xsl:attribute>
-        Таблица&#160;<xsl:value-of select="$table_num"/>
+        Таблица&#0160;<xsl:value-of select="$parent_item_num"/>.<xsl:value-of select="$item_num"/>
     </p>
 
   <div>
-    <xsl:attribute name="style">margin-left:30pt;width:90%;</xsl:attribute>
-    <a><xsl:attribute name="id"><xsl:value-of select="@id" /></xsl:attribute></a>
+    <xsl:attribute name="style">margin-left:30pt;width:90%; margin-bottom:1em;</xsl:attribute>
+    <a><xsl:attribute name="id"><xsl:value-of select="concat('table',$parent_item_num,$item_num)" /></xsl:attribute></a>
 
     <xsl:if test="@name">
     <p>
@@ -1126,17 +1150,6 @@
         </dl>
         </xsl:template>
 
-        <xsl:template match="//abbr">
-            <xsl:if test="@title">
-                <xsl:variable name='abbr-title' select='@title'/>
-                <abbr title='{$abbr-title}'><xsl:value-of select="."/></abbr>
-            </xsl:if>
-            <abbr><xsl:value-of select="."/></abbr>
-        </xsl:template> 
-
-        <xsl:template match="//acronym">
-            <acronym><xsl:value-of select="."/></acronym>
-        </xsl:template> 
 
         <!-- KEYWORD as it described in RFC2119 -->
         <xsl:template match="//keyword">
