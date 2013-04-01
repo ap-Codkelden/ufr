@@ -19,7 +19,7 @@
         </authors>
         <ufrdata>
             <ufrname number="2">Изменения в тегах записи бортового журнала</ufrname>
-            <ufrcategory cat="info" draft="no"/>
+            <ufrcategory cat="std" draft="no"/>
             <ufrdate value="2013-02-24" />
              <ufrchanged />
         </ufrdata>
