@@ -184,9 +184,6 @@
                 <p class="caption">
                     <xsl:value-of select="format-date($d, '[D] [MNn] [Y0001]', 'ru', (), ())"/>
                 </p>
-            <!--</div>-->
-            <div>
-                <xsl:attribute name="style">margin-left:36pt</xsl:attribute>
 
             <!-- ################# DOCUMENT CHANGED-BY ##########################  
             # <urfchanged>
@@ -201,14 +198,14 @@
 
             <xsl:if test="ufr/front/ufrdata/ufrchanged/changed" >
                 <p>
-                <xsl:attribute name="class">centerpage</xsl:attribute>
+                <xsl:attribute name="class">centertext</xsl:attribute>
                 Изменен:</p>
                 
                 <p>
                 <xsl:if test="not(ufr/front/ufrdata/urfobsolete)">
                     <xsl:attribute name="style">margin-bottom:10ex;</xsl:attribute>
                 </xsl:if>
-                    <xsl:attribute name="class">centerpage</xsl:attribute>
+                    <xsl:attribute name="class">centertext</xsl:attribute>
                 <xsl:for-each select="ufr/front/ufrdata/ufrchanged/changed">
                     <xsl:variable name="date-of-change" select="@date" />
                     <a href="{concat('ufr',@number,'.html')}"><xsl:text>UFR &#8470;</xsl:text><xsl:value-of select="@number" /></a>
@@ -310,19 +307,19 @@
         <h2><xsl:value-of select="$author" /></h2>
         <xsl:for-each select="ufr/front/authors/author">
             <p><xsl:value-of select="assignment" />
-            <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
+            <!-- <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text> -->
+            <br/>
             <xsl:value-of select="rank" />
             <xsl:text> </xsl:text>
-            <span>
-                <xsl:attribute name="class">authorname</xsl:attribute>
-                <xsl:value-of select="name" />
-            </span>
-            <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
+            <xsl:value-of select="name" />
+            <!-- <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text> -->
+            <br/>
             <xsl:value-of select="unit" />
-            <xsl:text disable-output-escaping='yes'>&lt;br /&gt;</xsl:text>
+            <!-- <xsl:text  disable-output-escaping='yes'>&lt;br /&gt;</xsl:text> -->
+            <br/>
             <xsl:value-of select="organization" /></p>
         </xsl:for-each>
-        </div>
+<!--         </div> -->
         </body>
         </html>	
     </xsl:template>
@@ -411,8 +408,7 @@
     <xsl:call-template name="number_item"/>
 </xsl:variable>
 
-<!-- <div class="centertext"> -->
-<div>
+<div class="centertext">
     <a id="{concat('pic',$parent_item_num,$item_num)}">
         <xsl:choose>
             <xsl:when test="name()='artwork'">
@@ -429,7 +425,7 @@
             </xsl:when>
         </xsl:choose>
     <p>
-        <xsl:attribute name="class">centertext</xsl:attribute>
+        <xsl:attribute name="class">centertext</xsl:attribute> 
         Рисунок&#160;<xsl:value-of select="$parent_item_num"/>.<xsl:value-of select="$item_num" />
         <xsl:text>. </xsl:text><xsl:value-of select="../@name" /></p>
     </a>
@@ -727,15 +723,15 @@
     <xsl:attribute name="style">margin-left:30pt;width:90%; margin-bottom:1em;</xsl:attribute>
     <a><xsl:attribute name="id"><xsl:value-of select="concat('table',$parent_item_num,$item_num)" /></xsl:attribute></a>
 
+  <table>
+        <xsl:attribute name="class">simpletable</xsl:attribute>
     <xsl:if test="@name">
-    <p>
+    <caption>
         <xsl:attribute name="class">centertext</xsl:attribute>
         <xsl:value-of select="@name"/>
-    </p>
+    </caption>
     </xsl:if>
 
-  <table>
-    <xsl:attribute name="class">simpletable</xsl:attribute>
     <thead>
         <xsl:apply-templates select="ttcol" />
     </thead>
@@ -844,7 +840,7 @@
 
     <xsl:template name="obsoleteUFR">
       <xsl:param name="obsolete" />
-      <p class="centerpage" style="color:FireBrick;margin-bottom:10ex">
+      <p class="centertext" style="color:FireBrick;margin-bottom:10ex">
     <xsl:text disable-output-escaping='yes'>Данный UFR устарел - см. &lt;a href="</xsl:text><xsl:value-of select="concat('ufr',$obsolete,'.html')"/><xsl:text disable-output-escaping='yes'>"&gt;</xsl:text>UFR &#8470;<xsl:value-of select="$obsolete" /><xsl:text disable-output-escaping='yes'>&lt;/a&gt;</xsl:text></p>
     </xsl:template>
 
@@ -854,12 +850,12 @@
         #
          -->
 
-        <xsl:template name="apply-changes"> 
-            <p>В соответствии с &#167;&#167;42,&#160;64 раздела&#160;5, &#167;94 раздела&#160;8 Устава Звёздного Флота внесение изменений в данный документ с момента его утверждения производится только стандартами UFR, принятыми в установленном порядке.</p>
-            <p>В случаях, если настоящий документ относится к категории документов, перечисленных в  &#167;95 
-                раздела&#160;8 Устава Звёздного Флота, изменения в данный документ вносятся на основании 
-                решения командования корабля, с обязательным уведомлением всех заинтересованных лиц.</p>
-        </xsl:template>
+<xsl:template name="apply-changes"> 
+    <p>В соответствии с &#167;&#167;42,&#160;64 раздела&#160;5, &#167;94 раздела&#160;8 Устава Звёздного Флота внесение изменений в данный документ с момента его утверждения производится только стандартами UFR, принятыми в установленном порядке.</p>
+    <p>В случаях, если настоящий документ относится к категории документов, перечисленных в  &#167;95 
+        раздела&#160;8 Устава Звёздного Флота, изменения в данный документ вносятся на основании 
+        решения командования корабля, с обязательным уведомлением всех заинтересованных лиц.</p>
+</xsl:template>
 
     <xsl:template name="insertLicense">
         <h2><xsl:value-of select="ufr/middle/license/@name" /></h2>
@@ -925,7 +921,7 @@
 
     <!-- Объявление ключевых слов -->
 
-        <xsl:template match="middle/section[position() &lt; 4]//ufr3">
+        <xsl:template match="middle/section[position() = 2]//ufr3">
             <p>Ключевые слова <span class='rfc2119'>необходимо</span>, <span class='rfc2119'>требуется</span>, 
                 <span class='rfc2119'>нужно</span>, <span class='rfc2119'>недопустимо</span>, 
                 <span class='rfc2119'>не разрешается</span>, <span class='rfc2119'>следует</span>, 
@@ -949,8 +945,8 @@
             <xsl:choose>
                 <xsl:when test="$type='ufr'">
                     <table>
-                    <xsl:attribute name="width">
-                        <xsl:value-of select="'100%'"/>
+                    <xsl:attribute name="class">
+                        <xsl:value-of select="'reference'"/>
                     </xsl:attribute>
                     <xsl:for-each select="ref">
                         <xsl:variable name="ufrno" select="@ufrno" />
@@ -962,7 +958,7 @@
                         <xsl:for-each select="$authors_info/author">
                             <td>
                                 <xsl:attribute name="style">
-                                    <xsl:value-of select="'vertical-align:top;width:15%'"/>
+                                    <xsl:value-of select="'vertical-align:top;width:100px'"/>
                                 </xsl:attribute>
                                 <xsl:if test="position() = 1">
                                     <a id="{concat('ufr',$ufrno)}">
@@ -990,20 +986,21 @@
                     </table>
                 </xsl:when>
 
-                <!-- Другие источники   -->
-                <xsl:when test="$type='other'">
-                <table>
-                    <xsl:attribute name="style">
-                        <xsl:value-of select="'width:100%;border:0;border-spacing:0px 2px;'"/>
-                    </xsl:attribute>
+    <!-- Другие источники   -->
+    <xsl:when test="$type='other'">
+    <table>
+    <xsl:attribute name="class">
+        <xsl:value-of select="'reference'"/>
+    </xsl:attribute>
 
-                    <xsl:for-each select="ref">
-                    <tr> 
-                    <td>
-                     <xsl:attribute name="style"><xsl:value-of select="'vertical-align:top;width:10%'"/>
-                    </xsl:attribute>
-                            <xsl:text>[</xsl:text><xsl:number level="single" count="ref"/><xsl:text>]</xsl:text>
-                    </td>
+    <xsl:for-each select="ref">
+
+    <tr>
+        <td>
+         <xsl:attribute name="style">
+            <xsl:value-of select="'vertical-align:top;width:100px;'"/></xsl:attribute>
+                <xsl:text>[</xsl:text><xsl:number level="single" count="ref"/><xsl:text>]</xsl:text>
+        </td>
         <td>
                     <xsl:attribute name="style"><xsl:value-of select="'vertical-align:top'"/>
                     </xsl:attribute>
@@ -1043,7 +1040,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </td>                    
-                        </tr> 
+    </tr> 
                     </xsl:for-each>
                     </table>
                 </xsl:when>
@@ -1204,4 +1201,5 @@
         <xsl:with-param name="no" select="@blankLines"/>
       </xsl:call-template>
     </xsl:template>
+
 </xsl:stylesheet>
