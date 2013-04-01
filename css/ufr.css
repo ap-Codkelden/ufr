@@ -3,19 +3,14 @@
    License: none (public domain)
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, 
+h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, 
+sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, 
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, 
+tr, th, td, article, aside, canvas, details, embed, figure, 
+figcaption, footer, header, hgroup, menu, nav, output, ruby, 
+section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -24,59 +19,79 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
+article, aside, details, figcaption, figure, footer, header, 
+hgroup, menu, nav, section { display: block; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+blockquote, q {	quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after {
 	content: '';
 	content: none;
 }
+table {	border-collapse: collapse; border-spacing: 0; }
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 
-/* UFR CSS 
-License: MIT License */
+/* 
+	UFR CSS 
+	License: MIT License 
+*/
 
 body {
-    width:80ex;
-    font-family:"Consolas","Courier New",monospace;
-    font: 12pt;
-    line-height: 1.33
+    font-family: sans-serif;
+    font-size: 12pt;
+    line-height: 1.33;
+    padding: 2em 1em 2em 70px;
+    color: black;
+    background: white;
+    background-position: top left;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-image: url('logo-UFR.png');
 }
 
-.footnote{
-	font-size: 0.8em;
+/* Tables */
+
+table.reference  {
+	border-collapse: separate;
+	border-spacing: 0;
+	width:100%;
+	border:0;
+	border-spacing:0px 10px;
 }
 
-pre {
-	font-family:monospace
+.headertable th, .headertable td { border: 0 none; }
+.headertable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0 none;
 }
 
-dd, ul, ol, p, p.block {
-	text-align: justify;	
+.simpletable {
+  margin: 0 auto;
+  border: 1px solid #000000;
 }
+.simpletable th, .simpletable td {
+  border: 1px solid #000000;
+  padding: 2px;
+}
+
+.simpletable th { font-weight: bolder; }
+
+.footnote{ font-size: 0.8em; }
+
+pre { font-family:monospace }
+
+dd, ul, ol, p, p.block { text-align: justify; }
 
 dt {
-	margin-bottom: 0.5em;
+	margin-bottom: 1ex;
 	font-weight: 600;
 }
 
 dd {
 	margin-left: 36px;
+	margin-bottom: 1ex;
 }
 
 p, p.block {
@@ -84,21 +99,18 @@ p, p.block {
 	margin-bottom: 0.5em
 }
 
-p, ul, ol {
-	line-height: 1.25em;
-	display: block;
-}
+p, ul, ol { line-height: 1.25em;display: block; }
 
 code, p.element-syntax {
 	white-space:pre;
-	font-family: "Courier New", monospace;
-	font-size: 10pt;
+	font-family:  monospace;
+	font-size: 11pt;
 	margin-top: 1em;
 	margin-bottom: 1em;
 	}
 
 p.element-syntax {
-	background-color:Gainsboro;
+	background-color:#e6e6e6;
 	border:solid thin black;
 	}
 
@@ -108,25 +120,15 @@ p.block {
 	border-left:1px;
 }
 
-.centerpage {
-	text-align:center;
-	margin-left:-36pt;
-}
-
-.centertext {
-	text-align:center;
-	/*margin-left:36pt;*/
-}
-
-span.nowrap {
-	white-space:pre;
-}
+.centertext { text-align:center; }
+span.nowrap { white-space:pre; }
 
 .artwork {
 	color:#333333;
 	white-space: pre;
-	text-align: left
-	font-family: 'Courier';
+	text-align: left;
+	width: 90ex;
+	margin: 0 auto;
 }
 
 h1.caption {
@@ -148,47 +150,28 @@ ul, ol {
 	padding-left: 2.5em;
 }
 
-ul {
-	list-style-type: circle;
-} 
+ul { list-style-type: circle; } 
+ol { list-style-type: decimal; }
 
-ol {
-	list-style-type: decimal;
+.toc_inner { padding-left: 2em; }
+
+h6 { font: 13pt sans-serif }
+h5 { font: 13.25pt sans-serif }
+h4 { font: 13.5pt sans-serif }
+h3 { font: 13.75pt  sans-serif }
+h2 { font: 14pt  sans-serif }
+h1 { font: 16pt  sans-serif }
+
+h1, h2, h3, h4, h5, h6 { 
+	color: #005A9C; 
+	background: white; 
+	text-align: left; 
+	margin: 1.1em 0em;
 }
 
-.toc_inner {
-	padding-left: 2em;
-}
-
-h6 {
-	font-size:12pt;
-}
-
-h5 {
-	font-size:12.25pt;
-}
-
-h4 {
-	font-size:12.5pt;
-}
-
-h3 {
-	font-size:12.75pt;
-}
-
-h2 {
-	font-size:13pt;
-}
-
-h1 {
-	font-size:13.25pt;
-} 
-
-h6,h5,h4,h3,h2,h1 {
-	font-weight:700;
-	margin-left:-30pt;
-	margin-bottom: 1.33em;
-	margin-top: 1.33em;
+caption {
+	margin-bottom: 1ex;
+	font-weight: bolder;
 }
 
 .rfc2119 { text-transform: lowercase;
@@ -197,62 +180,19 @@ h6,h5,h4,h3,h2,h1 {
            font-size: 120%
        }
 
-.svg { 	margin:0 auto;
+.svg { margin:0 auto;
 		display: block;
 		}
 
-sub, sup {
-	font-size: .83em
-}
- 
-sub {
-	vertical-align: sub
-}
+sub, sup { font-size: .83em }
+sub { vertical-align: sub }
 
-sup {
-	vertical-align: super
-}
+sup { vertical-align: super; }
 
-.authorname {
-	font-variant: small-caps;
-}
+a:link { color: blue; }
+a:visited { color: grey; }
 
-/* iCat Tables */
-.headertable {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  border: 0 none;
-}
-.headertable th, .headertable td {
-  border: 0 none;
-}
-
-.simpletable {
-  margin: 0 auto;
-  border: 1px solid #000000;
-}
-.simpletable th, .simpletable td {
-  border: 1px solid #000000;
-  padding: 2px;
-}
-
-.simpletable th {
-  font-weight: bolder;
-}
-
-
-a:link {
-  color: blue;
-}
-a:visited {
-  color: grey;
-}
-
-a[href]:after {
-  content: "";
-  margin-left: 0; 
-}
+a[href]:after { content: "";margin-left: 0; }
 
 a[href^="http://"]:after, a[href^="https://"]:after { 
 	content: "⇗"; 
