@@ -30,7 +30,7 @@
         </authors>
         <ufrdata>
             <ufrname number="5">Инструкции авторам UFR</ufrname>
-            <ufrcategory cat="tech" draft="yes" />
+            <ufrcategory cat="tech" draft="no" />
             <ufrdate value="2013-03-17" />
             <ufrchanged />
         </ufrdata>
@@ -464,7 +464,7 @@
         на него.</t>
         <t>Результатом применения элемента является добавление следующего текста в 
             заголовочную часть:</t>
-        <block>Данный UFR устарел - см. UFR №216</block>
+        <block><code>Данный UFR устарел - см. UFR №216</code></block>
         </section>
     </section> <!-- ufrdata -->
     </section> <!-- Конец заголовочной части -->
@@ -773,7 +773,7 @@
         &lt;c&gt;Ячейка 3&lt;/c&gt;
         &lt;c&gt;Ячейка 4&lt;/c&gt;
     &lt;/r&gt;
-    [&lt;postamble&gt;что мы увидим в этом примере&lt;/postamble&gt;]
+    [&lt;postamble&gt;что мы увидим в этом примере.&lt;/postamble&gt;]
     &lt;/table&gt;</codesample>
 
     <t>Для добавления таблиц в текст UFR используется элемент <code>table</code>, который служит контейнером для элементов, определяющих содержимое таблицы. Таблица состоит из заголовка, строк и ячеек, которые задаются с помощью элементов <code>ttcol</code>, <code>r</code> и <code>c</code> соответственно.</t> 
@@ -819,7 +819,7 @@
         <c>Ячейка 3</c>
         <c>Ячейка 4</c>
     </r>
-    <postamble>что мы увидим в этом примере</postamble>
+    <postamble>что мы увидим в этом примере.</postamble>
     </table>
 </section>
 </section>
@@ -1017,7 +1017,7 @@
 определение термина междлу своими начальным и конечным тегами, а значение атрибута <code>name</code> элемента <code>term</code> задаёт название для соответствующего термина.</t>
 </section>
 
-<section name="Врезка" id="element-abbr"  toc="include" >
+<section name="Врезка" id="element-block"  toc="include" >
     <codesample>&lt;block&gt;
     <it>Lorem ipsum dolor sit amet, consectetur adipisicing 
     elit, sed do eiusmod tempor incididunt</it>
@@ -1102,17 +1102,17 @@ elit, sed do eiusmod tempor incididunt
             <codesample><![CDATA[<reference  type="other" title="Другие источники">]]></codesample></item>
         </olist></anchor>
 
-    <t><anchor id="references-name">Атрибут <code>name</code></anchor> определяет название списка источников UFR. Это название 
-    <keyword>следует</keyword> указывать как <code>"Источники UFR"</code> для списка источников UFR 
+    <t><anchor id="references-name">Атрибут <code>name</code></anchor> определяет название списка источников UFR. 
+    Это название <keyword>следует</keyword> указывать как <code>"Источники UFR"</code> для списка источников UFR 
     и как <code>"Другие источники"</code> для списка других источников (без кавычек).</t>
     <t>Добавление источника UFR в список источников любого типа производится с помощью 
         элемента <code>ref</code>. Синтаксис элемента для каждого варианта списка описан ниже.</t>
 <section  name="Список UFR" id="ufr-references"  toc="include">
     <t>Для добавления источника UFR в список UFR используется следующий синтаксис элемента <code>ref</code>:</t>
     <codesample><![CDATA[<ref ufrno="номерUFR" />]]></codesample>
-    <t><anchor id="attr-ufrno">Значение атрибута <code>ufrno</code> содержит номер источника UFR.</anchor></t><block><bf>ВАЖНО:</bf> 
-    для корректного формирования списка источников исходный XML-файл UFR, на который определена 
-    ссылка, должен находиться <it>в одном каталоге</it> с текущим UFR.</block>
+    <t><anchor id="attr-ufrno">Значение атрибута <code>ufrno</code> содержит номер источника UFR.</anchor></t>
+    <block><bf>ВАЖНО:</bf> для корректного формирования списка источников исходный XML-файл UFR, на который 
+    определена ссылка, должен находиться <it>в одном каталоге</it> с текущим UFR.</block>
     <t>В результате для каждой записи об источнике UFR в выходном файле формируется 
         следующая запись (пример для UFR&#8470;3):</t>
 <codesample><![CDATA[[UFR№3]  Ключевые слова для обозначения уровня требований в UFR
@@ -1148,13 +1148,28 @@ elit, sed do eiusmod tempor incididunt
 <t><anchor id="other-ref-id">Элемент <code>id</code> определяет якорь источника, при помощи которого 
 <xrer target="reference-to-book">создаются ссылки</xrer> на этот источник.</anchor> Значение атрибута 
 <code>id <it>"якорьЗаписи"</it></code> должно соответствовать <eref target=
-    "http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute">требованиям</eref> спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/>.</t>
+    "http://www.w3.org/html/wg/drafts/html/master/single-page.html#the-id-attribute">требованиям</eref> 
+    спецификации HTML&nbsp;5 <refref target="html5-author" short="yes"/>.</t>
 <t>Элемент <code>title</code> определяет название источника.</t>
 <t>Элемент <code>author</code> определяет данные об авторе (авторах). Атрибуты <code>firstname</code>, 
-<code>middlename</code> и <code>lastname</code> определяют фамилию, имя и отчество автора соотвестственно.</t>
+<code>middlename</code> и <code>lastname</code> определяют фамилию, имя и отчество автора соотвестственно. 
+В случае, если информация об авторе источника не известна, но известно название организации, 
+которой издан этот источник, атрибуты <code>firstname</code>, <code>middlename</code> 
+и <code>lastname</code> не заполняются, а заполняется только текстовое значение элемента <code>organization</code>:</t>
+
+<codesample>&lt;ref id="sib"&gt;
+    &lt;title&gt;SI brochure (8th edition)&lt;/title&gt;
+    &lt;author firstname="" middlename="" lastname=""&gt;
+        &lt;organization&gt;Bureau International des Poids et Mesures&lt;/organization&gt;
+    &lt;/author&gt;
+    &lt;publisher name="STEDI MEDIA" year="2006" month="05" day=""/&gt;
+    &lt;url&gt;http://www.bipm.org/en/si/si_brochure/general.html&lt;/url&gt;
+&lt;/ref&gt;</codesample>
+
 <t>Элемент <code>organization</code> является необязательным и определяет организацию, к которой 
 принаджежит автор. Его <keyword>следует</keyword> использовать лишь в том случае, если автор принадлежит 
-к какой-либо организации.</t>
+к какой-либо организации, и <keyword>необходимо</keyword> использовать, если информация об авторе 
+источника не известна, но известно название организации, которой издан этот источник.</t>
 <t>Элемент <code>publisher</code> определяет информацию об издателе источника. Он имеет следующие атрибуты:</t>
     <ulist>
         <item><code>name</code>&nbsp;&mdash; значением атрибута является название издателя источника.</item>
