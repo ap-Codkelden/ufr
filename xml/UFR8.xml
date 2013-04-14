@@ -42,19 +42,21 @@
         <t>UFR (User Feature Request) - стандарты, рекомендации и описания, 
 		создаваемые с целью регулирования деятельности участников проекта 
 		"Созвездие".</t>
-		<t>Ситуации, <tabref target="table_example">возникающие</tabref> в процессе реализации проекта "Созвездие" 
+		<t>Ситуации, возникающие в процессе реализации проекта "Созвездие" 
 		на практике, зачастую требуют регулирования во избежание нарушения 
 		отклонений от запланированного его протекания. </t>
-		<t>Порядок <tabref target="table_example"/> создания UFR и внесения изменений в них регулируется 
+		<t>Порядок создания UFR и внесения изменений в них регулируется 
 		исключительно Уставом Звёздного Флота, этим UFR, а также другими 
 		UFR.</t>
 	</section>
     <section name="Ключевые слова" toc="include" id="therms"><ufr3/></section>    
 	<section name="Термины" toc="include" id="keywords">
         <definition>
-            <term name="Командование корабля">Капитан и старший помощник капитана. В 
-                случае отсутствия капитана и/или его старшего помощника под определением "командование корабля" понимаются лица, исполняющее обязанности капитана и старшего помощника капитана.</term>
-            <term name="Термин 2">Определение термина 2</term>
+            <term name="Командование корабля">Капитан и старший помощник 
+                капитана. В случае отсутствия капитана и/или его старшего 
+                помощника под определением "командование корабля" понимаются 
+                лица, исполняющее обязанности капитана и старшего помощника 
+                капитана.</term>
         </definition>
     </section>
 
@@ -67,56 +69,54 @@
             <item>необходимость введения в действие стандарта, регулирующего те или 
             иные правила проекта (например, теги записи бортового журнала) - 
             UFR категории "стандарт";</item>
-            <item>необходимость <tabref target="table_example"/> указать на рекомендуемые правила, придерживаться
+            <item>необходимость указать на рекомендуемые правила, придерживаться
             которых необязательно, но крайне желательно - UFR категории "рекомендация";</item>
             <item>необходимость введения в действие технических стандартов на используемое 
             ПО и компоненты - UFR категории "технический";</item>
             <item>необходимость доведения до сведения всех участников проекта текущего 
             состояния сюжетной линии проекта во избежание отклонений от неё - UFR 
             категории "исторический";</item>
-            <item>необходимость доведения до сведения всех усатников проекта какой-либо 
+            <item>необходимость доведения до сведения всех участников проекта какой-либо 
             информации, не попадающей под все описанные выше определения - UFR категории 
             "информационный".</item>
         </ulist>
+        <t>В случае, если такая предпосылка существует, лицом, перечень которых 
+            приведен в <xref target="ufr-creators"/> <keyword>может</keyword> быть создан проект UFR или же 
+            подается заявка на его создание.</t>
+    </section>
+        <section name="Лица, которые могут создавать UFR или подавать заявку на их создание" id="ufr-creators" toc="include">
+        <t>В создании UFR тем или иным образом могут принимать участие две категории лиц:</t>
+        <ulist>
+        <item>лица, которые могут непосредственно создавать проекты UFR;</item>
+        <item>лица, которые могут подавать заявки на создание UFR.</item>
+        </ulist>
 
-    <table id='table_example' name="Пример таблицы">
-    [<preamble>В этом примере мы увидим то,</preamble>]
-    <ttcol align='center'>Колонка 1</ttcol>
-    <ttcol align='center'>Колонка 2</ttcol>
-    <r>
-    <c>Ячейка 1</c>
-    <c>Ячейка 2</c>
-    </r>
-    <r>
-    <c valign='bottom' align="right" width="20ex" height="40ex">Ячейка 3</c>
-    <c>Ячейка 4</c>
-    </r>
-    [<postamble>что мы увидим в этом примере</postamble>]
-    </table>
+        <t>К лицам, которые могут непосредственно создавать проекты UFR, относятся:</t>
+        <olist>
+        <item>командование корабля (за исключением лиц, исполняющих обязанности 
+        капитана и/или старшего помощинка);</item>
+        <item>лица, которые принимают участие в проекте не менее 6 календарных 
+        месяцев, и которыми за всё время участия в проекте создано не менее 50 
+        записей в бортовом журнале и/или личном дневнике.</item>
+        </olist>
 
-       <figure id="wer" name="rew">
-        <preamble>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labor</preamble>
-        <artwork><![CDATA[
-                          ("") ("")]]></artwork>
-        <postamble>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et d</postamble>
-       </figure>
+        <anchor id="crew-proposal"><t>Все прочие участники проекта относятся к категории лиц, которые могут 
+        создавать заявки на создание UFR.</t></anchor>
 
-<t>ABZATS</t>
-
-
-       <figure id="wehr" name="rew">
-        <preamble>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur.</preamble>
-        <svg file="XML.svg"/>
-        <postamble>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et d</postamble>
-       </figure>
+        <section name="Заявка на создание UFR" id="ufr-proposal" toc="include">
+        <t>Заявка на создание UFR подается <link target="crew-proposal">лицами</link>, 
+        которые не могут создавать проекты UFR самостоятельно.</t>
+        <t></t>
+        <t></t>
+        <t></t>
+        <t></t>
+        <t></t>
+        <t></t>
+        <t></t>
         </section>
+
+</section>
+
 	</section>
 	
 	
