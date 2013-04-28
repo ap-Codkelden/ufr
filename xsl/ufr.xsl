@@ -344,13 +344,21 @@
     </xsl:template>
 
             <xsl:template match="//t|//preamble|//postamble">
-                <p><xsl:apply-templates /></p>
+                <xsl:choose>
+                    <xsl:when test="local-name()='t' and ancestor::section[1]/@style">
+                        <xsl:variable name="list-style" select="ancestor::section[1]/@style"/>
+                        <p><xsl:number
+                            count="t"
+                            level="multiple"
+                            format="{$list-style}"
+                            lang="ru"/>.&#160;<xsl:apply-templates /></p>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <p><xsl:apply-templates /></p>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:template>  
     <!-- **************************** ШАБЛОНЫ ***************************** -->
-    <!-- Шаблон абзаца (самая маленькая единица в документе) 
-        <xsl:template match="//t">  
-            <p><xsl:apply-templates /></p>
-        </xsl:template>-->
 
         <xsl:template match="//figure">  
             <xsl:apply-templates/>
