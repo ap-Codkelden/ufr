@@ -32,7 +32,9 @@
             <ufrname number="5">Инструкции авторам UFR</ufrname>
             <ufrcategory cat="tech" draft="no" />
             <ufrdate value="2013-03-17" />
-            <ufrchanged />
+            <ufrchanged>
+                 <changed number="8" date="2013-04-27" edition=""/> 
+            </ufrchanged>
         </ufrdata>
 </front>
     <middle>
@@ -538,7 +540,8 @@
         <codesample>&lt;section 
     name=<it>"названиеРаздела"</it> 
     id=<it>"имяЯкоря"</it> 
-    [toc=<it>"include"</it>]&gt;
+    [toc=<it>"include"</it>]
+    [style=<it>"format"</it>]&gt;
     <it>Lorem ipsum dolor sit amet...</it>
 &lt;/section&gt;</codesample>
 
@@ -549,8 +552,22 @@
 
             <t>Необязательный атрибут <code>toc</code> определяет необходимость включения 
             раздела в оглавление (например, если необходимо включить в оглавление только 
-            разделы первого уровня). В случае использования этого атрибута он <keyword>должен</keyword> принимать значение <code>"include"</code> (без кавычек). Если атрибут <code>toc</code> притсутствует, но имеет другое значение, раздел не будет включен в оглавление. Порядок нумерации разделов ни в оглавлении, ни в документе при этом 
-            не изменяется.</t>
+            разделы первого уровня). В случае использования этого атрибута он <keyword>должен</keyword> принимать значение <code>"include"</code> (без кавычек). Если атрибут <code>toc</code> притсутствует, но имеет другое значение, раздел не будет включен в оглавление. Порядок нумерации разделов ни в оглавлении, ни в документе при этом не изменяется.</t>
+
+            <t>Необязательный атрибут <code>style</code> позволяет представить абзацы, 
+            из которых состоит раздел, в виде нумерованного (буквами или цифрами) списка. Значение атрибута <code><it>"format"</it></code> 
+            при этом <keyword>должно</keyword> соответствовать значениям, определенным для 
+            специализированной инструкции <eref target="http://www.w3.org/TR/xslt20/#element-number"><code>xsl:number</code></eref> рекомендации W3C <refref target="xslt20" short="no"/>.</t>
+
+            <t>Хотя теоретически возможно использование <it>всех</it> определенных в <refref target="xslt20" short="yes"/> атрибутов, для корректного формирования UFR <keyword>следует</keyword> использовать только следующие значения (без кавычек):</t>
+
+<ulist>
+    <item><code>"1", "01", "001"</code>&nbsp;&mdash; нумерует абзацы последовательностью цифр 1&nbsp;2&nbsp;&#8230; 10&nbsp;&#8230; с ведущим нулём или без соответственно;</item>
+    <item><code>"A", "a"</code> (символы с кодами Unicode <code>&amp;#65;</code> и <code>&amp;#97;</code>)&nbsp;&mdash; нумерует абзацы последовательностью прописных и строчных букв латинского алфавита (A B&nbsp;&#8230; Z AA AB&nbsp;&#8230;) соответственно;</item>
+    <item><code>"&amp;#x410;", "&amp;#x430;"</code> (коды Unicode символов кириллической буквы А (прописной и 
+    строчной)&nbsp;&mdash; нумерует абзацы последовательностью прописных и строчных букв кириллицы (А Б&nbsp;&#8230; Я АА АБ&nbsp;&#8230;) соответственно.</item>
+</ulist>
+
             <t>Разделы документа могут быть вложенными друг в друга. Максимальное количество вложенных разделов&nbsp;&mdash; 5.</t>
         <codesample>&lt;section... &gt;
     &lt;section... &gt;
@@ -1213,6 +1230,14 @@ elit, sed do eiusmod tempor incididunt
 </section>
 </section>
 
+<section name="Список изменений" id="whats-new" toc="include">
+<ulist>
+    <item>2013-03-17&nbsp;&mdash; начальная версия;</item>
+    <item>2013-04-28&nbsp;&mdash; добавлена возможность представить абзацы, 
+            из которых состоит раздел, в виде нумерованного (буквами или цифрами) списка.</item>
+</ulist>
+</section>
+
 <insert type="apply-changes" name="Внесение изменений" toc="include" id="changes" />
 
 </middle>
@@ -1314,6 +1339,16 @@ elit, sed do eiusmod tempor incididunt
                     <publisher name="World Wide Web Consortium" year="2011" month="06" day="07"/>
                     <url>http://www.w3.org/TR/2011/REC-CSS2-20110607</url>
                 </ref>
+
+                <ref id="xslt20">
+                    <title>XSL Transformations (XSLT) Version 2.0</title>
+                    <author firstname="Michael" middlename="" lastname="Kay">
+                        <organization>Saxonica</organization>
+                    </author>
+                    <publisher name="World Wide Web Consortium" year="2007" month="01" day="23"/>
+                    <url>http://www.w3.org/TR/xslt20/</url>
+                </ref>
+
             </reference>
         </references>
 
