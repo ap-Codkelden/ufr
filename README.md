@@ -1,8 +1,6 @@
-﻿ufr
-===
+﻿UFR - User Feature Request
+==========================
 
-Репозиторий UFR - User Feature Request.
+Создание нормативных и не очень документов для проекта &laquo;[Созвездие](http://sozvezdie.ws/)&raquo; из XML-файлов.
 
-<pre>This 
-     is a 
-     test</pre>
+XML-файл для создания URF описан в UFR5.
